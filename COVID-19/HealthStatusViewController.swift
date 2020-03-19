@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SurveyViewController: UIViewController {
+class HealthStatusViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Анкета"
+        title = "Здравен статус"
     }
 
 }

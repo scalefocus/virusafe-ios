@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="899" y="136"/>
         </scene>
-        <!--Survey View Controller-->
+        <!--Health Status View Controller-->
         <scene sceneID="Ml4-5C-wsV">
             <objects>
-                <viewController storyboardIdentifier="SurveyViewController" id="TFx-3e-9p4" customClass="SurveyViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HealthStatusViewController" id="TFx-3e-9p4" customClass="HealthStatusViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NaJ-dd-Lza">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func didTapSurveyButton(_ sender: Any) {
-        let surveyViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(SurveyViewController.self)")
+        let surveyViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
         navigationController?.pushViewController(surveyViewController, animated: true)
     }
     
