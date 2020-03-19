@@ -24,6 +24,7 @@ class NoSymptomsTableViewCell: UITableViewCell, Configurable {
     func configureWith(_ data: NoSymptomsCellModel) {
         selectImage(hasSymptoms: data.hasSymptoms)
         self.didTapCheckBoxCallback = data.didTapCheckBox
+        self.isCheckBoxSelected = data.hasSymptoms
     }
     
     @objc func didTapCheckBox() {
@@ -33,14 +34,14 @@ class NoSymptomsTableViewCell: UITableViewCell, Configurable {
     }
     
     private func selectImage(hasSymptoms: Bool) {
-        checkBoxImageView.image = isCheckBoxSelected ?
-        UIImage(named: "ic_checkbox_on")?.withRenderingMode(.alwaysTemplate)
-        : UIImage(named: "ic_checkbox_off")?.withRenderingMode(.alwaysTemplate)
+        checkBoxImageView.image = !hasSymptoms ?
+        UIImage(named: "ic_checkbox_off")?.withRenderingMode(.alwaysTemplate)
+        : UIImage(named: "ic_checkbox_on")?.withRenderingMode(.alwaysTemplate)
     }
     
 }
 
 struct NoSymptomsCellModel {
-    let hasSymptoms: Bool
+    var hasSymptoms: Bool
     let didTapCheckBox: (Bool) -> Void
 }

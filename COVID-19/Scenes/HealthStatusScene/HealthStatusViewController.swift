@@ -17,8 +17,25 @@ class HealthStatusViewController: UIViewController {
         super.viewDidLoad()
         setupVC()
         
-        viewModel.shouldReloadData.bind { [weak self] (_) in
+        viewModel.shouldReloadData.bind { [weak self] _ in
             self?.tableView.reloadData()
+        }
+        
+        viewModel.reloadCellIndexPath.bind { [weak self] indexPath in
+            UIView.performWithoutAnimation {
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+        
+        viewModel.isLeavingScreenAvailable.bind { [weak self] isLeavingScreenAvailable in
+            guard let strongSelf = self else { return }
+            if isLeavingScreenAvailable {
+                strongSelf.navigationController?.popViewController(animated: true)
+            } else {
+                let alert = UIAlertController(title: "Внимание", message: "За да запазите промените е нужно да попълните всички точки от въпросника", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Добре", style: UIAlertAction.Style.default, handler: nil))
+                strongSelf.present(alert, animated: true, completion: nil)
+            }
         }
         
         viewModel.getHealthStatusData()

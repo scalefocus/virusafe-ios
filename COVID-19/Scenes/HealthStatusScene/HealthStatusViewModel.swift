@@ -15,9 +15,31 @@ class HealthStatusViewModel {
     typealias QuestionCellConfigurator = BaseViewConfigurator<QuestionTableViewCell>
     typealias SubmitCellConfigurator = BaseViewConfigurator<SubmitTableViewCell>
     
-    var configurators: [ViewConfigurator] = []
-    var healthStatusData: HealthStatus?
+    private var configurators: [ViewConfigurator] = []
+    private var healthStatusData: HealthStatus?
     let shouldReloadData = Observable<Bool>()
+    let isLeavingScreenAvailable = Observable<Bool>()
+    let reloadCellIndexPath = Observable<IndexPath>()
+    
+    private var hasEmptyFields: Bool {
+        guard let questions = healthStatusData?.questions else { return true }
+        var hasEmpty = false
+        for question in questions where question.questionState == nil {
+            hasEmpty = true
+            break
+        }
+        return hasEmpty
+    }
+    
+    private var areAllFieldsNegative: Bool {
+        guard let questions = healthStatusData?.questions else { return false }
+        var areAllNegative = true
+        for question in questions where question.questionState == true || question.questionState == nil {
+            areAllNegative = false
+            break
+        }
+        return areAllNegative
+    }
     
     var numberOfCells: Int {
         return configurators.count
@@ -28,10 +50,13 @@ class HealthStatusViewModel {
     }
     
     private func didTapNoSymptomsButton(isActive: Bool) {
+
+        (configurators[0] as? NoSymptomsCellConfigurator)?.data.hasSymptoms = isActive
         configurators.forEach { (configurator) in
             if let conf = configurator as? QuestionCellConfigurator {
                 conf.data.isSymptomActive = isActive ? false : nil
                 healthStatusData?.questions?[conf.data.index].questionState = isActive ? false : nil
+//                reloadCellIndexPath.value = IndexPath(item: conf.data.index, section: 0)
             }
         }
 
@@ -39,13 +64,14 @@ class HealthStatusViewModel {
     }
     
     private func didTapSubmitButton() {
-        healthStatusData?.questions?.forEach({ (question) in
-            print("\(question.questionTitle) -> \(question.questionState)")
-        })
+        isLeavingScreenAvailable.value = !hasEmptyFields
     }
     
     private func updateSymptoms(for index: Int, hasSymptoms: Bool) {
         healthStatusData?.questions?[index].questionState = hasSymptoms
+        
+        (configurators[0] as? NoSymptomsCellConfigurator)?.data.hasSymptoms = areAllFieldsNegative
+        reloadCellIndexPath.value = IndexPath(item: 0, section: 0)
     }
     
     func getHealthStatusData() {
