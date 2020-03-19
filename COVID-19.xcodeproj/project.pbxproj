@@ -3,16 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
-		02B9A6B0242371F300B1A4C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* ViewController.swift */; };
+		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
 		02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
+		02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */; };
+		02B9A6C22423860E00B1A4C0 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C12423860E00B1A4C0 /* SurveyViewController.swift */; };
 		34CC17724F21013CB52B856E /* Pods_COVID_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +22,13 @@
 		02B9A6A8242371F300B1A4C0 /* COVID-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		02B9A6AF242371F300B1A4C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		02B9A6B2242371F300B1A4C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02B9A6B4242371F500B1A4C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02B9A6B7242371F500B1A4C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02B9A6B9242371F500B1A4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		02B9A6C12423860E00B1A4C0 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		342AD023A3A82D0930F0B286 /* Pods-COVID-19.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release.xcconfig"; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,11 +69,13 @@
 			children = (
 				02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */,
 				02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */,
-				02B9A6AF242371F300B1A4C0 /* ViewController.swift */,
+				02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */,
 				02B9A6B1242371F300B1A4C0 /* Main.storyboard */,
 				02B9A6B4242371F500B1A4C0 /* Assets.xcassets */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
+				02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */,
+				02B9A6C12423860E00B1A4C0 /* SurveyViewController.swift */,
 			);
 			path = "COVID-19";
 			sourceTree = "<group>";
@@ -80,7 +86,6 @@
 				C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */,
 				342AD023A3A82D0930F0B286 /* Pods-COVID-19.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,9 +212,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02B9A6B0242371F300B1A4C0 /* ViewController.swift in Sources */,
+				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
+				02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */,
+				02B9A6C22423860E00B1A4C0 /* SurveyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
