@@ -24,7 +24,7 @@ class HealthStatusViewModel {
     private var hasEmptyFields: Bool {
         guard let questions = healthStatusData?.questions else { return true }
         var hasEmpty = false
-        for question in questions where question.questionState == nil {
+        for question in questions where question.isActive == nil {
             hasEmpty = true
             break
         }
@@ -34,7 +34,7 @@ class HealthStatusViewModel {
     private var areAllFieldsNegative: Bool {
         guard let questions = healthStatusData?.questions else { return false }
         var areAllNegative = true
-        for question in questions where question.questionState == true || question.questionState == nil {
+        for question in questions where question.isActive == true || question.isActive == nil {
             areAllNegative = false
             break
         }
@@ -55,7 +55,7 @@ class HealthStatusViewModel {
         configurators.forEach { (configurator) in
             if let conf = configurator as? QuestionCellConfigurator {
                 conf.data.isSymptomActive = isActive ? false : nil
-                healthStatusData?.questions?[conf.data.index].questionState = isActive ? false : nil
+                healthStatusData?.questions?[conf.data.index].isActive = isActive ? false : nil
             }
         }
 
@@ -67,7 +67,7 @@ class HealthStatusViewModel {
     }
     
     private func updateSymptoms(for index: Int, hasSymptoms: Bool) {
-        healthStatusData?.questions?[index].questionState = hasSymptoms
+        healthStatusData?.questions?[index].isActive = hasSymptoms
         
         (configurators[safeAt: 0] as? NoSymptomsCellConfigurator)?.data.hasSymptoms = areAllFieldsNegative
         reloadCellIndexPath.value = IndexPath(item: 0, section: 0)
@@ -92,7 +92,7 @@ class HealthStatusViewModel {
                     configurators.append(QuestionCellConfigurator(data:
                         QuestionCellModel(index: question.offset,
                                           title: question.element.questionTitle,
-                                          isSymptomActive: question.element.questionState,
+                                          isSymptomActive: question.element.isActive,
                                           didTapButton: { [weak self] hasSymptoms in
                                             self?.updateSymptoms(for: question.offset,
                                                                  hasSymptoms: hasSymptoms)
