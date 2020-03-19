@@ -1,0 +1,31 @@
+{
+  "name": "NetworkKit",
+  "version": "0.0.1",
+  "summary": "NetworkKit: core networking and API functionality for Upnetix iOS apps.",
+  "description": "NetworkKit is a library that includes, or will include, networking and API functionality for Upnetix iOS projects.",
+  "homepage": "http://EXAMPLE/NetworkKit",
+  "license": "MIT",
+  "authors": {
+    "Valentin Kalchev": "valentin.kalchev@upnetix.com"
+  },
+  "source": {
+    "git": "http://<fill in later>/NetworkKit.git",
+    "tag": "0.0.1"
+  },
+  "source_files": [
+    "Classes",
+    "NetworkKit/**/*.{h,m,swift}"
+  ],
+  "exclude_files": "Classes/Exclude",
+  "dependencies": {
+    "Alamofire": [
+      "4.7"
+    ]
+  },
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}
