@@ -8,7 +8,7 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-UserInterfaceState.xcuserstate
+*.xcuserstate
 !default.xcworkspace
 profile
 *.moved-aside
@@ -23,6 +23,8 @@ DTS*
 *.mode1
 *.perspective
 xcuserdata
+xcshareddata
+
 # Build products
 build/
 *.o
