@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82D524239A7800696868 /* BaseViewConfigurator.swift */; };
+		024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82D824239AE100696868 /* QuestionTableViewCell.swift */; };
+		024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82D924239AE100696868 /* QuestionTableViewCell.xib */; };
+		024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DC24239F0D00696868 /* UIViewExtension.swift */; };
+		024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */; };
+		024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */; };
+		024D82E32423A80400696868 /* HealthStatusJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 024D82E22423A80400696868 /* HealthStatusJson.json */; };
+		024D82E82423A84200696868 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
+		024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E92423B67100696868 /* SubmitTableViewCell.swift */; };
+		024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82EA2423B67100696868 /* SubmitTableViewCell.xib */; };
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
 		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
@@ -15,10 +25,21 @@
 		02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
 		02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */; };
 		02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */; };
+		02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
 		34CC17724F21013CB52B856E /* Pods_COVID_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		024D82D524239A7800696868 /* BaseViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewConfigurator.swift; sourceTree = "<group>"; };
+		024D82D824239AE100696868 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		024D82D924239AE100696868 /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
+		024D82DC24239F0D00696868 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSymptomsTableViewCell.swift; sourceTree = "<group>"; };
+		024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoSymptomsTableViewCell.xib; sourceTree = "<group>"; };
+		024D82E22423A80400696868 /* HealthStatusJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HealthStatusJson.json; sourceTree = "<group>"; };
+		024D82E72423A84200696868 /* HealthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatus.swift; sourceTree = "<group>"; };
+		024D82E92423B67100696868 /* SubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTableViewCell.swift; sourceTree = "<group>"; };
+		024D82EA2423B67100696868 /* SubmitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitTableViewCell.xib; sourceTree = "<group>"; };
 		02B9A6A8242371F300B1A4C0 /* COVID-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +50,7 @@
 		02B9A6B9242371F500B1A4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusViewController.swift; sourceTree = "<group>"; };
+		02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusViewModel.swift; sourceTree = "<group>"; };
 		342AD023A3A82D0930F0B286 /* Pods-COVID-19.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release.xcconfig"; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
@@ -46,6 +68,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		024D82D424239A6100696868 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				024D82D524239A7800696868 /* BaseViewConfigurator.swift */,
+				024D82DC24239F0D00696868 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		024D82D724239A9D00696868 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				024D82D824239AE100696868 /* QuestionTableViewCell.swift */,
+				024D82D924239AE100696868 /* QuestionTableViewCell.xib */,
+				024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */,
+				024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */,
+				024D82E92423B67100696868 /* SubmitTableViewCell.swift */,
+				024D82EA2423B67100696868 /* SubmitTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		024D82E42423A81A00696868 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				024D82E72423A84200696868 /* HealthStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		02B9A69F242371F300B1A4C0 = {
 			isa = PBXGroup;
 			children = (
@@ -71,9 +123,11 @@
 				02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */,
 				02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */,
 				02B9A6B1242371F300B1A4C0 /* Main.storyboard */,
+				024D82E42423A81A00696868 /* Models */,
 				02B9A6B4242371F500B1A4C0 /* Assets.xcassets */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
+				024D82D424239A6100696868 /* Extensions */,
 			);
 			path = "COVID-19";
 			sourceTree = "<group>";
@@ -107,7 +161,10 @@
 		02B9A6C624238E0E00B1A4C0 /* HealthStatusScene */ = {
 			isa = PBXGroup;
 			children = (
+				024D82D724239A9D00696868 /* TableViewCells */,
 				02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */,
+				02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */,
+				024D82E22423A80400696868 /* HealthStatusJson.json */,
 			);
 			path = HealthStatusScene;
 			sourceTree = "<group>";
@@ -190,6 +247,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
+				024D82E32423A80400696868 /* HealthStatusJson.json in Resources */,
+				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
+				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
+				024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
 			);
@@ -244,11 +305,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
+				024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */,
 				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
+				024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
 				02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */,
+				024D82E82423A84200696868 /* HealthStatus.swift in Sources */,
+				024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */,
+				024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */,
 				02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */,
+				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

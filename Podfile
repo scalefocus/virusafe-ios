@@ -8,6 +8,7 @@ target 'COVID-19' do
   use_frameworks!
   
   pod 'NetworkKit'                     , :path => 'ModuleFrameworks/NetworkKit'
+  pod 'TwoWayBondage', '~> 1.0.2'
 
 end
 
