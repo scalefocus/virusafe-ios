@@ -1,0 +1,142 @@
+
+lane :deploy do |values|
+  # AppCenter variables
+  APP_CENTER_API_TOKEN = "8415bf42339e66239b048ccbdfa02ee09d4eb837"
+  APP_CENTER_OWNER_NAME = "ivan.georgiev-upnetix.com" # use this one in case using Upnetix account
+  APP_CENTER_APP_NAME = "COVID-19" # use the app name (can be found in the url for the project in appcenter.ms)
+  APP_CENTER_DESTINATIONS = "covid-19-internal" # you can add whatever groups you want (the default is Collaborators)
+
+  # FirebaseAppDistribution variables
+  FIREBASE_APP = "ExampleAppIDInFormat:1:1041630104297:ios:4369919aa0f0e94b" # The appID in firebase. It's different for every project.
+  FIREBASE_TOKEN = "1//03-L8s3yVXIUQCgYIARAAGAMSNwF-L9IrLNp_ccwZTZJ2hWaEwhbs1IUqKads0LTV3tpQQ8_ugN4e4nLVLgHEDdFmp_XCZpXMn9Y" # The CI token Jenkins uses to deploy build to Firebase. Use this one in case using the "macos" machine.
+  FIREBASE_TEST_GROUPS = "ExampleTestGroup1, ExampleTestGroup2" # Set to the test group for the app. Make sure the group is existing, or remove it from the firebase step. Make sure you use the alias, and not the display name from crashlytics web
+  FIREBASE_DEFAULT_MAIL_LIST = "v.s.kaltchev@gmail.com, valentin.kalchev@upnetix.com, oci@upnetix.com" # any hardcoded mails, which might not be in the particular test group
+
+  # Common variables
+  deploymentPlatform = values[:deploymentPlatform]
+  BUILD_NUMBER = values[:build_number] ? values[:build_number] : Time.new.strftime("%-y.%-m.%-d%H%M")
+  XCPROJECT_PATH = File.expand_path "../COVID-19.xcodeproj"
+  XCWORKSPACE_PATH = File.expand_path "../COVID-19.xcworkspace"
+  INFO_PLIST_PATH = File.expand_path "../COVID-19/Info.plist"
+  PLIST_RELATIVE_TO_PROJECT_PATH = "COVID-19/Info.plist"
+  JENKINS_APPLEID_WITH_RIGHTS = "ci@upnetix.com"
+  APP_ID_IN_DEVELOPER_PROFILES = "com.upnetix.healthcare" # change according to your app id, must match the app id in the InHouse Provisioning profile used
+  TEAM_ID = "UWBDU93DZY" # do not change if using UPNETIX AD team (default)
+  SCHEME_TO_BUILD = "COVID-19"
+  TARGET_FILTER = "COVID-19" #name of target that needs signing
+  # if for some reason you need signing for multiple targets, for example if you build two targets at the same time(mainTarget and pushNotificationsTarget for example), find the proper way to do it
+ 
+  if deploymentPlatform.nil?
+      UI.error "You should specify in which platform you want to deploy. Check the documentation."
+next # early exit, because we don't need to do anything if there the deploymentPlatform isn't specified
+  end
+
+  clear_derived_data
+ 
+  # Turn off automatic signing for the project.
+  automatic_code_signing(
+    path: XCPROJECT_PATH,
+    use_automatic_signing: false
+  )
+ 
+  # Increment build number. increment_build_number conflicts with update_app_identifier and currently won't work properly(11.07.2016). Thus using workaround with set_info_plist_value       
+  set_info_plist_value(
+      path: INFO_PLIST_PATH,
+      key: "CFBundleVersion",
+      value: BUILD_NUMBER
+  )
+
+  # Update app bundle to reflect beta status
+  update_app_identifier(
+      plist_path: PLIST_RELATIVE_TO_PROJECT_PATH,
+      xcodeproj: XCPROJECT_PATH,
+      app_identifier: APP_ID_IN_DEVELOPER_PROFILES
+  )
+ 
+  # Download or create certificates
+  cert(
+      username: JENKINS_APPLEID_WITH_RIGHTS,
+      team_id: TEAM_ID
+  )
+
+  # Download or create provisioning profile
+  sigh(
+      app_identifier: APP_ID_IN_DEVELOPER_PROFILES,
+      username: JENKINS_APPLEID_WITH_RIGHTS,
+      team_id: TEAM_ID,
+      filename: "covid19healthcareprod.mobileprovision"
+  )
+
+  # Switching to the correct team, in case the scheme has been modified
+  update_project_team(
+      path: XCPROJECT_PATH,
+      teamid: TEAM_ID
+  )
+
+  # Updating provisioning profile with the one from sigh
+  update_project_provisioning(
+      xcodeproj: XCPROJECT_PATH,
+      build_configuration: "Release",
+      profile: "./covid19healthcareprod.mobileprovision",
+      target_filter: TARGET_FILTER
+  )
+
+  # Build your app for distribution
+  gym(
+  scheme: SCHEME_TO_BUILD,
+      workspace: XCWORKSPACE_PATH, # enter project: XCPROJECT_PATH, if you're not using workspace
+      configuration: "Release",
+      clean: true,
+      codesigning_identity: "iPhone Distribution"
+  )
+
+  # Get all commits since last successfull Jenkins upload and format note message for Hockey
+  changelog = changelog_from_git_commits(
+      # http://git-scm.com/docs/pretty-formats
+      between: [ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || "HEAD^^^^^", "HEAD"],
+      pretty: "- %s %n"
+  )
+
+  if changelog.nil?              
+      changelog = "Commit history unavailable."
+  end
+  truncatedChangelog = changelog[0..3000].gsub(/\s\w+$/,'...')
+  releaseNotes = "Branch: " + git_branch + "\n\nCommits:\n" + truncatedChangelog + "\n@" + Time.new.strftime("%-Y") + " Upnetix CI"
+
+  if deploymentPlatform == "AppCenter"
+      UI.success "Pushing an archive to AppCenter..."
+
+      # Upload build to AppCenter
+      appcenter_upload(
+        api_token: APP_CENTER_API_TOKEN,
+        owner_name: APP_CENTER_OWNER_NAME,
+        app_name: APP_CENTER_APP_NAME,
+        notify_testers: true,
+        destinations: APP_CENTER_DESTINATIONS,
+        release_notes: releaseNotes,
+        app_os: "IOS"
+      )
+  elsif deploymentPlatform == "AppDistribution"
+      UI.success "Pushing an archive to AppDistribution..."
+
+      # Upload build to FirebaseAppDistribution
+      firebase_app_distribution(
+          app: FIREBASE_APP,
+          firebase_cli_token: FIREBASE_TOKEN,
+          testers: FIREBASE_DEFAULT_MAIL_LIST,
+          groups: FIREBASE_TEST_GROUPS,
+          release_notes: releaseNotes
+      )
+  elsif deploymentPlatform == "TestFlight"
+      UI.success "Pushing an archive to TestFlight..."
+
+      # Deploy to TestFlight
+      # NOTE: If your not using upnetix bundleId, make sure to use the correct one for uploading to TestFlight, and make sure Jenkins have the needed permissions to download the needed certificates and provisioning profiles
+      pilot(
+          username: JENKINS_APPLEID_WITH_RIGHTS,
+          skip_waiting_for_build_processing: true
+      )
+  else
+UI.error "Invalid deployment platform, the expected platforms are: AppCenter, AppDistribution, TestFlight"
+  end
+end
