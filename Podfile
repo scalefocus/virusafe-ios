@@ -9,6 +9,7 @@ target 'COVID-19' do
   
   pod 'NetworkKit'                     , :path => 'ModuleFrameworks/NetworkKit'
   pod 'TwoWayBondage', '~> 1.0.2'
+  pod 'AppCenter', '~> 3.0.0'
 
 end
 
