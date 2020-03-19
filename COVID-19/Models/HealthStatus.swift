@@ -11,11 +11,11 @@ import Foundation
 struct HealthStatus: Codable {
     var questions: [HealthStatusQuestion]?
     var hasSymptoms: Bool?
-    var didVisitClinic: Bool?
+    var canUpdate: Bool
 }
 
 struct HealthStatusQuestion: Codable {
     var questionTitle: String
-    var questionState: Bool?
+    var isActive: Bool?
 }
 
