@@ -39,15 +39,5 @@ pipeline {
                 '''
             }
         }
-
-        stage('Metrics & Deploy to SonarQube') {
-            when { expression { BRANCH_NAME.startsWith('PR-') || BRANCH_NAME ==~ 'master' || BRANCH_NAME ==~ 'stage' } }
-            steps {
-                echo 'Building, signing and deploying iOS...'
-                sh '''#!/bin/bash -l
-                    fastlane metrics
-                '''
-            }
-        }
     }
 }
