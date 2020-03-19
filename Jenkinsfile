@@ -22,7 +22,7 @@ pipeline {
 
 
         stage('Build, sign and deploy iOS Firebase App Distribution') {
-            when { expression { BRANCH_NAME ==~ 'master' || BRANCH_NAME ==~ 'develop' || BRANCH_NAME.startsWith('PR-') } }
+            when { expression { BRANCH_NAME ==~ 'master' || BRANCH_NAME ==~ 'develop' } }
             steps {
                 echo 'Building, signing and deploying iOS...'
                 sh '''#!/bin/bash -l

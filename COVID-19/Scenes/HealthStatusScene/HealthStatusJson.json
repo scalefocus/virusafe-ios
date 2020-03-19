@@ -2,19 +2,19 @@
   "questions": [
     {
       "questionTitle": "Температура над 37.5C",
-      "questionState": true
+      "questionState": null
     },
     {
       "questionTitle": "Кашлица",
-      "questionState": true
+      "questionState": null
     },
     {
       "questionTitle": "Пресъхнало гърло",
-      "questionState": false
+      "questionState": null
     },
     {
       "questionTitle": "Затруднено дишане",
-      "questionState": true
+      "questionState": null
     }
     ],
     "didVisitClinic": false,
