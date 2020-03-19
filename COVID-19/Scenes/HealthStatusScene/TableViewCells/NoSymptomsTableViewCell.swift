@@ -17,7 +17,7 @@ class NoSymptomsTableViewCell: UITableViewCell, Configurable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapCheckBox))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCheckBox))
         checkBoxImageView.addGestureRecognizer(tap)
     }
     

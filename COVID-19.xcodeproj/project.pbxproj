@@ -17,6 +17,7 @@
 		024D82E82423A84200696868 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
 		024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E92423B67100696868 /* SubmitTableViewCell.swift */; };
 		024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82EA2423B67100696868 /* SubmitTableViewCell.xib */; };
+		024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82ED2423F70A00696868 /* Array+SafeAt.swift */; };
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
 		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
@@ -40,6 +41,7 @@
 		024D82E72423A84200696868 /* HealthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatus.swift; sourceTree = "<group>"; };
 		024D82E92423B67100696868 /* SubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTableViewCell.swift; sourceTree = "<group>"; };
 		024D82EA2423B67100696868 /* SubmitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitTableViewCell.xib; sourceTree = "<group>"; };
+		024D82ED2423F70A00696868 /* Array+SafeAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAt.swift"; sourceTree = "<group>"; };
 		02B9A6A8242371F300B1A4C0 /* COVID-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				024D82D524239A7800696868 /* BaseViewConfigurator.swift */,
 				024D82DC24239F0D00696868 /* UIViewExtension.swift */,
+				024D82ED2423F70A00696868 /* Array+SafeAt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
 				024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */,
 				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
+				024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */,
 				024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
