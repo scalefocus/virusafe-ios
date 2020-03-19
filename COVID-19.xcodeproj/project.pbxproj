@@ -67,17 +67,49 @@
 		02B9A6AA242371F300B1A4C0 /* COVID-19 */ = {
 			isa = PBXGroup;
 			children = (
+				02B9A6C324238DF200B1A4C0 /* Scenes */,
 				02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */,
 				02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */,
-				02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */,
 				02B9A6B1242371F300B1A4C0 /* Main.storyboard */,
 				02B9A6B4242371F500B1A4C0 /* Assets.xcassets */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
-				02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */,
-				02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */,
 			);
 			path = "COVID-19";
+			sourceTree = "<group>";
+		};
+		02B9A6C324238DF200B1A4C0 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				02B9A6C424238DFF00B1A4C0 /* RegisterScene */,
+				02B9A6C524238E0700B1A4C0 /* HomeScene */,
+				02B9A6C624238E0E00B1A4C0 /* HealthStatusScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		02B9A6C424238DFF00B1A4C0 /* RegisterScene */ = {
+			isa = PBXGroup;
+			children = (
+				02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */,
+			);
+			path = RegisterScene;
+			sourceTree = "<group>";
+		};
+		02B9A6C524238E0700B1A4C0 /* HomeScene */ = {
+			isa = PBXGroup;
+			children = (
+				02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */,
+			);
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
+		02B9A6C624238E0E00B1A4C0 /* HealthStatusScene */ = {
+			isa = PBXGroup;
+			children = (
+				02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */,
+			);
+			path = HealthStatusScene;
 			sourceTree = "<group>";
 		};
 		098645F2A323399E8535CE20 /* Pods */ = {
