@@ -18,6 +18,8 @@
 		024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E92423B67100696868 /* SubmitTableViewCell.swift */; };
 		024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82EA2423B67100696868 /* SubmitTableViewCell.xib */; };
 		024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82ED2423F70A00696868 /* Array+SafeAt.swift */; };
+		024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */; };
+		024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F22424AA3400696868 /* TextField+SetImage.swift */; };
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
 		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
@@ -42,6 +44,8 @@
 		024D82E92423B67100696868 /* SubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTableViewCell.swift; sourceTree = "<group>"; };
 		024D82EA2423B67100696868 /* SubmitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitTableViewCell.xib; sourceTree = "<group>"; };
 		024D82ED2423F70A00696868 /* Array+SafeAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAt.swift"; sourceTree = "<group>"; };
+		024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
+		024D82F22424AA3400696868 /* TextField+SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+SetImage.swift"; sourceTree = "<group>"; };
 		02B9A6A8242371F300B1A4C0 /* COVID-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 				024D82D524239A7800696868 /* BaseViewConfigurator.swift */,
 				024D82DC24239F0D00696868 /* UIViewExtension.swift */,
 				024D82ED2423F70A00696868 /* Array+SafeAt.swift */,
+				024D82F22424AA3400696868 /* TextField+SetImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -99,6 +104,14 @@
 				024D82E72423A84200696868 /* HealthStatus.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		024D82EF2424A33A00696868 /* RegistrationConfirmationScene */ = {
+			isa = PBXGroup;
+			children = (
+				024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */,
+			);
+			path = RegistrationConfirmationScene;
 			sourceTree = "<group>";
 		};
 		02B9A69F242371F300B1A4C0 = {
@@ -138,6 +151,7 @@
 		02B9A6C324238DF200B1A4C0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				024D82EF2424A33A00696868 /* RegistrationConfirmationScene */,
 				02B9A6C424238DFF00B1A4C0 /* RegisterScene */,
 				02B9A6C524238E0700B1A4C0 /* HomeScene */,
 				02B9A6C624238E0E00B1A4C0 /* HealthStatusScene */,
@@ -309,6 +323,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */,
+				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,
 				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
 				024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */,
 				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
