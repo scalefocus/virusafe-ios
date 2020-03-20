@@ -13,6 +13,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Начален екран"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
     }
 
     @IBAction func didTapSurveyButton(_ sender: Any) {

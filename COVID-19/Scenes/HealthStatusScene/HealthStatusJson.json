@@ -17,6 +17,7 @@
       "isActive": null
     }
     ],
-    "hasSymptoms": false
+    "hasSymptoms": false,
+    "canUpdate": true
 }
 
