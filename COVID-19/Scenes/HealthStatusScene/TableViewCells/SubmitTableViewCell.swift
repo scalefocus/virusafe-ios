@@ -10,14 +10,21 @@ import UIKit
 
 class SubmitTableViewCell: UITableViewCell, Configurable {
     
+    @IBOutlet private weak var submitButton: UIButton!
     private var didTabSubmitAction: (() -> Void)?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        submitButton.backgroundColor = .healthBlue
+        submitButton.layer.borderColor = UIColor.healthBlue?.cgColor
+    }
     
     func configureWith(_ data: @escaping (() -> Void)) {
         self.didTabSubmitAction = data
     }
     
     
-    @IBAction func didTapSubmitButton(_ sender: Any) {
+    @IBAction private func didTapSubmitButton(_ sender: Any) {
         didTabSubmitAction?()
     }
 }
