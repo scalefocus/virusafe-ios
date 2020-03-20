@@ -295,16 +295,67 @@
                                     <action selector="didTapSurveyButton:" destination="RAA-pi-AAL" eventType="touchUpInside" id="l2M-t1-vKm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jy-iF-s5i">
+                                <rect key="frame" x="10" y="495.5" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device UUID:" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEI-pQ-htD">
+                                <rect key="frame" x="10" y="526.5" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tb-fh-k65">
+                                <rect key="frame" x="10" y="557.5" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Device UUID:" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXm-Ms-EQg">
+                                <rect key="frame" x="10" y="588.5" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6I-UP-pKB">
+                                <rect key="frame" x="10" y="619.5" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="K0x-Fv-PDp" firstAttribute="centerY" secondItem="TdR-W7-KN8" secondAttribute="centerY" id="24N-ml-71Q"/>
                             <constraint firstItem="K0x-Fv-PDp" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="40" id="2au-1y-ZNC"/>
+                            <constraint firstItem="0Tb-fh-k65" firstAttribute="top" secondItem="hEI-pQ-htD" secondAttribute="bottom" constant="10" id="40E-RZ-NCz"/>
+                            <constraint firstItem="g6I-UP-pKB" firstAttribute="top" secondItem="pXm-Ms-EQg" secondAttribute="bottom" constant="10" id="8xF-Mt-PKW"/>
+                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="pXm-Ms-EQg" secondAttribute="trailing" constant="10" id="Azw-ii-xp2"/>
+                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="0Tb-fh-k65" secondAttribute="trailing" constant="10" id="MdL-fk-d1c"/>
+                            <constraint firstItem="pXm-Ms-EQg" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="T87-ft-hBS"/>
+                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="8jy-iF-s5i" secondAttribute="trailing" constant="10" id="VAa-6r-XPG"/>
+                            <constraint firstItem="8jy-iF-s5i" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="WF3-Pd-lwv"/>
+                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="g6I-UP-pKB" secondAttribute="trailing" constant="10" id="XJ6-g3-3t3"/>
+                            <constraint firstItem="0Tb-fh-k65" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="XKq-Ia-SHR"/>
+                            <constraint firstItem="hEI-pQ-htD" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="YMx-Q6-yZA"/>
                             <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="K0x-Fv-PDp" secondAttribute="trailing" constant="40" id="YVX-me-uum"/>
+                            <constraint firstItem="hEI-pQ-htD" firstAttribute="top" secondItem="8jy-iF-s5i" secondAttribute="bottom" constant="10" id="ZDA-la-Wt5"/>
+                            <constraint firstItem="TdR-W7-KN8" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g6I-UP-pKB" secondAttribute="bottom" constant="10" id="clc-un-D54"/>
+                            <constraint firstItem="8jy-iF-s5i" firstAttribute="top" secondItem="K0x-Fv-PDp" secondAttribute="bottom" constant="20" id="hAt-XO-fYi"/>
+                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="hEI-pQ-htD" secondAttribute="trailing" constant="10" id="oUz-h3-cOq"/>
+                            <constraint firstItem="pXm-Ms-EQg" firstAttribute="top" secondItem="0Tb-fh-k65" secondAttribute="bottom" constant="10" id="wSS-jh-QP7"/>
+                            <constraint firstItem="g6I-UP-pKB" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="yCV-Gj-4L2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TdR-W7-KN8"/>
                     </view>
                     <navigationItem key="navigationItem" id="FGx-7U-d15"/>
+                    <connections>
+                        <outlet property="distanceLabel" destination="8jy-iF-s5i" id="nXR-Gz-wV5"/>
+                        <outlet property="myUUID" destination="g6I-UP-pKB" id="jss-8s-RFK"/>
+                        <outlet property="targetUUID" destination="0Tb-fh-k65" id="Ghz-cb-y1h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRK-yU-gmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

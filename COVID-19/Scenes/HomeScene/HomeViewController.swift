@@ -9,6 +9,10 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var targetUUID: UILabel!
+    @IBOutlet weak var myUUID: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +21,11 @@ class HomeViewController: UIViewController {
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
+        
+        INBeaconService.singleton()?.add(self)
+        INBeaconService.singleton()?.startDetecting()
+        INBeaconService.singleton()?.startBroadcasting()
+
     }
 
     @IBAction func didTapSurveyButton(_ sender: Any) {
@@ -25,3 +34,23 @@ class HomeViewController: UIViewController {
     }
     
 }
+
+extension HomeViewController: INBeaconServiceDelegate {
+    func service(_ service: INBeaconService!, foundDeviceUUID uuid: String!, with range: INDetectorRange) {
+        
+        targetUUID.text = uuid
+        myUUID.text = UIDevice.current.identifierForVendor!.uuidString
+        switch range {
+        case INDetectorRangeImmediate:
+            distanceLabel.text = "Within 1ft"
+        case INDetectorRangeNear:
+            distanceLabel.text = "Within 5ft"
+        case INDetectorRangeFar:
+            distanceLabel.text = "Within 60ft"
+        default:
+            distanceLabel.text = "Out of range"
+            targetUUID.text = ""
+        }
+    }
+}
+

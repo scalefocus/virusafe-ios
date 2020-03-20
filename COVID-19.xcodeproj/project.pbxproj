@@ -38,6 +38,33 @@
 		02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */; };
 		02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
 		34CC17724F21013CB52B856E /* Pods_COVID_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */; };
+		3803B0132425498F0076EE00 /* EasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDC2425498F0076EE00 /* EasedValue.m */; };
+		3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDF2425498F0076EE00 /* INWeightedAverage.m */; };
+		3803B0152425498F0076EE00 /* GCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE12425498F0076EE00 /* GCDUtilities.m */; };
+		3803B0162425498F0076EE00 /* ReachabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE22425498F0076EE00 /* ReachabilityService.m */; };
+		3803B0172425498F0076EE00 /* NSSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE62425498F0076EE00 /* NSSet+Ext.m */; };
+		3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE82425498F0076EE00 /* NSObject+Ext.m */; };
+		3803B0192425498F0076EE00 /* NSMutableArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */; };
+		3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */; };
+		3803B01B2425498F0076EE00 /* NSString+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFED2425498F0076EE00 /* NSString+Ext.m */; };
+		3803B01C2425498F0076EE00 /* UIView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEE2425498F0076EE00 /* UIView+Ext.m */; };
+		3803B01D2425498F0076EE00 /* NSMutableSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */; };
+		3803B01E2425498F0076EE00 /* NSRangeExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF22425498F0076EE00 /* NSRangeExt.m */; };
+		3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */; };
+		3803B0202425498F0076EE00 /* NSFileManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */; };
+		3803B0212425498F0076EE00 /* UIColor+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF72425498F0076EE00 /* UIColor+Ext.m */; };
+		3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */; };
+		3803B0232425498F0076EE00 /* UIScreen+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */; };
+		3803B0242425498F0076EE00 /* UILabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFC2425498F0076EE00 /* UILabel+Ext.m */; };
+		3803B0252425498F0076EE00 /* NSArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFE2425498F0076EE00 /* NSArray+Ext.m */; };
+		3803B0262425498F0076EE00 /* CBCentralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */; };
+		3803B0272425498F0076EE00 /* CLBeacon+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0032425498F0076EE00 /* CLBeacon+Ext.m */; };
+		3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0082425498F0076EE00 /* NSDate+Ext.m */; };
+		3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */; };
+		3803B02A2425498F0076EE00 /* UIImage+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00C2425498F0076EE00 /* UIImage+Ext.m */; };
+		3803B02B2425498F0076EE00 /* INBeaconService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00F2425498F0076EE00 /* INBeaconService.m */; };
+		3803B02C2425498F0076EE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
+		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +101,62 @@
 		02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusViewController.swift; sourceTree = "<group>"; };
 		02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusViewModel.swift; sourceTree = "<group>"; };
 		342AD023A3A82D0930F0B286 /* Pods-COVID-19.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release.xcconfig"; sourceTree = "<group>"; };
+		3803AFD72425498F0076EE00 /* COVID-19-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "COVID-19-Bridging-Header.h"; sourceTree = "<group>"; };
+		3803AFDA2425498F0076EE00 /* INWeightedAverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWeightedAverage.h; sourceTree = "<group>"; };
+		3803AFDB2425498F0076EE00 /* GCDSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSingleton.h; sourceTree = "<group>"; };
+		3803AFDC2425498F0076EE00 /* EasedValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasedValue.m; sourceTree = "<group>"; };
+		3803AFDD2425498F0076EE00 /* GCDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDUtilities.h; sourceTree = "<group>"; };
+		3803AFDE2425498F0076EE00 /* ReachabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityService.h; sourceTree = "<group>"; };
+		3803AFDF2425498F0076EE00 /* INWeightedAverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWeightedAverage.m; sourceTree = "<group>"; };
+		3803AFE02425498F0076EE00 /* EasedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasedValue.h; sourceTree = "<group>"; };
+		3803AFE12425498F0076EE00 /* GCDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDUtilities.m; sourceTree = "<group>"; };
+		3803AFE22425498F0076EE00 /* ReachabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityService.m; sourceTree = "<group>"; };
+		3803AFE42425498F0076EE00 /* UILabel+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Ext.h"; sourceTree = "<group>"; };
+		3803AFE52425498F0076EE00 /* UIScreen+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+Ext.h"; sourceTree = "<group>"; };
+		3803AFE62425498F0076EE00 /* NSSet+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+Ext.m"; sourceTree = "<group>"; };
+		3803AFE72425498F0076EE00 /* NSMutableDictionary+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Ext.h"; sourceTree = "<group>"; };
+		3803AFE82425498F0076EE00 /* NSObject+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Ext.m"; sourceTree = "<group>"; };
+		3803AFE92425498F0076EE00 /* CBCentralManager+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBCentralManager+Ext.h"; sourceTree = "<group>"; };
+		3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Ext.m"; sourceTree = "<group>"; };
+		3803AFEB2425498F0076EE00 /* NSArray+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Ext.h"; sourceTree = "<group>"; };
+		3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+Ext.m"; sourceTree = "<group>"; };
+		3803AFED2425498F0076EE00 /* NSString+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Ext.m"; sourceTree = "<group>"; };
+		3803AFEE2425498F0076EE00 /* UIView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Ext.m"; sourceTree = "<group>"; };
+		3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+Ext.m"; sourceTree = "<group>"; };
+		3803AFF02425498F0076EE00 /* CustomExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomExtensions.h; sourceTree = "<group>"; };
+		3803AFF12425498F0076EE00 /* CLBeacon+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLBeacon+Ext.h"; sourceTree = "<group>"; };
+		3803AFF22425498F0076EE00 /* NSRangeExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSRangeExt.m; sourceTree = "<group>"; };
+		3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Ext.m"; sourceTree = "<group>"; };
+		3803AFF42425498F0076EE00 /* UIImage+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Ext.h"; sourceTree = "<group>"; };
+		3803AFF52425498F0076EE00 /* CBPeripheralManager+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBPeripheralManager+Ext.h"; sourceTree = "<group>"; };
+		3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Ext.m"; sourceTree = "<group>"; };
+		3803AFF72425498F0076EE00 /* UIColor+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Ext.m"; sourceTree = "<group>"; };
+		3803AFF82425498F0076EE00 /* NSDate+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Ext.h"; sourceTree = "<group>"; };
+		3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Ext.m"; sourceTree = "<group>"; };
+		3803AFFA2425498F0076EE00 /* NSSet+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+Ext.h"; sourceTree = "<group>"; };
+		3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Ext.m"; sourceTree = "<group>"; };
+		3803AFFC2425498F0076EE00 /* UILabel+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Ext.m"; sourceTree = "<group>"; };
+		3803AFFD2425498F0076EE00 /* CBUUID+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Ext.h"; sourceTree = "<group>"; };
+		3803AFFE2425498F0076EE00 /* NSArray+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Ext.m"; sourceTree = "<group>"; };
+		3803AFFF2425498F0076EE00 /* NSMutableArray+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Ext.h"; sourceTree = "<group>"; };
+		3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBCentralManager+Ext.m"; sourceTree = "<group>"; };
+		3803B0012425498F0076EE00 /* NSObject+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Ext.h"; sourceTree = "<group>"; };
+		3803B0022425498F0076EE00 /* NSDictionary+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Ext.h"; sourceTree = "<group>"; };
+		3803B0032425498F0076EE00 /* CLBeacon+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLBeacon+Ext.m"; sourceTree = "<group>"; };
+		3803B0042425498F0076EE00 /* NSRangeExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSRangeExt.h; sourceTree = "<group>"; };
+		3803B0052425498F0076EE00 /* NSMutableSet+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+Ext.h"; sourceTree = "<group>"; };
+		3803B0062425498F0076EE00 /* UIView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Ext.h"; sourceTree = "<group>"; };
+		3803B0072425498F0076EE00 /* NSString+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Ext.h"; sourceTree = "<group>"; };
+		3803B0082425498F0076EE00 /* NSDate+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Ext.m"; sourceTree = "<group>"; };
+		3803B0092425498F0076EE00 /* UIColor+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Ext.h"; sourceTree = "<group>"; };
+		3803B00A2425498F0076EE00 /* NSFileManager+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Ext.h"; sourceTree = "<group>"; };
+		3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheralManager+Ext.m"; sourceTree = "<group>"; };
+		3803B00C2425498F0076EE00 /* UIImage+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Ext.m"; sourceTree = "<group>"; };
+		3803B00E2425498F0076EE00 /* INBeaconService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INBeaconService.h; sourceTree = "<group>"; };
+		3803B00F2425498F0076EE00 /* INBeaconService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INBeaconService.m; sourceTree = "<group>"; };
+		3803B0112425498F0076EE00 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		3803B0122425498F0076EE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */,
 				34CC17724F21013CB52B856E /* Pods_COVID_19.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +263,7 @@
 		02B9A6AA242371F300B1A4C0 /* COVID-19 */ = {
 			isa = PBXGroup;
 			children = (
+				3803AFD52425498F0076EE00 /* 3rdPartyLibs */,
 				024D83082425331400696868 /* CustomViews */,
 				024D82FC2424EA6000696868 /* Repositories */,
 				02B9A6C324238DF200B1A4C0 /* Scenes */,
@@ -243,9 +328,120 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3803AFD52425498F0076EE00 /* 3rdPartyLibs */ = {
+			isa = PBXGroup;
+			children = (
+				3803AFD62425498F0076EE00 /* Objective-C-Vicinity */,
+			);
+			path = 3rdPartyLibs;
+			sourceTree = "<group>";
+		};
+		3803AFD62425498F0076EE00 /* Objective-C-Vicinity */ = {
+			isa = PBXGroup;
+			children = (
+				3803AFD72425498F0076EE00 /* COVID-19-Bridging-Header.h */,
+				3803AFD82425498F0076EE00 /* Bluetooth */,
+				3803B0102425498F0076EE00 /* Reachability */,
+			);
+			path = "Objective-C-Vicinity";
+			sourceTree = "<group>";
+		};
+		3803AFD82425498F0076EE00 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				3803AFD92425498F0076EE00 /* Utils */,
+				3803AFE32425498F0076EE00 /* Extensions */,
+				3803B00D2425498F0076EE00 /* System */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		3803AFD92425498F0076EE00 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3803AFDA2425498F0076EE00 /* INWeightedAverage.h */,
+				3803AFDB2425498F0076EE00 /* GCDSingleton.h */,
+				3803AFDC2425498F0076EE00 /* EasedValue.m */,
+				3803AFDD2425498F0076EE00 /* GCDUtilities.h */,
+				3803AFDE2425498F0076EE00 /* ReachabilityService.h */,
+				3803AFDF2425498F0076EE00 /* INWeightedAverage.m */,
+				3803AFE02425498F0076EE00 /* EasedValue.h */,
+				3803AFE12425498F0076EE00 /* GCDUtilities.m */,
+				3803AFE22425498F0076EE00 /* ReachabilityService.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3803AFE32425498F0076EE00 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3803AFE42425498F0076EE00 /* UILabel+Ext.h */,
+				3803AFE52425498F0076EE00 /* UIScreen+Ext.h */,
+				3803AFE62425498F0076EE00 /* NSSet+Ext.m */,
+				3803AFE72425498F0076EE00 /* NSMutableDictionary+Ext.h */,
+				3803AFE82425498F0076EE00 /* NSObject+Ext.m */,
+				3803AFE92425498F0076EE00 /* CBCentralManager+Ext.h */,
+				3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */,
+				3803AFEB2425498F0076EE00 /* NSArray+Ext.h */,
+				3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */,
+				3803AFED2425498F0076EE00 /* NSString+Ext.m */,
+				3803AFEE2425498F0076EE00 /* UIView+Ext.m */,
+				3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */,
+				3803AFF02425498F0076EE00 /* CustomExtensions.h */,
+				3803AFF12425498F0076EE00 /* CLBeacon+Ext.h */,
+				3803AFF22425498F0076EE00 /* NSRangeExt.m */,
+				3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */,
+				3803AFF42425498F0076EE00 /* UIImage+Ext.h */,
+				3803AFF52425498F0076EE00 /* CBPeripheralManager+Ext.h */,
+				3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */,
+				3803AFF72425498F0076EE00 /* UIColor+Ext.m */,
+				3803AFF82425498F0076EE00 /* NSDate+Ext.h */,
+				3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */,
+				3803AFFA2425498F0076EE00 /* NSSet+Ext.h */,
+				3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */,
+				3803AFFC2425498F0076EE00 /* UILabel+Ext.m */,
+				3803AFFD2425498F0076EE00 /* CBUUID+Ext.h */,
+				3803AFFE2425498F0076EE00 /* NSArray+Ext.m */,
+				3803AFFF2425498F0076EE00 /* NSMutableArray+Ext.h */,
+				3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */,
+				3803B0012425498F0076EE00 /* NSObject+Ext.h */,
+				3803B0022425498F0076EE00 /* NSDictionary+Ext.h */,
+				3803B0032425498F0076EE00 /* CLBeacon+Ext.m */,
+				3803B0042425498F0076EE00 /* NSRangeExt.h */,
+				3803B0052425498F0076EE00 /* NSMutableSet+Ext.h */,
+				3803B0062425498F0076EE00 /* UIView+Ext.h */,
+				3803B0072425498F0076EE00 /* NSString+Ext.h */,
+				3803B0082425498F0076EE00 /* NSDate+Ext.m */,
+				3803B0092425498F0076EE00 /* UIColor+Ext.h */,
+				3803B00A2425498F0076EE00 /* NSFileManager+Ext.h */,
+				3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */,
+				3803B00C2425498F0076EE00 /* UIImage+Ext.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3803B00D2425498F0076EE00 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				3803B00E2425498F0076EE00 /* INBeaconService.h */,
+				3803B00F2425498F0076EE00 /* INBeaconService.m */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		3803B0102425498F0076EE00 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				3803B0112425498F0076EE00 /* Reachability.m */,
+				3803B0122425498F0076EE00 /* Reachability.h */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		9F4DA72F5F25B5412264AC67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */,
 				900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */,
 			);
 			name = Frameworks;
@@ -371,29 +567,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3803B01E2425498F0076EE00 /* NSRangeExt.m in Sources */,
+				3803B0212425498F0076EE00 /* UIColor+Ext.m in Sources */,
 				024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */,
+				3803B0152425498F0076EE00 /* GCDUtilities.m in Sources */,
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
+				3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */,
+				3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */,
+				3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */,
 				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,
 				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
 				024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */,
 				024D8307242532F500696868 /* UIColor+Hex.swift in Sources */,
+				3803B02B2425498F0076EE00 /* INBeaconService.m in Sources */,
 				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
 				024D82F92424E9A900696868 /* RegistrationConfirmationViewModel.swift in Sources */,
 				024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */,
 				024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
+				3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */,
+				3803B0252425498F0076EE00 /* NSArray+Ext.m in Sources */,
 				02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */,
+				3803B0232425498F0076EE00 /* UIScreen+Ext.m in Sources */,
+				3803B0262425498F0076EE00 /* CBCentralManager+Ext.m in Sources */,
 				024D83022425130B00696868 /* SplashViewController.swift in Sources */,
 				024D82E82423A84200696868 /* HealthStatus.swift in Sources */,
 				024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */,
 				024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */,
+				3803B01D2425498F0076EE00 /* NSMutableSet+Ext.m in Sources */,
+				3803B0172425498F0076EE00 /* NSSet+Ext.m in Sources */,
 				024D82FE2424EA7800696868 /* RegistrationRepository.swift in Sources */,
 				02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */,
 				024D83002424FB8300696868 /* UtilFunctions.swift in Sources */,
 				024D830A2425332800696868 /* RadialGradientView.swift in Sources */,
+				3803B0272425498F0076EE00 /* CLBeacon+Ext.m in Sources */,
+				3803B0162425498F0076EE00 /* ReachabilityService.m in Sources */,
+				3803B0242425498F0076EE00 /* UILabel+Ext.m in Sources */,
 				024D82F72424E92200696868 /* LoadingIndicatorManager.swift in Sources */,
+				3803B0202425498F0076EE00 /* NSFileManager+Ext.m in Sources */,
+				3803B0192425498F0076EE00 /* NSMutableArray+Ext.m in Sources */,
+				3803B02A2425498F0076EE00 /* UIImage+Ext.m in Sources */,
+				3803B0132425498F0076EE00 /* EasedValue.m in Sources */,
+				3803B01C2425498F0076EE00 /* UIView+Ext.m in Sources */,
+				3803B01B2425498F0076EE00 /* NSString+Ext.m in Sources */,
+				3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */,
+				3803B02C2425498F0076EE00 /* Reachability.m in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
+				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
+				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +772,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.healthcare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "covid-19 healthcare dev";
+				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -572,7 +795,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.healthcare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "58e4f0a4-0997-4168-bb47-2a47f0a60543";
-				PROVISIONING_PROFILE_SPECIFIER = "covid19-healthcare-prod";
+				PROVISIONING_PROFILE_SPECIFIER = "covid-19 healthcare dev";
+				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
