@@ -17,18 +17,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="367" height="98"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кашлица" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-bU-4EP">
-                        <rect key="frame" x="10" y="5" width="347" height="38"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кашлица" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-bU-4EP">
+                        <rect key="frame" x="31" y="5" width="305" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DAR-6I-mpX">
-                        <rect key="frame" x="10" y="48" width="347" height="45"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DAR-6I-mpX">
+                        <rect key="frame" x="31" y="35" width="305" height="33"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0I-HX-dHl">
-                                <rect key="frame" x="0.0" y="0.0" width="168.5" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Да">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -40,7 +40,7 @@
                                         <color key="value" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
+                                        <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -48,8 +48,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ph4-fx-PSE">
-                                <rect key="frame" x="178.5" y="0.0" width="168.5" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="160" y="0.0" width="145" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Не">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -61,7 +61,7 @@
                                         <color key="value" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
+                                        <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -70,18 +70,18 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="45" id="pwO-P8-uLr"/>
+                            <constraint firstAttribute="height" constant="33" id="pwO-P8-uLr"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DAR-6I-mpX" firstAttribute="leading" secondItem="FrB-bU-4EP" secondAttribute="leading" id="CWj-6v-mQc"/>
-                    <constraint firstAttribute="bottom" secondItem="DAR-6I-mpX" secondAttribute="bottom" constant="5" id="ELV-Aj-9Lp"/>
+                    <constraint firstAttribute="bottom" secondItem="DAR-6I-mpX" secondAttribute="bottom" constant="30" id="PZ4-Cg-f3v"/>
                     <constraint firstItem="DAR-6I-mpX" firstAttribute="top" secondItem="FrB-bU-4EP" secondAttribute="bottom" constant="5" id="TAb-hZ-MZV"/>
                     <constraint firstItem="DAR-6I-mpX" firstAttribute="trailing" secondItem="FrB-bU-4EP" secondAttribute="trailing" id="ZB0-Al-Tbj"/>
                     <constraint firstItem="FrB-bU-4EP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ofx-YF-w6M"/>
-                    <constraint firstItem="FrB-bU-4EP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pVi-hI-FxN"/>
-                    <constraint firstAttribute="trailing" secondItem="FrB-bU-4EP" secondAttribute="trailing" constant="10" id="wfr-Ya-BfF"/>
+                    <constraint firstItem="FrB-bU-4EP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="31" id="pVi-hI-FxN"/>
+                    <constraint firstAttribute="trailing" secondItem="FrB-bU-4EP" secondAttribute="trailing" constant="31" id="wfr-Ya-BfF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -90,7 +90,7 @@
                 <outlet property="titleLabel" destination="FrB-bU-4EP" id="Kh0-PN-KHT"/>
                 <outlet property="yesButton" destination="m0I-HX-dHl" id="tRK-L8-6hI"/>
             </connections>
-            <point key="canvasLocation" x="164.49275362318841" y="152.67857142857142"/>
+            <point key="canvasLocation" x="163.04347826086959" y="152.67857142857142"/>
         </tableViewCell>
     </objects>
 </document>

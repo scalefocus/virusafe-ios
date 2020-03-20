@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension UIColor {
+    static let healthBlue = UIColor(hexString: "#3C8CE7")
+}
+
 // MARK: - Hex, String to Color
 extension UIColor {
     public convenience init?(hexString: String) {

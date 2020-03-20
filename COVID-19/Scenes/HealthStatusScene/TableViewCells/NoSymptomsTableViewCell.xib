@@ -10,42 +10,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoSymptomsTableViewCell" rowHeight="53" id="KGk-i7-Jjw" customClass="NoSymptomsTableViewCell" customModule="COVID_19" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoSymptomsTableViewCell" rowHeight="156" id="KGk-i7-Jjw" customClass="NoSymptomsTableViewCell" customModule="COVID_19" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="156"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+                <rect key="frame" x="0.0" y="0.0" width="326" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_checkbox_off" translatesAutoresizingMaskIntoConstraints="NO" id="hUR-9u-sw4">
-                        <rect key="frame" x="275" y="9" width="35" height="35"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="35" id="S9x-lU-RWk"/>
-                            <constraint firstAttribute="width" secondItem="hUR-9u-sw4" secondAttribute="height" multiplier="1:1" id="acZ-i1-7km"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Без симптоми" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cu-WH-Fwv">
-                        <rect key="frame" x="10" y="16" width="245" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="31" y="106" width="234" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Изберете симптомите, които имате днес" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPH-Y9-7CF">
+                        <rect key="frame" x="31" y="13" width="264" height="53"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_checkbox_off" translatesAutoresizingMaskIntoConstraints="NO" id="hUR-9u-sw4">
+                        <rect key="frame" x="275" y="104" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="S9x-lU-RWk"/>
+                            <constraint firstAttribute="width" secondItem="hUR-9u-sw4" secondAttribute="height" multiplier="1:1" id="acZ-i1-7km"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="hUR-9u-sw4" secondAttribute="trailing" constant="10" id="3bu-JZ-7EI"/>
-                    <constraint firstAttribute="bottom" secondItem="9cu-WH-Fwv" secondAttribute="bottom" constant="16" id="FCx-a2-OqM"/>
-                    <constraint firstAttribute="bottom" secondItem="hUR-9u-sw4" secondAttribute="bottom" constant="8" id="QYE-bO-cUs"/>
-                    <constraint firstItem="hUR-9u-sw4" firstAttribute="leading" secondItem="9cu-WH-Fwv" secondAttribute="trailing" constant="20" id="iS2-jl-dEM"/>
-                    <constraint firstItem="9cu-WH-Fwv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="lyK-3f-1Xd"/>
-                    <constraint firstItem="9cu-WH-Fwv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="rMk-21-Ewq"/>
-                    <constraint firstItem="hUR-9u-sw4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="zvV-lK-vYO"/>
+                    <constraint firstItem="hUR-9u-sw4" firstAttribute="leading" secondItem="9cu-WH-Fwv" secondAttribute="trailing" constant="10" id="09E-Zg-Mga"/>
+                    <constraint firstItem="hUR-9u-sw4" firstAttribute="centerY" secondItem="9cu-WH-Fwv" secondAttribute="centerY" id="9NG-W4-FVz"/>
+                    <constraint firstItem="YPH-Y9-7CF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Bys-FR-itH"/>
+                    <constraint firstItem="9cu-WH-Fwv" firstAttribute="leading" secondItem="YPH-Y9-7CF" secondAttribute="leading" id="Ox9-Xk-NNe"/>
+                    <constraint firstItem="9cu-WH-Fwv" firstAttribute="top" secondItem="YPH-Y9-7CF" secondAttribute="bottom" constant="40" id="XFZ-NA-t8A"/>
+                    <constraint firstAttribute="trailing" secondItem="YPH-Y9-7CF" secondAttribute="trailing" constant="31" id="gyU-ec-XpX"/>
+                    <constraint firstItem="YPH-Y9-7CF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="31" id="lRd-Vo-XM1"/>
+                    <constraint firstAttribute="bottom" secondItem="9cu-WH-Fwv" secondAttribute="bottom" constant="34" id="pFq-5C-BMX"/>
+                    <constraint firstItem="hUR-9u-sw4" firstAttribute="trailing" secondItem="YPH-Y9-7CF" secondAttribute="trailing" id="rrP-4G-aS6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="checkBoxImageView" destination="hUR-9u-sw4" id="8XB-5q-Kyk"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="155.69196428571428"/>
+            <point key="canvasLocation" x="136.23188405797103" y="156.02678571428569"/>
         </tableViewCell>
     </objects>
     <resources>

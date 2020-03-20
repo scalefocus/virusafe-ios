@@ -19,19 +19,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-DJ-ry5" customClass="RadialGradientView" customModule="COVID_19" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fgw-iu-EYK">
-                                        <rect key="frame" x="127" y="323" width="160" height="160"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Fgw-iu-EYK">
+                                        <rect key="frame" x="107" y="303" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Fgw-iu-EYK" secondAttribute="height" multiplier="1:1" id="oM4-Lh-1kn"/>
-                                            <constraint firstAttribute="height" constant="160" id="wqv-mW-7jL"/>
+                                            <constraint firstAttribute="height" constant="200" id="wqv-mW-7jL"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViruSafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XL-tV-AS6">
-                                        <rect key="frame" x="50" y="513" width="314" height="45.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-VB-LSP">
                                         <rect key="frame" x="182" y="692" width="50" height="50"/>
                                         <constraints>
@@ -42,13 +36,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="6XL-tV-AS6" firstAttribute="centerX" secondItem="Fgw-iu-EYK" secondAttribute="centerX" id="6Nd-Xg-d5r"/>
-                                    <constraint firstItem="6XL-tV-AS6" firstAttribute="leading" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="50" id="Xau-t8-jmG"/>
                                     <constraint firstItem="g1A-VB-LSP" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="1.6" id="cac-py-Pxb"/>
-                                    <constraint firstAttribute="trailing" secondItem="6XL-tV-AS6" secondAttribute="trailing" constant="50" id="hbx-J5-tzQ"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="0.9" id="jQz-bU-rqw"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="nae-Ol-Dz6"/>
-                                    <constraint firstItem="6XL-tV-AS6" firstAttribute="top" secondItem="Fgw-iu-EYK" secondAttribute="bottom" constant="30" id="sAD-a7-rjM"/>
                                     <constraint firstItem="g1A-VB-LSP" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="u1a-J9-vuX"/>
                                 </constraints>
                             </view>
@@ -356,4 +346,7 @@
             <point key="canvasLocation" x="1739" y="136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="150" height="208"/>
+    </resources>
 </document>
