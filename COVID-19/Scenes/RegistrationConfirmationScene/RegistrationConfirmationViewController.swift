@@ -26,6 +26,7 @@ class RegistrationConfirmationViewController: UIViewController {
                                                          y: verificationCodeHeight / 2,
                                                          width: verificationCodeWidth,
                                                          height: verificationCodeHeight))
+        confirmButtonState(shouldBeClickable: false)
         
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
@@ -66,6 +67,7 @@ class RegistrationConfirmationViewController: UIViewController {
         let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)")
         let navigationController = UINavigationController(rootViewController: homeViewController)
         keyWindow.rootViewController = navigationController
+        UserDefaults.standard.set(true, forKey: "isUserRegistered")
         
         UIView.transition(with: keyWindow,
                           duration: 0.5,
