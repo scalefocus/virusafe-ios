@@ -66,6 +66,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="gkk-x0-ewt"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -85,6 +88,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="TLA-ye-sbJ"/>
                     <connections>
+                        <outlet property="confirmButton" destination="5qw-zi-hQ2" id="ZE3-eI-lir"/>
                         <outlet property="phoneNumberTextField" destination="DDF-X8-k3m" id="FkJ-eu-0dc"/>
                     </connections>
                 </viewController>
@@ -157,6 +161,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="WsH-WO-90p" id="hVK-03-PVS"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj6-gG-7DX">
                                 <rect key="frame" x="100" y="411.5" width="214" height="30"/>
@@ -211,6 +218,7 @@
                         <viewLayoutGuide key="safeArea" id="IM9-Ue-wnX"/>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="dr3-cX-zbE" id="BIn-ya-1wo"/>
                         <outlet property="verificationCodeTextField" destination="NbZ-eP-i2K" id="l3W-3Z-Epl"/>
                     </connections>
                 </viewController>
