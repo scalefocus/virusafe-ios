@@ -12,6 +12,7 @@ class RegistrationConfirmationViewController: UIViewController {
     
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var verificationCodeTextField: UITextField!
+    private let viewModel = RegistrationConfirmationViewModel(repository: RegistrationRepository())
     private let verificationCodeWidth: CGFloat = 20
     private let verificationCodeHeight: CGFloat = 20
     private let maximumValidationCodeLength = 6
@@ -25,6 +26,28 @@ class RegistrationConfirmationViewController: UIViewController {
                                                          y: verificationCodeHeight / 2,
                                                          width: verificationCodeWidth,
                                                          height: verificationCodeHeight))
+        
+        viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
+            guard let strongSelf = self else { return }
+            if shouldShowLoadingIndicator {
+                strongSelf.verificationCodeTextField.resignFirstResponder()
+                LoadingIndicatorManager.startActivityIndicator(.whiteLarge,
+                                                               in: strongSelf.view)
+            } else {
+                LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
+                strongSelf.verificationCodeTextField.becomeFirstResponder()
+            }
+        }
+        
+        viewModel.isRequestSuccessful.bind { [weak self] isRequestSuccessful in
+            guard let strongSelf = self else { return }
+            
+            if isRequestSuccessful {
+                strongSelf.showHomeModule()
+            } else {
+                // TODO: Show popup that something is wrong
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,12 +59,8 @@ class RegistrationConfirmationViewController: UIViewController {
         confirmButton.isEnabled = shouldBeClickable
         confirmButton.setTitleColor(shouldBeClickable ? .black : .gray, for: .normal)
     }
-
-    @IBAction private func didTapEditButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
     
-    @IBAction private func didTapConfirmButton(_ sender: Any) {
+    private func showHomeModule() {
         guard let keyWindow = UIApplication.shared.keyWindow else { return }
         
         let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)")
@@ -53,6 +72,15 @@ class RegistrationConfirmationViewController: UIViewController {
                           options: .transitionCrossDissolve,
                           animations: nil,
                           completion: nil)
+    }
+
+    @IBAction private func didTapEditButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction private func didTapConfirmButton(_ sender: Any) {
+        guard let authorizationCode = verificationCodeTextField.text else { return }
+        viewModel.didTapCodeAuthorization(with: authorizationCode)
     }
     
 }

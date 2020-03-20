@@ -12,6 +12,7 @@ class RegistrationViewController: UIViewController {
 
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var confirmButton: UIButton!
+    private let viewModel = RegistrationViewModel(repository: RegistrationRepository())
     private let phoneNumberMaxLength = 15
     
     override func viewDidLoad() {
@@ -21,6 +22,30 @@ class RegistrationViewController: UIViewController {
                                                            target: nil,
                                                            action: nil)
         confirmButtonState(shouldBeClickable: false)
+        
+        viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
+            guard let strongSelf = self else { return }
+            if shouldShowLoadingIndicator {
+                strongSelf.phoneNumberTextField.resignFirstResponder()
+                LoadingIndicatorManager.startActivityIndicator(.whiteLarge,
+                                                               in: strongSelf.view)
+            } else {
+                LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
+                strongSelf.phoneNumberTextField.becomeFirstResponder()
+            }
+        }
+        
+        viewModel.isRequestSuccessful.bind { [weak self] isRequestSuccessful in
+            guard let strongSelf = self else { return }
+            
+            if isRequestSuccessful {
+                let registrationConfirmationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
+                strongSelf.navigationController?.pushViewController(registrationConfirmationVC,
+                                                                    animated: true)
+            } else {
+                // TODO: Show popup that something is wrong
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +66,8 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction private func didTapRegisterButton(_ sender: Any) {
-        let registrationConfirmationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
-        navigationController?.pushViewController(registrationConfirmationVC, animated: true)
+        guard let phoneNumber = phoneNumberTextField.text else { return }
+        viewModel.didTapRegistration(with: phoneNumber)
     }
     
 }
@@ -52,7 +77,7 @@ extension RegistrationViewController: UITextFieldDelegate {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
         
-        confirmButtonState(shouldBeClickable: !(0...7).contains(newString.length))
+        confirmButtonState(shouldBeClickable: !(0...3).contains(newString.length))
         
         return newString.length <= phoneNumberMaxLength
     }

@@ -20,6 +20,11 @@
 		024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82ED2423F70A00696868 /* Array+SafeAt.swift */; };
 		024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */; };
 		024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F22424AA3400696868 /* TextField+SetImage.swift */; };
+		024D82F72424E92200696868 /* LoadingIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F62424E92200696868 /* LoadingIndicatorManager.swift */; };
+		024D82F92424E9A900696868 /* RegistrationConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F82424E9A900696868 /* RegistrationConfirmationViewModel.swift */; };
+		024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FA2424EA2E00696868 /* RegistrationViewModel.swift */; };
+		024D82FE2424EA7800696868 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FD2424EA7800696868 /* RegistrationRepository.swift */; };
+		024D83002424FB8300696868 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FF2424FB8300696868 /* UtilFunctions.swift */; };
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
 		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
@@ -46,6 +51,11 @@
 		024D82ED2423F70A00696868 /* Array+SafeAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAt.swift"; sourceTree = "<group>"; };
 		024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
 		024D82F22424AA3400696868 /* TextField+SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+SetImage.swift"; sourceTree = "<group>"; };
+		024D82F62424E92200696868 /* LoadingIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorManager.swift; sourceTree = "<group>"; };
+		024D82F82424E9A900696868 /* RegistrationConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewModel.swift; sourceTree = "<group>"; };
+		024D82FA2424EA2E00696868 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		024D82FD2424EA7800696868 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
+		024D82FF2424FB8300696868 /* UtilFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunctions.swift; sourceTree = "<group>"; };
 		02B9A6A8242371F300B1A4C0 /* COVID-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +91,8 @@
 				024D82DC24239F0D00696868 /* UIViewExtension.swift */,
 				024D82ED2423F70A00696868 /* Array+SafeAt.swift */,
 				024D82F22424AA3400696868 /* TextField+SetImage.swift */,
+				024D82F62424E92200696868 /* LoadingIndicatorManager.swift */,
+				024D82FF2424FB8300696868 /* UtilFunctions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -110,8 +122,17 @@
 			isa = PBXGroup;
 			children = (
 				024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */,
+				024D82F82424E9A900696868 /* RegistrationConfirmationViewModel.swift */,
 			);
 			path = RegistrationConfirmationScene;
+			sourceTree = "<group>";
+		};
+		024D82FC2424EA6000696868 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				024D82FD2424EA7800696868 /* RegistrationRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		02B9A69F242371F300B1A4C0 = {
@@ -135,6 +156,7 @@
 		02B9A6AA242371F300B1A4C0 /* COVID-19 */ = {
 			isa = PBXGroup;
 			children = (
+				024D82FC2424EA6000696868 /* Repositories */,
 				02B9A6C324238DF200B1A4C0 /* Scenes */,
 				02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */,
 				02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */,
@@ -163,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */,
+				024D82FA2424EA2E00696868 /* RegistrationViewModel.swift */,
 			);
 			path = RegisterScene;
 			sourceTree = "<group>";
@@ -324,10 +347,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */,
+				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
 				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,
 				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
 				024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */,
 				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
+				024D82F92424E9A900696868 /* RegistrationConfirmationViewModel.swift in Sources */,
 				024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */,
 				024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
@@ -336,7 +361,10 @@
 				024D82E82423A84200696868 /* HealthStatus.swift in Sources */,
 				024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */,
 				024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */,
+				024D82FE2424EA7800696868 /* RegistrationRepository.swift in Sources */,
 				02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */,
+				024D83002424FB8300696868 /* UtilFunctions.swift in Sources */,
+				024D82F72424E92200696868 /* LoadingIndicatorManager.swift in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
