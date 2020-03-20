@@ -20,6 +20,13 @@
 	<string>20.3.191925</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Used to monitor nearby users of the app</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
