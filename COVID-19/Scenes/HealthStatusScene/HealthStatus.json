@@ -1,19 +1,23 @@
 {
   "questions": [
     {
-      "questionTitle": "Температура над 37.5C",
+      "questionTitle": "Суха кашлица",
       "isActive": null
     },
     {
-      "questionTitle": "Кашлица",
+      "questionTitle": "Температура над 38C",
       "isActive": null
     },
     {
-      "questionTitle": "Пресъхнало гърло",
+      "questionTitle": "Трудност в дишането или недостик на въздух",
       "isActive": null
     },
     {
-      "questionTitle": "Затруднено дишане",
+      "questionTitle": "Постоянна болка или напрежение в гърдите",
+      "isActive": null
+    },
+    {
+      "questionTitle": "Посиняване на устните или лицето",
       "isActive": null
     }
     ]
