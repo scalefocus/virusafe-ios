@@ -81,9 +81,6 @@ class RegistrationConfirmationViewController: UIViewController {
     
     @IBAction private func didTapConfirmButton(_ sender: Any) {
         guard let authorizationCode = verificationCodeTextField.text else { return }
-        
-        
-//        confirmButtonState(shouldBeClickable: !(0...5).contains(newString.length))
         viewModel.didTapCodeAuthorization(with: authorizationCode)
     }
     
@@ -93,6 +90,8 @@ extension RegistrationConfirmationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
+        
+        confirmButtonState(shouldBeClickable: !(0...5).contains(newString.length))
         
         return newString.length <= maximumValidationCodeLength
     }

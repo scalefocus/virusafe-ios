@@ -74,7 +74,7 @@ class HealthStatusViewModel {
     }
     
     func getHealthStatusData() {
-        if let url = Bundle.main.url(forResource: "HealthStatusJson", withExtension: "json") {
+        if let url = Bundle.main.url(forResource: "HealthStatus", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
@@ -83,7 +83,7 @@ class HealthStatusViewModel {
                 self.healthStatusData = jsonData
                 
                 configurators.append(NoSymptomsCellConfigurator(data:
-                    NoSymptomsCellModel(hasSymptoms: jsonData.hasSymptoms ?? false,
+                    NoSymptomsCellModel(hasSymptoms: false,
                                         didTapCheckBox: { [weak self] isSelected in
                                             self?.didTapNoSymptomsButton(isActive: isSelected)
                     })))

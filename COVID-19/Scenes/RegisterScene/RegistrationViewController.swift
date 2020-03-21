@@ -33,7 +33,6 @@ class RegistrationViewController: UIViewController {
         logoImageView.tintColor = .healthBlue
         phoneNumberTextField.borderStyle = .none
         addKeyboardNotifications()
-//        confirmButtonState(shouldBeClickable: false)
         hideKeyboardWhenTappedAround()
         confirmButton.backgroundColor = .healthBlue
         
@@ -45,7 +44,6 @@ class RegistrationViewController: UIViewController {
                                                                in: strongSelf.view)
             } else {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
-//                strongSelf.phoneNumberTextField.becomeFirstResponder()
             }
         }
         
@@ -86,8 +84,8 @@ class RegistrationViewController: UIViewController {
             } else {
                 wrapperViewTopConstraint.constant = -keyboardHeight
             }
+            
             UIView.animate(withDuration: 0.3) { [weak self] in
-                
                 self?.view.layoutIfNeeded()
             }
         }
@@ -106,7 +104,6 @@ class RegistrationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-//        phoneNumberTextField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,25 +111,37 @@ class RegistrationViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
-    private func confirmButtonState(shouldBeClickable: Bool) {
-        confirmButton.isEnabled = shouldBeClickable
-        confirmButton.setTitleColor(shouldBeClickable ? .black : .gray, for: .normal)
-    }
-    
     @IBAction private func didTapRegisterButton(_ sender: Any) {
         guard let phoneNumber = phoneNumberTextField.text else { return }
-        viewModel.didTapRegistration(with: phoneNumber)
+        
+        if phoneNumber.count < 5 {
+            errorLabel.isHidden = false
+            errorLabel.text = "Дължината на мобилния телефон е невалидна"
+            return
+        } else if !phoneNumber.isPhoneNumber {
+            errorLabel.isHidden = false
+            errorLabel.text = "Форматът на мобилния телефон е невалиден"
+            return
+        } else {
+            errorLabel.isHidden = true
+            viewModel.didTapRegistration(with: phoneNumber)
+        }
     }
     
+}
+
+extension String {
+    var isPhoneNumber: Bool {
+        guard self.count > 0 else { return false }
+        let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "*"]
+        return Set(self).isSubset(of: nums)
+    }
 }
 
 extension RegistrationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
-        
-        confirmButtonState(shouldBeClickable: !(0...3).contains(newString.length))
         
         return newString.length <= phoneNumberMaxLength
     }
