@@ -17,6 +17,12 @@ class RegistrationViewController: UIViewController {
     @IBOutlet private weak var confirmButton: UIButton!
     private let viewModel = RegistrationViewModel(repository: RegistrationRepository())
     private let phoneNumberMaxLength = 15
+    @IBOutlet private weak var confirmButtonBottomConstraint: NSLayoutConstraint!
+    
+    private struct LocalConstants {
+        static let buttonBottomConstraintSize: CGFloat = 45
+        static let confirmButtonMinTopMargin: CGFloat = 10
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,11 +80,15 @@ class RegistrationViewController: UIViewController {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardHeight = keyboardFrame.cgRectValue.height
             
-//            mostBottomScrollViewConstraint.constant = keyboardHeight + additionalKeyboardHeight
-            wrapperViewTopConstraint.constant = -keyboardHeight
-            UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.view.layoutIfNeeded()
+            // If there's enough space on screen to show everything, we move up just the "Confirm" Button. Else we move up the whole view
+            if errorLabel.frame.maxY < UIScreen.main.bounds.height - keyboardHeight - confirmButton.frame.height - LocalConstants.buttonBottomConstraintSize - LocalConstants.confirmButtonMinTopMargin {
+                confirmButtonBottomConstraint.constant += keyboardHeight
+            } else {
+                wrapperViewTopConstraint.constant = -keyboardHeight
+            }
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                
+                self?.view.layoutIfNeeded()
             }
         }
     }
@@ -86,6 +96,7 @@ class RegistrationViewController: UIViewController {
     @objc private func keyboardWillHide(_ notification: Notification) {
 
         wrapperViewTopConstraint.constant = 0
+        confirmButtonBottomConstraint.constant = LocalConstants.buttonBottomConstraintSize
         UIView.animate(withDuration: 0.2) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.view.layoutIfNeeded()
