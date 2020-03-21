@@ -49,9 +49,5 @@ class SplashViewController: UIViewController {
             strongSelf.loadingIndicatorView.addSubview(indicator)
         }
     }
-    
-    private func setupAppFlow() {
-        
-    }
 
 }
