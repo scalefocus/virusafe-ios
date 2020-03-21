@@ -36,7 +36,6 @@ class RegistrationConfirmationViewController: UIViewController {
                                                                in: strongSelf.view)
             } else {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
-                strongSelf.verificationCodeTextField.becomeFirstResponder()
             }
         }
         
@@ -53,7 +52,7 @@ class RegistrationConfirmationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        verificationCodeTextField.becomeFirstResponder()
+//        verificationCodeTextField.becomeFirstResponder()
     }
     
     private func confirmButtonState(shouldBeClickable: Bool) {

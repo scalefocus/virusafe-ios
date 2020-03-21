@@ -10,8 +10,6 @@ import Foundation
 
 struct HealthStatus: Codable {
     var questions: [HealthStatusQuestion]?
-    var hasSymptoms: Bool?
-    var canUpdate: Bool?
 }
 
 struct HealthStatusQuestion: Codable {
