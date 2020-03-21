@@ -13,7 +13,7 @@
 		024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DC24239F0D00696868 /* UIViewExtension.swift */; };
 		024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */; };
 		024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */; };
-		024D82E32423A80400696868 /* HealthStatusJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 024D82E22423A80400696868 /* HealthStatusJson.json */; };
+		024D82E32423A80400696868 /* HealthStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = 024D82E22423A80400696868 /* HealthStatus.json */; };
 		024D82E82423A84200696868 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
 		024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E92423B67100696868 /* SubmitTableViewCell.swift */; };
 		024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82EA2423B67100696868 /* SubmitTableViewCell.xib */; };
@@ -74,7 +74,7 @@
 		024D82DC24239F0D00696868 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSymptomsTableViewCell.swift; sourceTree = "<group>"; };
 		024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoSymptomsTableViewCell.xib; sourceTree = "<group>"; };
-		024D82E22423A80400696868 /* HealthStatusJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HealthStatusJson.json; sourceTree = "<group>"; };
+		024D82E22423A80400696868 /* HealthStatus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HealthStatus.json; sourceTree = "<group>"; };
 		024D82E72423A84200696868 /* HealthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatus.swift; sourceTree = "<group>"; };
 		024D82E92423B67100696868 /* SubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTableViewCell.swift; sourceTree = "<group>"; };
 		024D82EA2423B67100696868 /* SubmitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitTableViewCell.xib; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 				024D82D724239A9D00696868 /* TableViewCells */,
 				02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */,
 				02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */,
-				024D82E22423A80400696868 /* HealthStatusJson.json */,
+				024D82E22423A80400696868 /* HealthStatus.json */,
 			);
 			path = HealthStatusScene;
 			sourceTree = "<group>";
@@ -509,7 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
-				024D82E32423A80400696868 /* HealthStatusJson.json in Resources */,
+				024D82E32423A80400696868 /* HealthStatus.json in Resources */,
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
 				024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */,

@@ -10,6 +10,9 @@ import UIKit
 
 class RegistrationViewController: UIViewController {
 
+    @IBOutlet private weak var errorLabel: UILabel!
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var wrapperViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var confirmButton: UIButton!
     private let viewModel = RegistrationViewModel(repository: RegistrationRepository())
@@ -21,7 +24,12 @@ class RegistrationViewController: UIViewController {
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
-        confirmButtonState(shouldBeClickable: false)
+        logoImageView.tintColor = .healthBlue
+        phoneNumberTextField.borderStyle = .none
+        addKeyboardNotifications()
+//        confirmButtonState(shouldBeClickable: false)
+        hideKeyboardWhenTappedAround()
+        confirmButton.backgroundColor = .healthBlue
         
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
@@ -31,7 +39,7 @@ class RegistrationViewController: UIViewController {
                                                                in: strongSelf.view)
             } else {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
-                strongSelf.phoneNumberTextField.becomeFirstResponder()
+//                strongSelf.phoneNumberTextField.becomeFirstResponder()
             }
         }
         
@@ -48,10 +56,46 @@ class RegistrationViewController: UIViewController {
         }
     }
     
+    // MARK: Keyboard actions
+    
+    private func addKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIWindow.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIWindow.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+//            mostBottomScrollViewConstraint.constant = keyboardHeight + additionalKeyboardHeight
+            wrapperViewTopConstraint.constant = -keyboardHeight
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+
+        wrapperViewTopConstraint.constant = 0
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.view.layoutIfNeeded()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        phoneNumberTextField.becomeFirstResponder()
+//        phoneNumberTextField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,3 +127,29 @@ extension RegistrationViewController: UITextFieldDelegate {
     }
 }
 
+
+extension UIViewController {
+    
+    /// Hides the keyboard when tapped anywhere on the screen
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.delegate = self
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+}
+
+extension UIViewController: UIGestureRecognizerDelegate {
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+           if touch.view is UIButton {
+               return false
+           }
+           return true
+       }
+}

@@ -69,70 +69,122 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-zi-hQ2">
-                                <rect key="frame" x="50" y="281.5" width="314" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Потвърди">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="didTapRegisterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mf6-JU-Ft0"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfJ-RQ-81G">
-                                <rect key="frame" x="30" y="115" width="354" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Въведете мобилен телефон" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DDF-X8-k3m">
-                                <rect key="frame" x="50" y="206.5" width="314" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOM-jE-KWQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="zz4-lc-3yS">
+                                        <rect key="frame" x="167" y="42" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Of5-F9-dLd"/>
+                                            <constraint firstAttribute="width" secondItem="zz4-lc-3yS" secondAttribute="height" multiplier="1:1" id="WUI-bd-RVh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfJ-RQ-81G">
+                                        <rect key="frame" x="30" y="142" width="354" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мобилен телефон" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wy5-eb-gy7">
+                                        <rect key="frame" x="30" y="280.5" width="354" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Въведете мобилен телефон" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DDF-X8-k3m">
+                                        <rect key="frame" x="30" y="302.5" width="354" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="1p9-eU-N6z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="gkk-x0-ewt"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pty-jO-mLL">
+                                        <rect key="frame" x="30" y="347.5" width="354" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="XoP-Jp-iOz"/>
+                                        </constraints>
+                                    </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IQ-cs-16b">
+                                        <rect key="frame" x="30" y="356" width="354" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-zi-hQ2">
+                                        <rect key="frame" x="30" y="708" width="354" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="3am-cz-4Bg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Потвърди">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapRegisterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mf6-JU-Ft0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="BDW-Vo-P5Z"/>
+                                    <constraint firstItem="DDF-X8-k3m" firstAttribute="top" secondItem="wy5-eb-gy7" secondAttribute="bottom" constant="5" id="1Ks-GT-4NR"/>
+                                    <constraint firstItem="pty-jO-mLL" firstAttribute="leading" secondItem="DDF-X8-k3m" secondAttribute="leading" id="4vF-R6-7mq"/>
+                                    <constraint firstItem="zz4-lc-3yS" firstAttribute="centerX" secondItem="hOM-jE-KWQ" secondAttribute="centerX" id="BSY-4u-sOE"/>
+                                    <constraint firstItem="DDF-X8-k3m" firstAttribute="leading" secondItem="wy5-eb-gy7" secondAttribute="leading" id="Bsr-of-Bf3"/>
+                                    <constraint firstItem="zz4-lc-3yS" firstAttribute="top" secondItem="hOM-jE-KWQ" secondAttribute="top" constant="42" id="Kmg-Gn-rGi"/>
+                                    <constraint firstItem="DDF-X8-k3m" firstAttribute="trailing" secondItem="wy5-eb-gy7" secondAttribute="trailing" id="PkU-Vq-Mv6"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5qw-zi-hQ2" secondAttribute="bottom" constant="60" id="S6W-3A-oKT"/>
+                                    <constraint firstItem="pty-jO-mLL" firstAttribute="trailing" secondItem="DDF-X8-k3m" secondAttribute="trailing" id="SIM-nY-8Ym"/>
+                                    <constraint firstItem="wy5-eb-gy7" firstAttribute="trailing" secondItem="hfJ-RQ-81G" secondAttribute="trailing" id="UgP-Tk-w8T"/>
+                                    <constraint firstItem="pty-jO-mLL" firstAttribute="top" secondItem="DDF-X8-k3m" secondAttribute="bottom" id="dF4-eN-EUg"/>
+                                    <constraint firstItem="wy5-eb-gy7" firstAttribute="leading" secondItem="hfJ-RQ-81G" secondAttribute="leading" id="eEI-LF-DBp"/>
+                                    <constraint firstItem="9IQ-cs-16b" firstAttribute="top" secondItem="pty-jO-mLL" secondAttribute="bottom" constant="7.5" id="gXs-d2-4co"/>
+                                    <constraint firstItem="9IQ-cs-16b" firstAttribute="trailing" secondItem="pty-jO-mLL" secondAttribute="trailing" id="kEh-AH-pZX"/>
+                                    <constraint firstAttribute="trailing" secondItem="hfJ-RQ-81G" secondAttribute="trailing" constant="30" id="mXG-E6-fgs"/>
+                                    <constraint firstItem="5qw-zi-hQ2" firstAttribute="trailing" secondItem="DDF-X8-k3m" secondAttribute="trailing" id="mjn-ga-GQ0"/>
+                                    <constraint firstItem="wy5-eb-gy7" firstAttribute="top" secondItem="hfJ-RQ-81G" secondAttribute="bottom" constant="100" id="ond-Hx-LzX"/>
+                                    <constraint firstItem="hfJ-RQ-81G" firstAttribute="leading" secondItem="hOM-jE-KWQ" secondAttribute="leading" constant="30" id="r1O-BP-fYu"/>
+                                    <constraint firstItem="9IQ-cs-16b" firstAttribute="leading" secondItem="pty-jO-mLL" secondAttribute="leading" id="r5U-BT-zz7"/>
+                                    <constraint firstItem="5qw-zi-hQ2" firstAttribute="leading" secondItem="DDF-X8-k3m" secondAttribute="leading" id="tlf-1F-ozC"/>
+                                    <constraint firstItem="5qw-zi-hQ2" firstAttribute="top" secondItem="9IQ-cs-16b" secondAttribute="bottom" constant="334" id="vJO-57-zHn"/>
+                                    <constraint firstItem="hfJ-RQ-81G" firstAttribute="centerX" secondItem="zz4-lc-3yS" secondAttribute="centerX" id="y2f-or-vSY"/>
+                                    <constraint firstItem="hfJ-RQ-81G" firstAttribute="top" secondItem="zz4-lc-3yS" secondAttribute="bottom" constant="20" id="zIo-vL-WCX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="gkk-x0-ewt"/>
-                                </connections>
-                            </textField>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="hfJ-RQ-81G" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.3" id="Cws-ng-FmV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hfJ-RQ-81G" secondAttribute="trailing" constant="30" id="E7c-RU-Fee"/>
-                            <constraint firstItem="5qw-zi-hQ2" firstAttribute="leading" secondItem="DDF-X8-k3m" secondAttribute="leading" id="MpD-IE-A08"/>
-                            <constraint firstItem="hfJ-RQ-81G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="TdC-L6-4sK"/>
-                            <constraint firstItem="5qw-zi-hQ2" firstAttribute="top" secondItem="DDF-X8-k3m" secondAttribute="bottom" constant="35" id="Uwj-eT-aUk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DDF-X8-k3m" secondAttribute="trailing" constant="50" id="WDY-Q8-lCv"/>
-                            <constraint firstItem="hfJ-RQ-81G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="71" id="YRS-Sf-non"/>
-                            <constraint firstItem="DDF-X8-k3m" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.5" id="ZUT-7U-Afv"/>
-                            <constraint firstItem="5qw-zi-hQ2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dXD-C4-p2V"/>
-                            <constraint firstItem="5qw-zi-hQ2" firstAttribute="trailing" secondItem="DDF-X8-k3m" secondAttribute="trailing" id="ndd-q1-iuD"/>
-                            <constraint firstItem="DDF-X8-k3m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="xvO-FJ-Kk9"/>
+                            <constraint firstItem="hOM-jE-KWQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Da3-mE-8c7"/>
+                            <constraint firstItem="hOM-jE-KWQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Elq-2d-WwB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hOM-jE-KWQ" secondAttribute="trailing" id="POK-Mk-bTO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hOM-jE-KWQ" secondAttribute="bottom" id="v1a-dp-CJP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="TLA-ye-sbJ"/>
                     <connections>
                         <outlet property="confirmButton" destination="5qw-zi-hQ2" id="ZE3-eI-lir"/>
+                        <outlet property="errorLabel" destination="9IQ-cs-16b" id="gJb-vU-KF7"/>
+                        <outlet property="logoImageView" destination="zz4-lc-3yS" id="2uK-0f-5oH"/>
                         <outlet property="phoneNumberTextField" destination="DDF-X8-k3m" id="FkJ-eu-0dc"/>
+                        <outlet property="wrapperViewTopConstraint" destination="Da3-mE-8c7" id="5cN-E6-ivG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-545" y="136"/>
+            <point key="canvasLocation" x="-546.37681159420299" y="135.9375"/>
         </scene>
         <!--Registration Confirmation View Controller-->
         <scene sceneID="xpR-gK-42y">
@@ -417,5 +469,6 @@
     <resources>
         <image name="logo" width="150" height="208"/>
         <image name="start_button" width="255" height="255"/>
+        <image name="user" width="336" height="384"/>
     </resources>
 </document>
