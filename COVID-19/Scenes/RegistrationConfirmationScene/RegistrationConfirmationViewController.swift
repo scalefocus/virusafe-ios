@@ -10,6 +10,14 @@ import UIKit
 
 class RegistrationConfirmationViewController: UIViewController {
     
+    private struct LocalConstants {
+        static let buttonBottomConstraintSize: CGFloat = 35
+        static let confirmButtonMinTopMargin: CGFloat = 10
+    }
+    
+    @IBOutlet private weak var newCodeBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var errorLabel: UILabel!
+    @IBOutlet private weak var wrapperViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var verificationCodeTextField: UITextField!
     private let viewModel = RegistrationConfirmationViewModel(repository: RegistrationRepository())
@@ -20,13 +28,10 @@ class RegistrationConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Верификация"
-        verificationCodeTextField.withImage(UIImage(named: "unlocked_keylock"),
-                                            direction: .right,
-                                            rect: CGRect(x: 0,
-                                                         y: verificationCodeHeight / 2,
-                                                         width: verificationCodeWidth,
-                                                         height: verificationCodeHeight))
-        confirmButtonState(shouldBeClickable: false)
+        verificationCodeTextField.borderStyle = .none
+        confirmButton.backgroundColor = .healthBlue
+        hideKeyboardWhenTappedAround()
+        addKeyboardNotifications()
         
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
@@ -50,14 +55,42 @@ class RegistrationConfirmationViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        verificationCodeTextField.becomeFirstResponder()
+    private func addKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIWindow.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIWindow.keyboardWillHideNotification,
+                                               object: nil)
     }
     
-    private func confirmButtonState(shouldBeClickable: Bool) {
-        confirmButton.isEnabled = shouldBeClickable
-        confirmButton.setTitleColor(shouldBeClickable ? .black : .gray, for: .normal)
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            if errorLabel.frame.maxY < UIScreen.main.bounds.height - keyboardHeight - confirmButton.frame.height - LocalConstants.buttonBottomConstraintSize - LocalConstants.confirmButtonMinTopMargin {
+                newCodeBottomConstraint.constant += keyboardHeight
+            } else {
+                wrapperViewTopConstraint.constant = -keyboardHeight
+            }
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+
+        wrapperViewTopConstraint.constant = 0
+        newCodeBottomConstraint.constant = LocalConstants.buttonBottomConstraintSize
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.view.layoutIfNeeded()
+        }
     }
     
     private func showHomeModule() {
@@ -81,7 +114,19 @@ class RegistrationConfirmationViewController: UIViewController {
     
     @IBAction private func didTapConfirmButton(_ sender: Any) {
         guard let authorizationCode = verificationCodeTextField.text else { return }
-        viewModel.didTapCodeAuthorization(with: authorizationCode)
+        
+        if authorizationCode.count < 6 {
+            errorLabel.isHidden = false
+            errorLabel.text = "Невалидна дължина"
+            return
+        } else if !authorizationCode.isDigitsOnly {
+            errorLabel.isHidden = false
+            errorLabel.text = "Невалиден формат"
+            return
+        } else {
+            errorLabel.isHidden = true
+            viewModel.didTapCodeAuthorization(with: authorizationCode)
+        }
     }
     
 }
@@ -90,8 +135,6 @@ extension RegistrationConfirmationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
-        
-        confirmButtonState(shouldBeClickable: !(0...5).contains(newString.length))
         
         return newString.length <= maximumValidationCodeLength
     }

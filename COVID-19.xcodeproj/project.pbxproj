@@ -28,6 +28,7 @@
 		024D83022425130B00696868 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D83012425130B00696868 /* SplashViewController.swift */; };
 		024D8307242532F500696868 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D8306242532F500696868 /* UIColor+Hex.swift */; };
 		024D830A2425332800696868 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D83092425332800696868 /* RadialGradientView.swift */; };
+		0277EA7B2426766F00941863 /* String+IsNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277EA7A2426766F00941863 /* String+IsNumber.swift */; };
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
 		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
@@ -89,6 +90,7 @@
 		024D83012425130B00696868 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		024D8306242532F500696868 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		024D83092425332800696868 /* RadialGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
+		0277EA7A2426766F00941863 /* String+IsNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+IsNumber.swift"; sourceTree = "<group>"; };
 		02B9A6A8242371F300B1A4C0 /* COVID-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				024D82F62424E92200696868 /* LoadingIndicatorManager.swift */,
 				024D82FF2424FB8300696868 /* UtilFunctions.swift */,
 				024D8306242532F500696868 /* UIColor+Hex.swift */,
+				0277EA7A2426766F00941863 /* String+IsNumber.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */,
 				3803B02C2425498F0076EE00 /* Reachability.m in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
+				0277EA7B2426766F00941863 /* String+IsNumber.swift in Sources */,
 				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
 				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
 			);

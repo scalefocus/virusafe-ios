@@ -116,11 +116,11 @@ class RegistrationViewController: UIViewController {
         
         if phoneNumber.count < 5 {
             errorLabel.isHidden = false
-            errorLabel.text = "Дължината на мобилния телефон е невалидна"
+            errorLabel.text = "Невалидна дължина"
             return
         } else if !phoneNumber.isPhoneNumber {
             errorLabel.isHidden = false
-            errorLabel.text = "Форматът на мобилния телефон е невалиден"
+            errorLabel.text = "Невалиден формат"
             return
         } else {
             errorLabel.isHidden = true
@@ -130,14 +130,6 @@ class RegistrationViewController: UIViewController {
     
 }
 
-extension String {
-    var isPhoneNumber: Bool {
-        guard self.count > 0 else { return false }
-        let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "*"]
-        return Set(self).isSubset(of: nums)
-    }
-}
-
 extension RegistrationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
@@ -145,31 +137,4 @@ extension RegistrationViewController: UITextFieldDelegate {
         
         return newString.length <= phoneNumberMaxLength
     }
-}
-
-
-extension UIViewController {
-    
-    /// Hides the keyboard when tapped anywhere on the screen
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.delegate = self
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-}
-
-extension UIViewController: UIGestureRecognizerDelegate {
-    
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-           if touch.view is UIButton {
-               return false
-           }
-           return true
-       }
 }
