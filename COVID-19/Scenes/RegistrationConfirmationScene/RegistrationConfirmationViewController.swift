@@ -11,8 +11,8 @@ import UIKit
 class RegistrationConfirmationViewController: UIViewController {
     
     private struct LocalConstants {
-        static let buttonBottomConstraintSize: CGFloat = 35
-        static let confirmButtonMinTopMargin: CGFloat = 10
+        static let buttonBottomConstraintSize: CGFloat = 20
+        static let confirmButtonMinTopMargin: CGFloat = 5
     }
     
     @IBOutlet private weak var newCodeBottomConstraint: NSLayoutConstraint!
@@ -24,6 +24,7 @@ class RegistrationConfirmationViewController: UIViewController {
     private let verificationCodeWidth: CGFloat = 20
     private let verificationCodeHeight: CGFloat = 20
     private let maximumValidationCodeLength = 6
+    private var isKeyboardUp = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,19 @@ class RegistrationConfirmationViewController: UIViewController {
         }
     }
     
+    deinit {
+        removeKeyboardNotifications()
+    }
+    
+    private func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        verificationCodeTextField.resignFirstResponder()
+    }
+    
     private func addKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
@@ -68,15 +82,15 @@ class RegistrationConfirmationViewController: UIViewController {
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, !isKeyboardUp {
             let keyboardHeight = keyboardFrame.cgRectValue.height
             
             if errorLabel.frame.maxY < UIScreen.main.bounds.height - keyboardHeight - confirmButton.frame.height - LocalConstants.buttonBottomConstraintSize - LocalConstants.confirmButtonMinTopMargin {
-                newCodeBottomConstraint.constant += keyboardHeight
+                newCodeBottomConstraint.constant += keyboardHeight - 45
             } else {
                 wrapperViewTopConstraint.constant = -keyboardHeight
             }
-            
+            isKeyboardUp = true
             UIView.animate(withDuration: 0.3) { [weak self] in
                 self?.view.layoutIfNeeded()
             }
@@ -84,9 +98,9 @@ class RegistrationConfirmationViewController: UIViewController {
     }
     
     @objc private func keyboardWillHide(_ notification: Notification) {
-
+        isKeyboardUp = false
         wrapperViewTopConstraint.constant = 0
-        newCodeBottomConstraint.constant = LocalConstants.buttonBottomConstraintSize
+        newCodeBottomConstraint.constant = 45
         UIView.animate(withDuration: 0.2) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.view.layoutIfNeeded()
