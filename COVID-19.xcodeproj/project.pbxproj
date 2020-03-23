@@ -66,6 +66,7 @@
 		3803B02B2425498F0076EE00 /* INBeaconService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00F2425498F0076EE00 /* INBeaconService.m */; };
 		3803B02C2425498F0076EE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
 		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
+		383352792428BD72000A397E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 383352782428BD72000A397E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +160,7 @@
 		3803B0112425498F0076EE00 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3803B0122425498F0076EE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		383352782428BD72000A397E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,6 +279,7 @@
 				02B9A6B4242371F500B1A4C0 /* Assets.xcassets */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
+				383352782428BD72000A397E /* GoogleService-Info.plist */,
 				024D82D424239A6100696868 /* Extensions */,
 			);
 			path = "COVID-19";
@@ -512,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
+				383352792428BD72000A397E /* GoogleService-Info.plist in Resources */,
 				024D82E32423A80400696868 /* HealthStatus.json in Resources */,
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,

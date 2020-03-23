@@ -7,23 +7,47 @@
 //
 
 import UIKit
+import PopupUpdate
+import Firebase
 
 class SplashViewController: UIViewController {
     
     @IBOutlet private weak var loadingIndicatorView: UIView!
     @IBOutlet private weak var logoImageView: UIImageView!
     
+    private var remoteConfig:RemoteConfig!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showSpinner()
         
-        delay(2) { [weak self] in
-            let isUserRegistered = UserDefaults.standard.bool(forKey: "isUserRegistered")
-            self?.showVC(with: isUserRegistered
-                ? "\(HomeViewController.self)"
-                : "\(RegistrationViewController.self)")
-        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: false,
+                                                         minimumVersionNeeded: "2",
+                                                         urlToOpen: "https://www.upnetix.com/",
+                                                         currentVersion: "1",
+                                                         window: UIApplication.shared.keyWindow,
+                                                         alertTitle: "Нова версия",
+                                                         alertDescription: "Има подобрения по приложението, моля свалете новата версия",
+                                                         updateButtonTitle: "Обнови",
+                                                         okButtonTitle: "Продължи",
+                                                         urlOpenedClosure:  { [weak self] error in
+                                                            if let error = error {
+                                                                print("Error Supported version: \(error)")
+                                                            }
+                                                           
+                                                            let isUserRegistered = UserDefaults.standard.bool(forKey: "isUserRegistered")
+                                                            
+                                                            self?.showVC(with: isUserRegistered
+                                                            ? "\(HomeViewController.self)"
+                                                            : "\(RegistrationViewController.self)")
+        })
+        
     }
     
     private func showVC(with identifier: String) {
