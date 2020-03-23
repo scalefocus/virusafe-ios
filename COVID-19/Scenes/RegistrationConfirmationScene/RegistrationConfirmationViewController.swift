@@ -15,6 +15,13 @@ class RegistrationConfirmationViewController: UIViewController {
         static let confirmButtonMinTopMargin: CGFloat = 5
     }
     
+    @IBOutlet private weak var iconImageView: UIImageView! {
+        didSet {
+            let userShieldIcon = #imageLiteral(resourceName: "user-shield").withRenderingMode(.alwaysTemplate)
+            iconImageView.image = userShieldIcon
+            iconImageView.tintColor = .healthBlue
+        }
+    }
     @IBOutlet private weak var newCodeBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var wrapperViewTopConstraint: NSLayoutConstraint!
