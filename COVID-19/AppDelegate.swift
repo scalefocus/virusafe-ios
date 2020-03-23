@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
@@ -30,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ])
         
         FirebaseApp.configure()
+        
+        registerForPushNotifications()
 
         IQKeyboardManager.shared().isEnabled = true
 
@@ -50,6 +53,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    //Push notifications
+    func registerForPushNotifications() {
+      UNUserNotificationCenter.current()
+        .requestAuthorization(options: [.alert, .sound, .badge]) {
+          [weak self] granted, error in
+            
+          print("Permission granted: \(granted)")
+          guard granted else { return }
+          self?.getNotificationSettings()
+      }
+    }
+    
+    func getNotificationSettings() {
+      UNUserNotificationCenter.current().getNotificationSettings { settings in
+        print("Notification settings: \(settings)")
+        guard settings.authorizationStatus == .authorized else { return }
+        DispatchQueue.main.async {
+          UIApplication.shared.registerForRemoteNotifications()
+        }
+      }
+    }
+    
+    func application(
+      _ application: UIApplication,
+      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+      
+    }
+
+    func application(
+      _ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      
+    }
+    
+    func application(
+      _ application: UIApplication,
+      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+      fetchCompletionHandler completionHandler:
+      @escaping (UIBackgroundFetchResult) -> Void
+    ) {
+      
+    }
+    
+    func userNotificationCenter(
+      _ center: UNUserNotificationCenter,
+      didReceive response: UNNotificationResponse,
+      withCompletionHandler completionHandler: @escaping () -> Void) {
+      
+    
     }
 
 }
