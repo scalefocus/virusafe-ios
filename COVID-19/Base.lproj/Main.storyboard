@@ -449,6 +449,12 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Въведете вашите симптоми" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZW-Ca-q5B">
+                                <rect key="frame" x="20" y="49" width="280" height="72"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0x-Fv-PDp">
                                 <rect key="frame" x="32.5" y="156.5" width="255" height="255"/>
                                 <constraints>
@@ -473,46 +479,10 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     <action selector="didTapSurveyButton:" destination="RAA-pi-AAL" eventType="touchUpInside" id="l2M-t1-vKm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jy-iF-s5i">
-                                <rect key="frame" x="10" y="600.5" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Device UUID:" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEI-pQ-htD">
-                                <rect key="frame" x="10" y="631.5" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="UUID" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tb-fh-k65">
-                                <rect key="frame" x="10" y="662.5" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="My Device UUID:" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXm-Ms-EQg">
-                                <rect key="frame" x="10" y="693.5" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="UUID" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6I-UP-pKB">
-                                <rect key="frame" x="10" y="724.5" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЧАЛО" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygB-yA-cYE">
                                 <rect key="frame" x="105.5" y="269" width="109" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Въведете вашите симптоми" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZW-Ca-q5B">
-                                <rect key="frame" x="20" y="49" width="280" height="72"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -520,36 +490,15 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <constraints>
                             <constraint firstItem="K0x-Fv-PDp" firstAttribute="centerY" secondItem="TdR-W7-KN8" secondAttribute="centerY" id="24N-ml-71Q"/>
                             <constraint firstItem="zZW-Ca-q5B" firstAttribute="centerY" secondItem="TdR-W7-KN8" secondAttribute="centerY" multiplier="0.3" id="2VM-sR-yeF"/>
-                            <constraint firstItem="0Tb-fh-k65" firstAttribute="top" secondItem="hEI-pQ-htD" secondAttribute="bottom" constant="10" id="40E-RZ-NCz"/>
-                            <constraint firstItem="g6I-UP-pKB" firstAttribute="top" secondItem="pXm-Ms-EQg" secondAttribute="bottom" constant="10" id="8xF-Mt-PKW"/>
-                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="pXm-Ms-EQg" secondAttribute="trailing" constant="10" id="Azw-ii-xp2"/>
                             <constraint firstItem="ygB-yA-cYE" firstAttribute="centerY" secondItem="TdR-W7-KN8" secondAttribute="centerY" id="FMm-cQ-emZ"/>
                             <constraint firstItem="ygB-yA-cYE" firstAttribute="centerX" secondItem="TdR-W7-KN8" secondAttribute="centerX" id="Laf-ed-ZSa"/>
-                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="0Tb-fh-k65" secondAttribute="trailing" constant="10" id="MdL-fk-d1c"/>
-                            <constraint firstItem="pXm-Ms-EQg" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="T87-ft-hBS"/>
-                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="8jy-iF-s5i" secondAttribute="trailing" constant="10" id="VAa-6r-XPG"/>
-                            <constraint firstItem="8jy-iF-s5i" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="WF3-Pd-lwv"/>
-                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="g6I-UP-pKB" secondAttribute="trailing" constant="10" id="XJ6-g3-3t3"/>
-                            <constraint firstItem="0Tb-fh-k65" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="XKq-Ia-SHR"/>
-                            <constraint firstItem="hEI-pQ-htD" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="YMx-Q6-yZA"/>
-                            <constraint firstItem="hEI-pQ-htD" firstAttribute="top" secondItem="8jy-iF-s5i" secondAttribute="bottom" constant="10" id="ZDA-la-Wt5"/>
-                            <constraint firstItem="TdR-W7-KN8" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g6I-UP-pKB" secondAttribute="bottom" constant="10" id="clc-un-D54"/>
                             <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="zZW-Ca-q5B" secondAttribute="trailing" constant="20" id="gV4-hA-ctD"/>
-                            <constraint firstItem="8jy-iF-s5i" firstAttribute="top" secondItem="K0x-Fv-PDp" secondAttribute="bottom" constant="20" id="hAt-XO-fYi"/>
-                            <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="hEI-pQ-htD" secondAttribute="trailing" constant="10" id="oUz-h3-cOq"/>
                             <constraint firstItem="zZW-Ca-q5B" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="20" id="r5O-AN-TEQ"/>
                             <constraint firstItem="K0x-Fv-PDp" firstAttribute="centerX" secondItem="TdR-W7-KN8" secondAttribute="centerX" id="t5a-kr-vvE"/>
-                            <constraint firstItem="pXm-Ms-EQg" firstAttribute="top" secondItem="0Tb-fh-k65" secondAttribute="bottom" constant="10" id="wSS-jh-QP7"/>
-                            <constraint firstItem="g6I-UP-pKB" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="10" id="yCV-Gj-4L2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TdR-W7-KN8"/>
                     </view>
                     <navigationItem key="navigationItem" id="FGx-7U-d15"/>
-                    <connections>
-                        <outlet property="distanceLabel" destination="8jy-iF-s5i" id="nXR-Gz-wV5"/>
-                        <outlet property="myUUID" destination="g6I-UP-pKB" id="jss-8s-RFK"/>
-                        <outlet property="targetUUID" destination="0Tb-fh-k65" id="Ghz-cb-y1h"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRK-yU-gmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
