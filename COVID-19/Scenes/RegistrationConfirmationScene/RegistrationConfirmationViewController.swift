@@ -9,11 +9,20 @@
 import UIKit
 
 class RegistrationConfirmationViewController: UIViewController {
+
+    // MARK: Constants
+
+    private let verificationCodeWidth: CGFloat = 20
+    private let verificationCodeHeight: CGFloat = 20
+    private let maximumValidationCodeLength = 6
+    private var isKeyboardUp = false
     
     private struct LocalConstants {
         static let buttonBottomConstraintSize: CGFloat = 20
         static let confirmButtonMinTopMargin: CGFloat = 5
     }
+
+    // MARK: Outlets
     
     @IBOutlet private weak var iconImageView: UIImageView! {
         didSet {
@@ -27,11 +36,16 @@ class RegistrationConfirmationViewController: UIViewController {
     @IBOutlet private weak var wrapperViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var verificationCodeTextField: UITextField!
-    private let viewModel = RegistrationConfirmationViewModel(repository: RegistrationRepository())
-    private let verificationCodeWidth: CGFloat = 20
-    private let verificationCodeHeight: CGFloat = 20
-    private let maximumValidationCodeLength = 6
-    private var isKeyboardUp = false
+
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var mobileNumberLabel: UILabel!
+
+    // MARK: View Model
+
+    // Injected from parent in order to get its instance of the RegistrationRepository
+    var viewModel: RegistrationConfirmationViewModel!
+
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +75,8 @@ class RegistrationConfirmationViewController: UIViewController {
                 // TODO: Show popup that something is wrong
             }
         }
+
+        mobileNumberLabel.text = "Телефон: \(viewModel.mobileNumber())" 
     }
     
     deinit {
@@ -129,9 +145,9 @@ class RegistrationConfirmationViewController: UIViewController {
                           completion: nil)
     }
 
-    @IBAction private func didTapEditButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
+//    @IBAction private func didTapEditButton(_ sender: Any) {
+//        navigationController?.popViewController(animated: true)
+//    }
     
     @IBAction private func didTapConfirmButton(_ sender: Any) {
         guard let authorizationCode = verificationCodeTextField.text else { return }

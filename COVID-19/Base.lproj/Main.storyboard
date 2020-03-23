@@ -432,7 +432,9 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <outlet property="confirmButton" destination="dr3-cX-zbE" id="BIn-ya-1wo"/>
                         <outlet property="errorLabel" destination="5Ij-1k-6f6" id="505-Hr-7X8"/>
                         <outlet property="iconImageView" destination="l5c-Zk-9Sj" id="JBH-4k-6Gx"/>
+                        <outlet property="mobileNumberLabel" destination="Aqb-xj-q00" id="oM7-ob-N4v"/>
                         <outlet property="newCodeBottomConstraint" destination="MOM-NO-fXn" id="Dbg-wc-HFP"/>
+                        <outlet property="textLabel" destination="OMu-iJ-L5o" id="Iqb-Fk-tgE"/>
                         <outlet property="verificationCodeTextField" destination="NbZ-eP-i2K" id="l3W-3Z-Epl"/>
                         <outlet property="wrapperViewTopConstraint" destination="V2J-bQ-gXK" id="Qnl-cg-HjF"/>
                     </connections>

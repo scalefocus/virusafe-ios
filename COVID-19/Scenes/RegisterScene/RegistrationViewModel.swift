@@ -12,7 +12,7 @@ import TwoWayBondage
 
 class RegistrationViewModel {
     
-    private let repository: RegistrationRepository
+    let repository: RegistrationRepository
     let shouldShowLoadingIndicator = Observable<Bool>()
     let isRequestSuccessful = Observable<Bool>()
     
