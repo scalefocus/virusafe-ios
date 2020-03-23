@@ -10,9 +10,13 @@ import Foundation
 import NetworkKit
 
 class RegistrationRepository {
+
+    private (set) var authorisedMobileNumber: String?
     
     func authoriseMobileNumber(mobileNumber: String, completion: (Bool) -> Void) {
         // TODO: Implement request here
+        // TODO: Store mobile number only on success
+        authorisedMobileNumber = mobileNumber
         completion(true)
     }
     

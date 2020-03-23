@@ -57,7 +57,15 @@ class RegistrationViewController: UIViewController {
             guard let strongSelf = self else { return }
             
             if isRequestSuccessful {
-                let registrationConfirmationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
+                guard let registrationConfirmationVC =
+                    UIStoryboard(name: "Main", bundle: nil)
+                        .instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
+                        as? RegistrationConfirmationViewController else {
+                            assertionFailure("RegistrationConfirmationViewController is not found")
+                            return
+                }
+                registrationConfirmationVC.viewModel =
+                    RegistrationConfirmationViewModel(repository: strongSelf.viewModel.repository)
                 strongSelf.navigationController?.pushViewController(registrationConfirmationVC,
                                                                     animated: true)
             } else {

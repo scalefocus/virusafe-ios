@@ -11,10 +11,10 @@ import TwoWayBondage
 
 class RegistrationConfirmationViewModel {
     
-    private let repository: RegistrationRepository
+    let repository: RegistrationRepository
     let shouldShowLoadingIndicator = Observable<Bool>()
     let isRequestSuccessful = Observable<Bool>()
-    
+
     init(repository: RegistrationRepository) {
         self.repository = repository
     }
@@ -29,6 +29,11 @@ class RegistrationConfirmationViewModel {
                 strongSelf.shouldShowLoadingIndicator.value = false
             }
         }
+    }
+
+    func mobileNumber() -> String {
+        // TODO: Format if needed
+        return repository.authorisedMobileNumber ?? "(+359) XXX-XXX"
     }
     
 }
