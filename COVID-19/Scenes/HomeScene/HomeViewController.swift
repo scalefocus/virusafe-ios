@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    // MARK: Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Начален екран"
@@ -29,8 +31,11 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    @IBAction func didTapSurveyButton(_ sender: Any) {
-        let surveyViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
+    // MARK: Actions
+
+    @IBAction private func didTapSurveyButton(_ sender: Any) {
+        let surveyViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
         navigationController?.pushViewController(surveyViewController, animated: true)
     }
     
