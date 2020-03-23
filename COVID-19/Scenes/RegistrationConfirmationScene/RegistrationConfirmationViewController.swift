@@ -7,38 +7,23 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
+import IQKeyboardManager
 
 class RegistrationConfirmationViewController: UIViewController {
 
-    // MARK: Constants
-
-    private let verificationCodeWidth: CGFloat = 20
-    private let verificationCodeHeight: CGFloat = 20
-    private let maximumValidationCodeLength = 6
-    private var isKeyboardUp = false
-    
-    private struct LocalConstants {
-        static let buttonBottomConstraintSize: CGFloat = 20
-        static let confirmButtonMinTopMargin: CGFloat = 5
-    }
-
     // MARK: Outlets
     
-    @IBOutlet private weak var iconImageView: UIImageView! {
-        didSet {
-            let userShieldIcon = #imageLiteral(resourceName: "user-shield").withRenderingMode(.alwaysTemplate)
-            iconImageView.image = userShieldIcon
-            iconImageView.tintColor = .healthBlue
-        }
-    }
-    @IBOutlet private weak var newCodeBottomConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var errorLabel: UILabel!
-    @IBOutlet private weak var wrapperViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var confirmButton: UIButton!
-    @IBOutlet private weak var verificationCodeTextField: UITextField!
-
+    @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private weak var mobileNumberLabel: UILabel!
+    @IBOutlet private weak var verificationCodeTextField: SkyFloatingLabelTextField!
+    @IBOutlet private weak var errorLabel: UILabel!
+    @IBOutlet private weak var confirmButton: UIButton!
+
+    // MARK: Settings
+
+    private let maximumValidationCodeLength = 6
 
     // MARK: View Model
 
@@ -49,12 +34,51 @@ class RegistrationConfirmationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupBindings()
+        mobileNumberLabel.text = "Телефон: \(viewModel.mobileNumber())" 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared().keyboardDistanceFromTextField = 80
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
+        IQKeyboardManager.shared().isEnableAutoToolbar = true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+    // MARK: Setup UI
+
+    private func setupUI() {
         title = "Верификация"
-        verificationCodeTextField.borderStyle = .none
         confirmButton.backgroundColor = .healthBlue
-        hideKeyboardWhenTappedAround()
-        addKeyboardNotifications()
-        
+        setupIconImageViewTint()
+        setupVerificationCodeTextField()
+    }
+
+    private func setupIconImageViewTint() {
+        let userShieldIcon = #imageLiteral(resourceName: "user-shield").withRenderingMode(.alwaysTemplate)
+        iconImageView.image = userShieldIcon
+        iconImageView.tintColor = .healthBlue
+    }
+
+    private func setupVerificationCodeTextField() {
+        verificationCodeTextField.borderStyle = .none
+        verificationCodeTextField.placeholder = "Въведете код "
+        // By default title will be same as placeholder
+        verificationCodeTextField.errorColor = .red
+        // !!! other styles are in stotyboard
+    }
+
+    private func setupBindings() {
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
             if shouldShowLoadingIndicator {
@@ -65,71 +89,20 @@ class RegistrationConfirmationViewController: UIViewController {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
             }
         }
-        
+
         viewModel.isRequestSuccessful.bind { [weak self] isRequestSuccessful in
             guard let strongSelf = self else { return }
-            
+
             if isRequestSuccessful {
                 strongSelf.showHomeModule()
             } else {
                 // TODO: Show popup that something is wrong
             }
         }
+    }
 
-        mobileNumberLabel.text = "Телефон: \(viewModel.mobileNumber())" 
-    }
-    
-    deinit {
-        removeKeyboardNotifications()
-    }
-    
-    private func removeKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        verificationCodeTextField.resignFirstResponder()
-    }
-    
-    private func addKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIWindow.keyboardWillShowNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIWindow.keyboardWillHideNotification,
-                                               object: nil)
-    }
-    
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, !isKeyboardUp {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            
-            if errorLabel.frame.maxY < UIScreen.main.bounds.height - keyboardHeight - confirmButton.frame.height - LocalConstants.buttonBottomConstraintSize - LocalConstants.confirmButtonMinTopMargin {
-                newCodeBottomConstraint.constant += keyboardHeight - 45
-            } else {
-                wrapperViewTopConstraint.constant = -keyboardHeight
-            }
-            isKeyboardUp = true
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        isKeyboardUp = false
-        wrapperViewTopConstraint.constant = 0
-        newCodeBottomConstraint.constant = 45
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.view.layoutIfNeeded()
-        }
-    }
-    
+    // MARK: Navigation
+
     private func showHomeModule() {
         guard let keyWindow = UIApplication.shared.keyWindow else { return }
         
@@ -144,6 +117,8 @@ class RegistrationConfirmationViewController: UIViewController {
                           animations: nil,
                           completion: nil)
     }
+
+    // MARK: Actions
 
 //    @IBAction private func didTapEditButton(_ sender: Any) {
 //        navigationController?.popViewController(animated: true)
