@@ -31,7 +31,12 @@ class RegistrationViewController: UIViewController {
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
+
+        // Change Logo tint color
+        let userIcon = #imageLiteral(resourceName: "user").withRenderingMode(.alwaysTemplate)
+        logoImageView.image = userIcon
         logoImageView.tintColor = .healthBlue
+
         phoneNumberTextField.borderStyle = .none
         addKeyboardNotifications()
         hideKeyboardWhenTappedAround()
