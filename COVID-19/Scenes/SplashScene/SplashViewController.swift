@@ -19,33 +19,19 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         showSpinner()
+        
+        //load firebase default values
+        loadDefaultValues()
+        
+        // fetch remoe config
+        fetchCloudValues()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: false,
-                                                         minimumVersionNeeded: "2",
-                                                         urlToOpen: "https://www.upnetix.com/",
-                                                         currentVersion: "1",
-                                                         window: UIApplication.shared.keyWindow,
-                                                         alertTitle: "Нова версия",
-                                                         alertDescription: "Има подобрения по приложението, моля свалете новата версия",
-                                                         updateButtonTitle: "Обнови",
-                                                         okButtonTitle: "Продължи",
-                                                         urlOpenedClosure:  { [weak self] error in
-                                                            if let error = error {
-                                                                print("Error Supported version: \(error)")
-                                                            }
-                                                           
-                                                            let isUserRegistered = UserDefaults.standard.bool(forKey: "isUserRegistered")
-                                                            
-                                                            self?.showVC(with: isUserRegistered
-                                                            ? "\(HomeViewController.self)"
-                                                            : "\(RegistrationViewController.self)")
-        })
         
     }
     
@@ -72,5 +58,57 @@ class SplashViewController: UIViewController {
             strongSelf.loadingIndicatorView.addSubview(indicator)
         }
     }
+    
+}
 
+//Firebase
+extension SplashViewController {
+    
+    func loadDefaultValues() {
+      let appDefaults: [String: Any?] = [
+        "is_mandatory" : false,
+        "latest_app_version" : "1"
+      ]
+      RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
+    }
+    
+    func fetchCloudValues() {
+      // WARNING: Don't actually do this in production!
+      let fetchDuration: TimeInterval = 0
+      RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { status, error in
+
+        if let error = error {
+          print("Uh-oh. Got an error fetching remote values \(error)")
+          return
+        }
+        
+        RemoteConfig.remoteConfig().activate()
+        
+        if status == .success {
+            let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "is_mandatory").boolValue
+            let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "latest_app_version").stringValue
+            
+            PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
+                                                               minimumVersionNeeded: "2",
+                                                               urlToOpen: "https://www.upnetix.com/",
+                                                               currentVersion: currentAppVersion,
+                                                               window: UIApplication.shared.keyWindow,
+                                                               alertTitle: "Нова версия",
+                                                               alertDescription: "Има подобрения по приложението, моля свалете новата версия",
+                                                               updateButtonTitle: "Обнови",
+                                                               okButtonTitle: "Продължи",
+                                                               urlOpenedClosure:  { [weak self] error in
+                                                                  if let error = error {
+                                                                      print("Error Supported version: \(error)")
+                                                                  }
+                                                                 
+                                                                  let isUserRegistered = UserDefaults.standard.bool(forKey: "isUserRegistered")
+                                                                  
+                                                                  self?.showVC(with: isUserRegistered
+                                                                  ? "\(HomeViewController.self)"
+                                                                  : "\(RegistrationViewController.self)")
+              })
+        }
+      }
+    }
 }
