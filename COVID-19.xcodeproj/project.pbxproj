@@ -68,6 +68,8 @@
 		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		4170C22A2428B4C0003EA70A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */; };
 		4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
+		4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */; };
+		4170C2312428D019003EA70A /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2302428D019003EA70A /* TermsAndConditionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +165,8 @@
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModel.swift; sourceTree = "<group>"; };
+		4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewModel.swift; sourceTree = "<group>"; };
+		4170C2302428D019003EA70A /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,6 +299,7 @@
 				02B9A6C524238E0700B1A4C0 /* HomeScene */,
 				02B9A6C624238E0E00B1A4C0 /* HealthStatusScene */,
 				4170C2282428B47A003EA70A /* ConfirmationScene */,
+				4170C22D2428CFD3003EA70A /* TermsAndConditionsScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -455,6 +460,15 @@
 			path = ConfirmationScene;
 			sourceTree = "<group>";
 		};
+		4170C22D2428CFD3003EA70A /* TermsAndConditionsScene */ = {
+			isa = PBXGroup;
+			children = (
+				4170C2302428D019003EA70A /* TermsAndConditionsViewController.swift */,
+				4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */,
+			);
+			path = TermsAndConditionsScene;
+			sourceTree = "<group>";
+		};
 		9F4DA72F5F25B5412264AC67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +614,7 @@
 				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
 				024D82F92424E9A900696868 /* RegistrationConfirmationViewModel.swift in Sources */,
 				024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */,
+				4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */,
 				024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
@@ -633,6 +648,7 @@
 				3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */,
 				3803B02C2425498F0076EE00 /* Reachability.m in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
+				4170C2312428D019003EA70A /* TermsAndConditionsViewController.swift in Sources */,
 				0277EA7B2426766F00941863 /* String+IsNumber.swift in Sources */,
 				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
 				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
