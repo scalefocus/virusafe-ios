@@ -11,6 +11,7 @@ import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
 import Firebase
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ])
         
         FirebaseApp.configure()
-        
+
+        IQKeyboardManager.shared().isEnabled = true
+
         return true
     }
 
