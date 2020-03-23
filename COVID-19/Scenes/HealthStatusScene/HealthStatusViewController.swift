@@ -10,8 +10,22 @@ import UIKit
 
 class HealthStatusViewController: UIViewController {
 
+    // MARK: Outlets
+
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var submitButton: UIButton!
+
+    // MARK: Actions
+
+    @IBAction func submitButtonDidTap() {
+        viewModel.didTapSubmitButton()
+    }
+
+    // MARK: View Model
+
     private let viewModel = HealthStatusViewModel()
+
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +54,18 @@ class HealthStatusViewController: UIViewController {
         
         viewModel.getHealthStatusData()
     }
+
+    // MARK: Setup UI
     
     private func setupVC() {
         title = "Здравен статус"
+
         tableView.tableFooterView = UIView()
         tableView.register(cellNames: "\(QuestionTableViewCell.self)",
-            "\(NoSymptomsTableViewCell.self)",
-            "\(SubmitTableViewCell.self)")
+            "\(NoSymptomsTableViewCell.self)")
+
+        submitButton.backgroundColor = .healthBlue
+        submitButton.layer.borderColor = UIColor.healthBlue?.cgColor
     }
 
     // MARK: Navigation
@@ -60,9 +79,13 @@ class HealthStatusViewController: UIViewController {
 
 }
 
+// MARK: UITableViewDelegate
+
 extension HealthStatusViewController: UITableViewDelegate {
     
 }
+
+// MARK: UITableViewDataSource
 
 extension HealthStatusViewController: UITableViewDataSource {
     
