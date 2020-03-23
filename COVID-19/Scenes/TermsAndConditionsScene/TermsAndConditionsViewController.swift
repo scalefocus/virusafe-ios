@@ -8,7 +8,11 @@
 
 import UIKit
 
+typealias TNCUserResponseHandler = (Bool) -> Void
+
 class TermsAndConditionsViewController: UIViewController {
+
+    var userResponseHandler: TNCUserResponseHandler?
 
     // MARK: Outlets
 
@@ -22,11 +26,11 @@ class TermsAndConditionsViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func declineButtonTap() {
-        // TODO:
+        userResponseHandler?(false)
     }
 
     @IBAction private func acceptButtonTap() {
-        // TODO:
+        userResponseHandler?(false)
     }
 
     // MARK: ViewModel

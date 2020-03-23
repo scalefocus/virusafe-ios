@@ -7,60 +7,98 @@
 //
 
 import UIKit
+import Pulsator
 
 class HomeViewController: UIViewController {
-    
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var targetUUID: UILabel!
-    @IBOutlet weak var myUUID: UILabel!
+
+    // MARK: Outlets
+
+    @IBOutlet private weak var animationBackgroundView: UIView!
+    @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var tncButton: UIButton!
+
+    // MARK: Pulsator
+
+    private let defaultPulses = 5
+    private let radiusAdjustment: CGFloat = 36
+    private let minValueForRadius: Float = 0.4
+    private let pulsator = Pulsator()
+
+    private func setupPulsatorLayer() {
+        pulsator.numPulse = defaultPulses
+        pulsator.fromValueForRadius = minValueForRadius
+        pulsator.backgroundColor = UIColor.healthBlue?.cgColor
+        animationBackgroundView.backgroundColor = .healthBlue
+    }
+
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Начален екран"
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
-                                                           style: .plain,
-                                                           target: nil,
-                                                           action: nil)
-        
-        INBeaconService.singleton()?.add(self)
-        INBeaconService.singleton()?.startDetecting()
-        INBeaconService.singleton()?.startBroadcasting()
+        localize()
+        // add pulse animation behind the button
+        startButton.layer.superlayer?.insertSublayer(pulsator, below: startButton.layer)
+        setupPulsatorLayer()
+    }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.layer.layoutIfNeeded()
+        pulsator.position = startButton.layer.position
+        pulsator.radius = startButton.bounds.width / 2 + radiusAdjustment
+        animationBackgroundView.cornerRadius =
+            animationBackgroundView.bounds.height / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        pulsator.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        pulsator.stop()
     }
 
-    @IBAction func didTapSurveyButton(_ sender: Any) {
-        let surveyViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
+    // MARK: Actions
+
+    @IBAction private func didTapSurveyButton(_ sender: Any) {
+        let surveyViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
         navigationController?.pushViewController(surveyViewController, animated: true)
+    }
+
+    @IBAction private func tncButtonTap() {
+        guard let tncViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
+            as? TermsAndConditionsViewController else {
+                assertionFailure("TermsAndConditionsViewController is not found")
+                return
+        }
+        tncViewController.userResponseHandler = { [weak self] isAgree in
+            // TODO: something based on response
+            self?.navigationController?.popViewController(animated: true)
+        }
+        // ??? Consider present modally
+        navigationController?.pushViewController(tncViewController, animated: true)
+    }
+
+    // MARK: Setup UI
+
+    private func localize() {
+        title = "Начален екран"
+        titleLabel.text = "Въведете вашите симптоми"
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
+
+        startButton.setTitle("НАЧАЛО", for: .normal)
+        tncButton.setTitle("Условия за ползване", for: .normal)
     }
     
 }
-
-extension HomeViewController: INBeaconServiceDelegate {
-    func service(_ service: INBeaconService!, foundDeviceUUID uuid: String!, with range: INDetectorRange) {
-        
-        targetUUID.text = uuid
-        myUUID.text = UIDevice.current.identifierForVendor!.uuidString
-        switch range {
-        case INDetectorRangeImmediate:
-            distanceLabel.text = "Within 1ft"
-        case INDetectorRangeNear:
-            distanceLabel.text = "Within 5ft"
-        case INDetectorRangeFar:
-            distanceLabel.text = "Within 60ft"
-        default:
-            distanceLabel.text = "Out of range"
-            targetUUID.text = ""
-        }
-    }
-}
-

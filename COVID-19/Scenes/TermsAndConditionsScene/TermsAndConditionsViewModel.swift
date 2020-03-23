@@ -12,7 +12,7 @@ import TwoWayBondage
 final class TermsAndConditionsViewModel {
     let isDeclineButtonVisible = Observable<Bool>()
 
-    private let defaultDeclineButtonVisibility = false
+    private let defaultDeclineButtonVisibility = true
 
     func setup() {
         isDeclineButtonVisible.value = defaultDeclineButtonVisibility
