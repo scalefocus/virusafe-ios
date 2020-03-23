@@ -486,6 +486,17 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     <action selector="didTapSurveyButton:" destination="RAA-pi-AAL" eventType="touchUpInside" id="l2M-t1-vKm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csY-0n-zpy">
+                                <rect key="frame" x="89.5" y="419" width="141" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Условия за ползване">
+                                    <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="0.79000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTap" destination="1bc-Q1-5oT" eventType="touchUpInside" id="UKf-he-lG0"/>
+                                    <action selector="tncButtonTap" destination="RAA-pi-AAL" eventType="touchUpInside" id="LFa-r5-CLI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -493,11 +504,13 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                             <constraint firstItem="NrZ-kf-6gH" firstAttribute="centerY" secondItem="K0x-Fv-PDp" secondAttribute="centerY" id="1r1-a5-9Lx"/>
                             <constraint firstItem="K0x-Fv-PDp" firstAttribute="centerY" secondItem="TdR-W7-KN8" secondAttribute="centerY" id="24N-ml-71Q"/>
                             <constraint firstItem="zZW-Ca-q5B" firstAttribute="centerY" secondItem="TdR-W7-KN8" secondAttribute="centerY" multiplier="0.3" id="2VM-sR-yeF"/>
+                            <constraint firstItem="csY-0n-zpy" firstAttribute="centerX" secondItem="KVh-68-OXX" secondAttribute="centerX" id="3Yd-0w-UYy"/>
                             <constraint firstItem="NrZ-kf-6gH" firstAttribute="centerX" secondItem="K0x-Fv-PDp" secondAttribute="centerX" id="Q0l-C0-tcp"/>
                             <constraint firstItem="TdR-W7-KN8" firstAttribute="trailing" secondItem="zZW-Ca-q5B" secondAttribute="trailing" constant="20" id="gV4-hA-ctD"/>
                             <constraint firstItem="zZW-Ca-q5B" firstAttribute="leading" secondItem="TdR-W7-KN8" secondAttribute="leading" constant="20" id="r5O-AN-TEQ"/>
                             <constraint firstItem="K0x-Fv-PDp" firstAttribute="centerX" secondItem="TdR-W7-KN8" secondAttribute="centerX" id="t5a-kr-vvE"/>
                             <constraint firstItem="K0x-Fv-PDp" firstAttribute="width" secondItem="KVh-68-OXX" secondAttribute="width" multiplier="2:3" id="wUL-yM-XtA"/>
+                            <constraint firstItem="TdR-W7-KN8" firstAttribute="bottom" secondItem="csY-0n-zpy" secondAttribute="bottom" constant="32" id="yVi-b9-yqY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TdR-W7-KN8"/>
                     </view>
@@ -505,6 +518,8 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                     <connections>
                         <outlet property="animationBackgroundView" destination="NrZ-kf-6gH" id="TyL-y6-SGI"/>
                         <outlet property="startButton" destination="K0x-Fv-PDp" id="656-Po-jex"/>
+                        <outlet property="titleLabel" destination="zZW-Ca-q5B" id="MUV-jz-BiM"/>
+                        <outlet property="tncButton" destination="csY-0n-zpy" id="DIL-7i-pnR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRK-yU-gmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,33 +15,31 @@ class HomeViewController: UIViewController {
 
     @IBOutlet private weak var animationBackgroundView: UIView!
     @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var tncButton: UIButton!
 
     // MARK: Pulsator
 
     private let defaultPulses = 5
     private let radiusAdjustment: CGFloat = 36
+    private let minValueForRadius: Float = 0.4
     private let pulsator = Pulsator()
+
+    private func setupPulsatorLayer() {
+        pulsator.numPulse = defaultPulses
+        pulsator.fromValueForRadius = minValueForRadius
+        pulsator.backgroundColor = UIColor.healthBlue?.cgColor
+        animationBackgroundView.backgroundColor = .healthBlue
+    }
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Начален екран"
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
-                                                           style: .plain,
-                                                           target: nil,
-                                                           action: nil)
-
-        startButton.setTitle("НАЧАЛО", for: .normal)
-
-        // Add pulsator
+        localize()
+        // add pulse animation behind the button
         startButton.layer.superlayer?.insertSublayer(pulsator, below: startButton.layer)
-        // setup
-        pulsator.numPulse = defaultPulses
-        pulsator.fromValueForRadius = 0.4
-        pulsator.keyTimeForHalfOpacity = 0
-        pulsator.backgroundColor = UIColor.healthBlue?.cgColor
-        animationBackgroundView.backgroundColor = .healthBlue
+        setupPulsatorLayer()
     }
 
     override func viewDidLayoutSubviews() {
@@ -49,7 +47,8 @@ class HomeViewController: UIViewController {
         view.layer.layoutIfNeeded()
         pulsator.position = startButton.layer.position
         pulsator.radius = startButton.bounds.width / 2 + radiusAdjustment
-        animationBackgroundView.cornerRadius = animationBackgroundView.bounds.height / 2
+        animationBackgroundView.cornerRadius =
+            animationBackgroundView.bounds.height / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +70,35 @@ class HomeViewController: UIViewController {
             .instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
         navigationController?.pushViewController(surveyViewController, animated: true)
     }
+
+    @IBAction private func tncButtonTap() {
+        guard let tncViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
+            as? TermsAndConditionsViewController else {
+                assertionFailure("TermsAndConditionsViewController is not found")
+                return
+        }
+        tncViewController.userResponseHandler = { [weak self] isAgree in
+            // TODO: something based on response
+            self?.navigationController?.popViewController(animated: true)
+        }
+        // ??? Consider present modally
+        navigationController?.pushViewController(tncViewController, animated: true)
+    }
+
+    // MARK: Setup UI
+
+    private func localize() {
+        title = "Начален екран"
+        titleLabel.text = "Въведете вашите симптоми"
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
+
+        startButton.setTitle("НАЧАЛО", for: .normal)
+        tncButton.setTitle("Условия за ползване", for: .normal)
+    }
     
 }
-
