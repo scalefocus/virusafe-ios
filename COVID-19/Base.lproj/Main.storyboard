@@ -472,8 +472,94 @@
             </objects>
             <point key="canvasLocation" x="1739" y="136"/>
         </scene>
+        <!--Confirmation View Controller-->
+        <scene sceneID="ML1-p8-7H0">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmationViewController" id="1bc-Q1-5oT" customClass="ConfirmationViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7eE-vB-Kig">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdD-jT-ElX">
+                                <rect key="frame" x="52.5" y="302" width="309" height="292"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="0Y8-7h-pGh">
+                                        <rect key="frame" x="20" y="20" width="269" height="252"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check-circle-light" translatesAutoresizingMaskIntoConstraints="NO" id="YGS-2P-0Hd">
+                                                <rect key="frame" x="94" y="0.0" width="81" height="81"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="81" id="Cvk-Bp-0bb"/>
+                                                    <constraint firstAttribute="width" secondItem="YGS-2P-0Hd" secondAttribute="height" multiplier="1:1" id="PJI-SV-NBw"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CuF-pB-3DS">
+                                                <rect key="frame" x="0.0" y="113" width="269" height="139"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Готово!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEn-Dy-qaF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="269" height="36"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Благодарим ви, че сте отговорни!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDc-bQ-Kup">
+                                                        <rect key="frame" x="0.0" y="44" width="269" height="95"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0Y8-7h-pGh" secondAttribute="trailing" constant="20" symbolic="YES" id="ia7-gi-i8P"/>
+                                    <constraint firstItem="0Y8-7h-pGh" firstAttribute="leading" secondItem="wdD-jT-ElX" secondAttribute="leading" constant="20" symbolic="YES" id="lB6-fe-CiH"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Y8-7h-pGh" secondAttribute="bottom" constant="20" symbolic="YES" id="mo7-ad-e0U"/>
+                                    <constraint firstItem="0Y8-7h-pGh" firstAttribute="top" secondItem="wdD-jT-ElX" secondAttribute="top" constant="20" symbolic="YES" id="vLr-Z2-Twr"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-tm-Og3">
+                                <rect key="frame" x="186" y="801" width="42" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Назад">
+                                    <color key="titleColor" red="0.23529411764705882" green="0.5490196078431373" blue="0.90588235294117647" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTap" destination="1bc-Q1-5oT" eventType="touchUpInside" id="qkT-Eb-JRC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dHW-tm-Og3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wdD-jT-ElX" secondAttribute="bottom" constant="32" id="1zo-uU-7He"/>
+                            <constraint firstItem="wdD-jT-ElX" firstAttribute="centerY" secondItem="7eE-vB-Kig" secondAttribute="centerY" id="F9s-Za-P59"/>
+                            <constraint firstItem="rEn-Dy-qaF" firstAttribute="centerX" secondItem="JjR-c7-cb3" secondAttribute="centerX" id="KWv-ha-tzl"/>
+                            <constraint firstItem="dHW-tm-Og3" firstAttribute="centerX" secondItem="7eE-vB-Kig" secondAttribute="centerX" id="QQf-xE-Uut"/>
+                            <constraint firstItem="JjR-c7-cb3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wdD-jT-ElX" secondAttribute="trailing" id="QbI-D6-4py"/>
+                            <constraint firstItem="wdD-jT-ElX" firstAttribute="centerX" secondItem="7eE-vB-Kig" secondAttribute="centerX" id="d8b-Fx-K00"/>
+                            <constraint firstItem="JjR-c7-cb3" firstAttribute="bottom" secondItem="dHW-tm-Og3" secondAttribute="bottom" constant="32" id="hBM-Kd-s92"/>
+                            <constraint firstItem="wdD-jT-ElX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JjR-c7-cb3" secondAttribute="leading" id="r8C-5g-nQA"/>
+                            <constraint firstItem="rEn-Dy-qaF" firstAttribute="centerY" secondItem="JjR-c7-cb3" secondAttribute="centerY" id="xcZ-hs-lKC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JjR-c7-cb3"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="dHW-tm-Og3" id="ag2-Fz-9iM"/>
+                        <outlet property="iconImageView" destination="YGS-2P-0Hd" id="Ri8-te-ZOP"/>
+                        <outlet property="textLabel" destination="VDc-bQ-Kup" id="9lh-Wl-qBL"/>
+                        <outlet property="titleLabel" destination="rEn-Dy-qaF" id="ff5-62-gki"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ppp-HS-l9R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2574" y="142"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="check-circle-light" width="384" height="384"/>
         <image name="logo" width="150" height="208"/>
         <image name="start_button" width="255" height="255"/>
         <image name="user" width="336" height="384"/>
