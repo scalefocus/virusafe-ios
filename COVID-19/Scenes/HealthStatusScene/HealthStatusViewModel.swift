@@ -13,7 +13,6 @@ class HealthStatusViewModel {
     
     typealias NoSymptomsCellConfigurator = BaseViewConfigurator<NoSymptomsTableViewCell>
     typealias QuestionCellConfigurator = BaseViewConfigurator<QuestionTableViewCell>
-    typealias SubmitCellConfigurator = BaseViewConfigurator<SubmitTableViewCell>
     
     private var configurators: [ViewConfigurator] = []
     private var healthStatusData: HealthStatus?
@@ -62,7 +61,7 @@ class HealthStatusViewModel {
         shouldReloadData.value = true
     }
     
-    private func didTapSubmitButton() {
+    func didTapSubmitButton() {
         isLeavingScreenAvailable.value = !hasEmptyFields
     }
     
@@ -98,10 +97,6 @@ class HealthStatusViewModel {
                                                                  hasSymptoms: hasSymptoms)
                         })))
                 }
-                
-                configurators.append(SubmitCellConfigurator(data: { [weak self] in
-                    self?.didTapSubmitButton()
-                }))
 
                 shouldReloadData.value = true
             } catch {

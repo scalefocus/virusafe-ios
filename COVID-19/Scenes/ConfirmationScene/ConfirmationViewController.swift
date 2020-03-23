@@ -57,7 +57,7 @@ final class ConfirmationViewController: UIViewController {
     private func localize() {
         title = "Готово!"
         titleLabel.text = "Готово!"
-        textLabel.text = "Благодарим ви, че сте отговорни!"
+        textLabel.text = "Благодарим Ви, че сте отговорни!"
         backButton.setTitle("Назад", for: .normal)
     }
 

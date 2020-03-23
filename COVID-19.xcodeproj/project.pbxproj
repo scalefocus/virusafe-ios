@@ -15,8 +15,6 @@
 		024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */; };
 		024D82E32423A80400696868 /* HealthStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = 024D82E22423A80400696868 /* HealthStatus.json */; };
 		024D82E82423A84200696868 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
-		024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E92423B67100696868 /* SubmitTableViewCell.swift */; };
-		024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82EA2423B67100696868 /* SubmitTableViewCell.xib */; };
 		024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82ED2423F70A00696868 /* Array+SafeAt.swift */; };
 		024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */; };
 		024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F22424AA3400696868 /* TextField+SetImage.swift */; };
@@ -82,8 +80,6 @@
 		024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoSymptomsTableViewCell.xib; sourceTree = "<group>"; };
 		024D82E22423A80400696868 /* HealthStatus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HealthStatus.json; sourceTree = "<group>"; };
 		024D82E72423A84200696868 /* HealthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatus.swift; sourceTree = "<group>"; };
-		024D82E92423B67100696868 /* SubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTableViewCell.swift; sourceTree = "<group>"; };
-		024D82EA2423B67100696868 /* SubmitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitTableViewCell.xib; sourceTree = "<group>"; };
 		024D82ED2423F70A00696868 /* Array+SafeAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAt.swift"; sourceTree = "<group>"; };
 		024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
 		024D82F22424AA3400696868 /* TextField+SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+SetImage.swift"; sourceTree = "<group>"; };
@@ -208,8 +204,6 @@
 				024D82D924239AE100696868 /* QuestionTableViewCell.xib */,
 				024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */,
 				024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */,
-				024D82E92423B67100696868 /* SubmitTableViewCell.swift */,
-				024D82EA2423B67100696868 /* SubmitTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -547,7 +541,6 @@
 				024D82E32423A80400696868 /* HealthStatus.json in Resources */,
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
-				024D82EC2423B67100696868 /* SubmitTableViewCell.xib in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
 			);
@@ -619,7 +612,6 @@
 				024D82F92424E9A900696868 /* RegistrationConfirmationViewModel.swift in Sources */,
 				024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */,
 				4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */,
-				024D82EB2423B67100696868 /* SubmitTableViewCell.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
 				3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */,
