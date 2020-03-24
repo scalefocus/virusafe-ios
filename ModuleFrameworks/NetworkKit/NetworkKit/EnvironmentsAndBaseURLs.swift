@@ -31,12 +31,7 @@ public protocol EnvironmentInterface {
 
 public typealias BaseURL = String
 public protocol BaseURLs {
-    var news: BaseURL { get set }
-    var events: BaseURL { get set }
-    var version: BaseURL { get set }
-    var marketsData: BaseURL { get set }
-    var companyData: BaseURL { get set }
-    var home: BaseURL { get set }
+    var base: BaseURL { get set }
 }
 
 public typealias APITrustPolicies = [String: NetworkServerTrustPolicy]
@@ -66,12 +61,7 @@ struct DevEnvironment: EnvironmentInterface {
 }
 
 struct DevBaseURLs: BaseURLs {
-    var news = "https://mira-mobile-app.azurewebsites.net"
-    var events = "https://mira-mobile-app.azurewebsites.net"
-    var version = "https://mira-mobile-app.azurewebsites.net"
-    var marketsData = "https://mira-mobile-app.azurewebsites.net"
-    var companyData = "https://mira-mobile-app.azurewebsites.net"
-    var home = "https://mira-mobile-app.azurewebsites.net"
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
 }
 
 /*************************************/
@@ -85,12 +75,7 @@ struct StageEnvironment: EnvironmentInterface {
 }
 
 struct StageBaseURLs: BaseURLs {
-    var news = "https://mira-backend-app.azurewebsites.net"
-    var events = "https://mira-backend-app.azurewebsites.net"
-    var version = "https://mira-backend-app.azurewebsites.net"
-    var marketsData = "https://mira-backend-app.azurewebsites.net"
-    var companyData = "https://mira-backend-app.azurewebsites.net"
-    var home = "https://mira-backend-app.azurewebsites.net"
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
 }
 
 /*************************************/
@@ -104,10 +89,5 @@ struct LiveEnvironment: EnvironmentInterface {
 }
 
 struct LiveBaseURLs: BaseURLs {
-    var news = "https://mira-test-app.azurewebsites.net"
-    var events = "https://mira-test-app.azurewebsites.net"
-    var version = "https://mira-test-app.azurewebsites.net"
-    var marketsData = "https://mira-test-app.azurewebsites.net"
-    var companyData = "https://mira-test-app.azurewebsites.net"
-    var home = "https://mira-test-app.azurewebsites.net"
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
 }
