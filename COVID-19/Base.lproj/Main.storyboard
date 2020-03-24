@@ -373,6 +373,9 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                                         <state key="normal" title="Не получих код">
                                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="resetCodeButtonDidTap:" destination="WsH-WO-90p" eventType="touchUpInside" id="7e8-vv-CMY"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
