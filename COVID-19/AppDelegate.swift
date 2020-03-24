@@ -19,6 +19,7 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var locationManager: CLLocationManager?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -37,6 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
+        }
+        
+        locationManager = CLLocationManager()
+        locationManager?.requestAlwaysAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager?.delegate = self
+            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager?.startUpdatingLocation()
         }
         
         IQKeyboardManager.shared().isEnabled = true
@@ -84,4 +94,27 @@ extension AppDelegate: MessagingDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
+}
+
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .denied {
+            //Do Stuff
+        }
+        else if status == .authorizedWhenInUse {
+            //Do Stuff
+        }
+        else if status == .restricted {
+            //Do Stuff
+        }
+        else if status == .authorizedAlways {
+            //Do Stuff
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
 }
