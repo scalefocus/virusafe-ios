@@ -256,6 +256,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="IGo-bX-qna" firstAttribute="width" secondItem="rWI-59-RgV" secondAttribute="width" multiplier="0.852941" id="KIy-jV-KKA"/>
                                     <constraint firstItem="fAH-sg-u70" firstAttribute="leading" secondItem="rWI-59-RgV" secondAttribute="leading" constant="20" symbolic="YES" id="VXi-Kg-cF3"/>
                                     <constraint firstAttribute="bottom" secondItem="fAH-sg-u70" secondAttribute="bottom" id="fn6-vc-dWB"/>
                                     <constraint firstItem="fAH-sg-u70" firstAttribute="top" secondItem="rWI-59-RgV" secondAttribute="top" constant="20" symbolic="YES" id="rp8-IF-0XP"/>
@@ -265,9 +266,8 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rWI-59-RgV" secondAttribute="trailing" constant="24" id="4VA-gv-4Va"/>
                             <constraint firstItem="rWI-59-RgV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="VYA-aj-pon"/>
-                            <constraint firstItem="rWI-59-RgV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="gP6-Kv-c11"/>
+                            <constraint firstItem="rWI-59-RgV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-48" id="hT2-23-Jlb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rWI-59-RgV" secondAttribute="bottom" constant="32" id="rOu-k8-MlH"/>
                             <constraint firstItem="rWI-59-RgV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ujk-fZ-4bv"/>
                             <constraint firstItem="rWI-59-RgV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wgy-2T-C0V"/>
