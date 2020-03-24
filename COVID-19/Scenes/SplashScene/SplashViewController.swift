@@ -92,10 +92,12 @@ extension SplashViewController {
             let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue
             let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "ios_latest_app_version").stringValue
             
+            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+            
             PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
-                                                               minimumVersionNeeded: "2",
+                                                             minimumVersionNeeded: currentAppVersion!,
                                                                urlToOpen: "https://www.upnetix.com/",
-                                                               currentVersion: currentAppVersion,
+                                                               currentVersion: appVersion,
                                                                window: UIApplication.shared.keyWindow,
                                                                alertTitle: "Нова версия",
                                                                alertDescription: "Има подобрения по приложението, моля свалете новата версия",
