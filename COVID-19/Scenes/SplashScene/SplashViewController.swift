@@ -89,8 +89,8 @@ extension SplashViewController {
         RemoteConfig.remoteConfig().activate()
         
         if status == .success {
-            let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "is_mandatory").boolValue
-            let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "latest_app_version").stringValue
+            let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue
+            let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "ios_latest_app_version").stringValue
             
             PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
                                                                minimumVersionNeeded: "2",
