@@ -18,6 +18,8 @@ class RegistrationViewController: UIViewController {
     @IBOutlet private weak var phoneNumberTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var checkBox: CheckBox!
+    @IBOutlet private weak var tncButton: UIButton!
 
     // MARK: Settings
 
@@ -38,7 +40,7 @@ class RegistrationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        IQKeyboardManager.shared().keyboardDistanceFromTextField = 80
+        IQKeyboardManager.shared().keyboardDistanceFromTextField = 120
         IQKeyboardManager.shared().isEnableAutoToolbar = false
     }
 
@@ -119,20 +121,49 @@ class RegistrationViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func didTapRegisterButton(_ sender: Any) {
-        guard let phoneNumber = phoneNumberTextField.text else { return }
-        
-        if phoneNumber.count < 5 {
+        guard let phoneNumber = phoneNumberTextField.text, phoneNumber.count >= 5 else {
             errorLabel.isHidden = false
             errorLabel.text = "Невалидна дължина"
             return
-        } else if !phoneNumber.isPhoneNumber {
+        }
+
+        guard phoneNumber.isPhoneNumber else {
             errorLabel.isHidden = false
             errorLabel.text = "Невалиден формат"
             return
-        } else {
-            errorLabel.isHidden = true
-            viewModel.didTapRegistration(with: phoneNumber)
         }
+
+        errorLabel.isHidden = true
+
+        guard checkBox.isSelected else {
+            let alert = UIAlertController(title: "Внимание",
+                                          message: "За да бъде запазена регистрацията Ви е необходимо да сте съгласни с Общите условия на приложението.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Добре", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
+        viewModel.didTapRegistration(with: phoneNumber)
+    }
+
+    @IBAction private func checkBoxDidTap() {
+        checkBox.isSelected = !checkBox.isSelected
+    }
+
+    @IBAction private func tncButtonDidTap() {
+        guard let tncViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
+            as? TermsAndConditionsViewController else {
+                assertionFailure("TermsAndConditionsViewController is not found")
+                return
+        }
+        tncViewController.viewModel = TermsAndConditionsViewModel(isAcceptButtonVisible: !checkBox.isSelected)
+        tncViewController.userResponseHandler = { [weak self] isAgree in
+            self?.checkBox.isSelected = isAgree
+            self?.navigationController?.popViewController(animated: false)
+        }
+        navigationController?.pushViewController(tncViewController, animated: true)
     }
     
 }
