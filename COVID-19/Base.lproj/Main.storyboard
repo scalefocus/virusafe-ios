@@ -142,10 +142,10 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWI-59-RgV">
-                                <rect key="frame" x="24" y="68.5" width="272" height="343"/>
+                                <rect key="frame" x="24" y="70" width="272" height="340"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="fAH-sg-u70">
-                                        <rect key="frame" x="20" y="20" width="232" height="323"/>
+                                        <rect key="frame" x="20" y="20" width="232" height="320"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="zz4-lc-3yS">
                                                 <rect key="frame" x="76" y="0.0" width="80" height="80"/>
@@ -182,17 +182,16 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vUY-xw-4Nm">
-                                                <rect key="frame" x="0.0" y="232" width="232" height="27"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUY-xw-4Nm">
+                                                <rect key="frame" x="0.0" y="232" width="232" height="24"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SX0-C0-QDC">
-                                                        <rect key="frame" x="0.0" y="1.5" width="128" height="24"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="24"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOT-v8-P0i" customClass="CheckBox" customModule="COVID_19" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="xOT-v8-P0i" secondAttribute="height" multiplier="1:1" id="ba2-km-9eY"/>
-                                                                    <constraint firstAttribute="height" constant="24" id="l1c-3w-XzB"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
                                                                 <connections>
@@ -207,8 +206,8 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdH-aT-Xjs">
-                                                        <rect key="frame" x="128" y="0.0" width="104" height="27"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdH-aT-Xjs">
+                                                        <rect key="frame" x="128" y="0.0" width="96" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <state key="normal" title="общите условия">
                                                             <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="0.79000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -217,10 +216,17 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                                             <action selector="tncButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="PPr-IM-LQZ"/>
                                                         </connections>
                                                     </button>
+                                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIN-pi-jSR">
+                                                        <rect key="frame" x="224" y="0.0" width="8" height="24"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="TQe-EC-hbH"/>
+                                                </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-zi-hQ2">
-                                                <rect key="frame" x="0.0" y="283" width="232" height="40"/>
+                                                <rect key="frame" x="0.0" y="280" width="232" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="3am-cz-4Bg"/>
                                                 </constraints>
