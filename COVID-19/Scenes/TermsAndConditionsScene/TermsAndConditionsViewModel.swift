@@ -10,11 +10,13 @@ import Foundation
 import TwoWayBondage
 
 final class TermsAndConditionsViewModel {
-    let isDeclineButtonVisible = Observable<Bool>()
 
-    private let defaultDeclineButtonVisibility = true
+    let isAcceptButtonVisible: Bool
 
-    func setup() {
-        isDeclineButtonVisible.value = defaultDeclineButtonVisibility
+    private let defaultAcceptButtonVisibility = true
+
+    init(isAcceptButtonVisible: Bool) {
+        self.isAcceptButtonVisible = isAcceptButtonVisible
     }
+
 }

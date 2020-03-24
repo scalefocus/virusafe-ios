@@ -69,109 +69,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPu-hO-7hp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Xkf-OI-5V6">
+                                <rect key="frame" x="24" y="32" width="264" height="424"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Условия за ползване" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3rd-Gr-qgf">
-                                        <rect key="frame" x="24" y="24" width="272" height="69.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Условия за ползване" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rd-Gr-qgf">
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="72"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="3rd-Gr-qgf" firstAttribute="top" secondItem="CPu-hO-7hp" secondAttribute="top" constant="24" id="7s0-ud-2Ys"/>
-                                </constraints>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l3p-09-nEQ">
-                                <rect key="frame" x="24" y="117.5" width="272" height="362.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="44"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l3p-09-nEQ">
+                                        <rect key="frame" x="0.0" y="96" width="264" height="264"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="44"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.
 
 Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.
 
 Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.
 
 Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIb-uL-Ac5">
-                                <rect key="frame" x="0.0" y="428" width="320" height="52"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="xOA-iD-3kE">
-                                        <rect key="frame" x="20" y="8" width="280" height="36"/>
-                                        <subviews>
-                                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyj-m6-Rdi">
-                                                <rect key="frame" x="0.0" y="0.0" width="15" height="36"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0K-sq-rPV">
-                                                <rect key="frame" x="31" y="0.0" width="83" height="36"/>
-                                                <state key="normal" title="Отказвам">
-                                                    <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="0.79000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="declineButtonTap" destination="mne-uS-Grr" eventType="touchUpInside" id="Dyi-Oy-vCy"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8z-Jy-15f">
-                                                <rect key="frame" x="130" y="0.0" width="150" height="36"/>
-                                                <color key="backgroundColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="yul-ss-nJd"/>
-                                                </constraints>
-                                                <inset key="contentEdgeInsets" minX="16" minY="4" maxX="16" maxY="4"/>
-                                                <state key="normal" title="Съгласен съм"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="16"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="acceptButtonTap" destination="mne-uS-Grr" eventType="touchUpInside" id="tBI-1h-DtN"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8z-Jy-15f">
+                                        <rect key="frame" x="0.0" y="384" width="264" height="40"/>
+                                        <color key="backgroundColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="N3d-I1-Jgb"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="16" minY="4" maxX="16" maxY="4"/>
+                                        <state key="normal" title="Съгласен съм"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="acceptButtonTap" destination="mne-uS-Grr" eventType="touchUpInside" id="tBI-1h-DtN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="xOA-iD-3kE" firstAttribute="leading" secondItem="LIb-uL-Ac5" secondAttribute="leading" constant="20" symbolic="YES" id="Hn5-T8-zSp"/>
-                                    <constraint firstAttribute="bottom" secondItem="xOA-iD-3kE" secondAttribute="bottom" constant="8" id="TeU-Dr-AaW"/>
-                                    <constraint firstItem="xOA-iD-3kE" firstAttribute="top" secondItem="LIb-uL-Ac5" secondAttribute="top" constant="8" id="kDT-FA-wl9"/>
-                                    <constraint firstAttribute="trailing" secondItem="xOA-iD-3kE" secondAttribute="trailing" constant="20" symbolic="YES" id="wpi-8E-x5h"/>
-                                </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Eh0-6j-3IB" firstAttribute="trailing" secondItem="LIb-uL-Ac5" secondAttribute="trailing" id="6hF-UM-oFy"/>
-                            <constraint firstItem="Eh0-6j-3IB" firstAttribute="bottom" secondItem="LIb-uL-Ac5" secondAttribute="bottom" id="7oe-dr-gqg"/>
-                            <constraint firstItem="l3p-09-nEQ" firstAttribute="leading" secondItem="3rd-Gr-qgf" secondAttribute="leading" id="DYN-dJ-Nbj"/>
-                            <constraint firstItem="Eh0-6j-3IB" firstAttribute="trailing" secondItem="CPu-hO-7hp" secondAttribute="trailing" id="Gio-jO-4rC"/>
-                            <constraint firstItem="CPu-hO-7hp" firstAttribute="height" secondItem="QGw-z7-clI" secondAttribute="height" multiplier="1:3" id="RT3-FJ-jz8"/>
-                            <constraint firstItem="l3p-09-nEQ" firstAttribute="top" secondItem="3rd-Gr-qgf" secondAttribute="bottom" constant="24" id="UOt-uT-9bW"/>
-                            <constraint firstItem="Eh0-6j-3IB" firstAttribute="trailing" secondItem="l3p-09-nEQ" secondAttribute="trailing" constant="24" id="Z5l-J6-0vn"/>
-                            <constraint firstItem="Eh0-6j-3IB" firstAttribute="bottom" secondItem="l3p-09-nEQ" secondAttribute="bottom" id="exU-Nv-EZJ"/>
-                            <constraint firstItem="CPu-hO-7hp" firstAttribute="leading" secondItem="Eh0-6j-3IB" secondAttribute="leading" id="otl-0s-8xS"/>
-                            <constraint firstItem="l3p-09-nEQ" firstAttribute="leading" secondItem="Eh0-6j-3IB" secondAttribute="leading" constant="24" id="pWK-X4-hBu"/>
-                            <constraint firstItem="l3p-09-nEQ" firstAttribute="trailing" secondItem="3rd-Gr-qgf" secondAttribute="trailing" id="wOj-r5-dc2"/>
-                            <constraint firstItem="LIb-uL-Ac5" firstAttribute="leading" secondItem="Eh0-6j-3IB" secondAttribute="leading" id="xqt-bA-blu"/>
-                            <constraint firstItem="CPu-hO-7hp" firstAttribute="top" secondItem="Eh0-6j-3IB" secondAttribute="top" id="yGo-FI-l6M"/>
+                            <constraint firstItem="Eh0-6j-3IB" firstAttribute="trailing" secondItem="Xkf-OI-5V6" secondAttribute="trailing" constant="32" id="CzK-9f-Cq4"/>
+                            <constraint firstItem="Xkf-OI-5V6" firstAttribute="leading" secondItem="Eh0-6j-3IB" secondAttribute="leading" constant="24" id="FOt-Ne-Rpj"/>
+                            <constraint firstItem="Xkf-OI-5V6" firstAttribute="top" secondItem="Eh0-6j-3IB" secondAttribute="top" constant="32" id="UN0-aV-AfT"/>
+                            <constraint firstAttribute="bottom" secondItem="Xkf-OI-5V6" secondAttribute="bottom" constant="24" id="y5I-qP-lad"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Eh0-6j-3IB"/>
                     </view>
                     <connections>
                         <outlet property="acceptButton" destination="K8z-Jy-15f" id="BcZ-wB-RjT"/>
                         <outlet property="contentTextView" destination="l3p-09-nEQ" id="y54-BU-OWM"/>
-                        <outlet property="declineButton" destination="s0K-sq-rPV" id="PTG-J5-TkE"/>
-                        <outlet property="headerView" destination="CPu-hO-7hp" id="z2F-G6-YJd"/>
                         <outlet property="titleLabel" destination="3rd-Gr-qgf" id="40S-g2-mNz"/>
-                        <outlet property="toolbarView" destination="LIb-uL-Ac5" id="GkC-cU-4y4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="an4-IR-UbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -187,10 +142,10 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWI-59-RgV">
-                                <rect key="frame" x="24" y="94" width="272" height="292"/>
+                                <rect key="frame" x="24" y="68.5" width="272" height="343"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="fAH-sg-u70">
-                                        <rect key="frame" x="20" y="20" width="232" height="272"/>
+                                        <rect key="frame" x="20" y="20" width="232" height="323"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="zz4-lc-3yS">
                                                 <rect key="frame" x="76" y="0.0" width="80" height="80"/>
@@ -227,8 +182,45 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vUY-xw-4Nm">
+                                                <rect key="frame" x="0.0" y="232" width="232" height="27"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SX0-C0-QDC">
+                                                        <rect key="frame" x="0.0" y="1.5" width="128" height="24"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOT-v8-P0i" customClass="CheckBox" customModule="COVID_19" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="xOT-v8-P0i" secondAttribute="height" multiplier="1:1" id="ba2-km-9eY"/>
+                                                                    <constraint firstAttribute="height" constant="24" id="l1c-3w-XzB"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <connections>
+                                                                    <action selector="checkBoxDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="iFM-r9-2bD"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Съгласен съм с " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUb-qC-PVV">
+                                                                <rect key="frame" x="32" y="0.0" width="96" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdH-aT-Xjs">
+                                                        <rect key="frame" x="128" y="0.0" width="104" height="27"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <state key="normal" title="общите условия">
+                                                            <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="0.79000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="tncButtonDidTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="PPr-IM-LQZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-zi-hQ2">
-                                                <rect key="frame" x="0.0" y="232" width="232" height="40"/>
+                                                <rect key="frame" x="0.0" y="283" width="232" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="3am-cz-4Bg"/>
                                                 </constraints>
@@ -251,11 +243,13 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="5qw-zi-hQ2" firstAttribute="width" secondItem="IGo-bX-qna" secondAttribute="width" id="L7T-w1-nxO"/>
+                                            <constraint firstItem="vUY-xw-4Nm" firstAttribute="width" secondItem="fAH-sg-u70" secondAttribute="width" id="j3n-Pq-9ot"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="IGo-bX-qna" firstAttribute="width" secondItem="rWI-59-RgV" secondAttribute="width" multiplier="0.852941" id="KIy-jV-KKA"/>
                                     <constraint firstItem="fAH-sg-u70" firstAttribute="leading" secondItem="rWI-59-RgV" secondAttribute="leading" constant="20" symbolic="YES" id="VXi-Kg-cF3"/>
                                     <constraint firstAttribute="bottom" secondItem="fAH-sg-u70" secondAttribute="bottom" id="fn6-vc-dWB"/>
                                     <constraint firstItem="fAH-sg-u70" firstAttribute="top" secondItem="rWI-59-RgV" secondAttribute="top" constant="20" symbolic="YES" id="rp8-IF-0XP"/>
@@ -265,9 +259,8 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rWI-59-RgV" secondAttribute="trailing" constant="24" id="4VA-gv-4Va"/>
                             <constraint firstItem="rWI-59-RgV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="VYA-aj-pon"/>
-                            <constraint firstItem="rWI-59-RgV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="gP6-Kv-c11"/>
+                            <constraint firstItem="rWI-59-RgV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-48" id="hT2-23-Jlb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rWI-59-RgV" secondAttribute="bottom" constant="32" id="rOu-k8-MlH"/>
                             <constraint firstItem="rWI-59-RgV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ujk-fZ-4bv"/>
                             <constraint firstItem="rWI-59-RgV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wgy-2T-C0V"/>
@@ -276,10 +269,12 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                     </view>
                     <navigationItem key="navigationItem" id="TLA-ye-sbJ"/>
                     <connections>
+                        <outlet property="checkBox" destination="xOT-v8-P0i" id="YeH-hY-9Yd"/>
                         <outlet property="confirmButton" destination="5qw-zi-hQ2" id="ZE3-eI-lir"/>
                         <outlet property="errorLabel" destination="9IQ-cs-16b" id="gJb-vU-KF7"/>
                         <outlet property="iconImageView" destination="zz4-lc-3yS" id="2uK-0f-5oH"/>
                         <outlet property="phoneNumberTextField" destination="DDF-X8-k3m" id="FkJ-eu-0dc"/>
+                        <outlet property="tncButton" destination="HdH-aT-Xjs" id="6xc-5w-CKG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -378,6 +373,9 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                                         <state key="normal" title="Не получих код">
                                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="resetCodeButtonDidTap:" destination="WsH-WO-90p" eventType="touchUpInside" id="7e8-vv-CMY"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -430,7 +428,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Въведете вашите симптоми" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZW-Ca-q5B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Въведете вашите симптоми" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZW-Ca-q5B">
                                 <rect key="frame" x="20" y="36" width="280" height="72"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
