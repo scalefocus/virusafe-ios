@@ -120,9 +120,9 @@ class RegistrationConfirmationViewController: UIViewController {
 
     // MARK: Actions
 
-//    @IBAction private func didTapEditButton(_ sender: Any) {
-//        navigationController?.popViewController(animated: true)
-//    }
+    @IBAction private func resetCodeButtonDidTap (_ sender: Any) {
+        showToast(message: "Кода беше изпратен успешно")
+    }
     
     @IBAction private func didTapConfirmButton(_ sender: Any) {
         guard let authorizationCode = verificationCodeTextField.text else { return }
@@ -143,6 +143,8 @@ class RegistrationConfirmationViewController: UIViewController {
     
 }
 
+// MARK: UITextFieldDelegate
+
 extension RegistrationConfirmationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
@@ -151,3 +153,7 @@ extension RegistrationConfirmationViewController: UITextFieldDelegate {
         return newString.length <= maximumValidationCodeLength
     }
 }
+
+// MARK: ToastViewPresentable
+
+extension RegistrationConfirmationViewController: ToastViewPresentable {}

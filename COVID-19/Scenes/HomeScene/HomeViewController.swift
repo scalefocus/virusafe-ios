@@ -80,11 +80,10 @@ class HomeViewController: UIViewController {
                 assertionFailure("TermsAndConditionsViewController is not found")
                 return
         }
-        tncViewController.userResponseHandler = { [weak self] isAgree in
-            // TODO: something based on response
-            self?.navigationController?.popViewController(animated: true)
+        tncViewController.viewModel = TermsAndConditionsViewModel(isAcceptButtonVisible: true)
+        tncViewController.userResponseHandler = { [weak self] _ in
+            self?.navigationController?.popViewController(animated: false)
         }
-        // ??? Consider present modally
         navigationController?.pushViewController(tncViewController, animated: true)
     }
 

@@ -73,9 +73,13 @@ extension SplashViewController {
     }
     
     func fetchCloudValues() {
-      // WARNING: Don't actually do this in production!
-      let fetchDuration: TimeInterval = 0
-      RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { status, error in
+        // WARNING: Don't actually do this in production!
+        let fetchDuration: TimeInterval = 0
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        
+        RemoteConfig.remoteConfig().configSettings = settings
+        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { status, error in
 
         if let error = error {
           print("Uh-oh. Got an error fetching remote values \(error)")
@@ -85,8 +89,8 @@ extension SplashViewController {
         RemoteConfig.remoteConfig().activate()
         
         if status == .success {
-            let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "is_mandatory").boolValue
-            let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "latest_app_version").stringValue
+            let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue
+            let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "ios_latest_app_version").stringValue
             
             PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
                                                                minimumVersionNeeded: "2",
