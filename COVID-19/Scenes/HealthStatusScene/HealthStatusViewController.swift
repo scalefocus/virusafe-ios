@@ -44,7 +44,7 @@ class HealthStatusViewController: UIViewController {
         viewModel.isLeavingScreenAvailable.bind { [weak self] isLeavingScreenAvailable in
             guard let strongSelf = self else { return }
             if isLeavingScreenAvailable {
-                strongSelf.navigateToConfirmationViewController()
+                strongSelf.sendAnswers()
             } else {
                 let alert = UIAlertController(title: "Внимание", message: "За да запазите промените е нужно да попълните всички точки от въпросника", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Добре", style: UIAlertAction.Style.default, handler: nil))
@@ -53,6 +53,13 @@ class HealthStatusViewController: UIViewController {
         }
         
         viewModel.getHealthStatusData()
+    }
+
+    private func sendAnswers() {
+        viewModel.sendAnswers { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.navigateToConfirmationViewController()
+        }
     }
 
     // MARK: Setup UI
