@@ -14,6 +14,7 @@ target 'COVID-19' do
   pod 'PopupUpdate'
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Messaging'
 
   pod 'Pulsator'
 

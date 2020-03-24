@@ -13,6 +13,7 @@ import AppCenterAnalytics
 import AppCenterCrashes
 import Firebase
 import IQKeyboardManager
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,8 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        registerForPushNotifications()
-
+        Messaging.messaging().delegate = self
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+        }
+        
         IQKeyboardManager.shared().isEnabled = true
 
         return true
@@ -54,58 +59,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
-    //Push notifications
-    func registerForPushNotifications() {
-      UNUserNotificationCenter.current()
-        .requestAuthorization(options: [.alert, .sound, .badge]) {
-          [weak self] granted, error in
-            
-          print("Permission granted: \(granted)")
-          guard granted else { return }
-          self?.getNotificationSettings()
-      }
-    }
-    
-    func getNotificationSettings() {
-      UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
-        guard settings.authorizationStatus == .authorized else { return }
-        DispatchQueue.main.async {
-          UIApplication.shared.registerForRemoteNotifications()
-        }
-      }
-    }
-    
-    func application(
-      _ application: UIApplication,
-      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-      
-    }
-
-    func application(
-      _ application: UIApplication,
-      didFailToRegisterForRemoteNotificationsWithError error: Error) {
-      
-    }
-    
-    func application(
-      _ application: UIApplication,
-      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-      fetchCompletionHandler completionHandler:
-      @escaping (UIBackgroundFetchResult) -> Void
-    ) {
-      
-    }
-    
-    func userNotificationCenter(
-      _ center: UNUserNotificationCenter,
-      didReceive response: UNNotificationResponse,
-      withCompletionHandler completionHandler: @escaping () -> Void) {
-      
-    
-    }
 
 }
 
+extension AppDelegate: MessagingDelegate {
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+      print("Firebase registration token: \(fcmToken)")
+
+      let dataDict:[String: String] = ["token": fcmToken]
+      NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+      // TODO: If necessary send token to application server.
+      // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        print("Got notification with userInfo: \(userInfo)")
+        
+    }
+    
+
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+}

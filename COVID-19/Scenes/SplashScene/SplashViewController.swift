@@ -27,7 +27,7 @@ class SplashViewController: UIViewController {
         
         // fetch remoe config
         fetchCloudValues()
-        
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
