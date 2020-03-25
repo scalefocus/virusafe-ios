@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         window?.makeKeyAndVisible()
         
+        
         MSAppCenter.start("15383ade-6e32-4de9-9f91-3f9ce590dd18", withServices: [
             MSAnalytics.self,
             MSCrashes.self
@@ -75,10 +76,30 @@ extension AppDelegate: MessagingDelegate {
       // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Data: \(notification.date)")
+        
+        let userInfo = notification.request.content.userInfo
+
+        if let urlData = userInfo["url"] {
+            
+            if let url = URL(string: urlData as! String), UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                   UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                   UIApplication.shared.openURL(url)
+                }
+            }
+          print("Message ID: \(urlData)")
+        }
+        
+        completionHandler([.alert, .badge, .sound])
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("User tapped notification: \(userInfo)")
         
-        print("Got notification with userInfo: \(userInfo)")
-        
+        completionHandler(.newData)
     }
     
 
