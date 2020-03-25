@@ -37,6 +37,9 @@ class HealthStatusViewController: UIViewController {
         // get data
         viewModel.getHealthStatusData()
         
+        // TODO: Show it on button tap
+        // TODO: Add auth completion handler
+        // TODO: Message to be in Bulgarian
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocationState), name: NSNotification.Name(rawValue: "didChooseLocationAccess"), object: nil)
     }
     
