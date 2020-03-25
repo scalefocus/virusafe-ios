@@ -13,7 +13,10 @@ struct HealthStatus: Codable {
 }
 
 struct HealthStatusQuestion: Codable {
+    let questionId: Int
     var questionTitle: String
-    var isActive: Bool?
+    // TODO: Add type
+    // supports only boolean
+    var isActive: Bool? // if value is set - it is answered
 }
 

@@ -73,35 +73,43 @@ class HealthStatusViewModel {
     }
     
     func getHealthStatusData() {
-        if let url = Bundle.main.url(forResource: "HealthStatus", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(HealthStatus.self, from: data)
-                
-                self.healthStatusData = jsonData
-                
-                configurators.append(NoSymptomsCellConfigurator(data:
-                    NoSymptomsCellModel(hasSymptoms: false,
-                                        didTapCheckBox: { [weak self] isSelected in
-                                            self?.didTapNoSymptomsButton(isActive: isSelected)
-                    })))
-                
-                jsonData.questions?.enumerated().forEach { (question) in
-                    configurators.append(QuestionCellConfigurator(data:
+        QuestionnaireRepository().requestQuestions { [weak self] (healthStatus, error) in
+            // TODO: Handle error
+            // ??? Add sort order
+            guard let strongSelf = self else { return }
+            strongSelf.healthStatusData = healthStatus
+
+            strongSelf.configurators.append(NoSymptomsCellConfigurator(data:
+                NoSymptomsCellModel(hasSymptoms: false,
+                                    didTapCheckBox: { [weak self] isSelected in
+                                        self?.didTapNoSymptomsButton(isActive: isSelected)
+                })))
+
+            healthStatus?.questions?.enumerated().forEach { (question) in
+                strongSelf.configurators.append(
+                    QuestionCellConfigurator(data:
                         QuestionCellModel(index: question.offset,
                                           title: question.element.questionTitle,
                                           isSymptomActive: question.element.isActive,
                                           didTapButton: { [weak self] hasSymptoms in
-                                            self?.updateSymptoms(for: question.offset,
-                                                                 hasSymptoms: hasSymptoms)
-                        })))
-                }
-
-                shouldReloadData.value = true
-            } catch {
-                print("error:\(error)")
+                                                self?.updateSymptoms(for: question.offset, hasSymptoms: hasSymptoms)
+                                            }
+                        )
+                    )
+                )
             }
+
+            strongSelf.shouldReloadData.value = true
+        }
+    }
+
+    func sendAnswers(_ completion: @escaping (() -> Void)) {
+        // !!! Not expected to be nil
+        let answeredQuestions: [HealthStatusQuestion] = healthStatusData?.questions ?? []
+        // TODO: Replace this hardcoded phone number
+        QuestionnaireRepository().sendAnswers(answeredQuestions, for: "1234124124") { error in
+            // TODO: Handle error
+            completion()
         }
     }
     

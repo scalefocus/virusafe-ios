@@ -71,6 +71,7 @@
 		4170C2312428D019003EA70A /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2302428D019003EA70A /* TermsAndConditionsViewController.swift */; };
 		4170C237242A05F8003EA70A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C236242A05F8003EA70A /* CheckBox.swift */; };
 		4170C239242A14D3003EA70A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
+		4170C23D242A36A6003EA70A /* QuestionnaireRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +171,7 @@
 		4170C2302428D019003EA70A /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		4170C236242A05F8003EA70A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		4170C238242A14D3003EA70A /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireRepository.swift; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				024D82FD2424EA7800696868 /* RegistrationRepository.swift */,
+				4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
 				3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */,
+				4170C23D242A36A6003EA70A /* QuestionnaireRepository.swift in Sources */,
 				3803B0252425498F0076EE00 /* NSArray+Ext.m in Sources */,
 				02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */,
 				3803B0232425498F0076EE00 /* UIScreen+Ext.m in Sources */,
