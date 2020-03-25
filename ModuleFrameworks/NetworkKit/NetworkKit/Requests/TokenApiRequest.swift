@@ -9,8 +9,10 @@ import Foundation
 
 public class TokenApiRequest: BaseAPIRequest {
     public convenience init(phoneNumber: String, pin: String) {
-        let jsonDict = ["phoneNumber": phoneNumber,
-                        "pin": pin]
+        let jsonDict: [String: Any] = [
+            "phoneNumber": phoneNumber,
+            "pin": pin
+        ]
         self.init(bodyJSONObject: jsonDict, tokenRefreshCount: 0)
     }
 

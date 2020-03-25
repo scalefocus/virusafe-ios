@@ -39,17 +39,7 @@ public class AnswersApiRequest: BaseAPIRequest {
     }
 }
 
-public struct Questionnaire: Codable {
-    public let answers: [Answer]
-    public let location: UserLocation
-    public let timestamp: Int
-
-    public init(answers: [Answer], location: UserLocation, timestamp: Int) {
-        self.answers = answers
-        self.location = location
-        self.timestamp = timestamp
-    }
-
+extension Encodable {
     func asDictionary() -> [String: Any] {
         guard let data = try? JSONEncoder().encode(self) else {
             return [:]
@@ -61,6 +51,18 @@ public struct Questionnaire: Codable {
             return [:]
         }
         return dictionary
+    }
+}
+
+public struct Questionnaire: Codable {
+    public let answers: [Answer]
+    public let location: UserLocation
+    public let timestamp: Int
+
+    public init(answers: [Answer], location: UserLocation, timestamp: Int) {
+        self.answers = answers
+        self.location = location
+        self.timestamp = timestamp
     }
 }
 
