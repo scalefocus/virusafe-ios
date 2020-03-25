@@ -131,6 +131,8 @@ class HealthStatusViewModel {
     }
 
     func sendAnswers() {
+        
+        
         // show activity indicator
         shouldShowLoadingIndicator.value = true
         // !!! Not expected to be nil

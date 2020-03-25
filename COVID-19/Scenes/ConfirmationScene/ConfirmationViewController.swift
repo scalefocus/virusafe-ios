@@ -44,9 +44,6 @@ final class ConfirmationViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.requestLocationServicesAutorization()
     }
 
     // MARK: Setup UI

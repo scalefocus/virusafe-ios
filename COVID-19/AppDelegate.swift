@@ -150,17 +150,13 @@ extension AppDelegate: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .denied {
-            //Do Stuff
-        }
-        else if status == .authorizedWhenInUse {
-            //Do Stuff
-        }
-        else if status == .restricted {
-            //Do Stuff
-        }
-        else if status == .authorizedAlways {
-            //Do Stuff
+        if status == .denied ||
+           status == .authorizedWhenInUse ||
+           status == .restricted ||
+           status == .authorizedAlways {
+            NotificationCenter.default.post(name: Notification.Name("didChooseLocationAccess"), object: nil)
+        } else {
+            
         }
     }
     

@@ -18,7 +18,9 @@ class HealthStatusViewController: UIViewController {
     // MARK: Actions
 
     @IBAction func submitButtonDidTap() {
-        viewModel.didTapSubmitButton()
+        //Request Location Permissions
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.requestLocationServicesAutorization()
     }
 
     // MARK: View Model
@@ -34,6 +36,12 @@ class HealthStatusViewController: UIViewController {
         setupBindigs()
         // get data
         viewModel.getHealthStatusData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocationState), name: NSNotification.Name(rawValue: "didChooseLocationAccess"), object: nil)
+    }
+    
+    @objc private func didChangeLocationState() {
+        viewModel.didTapSubmitButton()
     }
 
     // MARK: Setup Bindings
