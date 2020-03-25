@@ -16,7 +16,7 @@ enum Source {
     var urlString: String {
         switch self {
         case .content:
-            return "https://www.apple.com" // TODO: Replace it with hardcoded link to content
+            return "https://virusafe.scalefocus.dev/information/about-covid.html" 
         case .notification(let string):
             return string
         }

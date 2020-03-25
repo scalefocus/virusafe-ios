@@ -27,9 +27,11 @@ extension WebViewController {
         let navigationController = UINavigationController(rootViewController: webViewController)
 
         // Add Close Button
-        let leftBarButtonItem = UIBarButtonItem.init(title: "Назад", style: .done) { [weak navigationController] _ in
-             navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
-        }
+        let leftBarButtonItem = UIBarButtonItem(title: "Назад",
+                                                style: .done,
+                                                target: webViewController,
+                                                action: #selector(hide))
+
         webViewController.navigationItem.leftBarButtonItem = leftBarButtonItem
 
         if #available(iOS 13.0, *) {
@@ -37,8 +39,8 @@ extension WebViewController {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController
                 }
-                topController.present(navigationController, animated: true) {
-                    webViewController.load(source: source)
+                topController.present(navigationController, animated: true) { [weak webViewController] in
+                    webViewController?.load(source: source)
                 }
             }
         } else {
@@ -53,49 +55,15 @@ extension WebViewController {
             window.makeKeyAndVisible()
 
             // present (a little headache)
-            rootViewController.present(navigationController, animated: true) {
-                webViewController.load(source: source)
+            rootViewController.present(navigationController, animated: true) { [weak webViewController] in
+                webViewController?.load(source: source)
             }
         }
 
     }
-}
 
-// MARK: Helper - Add Closure to UIBarButtonItem
-
-extension UIBarButtonItem {
-    typealias UIBarButtonItemTargetClosure = (UIBarButtonItem) -> ()
-
-    private class UIBarButtonItemClosureWrapper: NSObject {
-        let closure: UIBarButtonItemTargetClosure
-        init(_ closure: @escaping UIBarButtonItemTargetClosure) {
-            self.closure = closure
-        }
-    }
-
-    private struct AssociatedKeys {
-        static var targetClosure = "targetClosure"
-    }
-
-    private var targetClosure: UIBarButtonItemTargetClosure? {
-        get {
-            guard let closureWrapper = objc_getAssociatedObject(self, &AssociatedKeys.targetClosure) as? UIBarButtonItemClosureWrapper else { return nil }
-            return closureWrapper.closure
-        }
-        set(newValue) {
-            guard let newValue = newValue else { return }
-            objc_setAssociatedObject(self, &AssociatedKeys.targetClosure, UIBarButtonItemClosureWrapper(newValue), objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-
-    convenience init(title: String?, style: UIBarButtonItem.Style, closure: @escaping UIBarButtonItemTargetClosure) {
-        self.init(title: title, style: style, target: nil, action: nil)
-        targetClosure = closure
-        action = #selector(UIBarButtonItem.closureAction)
-    }
-
-    @objc func closureAction() {
-        guard let targetClosure = targetClosure else { return }
-        targetClosure(self)
+    @objc
+    private func hide() {
+        navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
