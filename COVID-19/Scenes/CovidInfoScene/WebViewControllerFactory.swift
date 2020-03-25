@@ -21,6 +21,7 @@ extension WebViewController {
         if #available(iOS 13.0, *) {
             webViewController.isModalInPresentation = true // available in IOS13
         }
+        webViewController.edgesForExtendedLayout = []
 
         // Add it as root in navigation controller
         let navigationController = UINavigationController(rootViewController: webViewController)
