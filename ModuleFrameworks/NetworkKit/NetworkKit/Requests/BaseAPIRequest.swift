@@ -27,6 +27,8 @@ public class BaseAPIRequest: APIRequest {
     
     public var headers: [String: String] {
         var dict: [String: String] = ["Content-Type": "application/json"]
+        // Should be in all API Calls
+        dict["ClientId"] = "10724363-412a-4849-b538-0c16dd7dc29e"
         if let token = APIManager.shared.authToken {
             dict["Authorization"] = "Bearer \(token)"
         }

@@ -109,6 +109,7 @@ class RegistrationConfirmationViewController: UIViewController {
         let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)")
         let navigationController = UINavigationController(rootViewController: homeViewController)
         keyWindow.rootViewController = navigationController
+        // TODO: Replace it with web toke
         UserDefaults.standard.set(true, forKey: "isUserRegistered")
         
         UIView.transition(with: keyWindow,
