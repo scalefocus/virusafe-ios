@@ -27,6 +27,8 @@ class SplashViewController: UIViewController {
         
         // fetch remoe config
         fetchCloudValues()
+        
+        askForPushNotifications()
     
     }
     
@@ -116,5 +118,20 @@ extension SplashViewController {
               })
         }
       }
+    }
+    
+    private func askForPushNotifications() {
+        if #available(iOS 10.0, *) {
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        } else {
+          let settings: UIUserNotificationSettings =
+          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          UIApplication.shared.registerUserNotificationSettings(settings)
+        }
+
+        UIApplication.shared.registerForRemoteNotifications()
     }
 }

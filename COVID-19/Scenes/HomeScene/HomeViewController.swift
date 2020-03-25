@@ -55,8 +55,6 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         pulsator.start()
-        
-        askForPushNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,22 +98,6 @@ class HomeViewController: UIViewController {
 
         startButton.setTitle("НАЧАЛО", for: .normal)
         tncButton.setTitle("Условия за ползване", for: .normal)
-    }
-    
-    
-    private func askForPushNotifications() {
-        if #available(iOS 10.0, *) {
-          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-          UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: {_, _ in })
-        } else {
-          let settings: UIUserNotificationSettings =
-          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-          UIApplication.shared.registerUserNotificationSettings(settings)
-        }
-
-        UIApplication.shared.registerForRemoteNotifications()
     }
     
 }
