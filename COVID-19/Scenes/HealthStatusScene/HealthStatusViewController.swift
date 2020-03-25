@@ -29,39 +29,79 @@ class HealthStatusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // setup
         setupVC()
-        
+        setupBindigs()
+        // get data
+        viewModel.getHealthStatusData()
+    }
+
+    // MARK: Setup Bindings
+
+    private func setupBindigs() {
+        bindReloadTableView()
+        bindValidation()
+        bindActivityIndicatorVisibility()
+        bindRequestQuestionsResult()
+        bindSendAnswersResult()
+    }
+
+    private func bindReloadTableView() {
         viewModel.shouldReloadData.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
-        
+
         viewModel.reloadCellIndexPath.bind { [weak self] indexPath in
             UIView.performWithoutAnimation {
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
-        
+    }
+
+    private func bindValidation() {
         viewModel.isLeavingScreenAvailable.bind { [weak self] isLeavingScreenAvailable in
             guard let strongSelf = self else { return }
             if isLeavingScreenAvailable {
-                strongSelf.sendAnswers()
+                strongSelf.viewModel.sendAnswers()
             } else {
-                let alert = UIAlertController(title: "Внимание", message: "За да запазите промените е нужно да попълните всички точки от въпросника", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Добре", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: "Внимание",
+                                              message: "За да запазите промените е нужно да попълните всички точки от въпросника",
+                                              preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Добре",
+                                              style: UIAlertAction.Style.default,
+                                              handler: nil))
                 strongSelf.present(alert, animated: true, completion: nil)
             }
         }
-        
-        viewModel.getHealthStatusData()
     }
 
-    private func sendAnswers() {
-        viewModel.sendAnswers { [weak self] success in
+    private func bindActivityIndicatorVisibility() {
+        viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
-            if success {
-                strongSelf.navigateToConfirmationViewController()
+            if shouldShowLoadingIndicator {
+                LoadingIndicatorManager.startActivityIndicator(.whiteLarge, in: strongSelf.view)
             } else {
-                // TODO: Handle error
+                LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
+            }
+        }
+    }
+
+    private func bindRequestQuestionsResult() {
+        viewModel.isRequestQuestionsSuccessful.bind { [weak self] success in
+            if success {
+                self?.tableView.reloadData()
+            } else {
+                self?.showToast(message: "Възникна грешка. Опитайте по-късно")
+            }
+        }
+    }
+
+    private func bindSendAnswersResult() {
+        viewModel.isSendAnswersSuccessful.bind { [weak self] success in
+            if success {
+                self?.navigateToConfirmationViewController()
+            } else {
+                self?.showToast(message: "Възникна грешка. Опитайте по-късно")
             }
         }
     }
@@ -111,3 +151,7 @@ extension HealthStatusViewController: UITableViewDataSource {
     }
     
 }
+
+// MARK: ToastViewPresentable
+
+extension HealthStatusViewController: ToastViewPresentable {}
