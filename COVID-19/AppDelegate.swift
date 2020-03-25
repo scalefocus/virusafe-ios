@@ -14,6 +14,7 @@ import AppCenterCrashes
 import Firebase
 import IQKeyboardManager
 import FirebaseMessaging
+import NetworkKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,18 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var locationManager: CLLocationManager?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
-        
-        
-        MSAppCenter.start("15383ade-6e32-4de9-9f91-3f9ce590dd18", withServices: [
-            MSAnalytics.self,
-            MSCrashes.self
-        ])
-        
+        // Firebase
         FirebaseApp.configure()
         
         Messaging.messaging().delegate = self
@@ -41,8 +33,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UNUserNotificationCenter.current().delegate = self
         }
         
+        return true
+    }
+
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+        
+        
+        // App Center
+        MSAppCenter.start("15383ade-6e32-4de9-9f91-3f9ce590dd18", withServices: [
+            MSAnalytics.self,
+            MSCrashes.self
+        ])
+
+        // Handle Keyboard
         IQKeyboardManager.shared().isEnabled = true
+
+        // Network Auth
+        APIManager.shared.authToken = TokenStore.shared.token
+
+        // Init App Window
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+        
+        // When the app launch after user tap on notification (originally was not running / not in background)
+          if(launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] != nil){
+            print("NotificationData: \(String(describing: launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification]))")
+          }
 
         return true
     }
@@ -77,35 +99,40 @@ extension AppDelegate: MessagingDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("Data: \(notification.date)")
-        
-        let userInfo = notification.request.content.userInfo
-
-        if let urlData = userInfo["url"] {
-            
-            if let url = URL(string: urlData as! String), UIApplication.shared.canOpenURL(url) {
-                if #available(iOS 10.0, *) {
-                   UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                   UIApplication.shared.openURL(url)
-                }
-            }
-          print("Message ID: \(urlData)")
-        }
         
         completionHandler([.alert, .badge, .sound])
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("User tapped notification: \(userInfo)")
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        completionHandler(.newData)
+        let applicationState = UIApplication.shared.applicationState
+        
+        if applicationState == .active ||  applicationState == .inactive || applicationState == .background {
+            let userInfo = response.notification.request.content.userInfo
+            if let urlData = userInfo["url"] {
+                if let url = URL(string: urlData as! String), UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+        }
+        
+        
+        completionHandler()
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
+        completionHandler(.newData)
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    
     
 }
 

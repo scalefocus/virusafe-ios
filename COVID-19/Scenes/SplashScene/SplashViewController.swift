@@ -11,11 +11,14 @@ import PopupUpdate
 import Firebase
 
 class SplashViewController: UIViewController {
+
+    // MARK: Outlets
     
     @IBOutlet private weak var loadingIndicatorView: UIView!
     @IBOutlet private weak var logoImageView: UIImageView!
     
-    
+    // MARK: Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,28 +30,9 @@ class SplashViewController: UIViewController {
         
         // fetch remoe config
         fetchCloudValues()
-        
-        askForPushNotifications()
-    
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    private func showVC(with identifier: String) {
-        guard let keyWindow = UIApplication.shared.keyWindow else { return }
-        
-        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        keyWindow.rootViewController = navigationController
-        UIView.transition(with: keyWindow,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: nil,
-                          completion: nil)
-    }
+
+    // UI
     
     private func showSpinner() {
         let indicator = UIActivityIndicatorView(frame: loadingIndicatorView.bounds)
@@ -60,10 +44,31 @@ class SplashViewController: UIViewController {
             strongSelf.loadingIndicatorView.addSubview(indicator)
         }
     }
+
+    // MARK: Navigation
+
+    private func navigateToNextViewController() {
+        let isUserRegistered: Bool = (TokenStore.shared.token != nil)
+        showVC(with: isUserRegistered ? "\(HomeViewController.self)" : "\(RegistrationViewController.self)")
+    }
+
+    private func showVC(with identifier: String) {
+        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+
+        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        keyWindow.rootViewController = navigationController
+        UIView.transition(with: keyWindow,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: nil,
+                          completion: nil)
+    }
     
 }
 
-//Firebase
+// MARK: Firebase
+
 extension SplashViewController {
     
     func loadDefaultValues() {
@@ -98,40 +103,25 @@ extension SplashViewController {
             
             PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
                                                              minimumVersionNeeded: currentAppVersion!,
-                                                               urlToOpen: "https://www.upnetix.com/",
-                                                               currentVersion: appVersion,
-                                                               window: UIApplication.shared.keyWindow,
-                                                               alertTitle: "Нова версия",
-                                                               alertDescription: "Има подобрения по приложението, моля свалете новата версия",
-                                                               updateButtonTitle: "Обнови",
-                                                               okButtonTitle: "Продължи",
-                                                               urlOpenedClosure:  { [weak self] error in
-                                                                  if let error = error {
-                                                                      print("Error Supported version: \(error)")
-                                                                  }
-                                                                 
-                                                                  let isUserRegistered = UserDefaults.standard.bool(forKey: "isUserRegistered")
-                                                                  
-                                                                  self?.showVC(with: isUserRegistered
-                                                                  ? "\(HomeViewController.self)"
-                                                                  : "\(RegistrationViewController.self)")
-              })
+                                                             urlToOpen: "https://www.upnetix.com/",
+                                                             currentVersion: appVersion,
+                                                             window: UIApplication.shared.keyWindow,
+                                                             alertTitle: "Нова версия",
+                                                             alertDescription: "Има подобрения по приложението, моля свалете новата версия",
+                                                             updateButtonTitle: "Обнови",
+                                                             okButtonTitle: "Продължи",
+                                                             // !!! safe we don't have reference to RemoteConfig.remoteConfig()
+                                                             urlOpenedClosure: self.handleForceUpdate
+            )
         }
       }
     }
-    
-    private func askForPushNotifications() {
-        if #available(iOS 10.0, *) {
-          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-          UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: {_, _ in })
-        } else {
-          let settings: UIUserNotificationSettings =
-          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-          UIApplication.shared.registerUserNotificationSettings(settings)
-        }
 
-        UIApplication.shared.registerForRemoteNotifications()
+    private func handleForceUpdate(error: PUUpdateApplicationError?) -> Void {
+        if let error = error {
+            // TODO: Handle error
+            print("Error Supported version: \(error)")
+        }
+        navigateToNextViewController()
     }
 }

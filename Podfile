@@ -21,6 +21,8 @@ target 'COVID-19' do
   pod 'IQKeyboardManager'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
 
+  pod 'KeychainSwift'
+
 end
 
 post_install do |installer|

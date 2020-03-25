@@ -40,6 +40,8 @@ class HomeViewController: UIViewController {
         // add pulse animation behind the button
         startButton.layer.superlayer?.insertSublayer(pulsator, below: startButton.layer)
         setupPulsatorLayer()
+        
+        askForPushNotifications()
     }
 
     override func viewDidLayoutSubviews() {
@@ -98,6 +100,21 @@ class HomeViewController: UIViewController {
 
         startButton.setTitle("НАЧАЛО", for: .normal)
         tncButton.setTitle("Условия за ползване", for: .normal)
+    }
+    
+    private func askForPushNotifications() {
+        if #available(iOS 10.0, *) {
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        } else {
+          let settings: UIUserNotificationSettings =
+          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          UIApplication.shared.registerUserNotificationSettings(settings)
+        }
+
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
 }

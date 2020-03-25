@@ -56,9 +56,13 @@ class HealthStatusViewController: UIViewController {
     }
 
     private func sendAnswers() {
-        viewModel.sendAnswers { [weak self] in
+        viewModel.sendAnswers { [weak self] success in
             guard let strongSelf = self else { return }
-            strongSelf.navigateToConfirmationViewController()
+            if success {
+                strongSelf.navigateToConfirmationViewController()
+            } else {
+                // TODO: Handle error
+            }
         }
     }
 

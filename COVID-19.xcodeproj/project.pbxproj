@@ -65,6 +65,8 @@
 		3803B02C2425498F0076EE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
 		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		383352792428BD72000A397E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 383352782428BD72000A397E /* GoogleService-Info.plist */; };
+		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
+		41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
 		4170C22A2428B4C0003EA70A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */; };
 		4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
 		4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */; };
@@ -165,6 +167,8 @@
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		383352782428BD72000A397E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		38A8F40D2429574F00486007 /* COVID-19.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID-19.entitlements"; sourceTree = "<group>"; };
+		41482B18242B49F20062D6E1 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
+		41482B1C242B60480062D6E1 /* JWTDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
 		4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModel.swift; sourceTree = "<group>"; };
 		4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				024D82E72423A84200696868 /* HealthStatus.swift */,
+				41482B18242B49F20062D6E1 /* TokenStore.swift */,
+				41482B1C242B60480062D6E1 /* JWTDecoder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -610,6 +616,7 @@
 				3803B0212425498F0076EE00 /* UIColor+Ext.m in Sources */,
 				024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */,
 				3803B0152425498F0076EE00 /* GCDUtilities.m in Sources */,
+				41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */,
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
 				3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */,
 				3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */,
@@ -623,6 +630,7 @@
 				024D82F92424E9A900696868 /* RegistrationConfirmationViewModel.swift in Sources */,
 				024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */,
 				4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */,
+				41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
 				3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */,
