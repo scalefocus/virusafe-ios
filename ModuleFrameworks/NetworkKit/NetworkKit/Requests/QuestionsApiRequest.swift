@@ -21,7 +21,9 @@ public class QuestionsApiRequest: BaseAPIRequest {
     }
 
     public override var headers: [String: String] {
-        return ["Accept": "application/json"]
+        var defaultHeaders = super.headers
+        defaultHeaders["Accept"] = "application/json"
+        return defaultHeaders
     }
 
     public override var authorizationRequirement: AuthorizationRequirement {

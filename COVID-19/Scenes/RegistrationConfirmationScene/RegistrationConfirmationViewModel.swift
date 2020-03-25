@@ -23,7 +23,7 @@ class RegistrationConfirmationViewModel {
         shouldShowLoadingIndicator.value = true
         // TODO: Remove delay when requests are implemented
         delay(1) { [weak self] in
-            self?.repository.authoriseVerificationCode(verivicationCode: authorisationCode) { [weak self] (success) in
+            self?.repository.authoriseVerificationCode(verificationCode: authorisationCode) { [weak self] (success) in
                 guard let strongSelf = self else { return }
                 strongSelf.isRequestSuccessful.value = success
                 strongSelf.shouldShowLoadingIndicator.value = false

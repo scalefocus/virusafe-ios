@@ -28,11 +28,10 @@ public class AnswersApiRequest: BaseAPIRequest {
     }
 
     public override var headers: [String: String] {
-        return [
-            "Content-Type": "application/json",
-            "Accept": "*/*",
-            "PhoneNumber": phoneNumber
-        ]
+        var defaultHeaders = super.headers
+        defaultHeaders["Accept"] = "*/*"
+        defaultHeaders["PhoneNumber"] = phoneNumber
+        return defaultHeaders
     }
 
     public override var authorizationRequirement: AuthorizationRequirement {

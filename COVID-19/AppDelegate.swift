@@ -14,6 +14,7 @@ import AppCenterCrashes
 import Firebase
 import IQKeyboardManager
 import FirebaseMessaging
+import NetworkKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,15 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
-        
+        // App Center
         MSAppCenter.start("15383ade-6e32-4de9-9f91-3f9ce590dd18", withServices: [
             MSAnalytics.self,
             MSCrashes.self
         ])
-        
+
+        // Firebase
         FirebaseApp.configure()
         
         Messaging.messaging().delegate = self
@@ -39,9 +38,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
         }
-        
-        
+
+        // Handle Keyboard
         IQKeyboardManager.shared().isEnabled = true
+
+        // Network Auth
+        APIManager.shared.authToken = TokenStore.shared.token
+
+        // Init App Window
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
 
         return true
     }

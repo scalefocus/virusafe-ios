@@ -103,13 +103,20 @@ class HealthStatusViewModel {
         }
     }
 
-    func sendAnswers(_ completion: @escaping (() -> Void)) {
+    func sendAnswers(_ completion: @escaping ((Bool) -> Void)) {
         // !!! Not expected to be nil
         let answeredQuestions: [HealthStatusQuestion] = healthStatusData?.questions ?? []
-        // TODO: Replace this hardcoded phone number
-        QuestionnaireRepository().sendAnswers(answeredQuestions, for: "1234124124") { error in
-            // TODO: Handle error
-            completion()
+
+        // TODO: Remove when it is no longer required
+        // !!! Phone is still required in the API, though it can be obtained from the JWT
+        // instead of storing the phone and passing it around, just decode it from JWT
+        let decoder = JWTDecoder()
+        let token = TokenStore.shared.token!
+        let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
+        let phoneNumber = jwtBody["phoneNumber"] as! String
+
+        QuestionnaireRepository().sendAnswers(answeredQuestions, for: phoneNumber) { error in
+            completion(error == nil)
         }
     }
     
