@@ -24,12 +24,20 @@ final class TokenStore {
 
     var token: String? {
         get {
-            return keychain.get("jwt")
+            if UserDefaults.standard.bool(forKey: "isUserRegistered") {
+                return keychain.get("jwt")
+            } else {
+                // app deleted
+                keychain.delete("jwt") // in casex§
+                return nil
+            }
         }
         set {
             if let token = newValue {
+                UserDefaults.standard.set(true, forKey: "isUserRegistered")
                 keychain.set(token, forKey: "jwt")
             } else {
+                UserDefaults.standard.removeObject(forKey: "isUserRegistered")
                 keychain.delete("jwt")
             }
         }

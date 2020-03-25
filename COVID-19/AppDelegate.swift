@@ -39,11 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
-        
-        
         // App Center
         MSAppCenter.start("15383ade-6e32-4de9-9f91-3f9ce590dd18", withServices: [
             MSAnalytics.self,
@@ -56,16 +51,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Network Auth
         APIManager.shared.authToken = TokenStore.shared.token
 
+        // TODO: Remove it - it is not used
+        // When the app launch after user tap on notification (originally was not running / not in background)
+        if(launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] != nil){
+            print("NotificationData: \(String(describing: launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification]))")
+        }
+
         // Init App Window
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         window?.makeKeyAndVisible()
         
-        // When the app launch after user tap on notification (originally was not running / not in background)
-          if(launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] != nil){
-            print("NotificationData: \(String(describing: launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification]))")
-          }
-
         return true
     }
 
@@ -111,13 +107,16 @@ extension AppDelegate: MessagingDelegate {
         if applicationState == .active ||  applicationState == .inactive || applicationState == .background {
             let userInfo = response.notification.request.content.userInfo
             if let urlData = userInfo["url"] {
-                if let url = URL(string: urlData as! String), UIApplication.shared.canOpenURL(url) {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
+                if let urlString = urlData as? String {
+                    WebViewController.show(with: .notification(urlString))
                 }
+//                if let url = URL(string: urlData as! String), UIApplication.shared.canOpenURL(url) {
+//                    if #available(iOS 10.0, *) {
+//                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//                    } else {
+//                        UIApplication.shared.openURL(url)
+//                    }
+//                }
             }
         }
         

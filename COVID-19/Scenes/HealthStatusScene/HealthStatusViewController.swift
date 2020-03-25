@@ -34,6 +34,12 @@ class HealthStatusViewController: UIViewController {
         setupBindigs()
         // get data
         viewModel.getHealthStatusData()
+
+        // TODO: Show it on button tap
+        // TODO: Add auth completion handler
+        // TODO: Message to be in Bulgarian
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.requestLocationServicesAutorization()
     }
 
     // MARK: Setup Bindings
