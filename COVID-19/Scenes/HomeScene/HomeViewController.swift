@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var startButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tncButton: UIButton!
+    @IBOutlet private weak var moreInfoButton: UIButton!
 
     // MARK: Pulsator
 
@@ -37,6 +38,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         localize()
+        moreInfoButton.borderColor = .healthBlue ?? .black
         // add pulse animation behind the button
         startButton.layer.superlayer?.insertSublayer(pulsator, below: startButton.layer)
         setupPulsatorLayer()
@@ -85,6 +87,10 @@ class HomeViewController: UIViewController {
             self?.navigationController?.popViewController(animated: false)
         }
         navigationController?.pushViewController(tncViewController, animated: true)
+    }
+
+    @IBAction private func moreInfoDidTap() {
+        WebViewController.show(with: .content)
     }
 
     // MARK: Setup UI

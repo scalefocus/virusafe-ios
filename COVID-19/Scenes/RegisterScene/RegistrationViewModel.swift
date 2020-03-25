@@ -22,13 +22,10 @@ class RegistrationViewModel {
     
     func didTapRegistration(with phoneNumber: String) {
         shouldShowLoadingIndicator.value = true
-        // TODO: Remove delay when requests are implemented
-        delay(1) { [weak self] in
-            self?.repository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] success in
-                guard let strongSelf = self else { return }
-                strongSelf.isRequestSuccessful.value = success
-                strongSelf.shouldShowLoadingIndicator.value = false
-            }
+        repository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] success in
+            guard let strongSelf = self else { return }
+            strongSelf.isRequestSuccessful.value = success
+            strongSelf.shouldShowLoadingIndicator.value = false
         }
     }
     

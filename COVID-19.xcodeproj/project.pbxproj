@@ -67,6 +67,10 @@
 		383352792428BD72000A397E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 383352782428BD72000A397E /* GoogleService-Info.plist */; };
 		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
 		41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
+		41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1E242B78B00062D6E1 /* LocationRepository.swift */; };
+		41482B26242B88380062D6E1 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41482B25242B88380062D6E1 /* WebView.storyboard */; };
+		41482B28242B891A0062D6E1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B27242B891A0062D6E1 /* WebViewController.swift */; };
+		41482B2A242B91370062D6E1 /* WebViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B29242B91370062D6E1 /* WebViewControllerFactory.swift */; };
 		4170C22A2428B4C0003EA70A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */; };
 		4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
 		4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */; };
@@ -169,6 +173,10 @@
 		38A8F40D2429574F00486007 /* COVID-19.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID-19.entitlements"; sourceTree = "<group>"; };
 		41482B18242B49F20062D6E1 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 		41482B1C242B60480062D6E1 /* JWTDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
+		41482B1E242B78B00062D6E1 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		41482B25242B88380062D6E1 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
+		41482B27242B891A0062D6E1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		41482B29242B91370062D6E1 /* WebViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerFactory.swift; sourceTree = "<group>"; };
 		4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModel.swift; sourceTree = "<group>"; };
 		4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewModel.swift; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 			children = (
 				024D82FD2424EA7800696868 /* RegistrationRepository.swift */,
 				4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */,
+				41482B1E242B78B00062D6E1 /* LocationRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -307,6 +316,7 @@
 		02B9A6C324238DF200B1A4C0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				41482B24242B88180062D6E1 /* CovidInfoScene */,
 				024D8303242527B800696868 /* SplashScene */,
 				024D82EF2424A33A00696868 /* RegistrationConfirmationScene */,
 				02B9A6C424238DFF00B1A4C0 /* RegisterScene */,
@@ -465,6 +475,16 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		41482B24242B88180062D6E1 /* CovidInfoScene */ = {
+			isa = PBXGroup;
+			children = (
+				41482B27242B891A0062D6E1 /* WebViewController.swift */,
+				41482B29242B91370062D6E1 /* WebViewControllerFactory.swift */,
+				41482B25242B88380062D6E1 /* WebView.storyboard */,
+			);
+			path = CovidInfoScene;
+			sourceTree = "<group>";
+		};
 		4170C2282428B47A003EA70A /* ConfirmationScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +577,7 @@
 				383352792428BD72000A397E /* GoogleService-Info.plist in Resources */,
 				024D82E32423A80400696868 /* HealthStatus.json in Resources */,
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
+				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
@@ -618,6 +639,7 @@
 				3803B0152425498F0076EE00 /* GCDUtilities.m in Sources */,
 				41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */,
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
+				41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */,
 				3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */,
 				3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */,
 				3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */,
@@ -631,6 +653,7 @@
 				024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */,
 				4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */,
 				41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */,
+				41482B2A242B91370062D6E1 /* WebViewControllerFactory.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
 				3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */,
@@ -645,6 +668,7 @@
 				4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */,
 				024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */,
 				3803B01D2425498F0076EE00 /* NSMutableSet+Ext.m in Sources */,
+				41482B28242B891A0062D6E1 /* WebViewController.swift in Sources */,
 				3803B0172425498F0076EE00 /* NSSet+Ext.m in Sources */,
 				024D82FE2424EA7800696868 /* RegistrationRepository.swift in Sources */,
 				02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */,
