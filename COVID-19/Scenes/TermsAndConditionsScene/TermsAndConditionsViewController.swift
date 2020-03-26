@@ -36,7 +36,7 @@ class TermsAndConditionsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         acceptButton.isHidden = !viewModel.isAcceptButtonVisible
-        // TODO: Load terms and conditions to TextView
+        loadTnCFromRtf()
     }
 
     // MARK: Setup UI
@@ -52,4 +52,18 @@ class TermsAndConditionsViewController: UIViewController {
         acceptButton.setTitle("Съгласен съм", for: .normal)
     }
 
+    private func loadTnCFromRtf() {
+        if let rtfPath = Bundle.main.url(forResource: "TnC", withExtension: "rtf") {
+            do {
+                let attributedStringWithRtf: NSAttributedString = try NSAttributedString(url: rtfPath, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
+                // TODO: Refactor to avoid this side effect
+                self.contentTextView.attributedText = attributedStringWithRtf
+            } catch let error {
+                // TODO: Handle error
+                print("Got an error \(error)")
+            }
+        }
+    }
+
 }
+
