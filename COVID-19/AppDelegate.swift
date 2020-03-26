@@ -174,8 +174,8 @@ extension AppDelegate: CLLocationManagerDelegate {
             LocationRepository().sendGPSLocation(latitude: locValue.latitude,
                                                  longitude: locValue.longitude,
                                                  for: phoneNumber,
-                                                 completion: {
-                                                    print("")
+                                                 completion: { result in
+                                                    print("\(result)")
             })
 
             var components = DateComponents()
