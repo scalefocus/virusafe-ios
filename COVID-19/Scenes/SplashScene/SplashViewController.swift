@@ -87,36 +87,37 @@ extension SplashViewController {
         
         RemoteConfig.remoteConfig().configSettings = settings
         RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { status, error in
+            if let error = error {
+                print("Uh-oh. Got an error fetching remote values \(error)")
+                // !!! safe we don't have reference to RemoteConfig.remoteConfig()
+                self.showToast(message: Constants.Strings.errorConnectionWithServerFailed)
+                return
+            }
 
-        if let error = error {
-            print("Uh-oh. Got an error fetching remote values \(error)")
-            // !!! safe we don't have reference to RemoteConfig.remoteConfig()
-            self.showToast(message: Constants.Strings.errorConnectionWithServerFailed)
-          return
+            RemoteConfig.remoteConfig().activate()
+
+            // TODO: Update AppManager Base URL with the one from the remote congig (do it with environement)
+
+            if status == .success {
+                let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue
+                let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "ios_latest_app_version").stringValue
+
+                let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+
+                PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
+                                                                 minimumVersionNeeded: currentAppVersion!,
+                                                                 urlToOpen: "https://www.upnetix.com/",
+                                                                 currentVersion: appVersion,
+                                                                 window: UIApplication.shared.keyWindow,
+                                                                 alertTitle: Constants.Strings.newVersionAlertTitle,
+                                                                 alertDescription: Constants.Strings.newVersionAlertDescription,
+                                                                 updateButtonTitle: Constants.Strings.newVersionAlertUpdateButtonTitle,
+                                                                 okButtonTitle: Constants.Strings.newVersionAlertOkButtonTitle,
+                                                                 // !!! safe we don't have reference to RemoteConfig.remoteConfig()
+                    urlOpenedClosure: self.handleForceUpdate
+                )
+            }
         }
-        
-        RemoteConfig.remoteConfig().activate()
-        
-        if status == .success {
-            let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue
-            let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "ios_latest_app_version").stringValue
-            
-            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-            
-            PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
-                                                             minimumVersionNeeded: currentAppVersion!,
-                                                             urlToOpen: "https://www.upnetix.com/",
-                                                             currentVersion: appVersion,
-                                                             window: UIApplication.shared.keyWindow,
-                                                             alertTitle: Constants.Strings.newVersionAlertTitle,
-                                                             alertDescription: Constants.Strings.newVersionAlertDescription,
-                                                             updateButtonTitle: Constants.Strings.newVersionAlertUpdateButtonTitle,
-                                                             okButtonTitle: Constants.Strings.newVersionAlertOkButtonTitle,
-                                                             // !!! safe we don't have reference to RemoteConfig.remoteConfig()
-                                                             urlOpenedClosure: self.handleForceUpdate
-            )
-        }
-      }
     }
 
     private func handleForceUpdate(error: PUUpdateApplicationError?) -> Void {

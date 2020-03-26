@@ -184,6 +184,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             let newDate = Calendar.current.date(byAdding: components, to: date)
 
             UserDefaults.standard.set(newDate, forKey:"nextLocationUpdateTimestamp")
+            UserDefaults.standard.synchronize()
         }
     }
 }
