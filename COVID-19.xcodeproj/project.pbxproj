@@ -78,7 +78,8 @@
 		4170C237242A05F8003EA70A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C236242A05F8003EA70A /* CheckBox.swift */; };
 		4170C239242A14D3003EA70A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
 		4170C23D242A36A6003EA70A /* QuestionnaireRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */; };
-		4181C712242CC10100FFDF7C /* ApiErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C711242CC10100FFDF7C /* ApiErrorHandler.swift */; };
+		4181C712242CC10100FFDF7C /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C711242CC10100FFDF7C /* ApiStatusCodeHandler.swift */; };
+		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -185,7 +186,8 @@
 		4170C236242A05F8003EA70A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		4170C238242A14D3003EA70A /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireRepository.swift; sourceTree = "<group>"; };
-		4181C711242CC10100FFDF7C /* ApiErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrorHandler.swift; sourceTree = "<group>"; };
+		4181C711242CC10100FFDF7C /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
+		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,7 +237,8 @@
 				024D82E72423A84200696868 /* HealthStatus.swift */,
 				41482B18242B49F20062D6E1 /* TokenStore.swift */,
 				41482B1C242B60480062D6E1 /* JWTDecoder.swift */,
-				4181C711242CC10100FFDF7C /* ApiErrorHandler.swift */,
+				4181C711242CC10100FFDF7C /* ApiStatusCodeHandler.swift */,
+				4181C713242CDD1400FFDF7C /* ApiResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				3803B0172425498F0076EE00 /* NSSet+Ext.m in Sources */,
 				024D82FE2424EA7800696868 /* RegistrationRepository.swift in Sources */,
 				02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */,
+				4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */,
 				024D83002424FB8300696868 /* UtilFunctions.swift in Sources */,
 				024D830A2425332800696868 /* RadialGradientView.swift in Sources */,
 				3803B0272425498F0076EE00 /* CLBeacon+Ext.m in Sources */,
@@ -690,7 +694,7 @@
 				3803B01C2425498F0076EE00 /* UIView+Ext.m in Sources */,
 				3803B01B2425498F0076EE00 /* NSString+Ext.m in Sources */,
 				3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */,
-				4181C712242CC10100FFDF7C /* ApiErrorHandler.swift in Sources */,
+				4181C712242CC10100FFDF7C /* ApiStatusCodeHandler.swift in Sources */,
 				3803B02C2425498F0076EE00 /* Reachability.m in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
 				4170C2312428D019003EA70A /* TermsAndConditionsViewController.swift in Sources */,

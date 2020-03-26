@@ -25,8 +25,8 @@ class HealthStatusViewModel {
     let isLeavingScreenAvailable = Observable<Bool>()
     let reloadCellIndexPath = Observable<IndexPath>()
     let shouldShowLoadingIndicator = Observable<Bool>()
-    let isRequestQuestionsSuccessful = Observable<Bool>()
-    let isSendAnswersSuccessful = Observable<Bool>()
+    let requestError = Observable<ApiError>()
+    let isSendAnswersCompleted = Observable<Bool>()
 
     // Helpers
     
@@ -85,54 +85,46 @@ class HealthStatusViewModel {
     func getHealthStatusData() {
         // show activity indicator
         shouldShowLoadingIndicator.value = true
-        QuestionnaireRepository().requestQuestions { [weak self] (healthStatus, error) in
+        QuestionnaireRepository().requestQuestions { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
-            // handle error
-            if healthStatus == nil || error != nil {
+            defer {
                 // hide activity indicator
                 strongSelf.shouldShowLoadingIndicator.value = false
-                // show error message
-                strongSelf.isRequestQuestionsSuccessful.value = true
-                return
             }
-
-            // ??? Add sort order
-
-            // cache response
-            strongSelf.healthStatusData = healthStatus
-
-            // prepare configurators
-            strongSelf.configurators.append(NoSymptomsCellConfigurator(data:
-                NoSymptomsCellModel(hasSymptoms: false,
-                                    didTapCheckBox: { [weak self] isSelected in
-                                        self?.didTapNoSymptomsButton(isActive: isSelected)
-                })))
-
-            healthStatus?.questions?.enumerated().forEach { (question) in
-                strongSelf.configurators.append(
-                    QuestionCellConfigurator(data:
-                        QuestionCellModel(index: question.offset,
-                                          title: question.element.questionTitle,
-                                          isSymptomActive: question.element.isActive,
-                                          didTapButton: { [weak self] hasSymptoms in
-                                                self?.updateSymptoms(for: question.offset, hasSymptoms: hasSymptoms)
-                                            }
+            switch result {
+                case .success(let healthStatus):
+                    // cache response
+                    // ??? Add sort order
+                    strongSelf.healthStatusData = healthStatus
+                    // prepare configurators
+                    strongSelf.configurators.append(NoSymptomsCellConfigurator(data:
+                        NoSymptomsCellModel(hasSymptoms: false,
+                                            didTapCheckBox: { [weak self] isSelected in
+                                                self?.didTapNoSymptomsButton(isActive: isSelected)
+                        })))
+                    healthStatus?.questions?.enumerated().forEach { (question) in
+                        strongSelf.configurators.append(
+                            QuestionCellConfigurator(data:
+                                QuestionCellModel(index: question.offset,
+                                                  title: question.element.questionTitle,
+                                                  isSymptomActive: question.element.isActive,
+                                                  didTapButton: { [weak self] hasSymptoms in
+                                                    self?.updateSymptoms(for: question.offset, hasSymptoms: hasSymptoms)
+                                    }
+                                )
+                            )
                         )
-                    )
-                )
+                    }
+                    // reload table
+                    strongSelf.shouldReloadData.value = true
+                case .failure(let reason):
+                    strongSelf.requestError.value = reason
             }
-
-            // hide activity indicator
-            strongSelf.shouldShowLoadingIndicator.value = false
-            // reload data
-            strongSelf.isRequestQuestionsSuccessful.value = true
         }
     }
 
     func sendAnswers() {
-        
-        
         // show activity indicator
         shouldShowLoadingIndicator.value = true
         // !!! Not expected to be nil
@@ -146,14 +138,17 @@ class HealthStatusViewModel {
         let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
         let phoneNumber = jwtBody["phoneNumber"] as! String
 
-        QuestionnaireRepository().sendAnswers(answeredQuestions, for: phoneNumber) { [weak self] error in
+        QuestionnaireRepository().sendAnswers(answeredQuestions, for: phoneNumber) { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             // hide activity indicator
             strongSelf.shouldShowLoadingIndicator.value = false
-            // show error message or navigate to next screen
-            strongSelf.isSendAnswersSuccessful.value = (error == nil)
-
+            switch result {
+                case .success:
+                    strongSelf.isSendAnswersCompleted.value = true
+                case .failure(let reason):
+                    strongSelf.requestError.value = reason
+            }
         }
     }
     
