@@ -49,6 +49,7 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
         }
 
         TokenApiRequest(phoneNumber: mobileNumber, pin: verificationCode).executeParsed(of: ApiToken.self) { (parsedData, _, _) in
+            // TODO: Handle bad pin code
             guard let parsedData = parsedData else {
                 completion(false)
                 return
