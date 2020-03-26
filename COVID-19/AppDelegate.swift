@@ -51,12 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Network Auth
         APIManager.shared.authToken = TokenStore.shared.token
 
-        // TODO: Remove it - it is not used
-        // When the app launch after user tap on notification (originally was not running / not in background)
-        if(launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] != nil){
-            print("NotificationData: \(String(describing: launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification]))")
-        }
-
         // Init App Window
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()

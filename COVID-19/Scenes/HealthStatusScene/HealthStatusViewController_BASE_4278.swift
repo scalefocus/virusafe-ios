@@ -18,9 +18,7 @@ class HealthStatusViewController: UIViewController {
     // MARK: Actions
 
     @IBAction func submitButtonDidTap() {
-        //Request Location Permissions
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.requestLocationServicesAutorization()
+        viewModel.didTapSubmitButton()
     }
 
     // MARK: View Model
@@ -36,18 +34,12 @@ class HealthStatusViewController: UIViewController {
         setupBindigs()
         // get data
         viewModel.getHealthStatusData()
-        
+
         // TODO: Show it on button tap
         // TODO: Add auth completion handler
-        // ??? Message title to be in Bulgarian (in Info.plist)
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocationState), name: NSNotification.Name(rawValue: "didChooseLocationAccess"), object: nil)
-    }
-
-    // MARK: Notifications
-    
-    @objc
-    private func didChangeLocationState() {
-        viewModel.didTapSubmitButton()
+        // TODO: Message to be in Bulgarian
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.requestLocationServicesAutorization()
     }
 
     // MARK: Setup Bindings

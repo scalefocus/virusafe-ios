@@ -42,11 +42,8 @@ class HealthStatusViewController: UIViewController {
         // ??? Message title to be in Bulgarian (in Info.plist)
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocationState), name: NSNotification.Name(rawValue: "didChooseLocationAccess"), object: nil)
     }
-
-    // MARK: Notifications
     
-    @objc
-    private func didChangeLocationState() {
+    @objc private func didChangeLocationState() {
         viewModel.didTapSubmitButton()
     }
 

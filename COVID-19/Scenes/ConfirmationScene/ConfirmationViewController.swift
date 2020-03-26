@@ -33,7 +33,6 @@ final class ConfirmationViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        setupBinding()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,12 +64,6 @@ final class ConfirmationViewController: UIViewController {
         let checkIcon = #imageLiteral(resourceName: "check-circle-light").withRenderingMode(.alwaysTemplate)
         iconImageView.image = checkIcon
         iconImageView.tintColor = #colorLiteral(red: 60 / 255, green: 140 / 255, blue: 231 / 255, alpha: 1.0) // Editor representation does't look correct, however it works on device
-    }
-
-    // MARK: Setup Binding
-
-    private func setupBinding() {
-        // TODO: Add Bindings here
     }
 
     // MARK: Navigation
