@@ -25,13 +25,13 @@
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Used to monitor nearby users of the app</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на министерството и областните РЗИ за по-добро планиране, както и да получавате гео-базирана информация за COVID-19</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>The location will be used to determine historical proximity to COVIT-19 infected individiuals</string>
+	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на министерството и областните РЗИ за по-добро планиране, както и да получавате гео-базирана информация за COVID-19</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Used to help determin proximity to COVIT-19 people</string>
+	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на министерството и областните РЗИ за по-добро планиране, както и да получавате гео-базирана информация за COVID-19</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Used to help determin proximity to COVIT-19 people</string>
+	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на министерството и областните РЗИ за по-добро планиране, както и да получавате гео-базирана информация за COVID-19</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

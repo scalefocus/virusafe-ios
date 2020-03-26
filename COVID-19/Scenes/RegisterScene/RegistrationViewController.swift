@@ -20,6 +20,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var checkBox: CheckBox!
     @IBOutlet private weak var tncButton: UIButton!
+    @IBOutlet private weak var registrationLabel: UILabel!
 
     // MARK: Settings
 
@@ -59,13 +60,14 @@ class RegistrationViewController: UIViewController {
 
     private func setupUI() {
         confirmButton.backgroundColor = .healthBlue
+        registrationLabel.text = Constants.Strings.registrationScreenTitle
         setupBackButton()
         setupIconImageViewTint()
         setupPhoneNumberTextField()
     }
 
     private func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Constants.Strings.navigationBackButtonTitle,
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
@@ -79,7 +81,7 @@ class RegistrationViewController: UIViewController {
 
     private func setupPhoneNumberTextField() {
         phoneNumberTextField.borderStyle = .none
-        phoneNumberTextField.placeholder = "Въведете мобилен телефон"
+        phoneNumberTextField.placeholder = Constants.Strings.registrationScreenPhoneTextFieldPlaceholder
         // By default title will be the same
         phoneNumberTextField.errorColor = .red
         // !!! other styles are in stotyboard
@@ -130,7 +132,7 @@ class RegistrationViewController: UIViewController {
     @IBAction private func didTapRegisterButton(_ sender: Any) {
         guard let phoneNumber = phoneNumberTextField.text, phoneNumber.count >= 5 else {
             errorLabel.isHidden = false
-            errorLabel.text = "Невалидна дължина"
+            errorLabel.text = Constants.Strings.registrationScreenPhoneTextFieldInvalidLenght
             return
         }
 
@@ -189,3 +191,13 @@ extension RegistrationViewController: UITextFieldDelegate {
 // MARK: ToastViewPresentable
 
 extension RegistrationViewController: ToastViewPresentable {}
+
+extension Constants.Strings {
+    static let registrationScreenTitle = "Регистрация"
+    static let registrationScreenPhoneTextFieldPlaceholder = "Телефонен номер"
+    static let navigationBackButtonTitle = "Назад"
+
+    static let registrationScreenPhoneTextFieldEmpty = "Полето не може да е празно"
+    static let registrationScreenPhoneTextFieldInvalidLenght = "Полето трябва да съдържа повече символи"
+    static let registrationScreenPhoneTextFieldInvalidFormat = "Невалиден формат"
+}

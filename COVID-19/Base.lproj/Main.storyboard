@@ -280,6 +280,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <outlet property="errorLabel" destination="9IQ-cs-16b" id="gJb-vU-KF7"/>
                         <outlet property="iconImageView" destination="zz4-lc-3yS" id="2uK-0f-5oH"/>
                         <outlet property="phoneNumberTextField" destination="DDF-X8-k3m" id="FkJ-eu-0dc"/>
+                        <outlet property="registrationLabel" destination="hfJ-RQ-81G" id="Qpt-1f-1Yt"/>
                         <outlet property="tncButton" destination="HdH-aT-Xjs" id="6xc-5w-CKG"/>
                     </connections>
                 </viewController>
