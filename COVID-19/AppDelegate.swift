@@ -160,7 +160,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         let updateInterval = RemoteConfig.remoteConfig().configValue(forKey: "ios_location_interval_in_mins").numberValue?.intValue
         let nextLocationUpdateTimestamp: Date =
             UserDefaults.standard.object(forKey: "nextLocationUpdateTimestamp") as? Date ?? dateNow
-
+        
         if dateNow >= nextLocationUpdateTimestamp {
             guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
 
@@ -178,7 +178,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             })
 
             var components = DateComponents()
-            components.setValue((updateInterval ?? 10) / 60, for: .hour)
+            components.setValue(updateInterval, for: .minute)
 
             let date: Date = Date()
             let newDate = Calendar.current.date(byAdding: components, to: date)
