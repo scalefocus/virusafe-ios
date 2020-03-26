@@ -152,9 +152,40 @@ extension AppDelegate: CLLocationManagerDelegate {
             
         }
     }
-    
+
+    // TODO: Refactor
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        let dateNow = Date()
+
+        let updateInterval = RemoteConfig.remoteConfig().configValue(forKey: "ios_location_interval_in_mins").numberValue?.intValue
+        let nextLocationUpdateTimestamp: Date =
+            UserDefaults.standard.object(forKey: "nextLocationUpdateTimestamp") as? Date ?? dateNow
+
+        if dateNow >= nextLocationUpdateTimestamp {
+            guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+
+            print("locations = \(locValue.latitude) \(locValue.longitude)")
+
+            let decoder = JWTDecoder()
+            let token = TokenStore.shared.token!
+            let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
+            let phoneNumber = jwtBody["phoneNumber"] as! String
+
+            LocationRepository().sendGPSLocation(latitude: locValue.latitude,
+                                                 longitude: locValue.longitude,
+                                                 for: phoneNumber,
+                                                 completion: {
+                                                    print("")
+            })
+
+            var components = DateComponents()
+            // !!! Be careful
+            components.setValue(updateInterval! / 60, for: .hour)
+
+            let date: Date = Date()
+            let newDate = Calendar.current.date(byAdding: components, to: date)
+
+            UserDefaults.standard.set(newDate, forKey:"nextLocationUpdateTimestamp")
+        }
     }
 }
