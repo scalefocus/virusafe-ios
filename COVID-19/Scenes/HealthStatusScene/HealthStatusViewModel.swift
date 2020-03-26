@@ -75,8 +75,10 @@ class HealthStatusViewModel {
     }
     
     private func updateSymptoms(for index: Int, hasSymptoms: Bool) {
-        healthStatusData?.questions?[index].isActive = hasSymptoms
-        
+        healthStatusData?.questions?[index - 1].isActive = hasSymptoms
+        (configurators[safeAt: index] as? QuestionCellConfigurator)?.data.isSymptomActive = hasSymptoms
+        reloadCellIndexPath.value = IndexPath(item: index, section: 0)
+
         (configurators[safeAt: 0] as? NoSymptomsCellConfigurator)?.data.hasSymptoms = areAllFieldsNegative
         reloadCellIndexPath.value = IndexPath(item: 0, section: 0)
     }
@@ -110,7 +112,7 @@ class HealthStatusViewModel {
                                                   title: question.element.questionTitle,
                                                   isSymptomActive: question.element.isActive,
                                                   didTapButton: { [weak self] hasSymptoms in
-                                                    self?.updateSymptoms(for: question.offset, hasSymptoms: hasSymptoms)
+                                                    self?.updateSymptoms(for: question.offset + 1, hasSymptoms: hasSymptoms)
                                     }
                                 )
                             )
