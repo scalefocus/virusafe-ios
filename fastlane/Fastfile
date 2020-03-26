@@ -3,8 +3,8 @@ lane :deploy do |values|
   # AppCenter variables
   APP_CENTER_API_TOKEN = "8415bf42339e66239b048ccbdfa02ee09d4eb837"
   APP_CENTER_OWNER_NAME = "Upnetix-1" # use this one in case using Upnetix account
-  APP_CENTER_APP_NAME = "Healthcare-App-iOS" # use the app name (can be found in the url for the project in appcenter.ms)
-  APP_CENTER_DESTINATIONS = "covid-19-internal" # you can add whatever groups you want (the default is Collaborators)
+  APP_CENTER_APP_NAME = "Virusafe" # use the app name (can be found in the url for the project in appcenter.ms)
+  APP_CENTER_DESTINATIONS = "*" # you can add whatever groups you want (the default is Collaborators)
 
   # FirebaseAppDistribution variables
   FIREBASE_APP = "ExampleAppIDInFormat:1:1041630104297:ios:4369919aa0f0e94b" # The appID in firebase. It's different for every project.

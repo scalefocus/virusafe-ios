@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // App Center
-        MSAppCenter.start("6e5278b2-5253-4104-8f49-1e93bb82e28f", withServices: [
+        MSAppCenter.start("e78845ce-5af8-49bc-9cf4-35bcb984fdc5", withServices: [
             MSAnalytics.self,
             MSCrashes.self
         ])
@@ -50,12 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Network Auth
         APIManager.shared.authToken = TokenStore.shared.token
-
-        // TODO: Remove it - it is not used
-        // When the app launch after user tap on notification (originally was not running / not in background)
-        if(launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] != nil){
-            print("NotificationData: \(String(describing: launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification]))")
-        }
 
         // Init App Window
         window = UIWindow(frame: UIScreen.main.bounds)

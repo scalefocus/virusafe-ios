@@ -96,7 +96,7 @@ class RegistrationConfirmationViewController: UIViewController {
             if isRequestSuccessful {
                 strongSelf.showHomeModule()
             } else {
-                // TODO: Show popup that something is wrong
+                strongSelf.showToast(message: "Грешка. Проверете кода и опитайте отново.")
             }
         }
     }
@@ -109,8 +109,6 @@ class RegistrationConfirmationViewController: UIViewController {
         let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)")
         let navigationController = UINavigationController(rootViewController: homeViewController)
         keyWindow.rootViewController = navigationController
-        // TODO: Replace it with web toke
-        UserDefaults.standard.set(true, forKey: "isUserRegistered")
         
         UIView.transition(with: keyWindow,
                           duration: 0.5,
@@ -122,6 +120,7 @@ class RegistrationConfirmationViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func resetCodeButtonDidTap (_ sender: Any) {
+        // TODO: Implement reset code API
         showToast(message: "Кода беше изпратен успешно")
     }
     

@@ -21,18 +21,15 @@ class RegistrationConfirmationViewModel {
     
     func didTapCodeAuthorization(with authorisationCode: String) {
         shouldShowLoadingIndicator.value = true
-        // TODO: Remove delay when requests are implemented
-        delay(1) { [weak self] in
-            self?.repository.authoriseVerificationCode(verificationCode: authorisationCode) { [weak self] (success) in
-                guard let strongSelf = self else { return }
-                strongSelf.isRequestSuccessful.value = success
-                strongSelf.shouldShowLoadingIndicator.value = false
-            }
+        repository.authoriseVerificationCode(verificationCode: authorisationCode) { [weak self] (success) in
+            guard let strongSelf = self else { return }
+            strongSelf.isRequestSuccessful.value = success
+            strongSelf.shouldShowLoadingIndicator.value = false
         }
     }
 
     func mobileNumber() -> String {
-        // TODO: Format if needed
+        // TODO: Format phone if needed
         return repository.authorisedMobileNumber ?? "(+359) XXX-XXX"
     }
     

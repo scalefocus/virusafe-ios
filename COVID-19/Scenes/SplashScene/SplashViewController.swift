@@ -118,10 +118,19 @@ extension SplashViewController {
     }
 
     private func handleForceUpdate(error: PUUpdateApplicationError?) -> Void {
-        if let error = error {
-            // TODO: Handle error
+        if let error = error, error != .noUpdateNeeded {
             print("Error Supported version: \(error)")
+            return
+        }
+        // !!! Prevent navigation - solves issue when user gets back from app store and app is not updated
+        if RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue {
+            print("Update is mandatory")
+            return
         }
         navigateToNextViewController()
     }
 }
+
+// MARK: ToastViewPresentable
+
+extension SplashViewController: ToastViewPresentable {}

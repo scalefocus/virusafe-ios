@@ -113,7 +113,7 @@ class RegistrationViewController: UIViewController {
                 strongSelf.navigationController?.pushViewController(registrationConfirmationVC,
                                                                     animated: true)
             } else {
-                // TODO: Show popup that something is wrong
+                strongSelf.showToast(message: "Грешка. Проверете тел. номер и опитайте отново.")
             }
         }
     }
@@ -178,3 +178,7 @@ extension RegistrationViewController: UITextFieldDelegate {
         return newString.length <= phoneNumberMaxLength
     }
 }
+
+// MARK: ToastViewPresentable
+
+extension RegistrationViewController: ToastViewPresentable {}
