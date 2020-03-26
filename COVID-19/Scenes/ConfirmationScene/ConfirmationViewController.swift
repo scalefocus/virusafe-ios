@@ -54,10 +54,10 @@ final class ConfirmationViewController: UIViewController {
     }
 
     private func localize() {
-        title = "Готово!"
-        titleLabel.text = "Готово!"
-        textLabel.text = "Благодарим Ви, че сте отговорни!"
-        backButton.setTitle("Назад", for: .normal)
+        title = Constants.Strings.confirmationReadyWithExcalamationMarkText
+        titleLabel.text = Constants.Strings.confirmationReadyWithExcalamationMarkText
+        textLabel.text = Constants.Strings.generalTextForTourAnswerText
+        backButton.setTitle(Constants.Strings.generalBackText, for: .normal)
     }
 
     private func tintCheckIcon() {

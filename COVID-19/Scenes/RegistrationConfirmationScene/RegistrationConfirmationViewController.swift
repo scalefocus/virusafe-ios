@@ -20,7 +20,9 @@ class RegistrationConfirmationViewController: UIViewController {
     @IBOutlet private weak var verificationCodeTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var confirmButton: UIButton!
-
+    @IBOutlet weak var noCodeReceivedButton: UIButton!
+    
+    
     // MARK: Settings
 
     private let maximumValidationCodeLength = 6
@@ -36,7 +38,10 @@ class RegistrationConfirmationViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupBindings()
-        mobileNumberLabel.text = "Телефон: \(viewModel.mobileNumber())" 
+        mobileNumberLabel.text = Constants.Strings.mobileNumberLabelТext +
+        ": " + viewModel.mobileNumber()
+        textLabel.text = Constants.Strings.mobileNumberIndentificationLabelТext
+        noCodeReceivedButton.setTitle(Constants.Strings.mobileNumberNoCodeReceivedButton, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +63,7 @@ class RegistrationConfirmationViewController: UIViewController {
     // MARK: Setup UI
 
     private func setupUI() {
-        title = "Верификация"
+        title = Constants.Strings.mobileNumberVerificationТext
         confirmButton.backgroundColor = .healthBlue
         setupIconImageViewTint()
         setupVerificationCodeTextField()
@@ -72,7 +77,7 @@ class RegistrationConfirmationViewController: UIViewController {
 
     private func setupVerificationCodeTextField() {
         verificationCodeTextField.borderStyle = .none
-        verificationCodeTextField.placeholder = "Въведете код "
+        verificationCodeTextField.placeholder = Constants.Strings.mobileNumberEnterPinText + " "
         // By default title will be same as placeholder
         verificationCodeTextField.errorColor = .red
         // !!! other styles are in stotyboard
@@ -96,7 +101,7 @@ class RegistrationConfirmationViewController: UIViewController {
             if isRequestSuccessful {
                 strongSelf.showHomeModule()
             } else {
-                strongSelf.showToast(message: "Грешка. Проверете кода и опитайте отново.")
+                strongSelf.showToast(message: Constants.Strings.mobileNumberErrorWrongPinText)
             }
         }
     }
@@ -121,7 +126,7 @@ class RegistrationConfirmationViewController: UIViewController {
 
     @IBAction private func resetCodeButtonDidTap (_ sender: Any) {
         // TODO: Implement reset code API
-        showToast(message: "Кода беше изпратен успешно")
+        showToast(message: Constants.Strings.mobileNumberSuccessfulPinText)
     }
     
     @IBAction private func didTapConfirmButton(_ sender: Any) {
@@ -129,11 +134,11 @@ class RegistrationConfirmationViewController: UIViewController {
         
         if authorizationCode.count < 6 {
             errorLabel.isHidden = false
-            errorLabel.text = "Невалидна дължина"
+            errorLabel.text = Constants.Strings.mobileNumberIncorrectLengthText
             return
         } else if !authorizationCode.isDigitsOnly {
             errorLabel.isHidden = false
-            errorLabel.text = "Невалиден формат"
+            errorLabel.text = Constants.Strings.generalErrorIncorrectFormatText
             return
         } else {
             errorLabel.isHidden = true
@@ -157,3 +162,4 @@ extension RegistrationConfirmationViewController: UITextFieldDelegate {
 // MARK: ToastViewPresentable
 
 extension RegistrationConfirmationViewController: ToastViewPresentable {}
+

@@ -278,6 +278,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <outlet property="checkBox" destination="xOT-v8-P0i" id="YeH-hY-9Yd"/>
                         <outlet property="confirmButton" destination="5qw-zi-hQ2" id="ZE3-eI-lir"/>
                         <outlet property="errorLabel" destination="9IQ-cs-16b" id="gJb-vU-KF7"/>
+                        <outlet property="iAgreeWithLabel" destination="ZUb-qC-PVV" id="nOG-SN-N2E"/>
                         <outlet property="iconImageView" destination="zz4-lc-3yS" id="2uK-0f-5oH"/>
                         <outlet property="phoneNumberTextField" destination="DDF-X8-k3m" id="FkJ-eu-0dc"/>
                         <outlet property="registrationLabel" destination="hfJ-RQ-81G" id="Qpt-1f-1Yt"/>
@@ -419,6 +420,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <outlet property="errorLabel" destination="5Ij-1k-6f6" id="505-Hr-7X8"/>
                         <outlet property="iconImageView" destination="l5c-Zk-9Sj" id="JBH-4k-6Gx"/>
                         <outlet property="mobileNumberLabel" destination="Aqb-xj-q00" id="BMb-oS-QQ1"/>
+                        <outlet property="noCodeReceivedButton" destination="cj6-gG-7DX" id="7nR-1z-rIm"/>
                         <outlet property="textLabel" destination="OMu-iJ-L5o" id="tqh-8Y-5mQ"/>
                         <outlet property="verificationCodeTextField" destination="NbZ-eP-i2K" id="l3W-3Z-Epl"/>
                     </connections>

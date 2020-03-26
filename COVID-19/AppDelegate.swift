@@ -164,7 +164,6 @@ extension AppDelegate: CLLocationManagerDelegate {
         if dateNow >= nextLocationUpdateTimestamp {
             guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
 
-            print("locations = \(locValue.latitude) \(locValue.longitude)")
 
             let decoder = JWTDecoder()
             let token = TokenStore.shared.token!
@@ -179,8 +178,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             })
 
             var components = DateComponents()
-            // !!! Be careful
-            components.setValue(updateInterval! / 60, for: .hour)
+            components.setValue((updateInterval ?? 10) / 60, for: .hour)
 
             let date: Date = Date()
             let newDate = Calendar.current.date(byAdding: components, to: date)

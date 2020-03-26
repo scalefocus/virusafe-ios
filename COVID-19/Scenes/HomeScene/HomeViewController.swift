@@ -96,16 +96,16 @@ class HomeViewController: UIViewController {
     // MARK: Setup UI
 
     private func localize() {
-        title = "Начален екран"
-        titleLabel.text = "Въведете вашите симптоми"
+        title = Constants.Strings.homeScreenStartingScreenText
+        titleLabel.text = Constants.Strings.homeScreenEnterSymptomsText
 
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
 
-        startButton.setTitle("НАЧАЛО", for: .normal)
-        tncButton.setTitle("Условия за ползване", for: .normal)
+        startButton.setTitle(Constants.Strings.homeScreenStartCapitalText, for: .normal)
+        tncButton.setTitle(Constants.Strings.generalTosText, for: .normal)
     }
     
     private func askForPushNotifications() {
