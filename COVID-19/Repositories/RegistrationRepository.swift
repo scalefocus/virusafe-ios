@@ -37,7 +37,7 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             }
 
             self?.authorisedMobileNumber = mobileNumber
-            completion(.generalError)
+            completion(.success)
         }
     }
     
