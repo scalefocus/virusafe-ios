@@ -9,18 +9,12 @@
 import Foundation
 import NetworkKit
 
-enum QuestionnaireApiResult {
-    case success
-    case invalidPhoneNumber
-    case generalError
-}
-
-typealias GetQuestionCompletion = ((HealthStatus?, Error?) -> Void)
-typealias PostAnswersCompletion = ((Error?) -> Void)
+typealias RequestQuestionCompletion = ((ApiResult<HealthStatus>) -> Void)
+typealias SendAnswersCompletion = ((ApiResult<Void>) -> Void)
 
 protocol QuestionnaireRepositoryProtocol {
-    func requestQuestions(with completion: @escaping GetQuestionCompletion)
-    func sendAnswers(_ answers: [HealthStatusQuestion], for phoneNumber: String, with completion: @escaping PostAnswersCompletion)
+    func requestQuestions(with completion: @escaping RequestQuestionCompletion)
+    func sendAnswers(_ answers: [HealthStatusQuestion], for phoneNumber: String, with completion: @escaping SendAnswersCompletion)
 }
 
 class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
@@ -30,19 +24,29 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
     // 2) execute() which doesn't parse and just returns data
     // P.S -> In many cases you should use the extension executeParsedWithHandling() and executeWithHandling()
     // which adds error handling/showing alerts/etc
-    func requestQuestions(with completion: @escaping GetQuestionCompletion) {
-        QuestionsApiRequest().executeParsed(of: [Question].self) { (questions, _, error) in
-            let results: [HealthStatusQuestion]? = questions?.map {
-                HealthStatusQuestion(questionId: $0.identifier,
-                                     questionTitle: $0.title,
-                                     isActive: nil)
+    func requestQuestions(with completion: @escaping RequestQuestionCompletion) {
+        QuestionsApiRequest().executeParsed(of: [Question].self) { (questions, response, error) in
+            guard let statusCode = response?.statusCode, error == nil else {
+                completion(.failure(.general))
+                return
             }
 
-            completion(((results != nil) ? HealthStatus(questions: results) : nil), error)
+            let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
+
+            switch statusCodeResult {
+                case .succes:
+                    let healthStatus = HealthStatus(questions:
+                        questions?.map { HealthStatusQuestion(questionId: $0.identifier, questionTitle: $0.title, isActive: nil) }
+                    )
+                    completion(.success(healthStatus))
+                case .failure:
+                    // No special handling
+                    completion(.failure(.server))
+            }
         }
     }
 
-    func sendAnswers(_ answers: [HealthStatusQuestion], for phoneNumber: String, with completion: @escaping PostAnswersCompletion) {
+    func sendAnswers(_ answers: [HealthStatusQuestion], for phoneNumber: String, with completion: @escaping SendAnswersCompletion) {
         let results: [Answer] = answers.map {
             Answer(answer: "\($0.isActive ?? false)", questionId: $0.questionId)
         }
@@ -50,11 +54,22 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
         let location = UserLocation(latitude: 0, longitude: 0)
         let timestamp = Int(Date().timeIntervalSince1970 * 1000)
         let questionnaire = Questionnaire(answers: results, location: location, timestamp: timestamp)
-        AnswersApiRequest(with: questionnaire, phoneNumber: phoneNumber).execute { (data, _, error) in
-            if let data = data {
-                print(String(decoding: data, as: UTF8.self))
+
+        AnswersApiRequest(with: questionnaire, phoneNumber: phoneNumber).execute { (data, response, error) in
+            guard let statusCode = response?.statusCode, error == nil else {
+                completion(.failure(.general))
+                return
             }
-            completion(error)
+
+            let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
+
+            switch statusCodeResult {
+                case .succes:
+                    completion(.success(Void()))
+                case .failure:
+                    // No special handling
+                    completion(.failure(.server))
+            }
         }
     }
 }

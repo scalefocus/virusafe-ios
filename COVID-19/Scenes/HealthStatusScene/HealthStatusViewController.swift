@@ -101,22 +101,20 @@ class HealthStatusViewController: UIViewController {
     }
 
     private func bindRequestQuestionsResult() {
-        viewModel.isRequestQuestionsSuccessful.bind { [weak self] success in
-            if success {
-                self?.tableView.reloadData()
-            } else {
-                self?.showToast(message: "Възникна грешка. Опитайте по-късно")
+        viewModel.requestError.bind { [weak self] error in
+            switch error {
+                case .tooManyRequests:
+                    self?.showToast(message: "Твърде много заявки. Опитайте по-късно.")
+                case .server, .general:
+                    self?.showToast(message: "Възникна грешка. Опитайте по-късно.")
             }
         }
     }
 
     private func bindSendAnswersResult() {
-        viewModel.isSendAnswersSuccessful.bind { [weak self] success in
-            if success {
-                self?.navigateToConfirmationViewController()
-            } else {
-                self?.showToast(message: "Възникна грешка. Опитайте по-късно")
-            }
+        // fired only on success
+        viewModel.isSendAnswersCompleted.bind { [weak self] _ in
+            self?.navigateToConfirmationViewController()
         }
     }
 
