@@ -89,7 +89,9 @@ extension SplashViewController {
         RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { status, error in
 
         if let error = error {
-          print("Uh-oh. Got an error fetching remote values \(error)")
+            print("Uh-oh. Got an error fetching remote values \(error)")
+            // !!! safe we don't have reference to RemoteConfig.remoteConfig()
+            self.showToast(message: Constants.Strings.errorConnectionWithServerFailed)
           return
         }
         
@@ -106,10 +108,10 @@ extension SplashViewController {
                                                              urlToOpen: "https://www.upnetix.com/",
                                                              currentVersion: appVersion,
                                                              window: UIApplication.shared.keyWindow,
-                                                             alertTitle: "Нова версия",
-                                                             alertDescription: "Има подобрения по приложението, моля свалете новата версия",
-                                                             updateButtonTitle: "Обнови",
-                                                             okButtonTitle: "Продължи",
+                                                             alertTitle: Constants.Strings.newVersionAlertTitle,
+                                                             alertDescription: Constants.Strings.newVersionAlertDescription,
+                                                             updateButtonTitle: Constants.Strings.newVersionAlertUpdateButtonTitle,
+                                                             okButtonTitle: Constants.Strings.newVersionAlertOkButtonTitle,
                                                              // !!! safe we don't have reference to RemoteConfig.remoteConfig()
                                                              urlOpenedClosure: self.handleForceUpdate
             )
@@ -134,3 +136,15 @@ extension SplashViewController {
 // MARK: ToastViewPresentable
 
 extension SplashViewController: ToastViewPresentable {}
+
+enum Constants {
+    enum Strings {
+        static let newVersionAlertTitle = "Нова версия"
+        static let newVersionAlertDescription = "Има обновления по приложението"
+        static let newVersionAlertUpdateButtonTitle = "Обнови"
+        static let newVersionAlertOkButtonTitle = "Продължи"
+
+        static let errorConnectionWithServerFailed = "Опа! Нещо се обърка"
+    }
+}
+
