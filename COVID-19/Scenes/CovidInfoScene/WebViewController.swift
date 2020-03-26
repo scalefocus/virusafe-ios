@@ -16,7 +16,7 @@ enum Source {
     var urlString: String {
         switch self {
         case .content:
-            return "https://virusafe.scalefocus.dev/information/about-covid.html" 
+            return "https://virusafe.scalefocus.dev:8443/information/about-covid.html" 
         case .notification(let string):
             return string
         }
