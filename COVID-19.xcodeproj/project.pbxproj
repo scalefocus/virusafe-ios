@@ -64,6 +64,7 @@
 		3803B02B2425498F0076EE00 /* INBeaconService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00F2425498F0076EE00 /* INBeaconService.m */; };
 		3803B02C2425498F0076EE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
 		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
+		3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		383352792428BD72000A397E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 383352782428BD72000A397E /* GoogleService-Info.plist */; };
 		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
 		41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
@@ -172,6 +173,7 @@
 		3803B0112425498F0076EE00 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3803B0122425498F0076EE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		38334499242D46240032F153 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		383352782428BD72000A397E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		38A8F40D2429574F00486007 /* COVID-19.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID-19.entitlements"; sourceTree = "<group>"; };
 		41482B18242B49F20062D6E1 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				383352782428BD72000A397E /* GoogleService-Info.plist */,
 				38A8F40D2429574F00486007 /* COVID-19.entitlements */,
 				024D82D424239A6100696868 /* Extensions */,
+				38334499242D46240032F153 /* LocalizableStrings.swift */,
 			);
 			path = "COVID-19";
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				4170C239242A14D3003EA70A /* Toast.swift in Sources */,
 				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
 				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
+				3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

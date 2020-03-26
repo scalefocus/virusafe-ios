@@ -48,8 +48,8 @@ class TermsAndConditionsViewController: UIViewController {
     }
 
     private func localize() {
-        titleLabel.text = "Условия за ползване"
-        acceptButton.setTitle("Съгласен съм", for: .normal)
+        titleLabel.text = Constants.Strings.generalTosText
+        acceptButton.setTitle(Constants.Strings.generalAgreeIText, for: .normal)
     }
 
     private func loadTnCFromRtf() {
@@ -66,4 +66,3 @@ class TermsAndConditionsViewController: UIViewController {
     }
 
 }
-

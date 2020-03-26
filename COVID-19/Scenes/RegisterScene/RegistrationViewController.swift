@@ -21,7 +21,8 @@ class RegistrationViewController: UIViewController {
     @IBOutlet private weak var checkBox: CheckBox!
     @IBOutlet private weak var tncButton: UIButton!
     @IBOutlet private weak var registrationLabel: UILabel!
-
+    @IBOutlet weak var iAgreeWithLabel: UILabel!
+    
     // MARK: Settings
 
     private let phoneNumberMaxLength = 15
@@ -61,13 +62,15 @@ class RegistrationViewController: UIViewController {
     private func setupUI() {
         confirmButton.backgroundColor = .healthBlue
         registrationLabel.text = Constants.Strings.registrationScreenTitle
+        iAgreeWithLabel.text = Constants.Strings.iAgreeWithText + " "
+        tncButton.setTitle(Constants.Strings.registrationScreenTocText, for: .normal)
         setupBackButton()
         setupIconImageViewTint()
         setupPhoneNumberTextField()
     }
 
     private func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: Constants.Strings.navigationBackButtonTitle,
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
@@ -105,9 +108,9 @@ class RegistrationViewController: UIViewController {
                 case .success:
                     strongSelf.showRegistrationConfirmation()
                 case .generalError:
-                    strongSelf.showToast(message: "Грешка. Проверете дали сте свързани с интернет и опитайте отново.")
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
                 case .invalidPhoneNumber:
-                    strongSelf.showToast(message: "Грешка. Невалиден телефонен номер.")
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
             }
         }
     }
@@ -138,17 +141,17 @@ class RegistrationViewController: UIViewController {
 
         guard phoneNumber.isPhoneNumber else {
             errorLabel.isHidden = false
-            errorLabel.text = "Невалиден формат"
+            errorLabel.text = Constants.Strings.generalErrorIncorrectFormatText
             return
         }
 
         errorLabel.isHidden = true
 
         guard checkBox.isSelected else {
-            let alert = UIAlertController(title: "Внимание",
-                                          message: "За да бъде запазена регистрацията Ви е необходимо да сте съгласни с Общите условия на приложението.",
+            let alert = UIAlertController(title: Constants.Strings.generalWarningText,
+                                          message: Constants.Strings.registrationScreenTOSText,
                                           preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Добре", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText, style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             return
         }
@@ -191,13 +194,3 @@ extension RegistrationViewController: UITextFieldDelegate {
 // MARK: ToastViewPresentable
 
 extension RegistrationViewController: ToastViewPresentable {}
-
-extension Constants.Strings {
-    static let registrationScreenTitle = "Регистрация"
-    static let registrationScreenPhoneTextFieldPlaceholder = "Телефонен номер"
-    static let navigationBackButtonTitle = "Назад"
-
-    static let registrationScreenPhoneTextFieldEmpty = "Полето не може да е празно"
-    static let registrationScreenPhoneTextFieldInvalidLenght = "Полето трябва да съдържа повече символи"
-    static let registrationScreenPhoneTextFieldInvalidFormat = "Невалиден формат"
-}

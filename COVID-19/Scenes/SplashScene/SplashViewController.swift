@@ -137,15 +137,3 @@ extension SplashViewController {
 // MARK: ToastViewPresentable
 
 extension SplashViewController: ToastViewPresentable {}
-
-enum Constants {
-    enum Strings {
-        static let newVersionAlertTitle = "Нова версия"
-        static let newVersionAlertDescription = "Има обновления по приложението"
-        static let newVersionAlertUpdateButtonTitle = "Обнови"
-        static let newVersionAlertOkButtonTitle = "Продължи"
-
-        static let errorConnectionWithServerFailed = "Опа! Нещо се обърка"
-    }
-}
-

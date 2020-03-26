@@ -78,10 +78,10 @@ class HealthStatusViewController: UIViewController {
             if isLeavingScreenAvailable {
                 strongSelf.viewModel.sendAnswers()
             } else {
-                let alert = UIAlertController(title: "Внимание",
-                                              message: "За да запазите промените е нужно да попълните всички точки от въпросника",
+                let alert = UIAlertController(title: Constants.Strings.generalWarningText,
+                                              message: Constants.Strings.healthStatusPopulateAllFiendsErrorText,
                                               preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Добре",
+                alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText,
                                               style: UIAlertAction.Style.default,
                                               handler: nil))
                 strongSelf.present(alert, animated: true, completion: nil)
@@ -104,9 +104,9 @@ class HealthStatusViewController: UIViewController {
         viewModel.requestError.bind { [weak self] error in
             switch error {
                 case .tooManyRequests:
-                    self?.showToast(message: "Твърде много заявки. Опитайте по-късно.")
+                    self?.showToast(message: Constants.Strings.healthStatusTooManyRequestsErrorText)
                 case .server, .general:
-                    self?.showToast(message: "Възникна грешка. Опитайте по-късно.")
+                    self?.showToast(message: Constants.Strings.healthStatusUnknownErrorText)
             }
         }
     }
@@ -121,7 +121,7 @@ class HealthStatusViewController: UIViewController {
     // MARK: Setup UI
     
     private func setupVC() {
-        title = "Здравен статус"
+        title = Constants.Strings.healthStatusHealthStatuText
 
         tableView.tableFooterView = UIView()
         tableView.register(cellNames: "\(QuestionTableViewCell.self)",

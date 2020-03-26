@@ -27,7 +27,7 @@ extension WebViewController {
         let navigationController = UINavigationController(rootViewController: webViewController)
 
         // Add Close Button
-        let leftBarButtonItem = UIBarButtonItem(title: "Назад",
+        let leftBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
                                                 style: .done,
                                                 target: webViewController,
                                                 action: #selector(hide))
