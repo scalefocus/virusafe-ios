@@ -887,7 +887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.healthcare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "58e4f0a4-0997-4168-bb47-2a47f0a60543";
-				PROVISIONING_PROFILE_SPECIFIER = "covid-19 healthcare dev";
+				PROVISIONING_PROFILE_SPECIFIER = "covid19-healthcare-prod";
 				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
