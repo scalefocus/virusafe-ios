@@ -96,7 +96,7 @@ class RegistrationConfirmationViewController: UIViewController {
             if isRequestSuccessful {
                 strongSelf.showHomeModule()
             } else {
-                // TODO: Show popup that something is wrong
+                strongSelf.showToast(message: "Грешка. Проверете кода и опитайте отново.")
             }
         }
     }
@@ -120,6 +120,7 @@ class RegistrationConfirmationViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func resetCodeButtonDidTap (_ sender: Any) {
+        // TODO: Implement reset code API
         showToast(message: "Кода беше изпратен успешно")
     }
     
