@@ -14,7 +14,7 @@ class RegistrationViewModel {
     
     let repository: RegistrationRepository
     let shouldShowLoadingIndicator = Observable<Bool>()
-    let isRequestSuccessful = Observable<Bool>()
+    let isRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
     
     init(repository: RegistrationRepository) {
         self.repository = repository
@@ -22,9 +22,9 @@ class RegistrationViewModel {
     
     func didTapRegistration(with phoneNumber: String) {
         shouldShowLoadingIndicator.value = true
-        repository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] success in
+        repository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] result in
             guard let strongSelf = self else { return }
-            strongSelf.isRequestSuccessful.value = success
+            strongSelf.isRequestSuccessful.value = result
             strongSelf.shouldShowLoadingIndicator.value = false
         }
     }

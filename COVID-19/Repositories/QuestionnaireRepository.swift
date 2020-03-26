@@ -9,6 +9,12 @@
 import Foundation
 import NetworkKit
 
+enum QuestionnaireApiResult {
+    case success
+    case invalidPhoneNumber
+    case generalError
+}
+
 typealias GetQuestionCompletion = ((HealthStatus?, Error?) -> Void)
 typealias PostAnswersCompletion = ((Error?) -> Void)
 
