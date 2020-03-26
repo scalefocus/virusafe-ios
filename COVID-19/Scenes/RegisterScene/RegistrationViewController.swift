@@ -97,25 +97,32 @@ class RegistrationViewController: UIViewController {
             }
         }
 
-        viewModel.isRequestSuccessful.bind { [weak self] isRequestSuccessful in
+        viewModel.isRequestSuccessful.bind { [weak self] result in
             guard let strongSelf = self else { return }
-
-            if isRequestSuccessful {
-                guard let registrationConfirmationVC =
-                    UIStoryboard(name: "Main", bundle: nil)
-                        .instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
-                        as? RegistrationConfirmationViewController else {
-                            assertionFailure("RegistrationConfirmationViewController is not found")
-                            return
-                }
-                registrationConfirmationVC.viewModel =
-                    RegistrationConfirmationViewModel(repository: strongSelf.viewModel.repository)
-                strongSelf.navigationController?.pushViewController(registrationConfirmationVC,
-                                                                    animated: true)
-            } else {
-                strongSelf.showToast(message: "Грешка. Проверете тел. номер и опитайте отново.")
+            switch result {
+                case .success:
+                    strongSelf.showRegistrationConfirmation()
+                case .generalError:
+                    strongSelf.showToast(message: "Грешка. Проверете дали сте свързани с интернет и опитайте отново.")
+                case .invalidPhoneNumber:
+                    strongSelf.showToast(message: "Грешка. Невалиден телефонен номер.")
             }
         }
+    }
+
+    // MARK: Navigation
+
+    private func showRegistrationConfirmation() {
+        guard let registrationConfirmationVC =
+            UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
+                as? RegistrationConfirmationViewController else {
+                    assertionFailure("RegistrationConfirmationViewController is not found")
+                    return
+        }
+        registrationConfirmationVC.viewModel =
+            RegistrationConfirmationViewModel(repository: viewModel.repository)
+        navigationController?.pushViewController(registrationConfirmationVC, animated: true)
     }
 
     // MARK: Actions

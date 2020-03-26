@@ -9,24 +9,35 @@
 import Foundation
 import NetworkKit
 
-protocol RegistrationRepositoryProtocol {
-    func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((Bool) -> Void))
-    func authoriseVerificationCode(verificationCode: String, completion: @escaping ((Bool) -> Void))
+enum AuthoriseMobileNumberResult {
+    case success
+    case invalidPhoneNumber
+    case generalError
+}
 
+protocol RegistrationRepositoryProtocol {
+    func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
+    func authoriseVerificationCode(verificationCode: String, completion: @escaping ((Bool) -> Void))
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
 
     private (set) var authorisedMobileNumber: String?
     
-    func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((Bool) -> Void)) {
-        PinApiRequest(phoneNumber: mobileNumber).execute { [weak self] (_, _, error) in
-            guard error == nil else {
-                completion(false)
+    func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
+        PinApiRequest(phoneNumber: mobileNumber).execute { [weak self] (_, response, error) in
+            guard response?.statusCode != 412 else {
+                completion(.invalidPhoneNumber)
                 return
             }
+
+            guard error == nil else {
+                completion(.generalError)
+                return
+            }
+
             self?.authorisedMobileNumber = mobileNumber
-            completion(true)
+            completion(.generalError)
         }
     }
     

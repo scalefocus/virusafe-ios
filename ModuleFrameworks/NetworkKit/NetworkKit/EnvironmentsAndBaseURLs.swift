@@ -32,6 +32,7 @@ public protocol EnvironmentInterface {
 public typealias BaseURL = String
 public protocol BaseURLs {
     var base: BaseURL { get set }
+    var port: Int? { get set }
 }
 
 public typealias APITrustPolicies = [String: NetworkServerTrustPolicy]
@@ -48,6 +49,7 @@ public enum NetworkServerTrustPolicy {
 struct DevEnvironment: EnvironmentInterface {
     var name = "Development"
     var baseURLs: BaseURLs = DevBaseURLs()
+    var serverPort: Int? = 8443
     var serverTrustPolicies: APITrustPolicies = [:]
     
     /*************************************/
@@ -61,7 +63,8 @@ struct DevEnvironment: EnvironmentInterface {
 }
 
 struct DevBaseURLs: BaseURLs {
-    var base: BaseURL = "https://virusafe.scalefocus.dev:8443"
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
+    var port: Int? = 8443
 }
 
 /*************************************/
@@ -75,7 +78,8 @@ struct StageEnvironment: EnvironmentInterface {
 }
 
 struct StageBaseURLs: BaseURLs {
-    var base: BaseURL = "https://virusafe.scalefocus.dev:8443"
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
+    var port: Int? = 8443
 }
 
 /*************************************/
@@ -89,5 +93,6 @@ struct LiveEnvironment: EnvironmentInterface {
 }
 
 struct LiveBaseURLs: BaseURLs {
-    var base: BaseURL = "https://virusafe.scalefocus.dev:8443"
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
+    var port: Int? = 8443
 }

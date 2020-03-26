@@ -16,6 +16,10 @@ public class BaseAPIRequest: APIRequest {
     public var baseUrl: BaseURL {
         preconditionFailure("This method needs to be overriden by concrete subclass.")
     }
+
+    public var baseUrlPort: Int? {
+        preconditionFailure("This method needs to be overriden by concrete subclass.")
+    }
     
     public var path: String {
         return ""
