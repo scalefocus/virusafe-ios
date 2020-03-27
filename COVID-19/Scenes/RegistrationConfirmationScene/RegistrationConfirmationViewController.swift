@@ -111,7 +111,7 @@ class RegistrationConfirmationViewController: UIViewController {
     private func showHomeModule() {
         guard let keyWindow = UIApplication.shared.keyWindow else { return }
         
-        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)")
+        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(EGNViewController.self)")
         let navigationController = UINavigationController(rootViewController: homeViewController)
         keyWindow.rootViewController = navigationController
         
