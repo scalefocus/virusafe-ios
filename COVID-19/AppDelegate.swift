@@ -60,6 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Autostart if possible
         tryStartListenForLocationChanges()
 
+        // register for notifications
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onDidReceivePushNotification(_:)),
+                                               name: NSNotification.Name("PresentWebViewControllerWithPushNotification"),
+                                               object: nil)
+
         // Init App Window
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
@@ -82,6 +88,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+    // MARK: Show Notification after wakeup
+
+    @objc
+    func onDidReceivePushNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        guard let urlString = userInfo?["url"] as? String else {
+            return
+        }
+        // Give it some time to present screens
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            WebViewController.show(with: .notification(urlString))
+        }
     }
 
 }
@@ -107,15 +127,20 @@ extension AppDelegate: MessagingDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let applicationState = UIApplication.shared.applicationState
-        
-        if applicationState == .active ||  applicationState == .inactive || applicationState == .background {
-            let userInfo = response.notification.request.content.userInfo
-            if let urlData = userInfo["url"] {
-                if let urlString = urlData as? String {
-                    WebViewController.show(with: .notification(urlString))
-                }
+        let userInfo = response.notification.request.content.userInfo
+        if let urlString = userInfo["url"] as? String  {
+            if applicationState == .active {
+                // we're in the app just open it
+                WebViewController.show(with: .notification(urlString))
+            } else if applicationState == .inactive || applicationState == .background {
+                // app is moving from background to actives or vice vers
+                NotificationCenter.default.post(name: Notification.Name("PresentWebViewControllerWithPushNotification"),
+                                                object: nil,
+                                                userInfo: userInfo)
             }
         }
+
+
 
         completionHandler()
     }
