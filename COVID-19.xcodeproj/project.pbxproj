@@ -65,8 +65,6 @@
 		3803B02C2425498F0076EE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
 		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
-		383352792428BD72000A397E /* GoogleService-Info-Upnetix.plist in Resources */ = {isa = PBXBuildFile; fileRef = 383352782428BD72000A397E /* GoogleService-Info-Upnetix.plist */; };
-		383352792428BD72000A397E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 383352782428BD72000A397E /* GoogleService-Info.plist */; };
 		38650B6F242DFB110013DF5E /* EGNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650B6E242DFB110013DF5E /* EGNViewController.swift */; };
 		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
 		41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
@@ -85,6 +83,7 @@
 		4181C716242D059E00FFDF7C /* TnC.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4181C715242D059E00FFDF7C /* TnC.rtf */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E669242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E668242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist */; };
+		41D3E66C242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,8 +176,6 @@
 		3803B0122425498F0076EE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		38334499242D46240032F153 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
-		383352782428BD72000A397E /* GoogleService-Info-Upnetix.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Upnetix.plist"; sourceTree = "<group>"; };
-		383352782428BD72000A397E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		38650B6E242DFB110013DF5E /* EGNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EGNViewController.swift; sourceTree = "<group>"; };
 		38A8F40D2429574F00486007 /* COVID-19.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID-19.entitlements"; sourceTree = "<group>"; };
 		41482B18242B49F20062D6E1 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
@@ -198,6 +195,7 @@
 		4181C715242D059E00FFDF7C /* TnC.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TnC.rtf; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E668242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Info-Services.plist"; sourceTree = "<group>"; };
+		41D3E66B242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Upnetix.plist"; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D1CD7FD0D446B912A7D0A1 /* Pods-COVID-19.release information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release information services.xcconfig"; sourceTree = "<group>"; };
 		C8428FC855E76DBCA0DA2996 /* Pods-COVID-19.debug information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug information services.xcconfig"; sourceTree = "<group>"; };
@@ -326,7 +324,7 @@
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
 				41D3E668242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist */,
-				383352782428BD72000A397E /* GoogleService-Info-Upnetix.plist */,
+				41D3E66B242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist */,
 				38A8F40D2429574F00486007 /* COVID-19.entitlements */,
 				024D82D424239A6100696868 /* Extensions */,
 				38334499242D46240032F153 /* LocalizableStrings.swift */,
@@ -607,7 +605,7 @@
 			files = (
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
 				41D3E669242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist in Resources */,
-				383352792428BD72000A397E /* GoogleService-Info-Upnetix.plist in Resources */,
+				41D3E66C242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist in Resources */,
 				024D82E32423A80400696868 /* HealthStatus.json in Resources */,
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,

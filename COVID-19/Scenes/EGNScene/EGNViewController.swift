@@ -8,17 +8,18 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import IQKeyboardManager
 
 class EGNViewController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var egnTitleLabel: UILabel!
-    @IBOutlet weak var egnDescriptionLabel: UILabel!
-    @IBOutlet weak var egnTextField: SkyFloatingLabelTextField!
+    @IBOutlet private weak var egnTitleLabel: UILabel!
+    @IBOutlet private weak var egnDescriptionLabel: UILabel!
+    @IBOutlet private weak var egnTextField: SkyFloatingLabelTextField!
     
-    @IBOutlet weak var egnSubmitButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet private weak var egnSubmitButton: UIButton!
+    @IBOutlet private weak var skipButton: UIButton!
     
     // MARK: View Model
     
@@ -29,8 +30,25 @@ class EGNViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared().keyboardDistanceFromTextField = 80
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
+        IQKeyboardManager.shared().isEnableAutoToolbar = true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+    // MARK: Setup UI
     
     private func setupUI() {
         title = Constants.Strings.mobileNumberVerificationТext
@@ -41,7 +59,6 @@ class EGNViewController: UIViewController {
         egnTextField.placeholder = Constants.Strings.egnRequestPlacegolderText
         egnSubmitButton.setTitle(Constants.Strings.egnSubmitText, for: .normal)
         skipButton.setTitle(Constants.Strings.egnSkipText, for: .normal)
-    
     }
     
     private func setupEgnTextField() {
@@ -54,11 +71,13 @@ class EGNViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction func didTapSubmitButton(_ sender: Any) {
+    @IBAction private func didTapSubmitButton(_ sender: Any) {
+        // TODO: Validation - lenght
+        // TODO: Add API Call
         showHomeModule()
     }
 
-    @IBAction func didTapSkipButton(_ sender: Any) {
+    @IBAction private func didTapSkipButton(_ sender: Any) {
         showHomeModule()
     }
     
