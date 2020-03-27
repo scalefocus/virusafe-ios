@@ -49,7 +49,6 @@ public enum NetworkServerTrustPolicy {
 struct DevEnvironment: EnvironmentInterface {
     var name = "Development"
     var baseURLs: BaseURLs = DevBaseURLs()
-    var serverPort: Int? = 8443
     var serverTrustPolicies: APITrustPolicies = [:]
     
     /*************************************/

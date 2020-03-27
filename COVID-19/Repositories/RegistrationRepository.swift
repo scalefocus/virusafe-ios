@@ -12,12 +12,13 @@ import NetworkKit
 enum AuthoriseMobileNumberResult {
     case success
     case invalidPhoneNumber
+    case invalidPin
     case generalError
 }
 
 protocol RegistrationRepositoryProtocol {
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
-    func authoriseVerificationCode(verificationCode: String, completion: @escaping ((Bool) -> Void))
+    func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
@@ -41,24 +42,28 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
         }
     }
     
-    func authoriseVerificationCode(verificationCode: String, completion: @escaping ((Bool) -> Void)) {
+    func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
         guard let mobileNumber = authorisedMobileNumber else {
             assertionFailure("Authorised mobile number not found")
-            completion(false)
+            completion(.invalidPin)
             return
         }
 
-        TokenApiRequest(phoneNumber: mobileNumber, pin: verificationCode).executeParsed(of: ApiToken.self) { (parsedData, _, _) in
-            // TODO: Handle bad pin code
-            guard let parsedData = parsedData else {
-                completion(false)
+        TokenApiRequest(phoneNumber: mobileNumber, pin: verificationCode).executeParsed(of: ApiToken.self) { (parsedData, response, error) in
+            guard response?.statusCode != 438 else {
+                completion(.invalidPhoneNumber)
+                return
+            }
+
+            guard let parsedData = parsedData, error == nil else {
+                completion(.generalError)
                 return
             }
             // Store it
             TokenStore.shared.token = parsedData.accessToken
             // Update manager
             APIManager.shared.authToken = parsedData.accessToken
-            completion(true)
+            completion(.success)
         }
     }
     
