@@ -31,6 +31,7 @@ enum Constants {
         static let registrationScreenPhoneTextFieldInvalidFormat = "Невалиден формат"
         static let registrationScreenGeneralErrorText = "Грешка. Проверете дали сте свързани с интернет и опитайте отново."
         static let registrationScreenInvalindNumberErrorText =  "Грешка. Невалиден телефонен номер."
+        static let registrationScreenInvalindPersonalNumberErrorText =  "Грешка. Невалиден граждански номер"
         static let generalWarningText = "Внимание"
         static let genaralAgreedText = "Добре"
         static let registrationScreenTOSText = "За да бъде запазена регистрацията Ви е необходимо да сте съгласни с Общите условия на приложението."
@@ -41,6 +42,7 @@ enum Constants {
         static let homeScreenStartCapitalText = "НАЧАЛО"
         static let generalTosText = "Условия за ползване"
         static let healthStatusPopulateAllFiendsErrorText = "За да запазите промените е нужно да попълните всички точки от въпросника"
+        static let healthStatusPopulateErrorAlreadyEnteredSymptomsText = "Вече попълнихте симптомите си по-рано днес. Може да го направите пак след 1 час и 20 минути."
         static let healthStatusTooManyRequestsErrorText =  "Моля опитайте отново след"
         static let healthStatusUnknownErrorText = "Възникна грешка. Опитайте по-късно."
         static let healthStatusHealthStatuText = "Здравен статус"
@@ -48,14 +50,11 @@ enum Constants {
         static let generalBackText = "Назад"
         static let generalTextForTourAnswerText = "Благодарим Ви, че сте отговорни!"
         static let generalAgreeIText = "Съгласен съм"
-        
-       static let egnDescriptionText = "Ако желаете да използваме данните Ви за допълнителен анализ и да Ви изпращаме персонализирани съвети, моля въведете единния си граждански номер."
-        
+        static let egnDescriptionText = "Ако желаете да използваме данните Ви за допълнителен анализ и да Ви изпращаме персонализирани съвети, моля въведете единния си граждански номер."
         static let egnRequestText = "Въведете вашето ЕГН"
         static let egnRequestPlacegolderText = "ЕГН"
         static let egnSkipText = "Пропусни"
         static let egnSubmitText = "Потвърди"
-
         static let dateFormatHours = "часа"
         static let dateFormatMinutes = "минути"
         static let dateFormatLittleMoreTime = "малко"

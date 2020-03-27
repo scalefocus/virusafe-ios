@@ -13,12 +13,14 @@ enum AuthoriseMobileNumberResult {
     case success
     case invalidPhoneNumber
     case invalidPin
+    case invalidPersonalNumber
     case generalError
 }
 
 protocol RegistrationRepositoryProtocol {
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
+    func authorisePersonalNumber(personalNumberNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
@@ -66,6 +68,23 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             completion(.success)
         }
     }
+    
+    func authorisePersonalNumber(personalNumberNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
+            PersonalNumerApiRequest(personalNumber: personalNumberNumber).execute { [weak self] (_, response, error) in
+                guard response?.statusCode != 412 else {
+                    completion(.invalidPersonalNumber)
+                    return
+                }
+
+                guard error == nil else {
+                    completion(.generalError)
+                    return
+                }
+        
+                
+                completion(.success)
+            }
+        }
     
 }
 
