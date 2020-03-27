@@ -99,7 +99,7 @@ class RegistrationConfirmationViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
                 case .success:
-                    strongSelf.showHomeModule()
+                    strongSelf.showEgnModule()
                 case .invalidPhoneNumber:
                     strongSelf.showToast(message: Constants.Strings.mobileNumberErrorWrongPinText)
                 default:
@@ -122,18 +122,16 @@ class RegistrationConfirmationViewController: UIViewController {
 
     // MARK: Navigation
 
-    private func showHomeModule() {
-        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+    private func showEgnModule() {
+        guard let egnViewController =
+            UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "\(EGNViewController.self)")
+                as? EGNViewController    else {
+                    assertionFailure("EGNViewController is not found")
+                    return
+        }
         
-        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)")
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        keyWindow.rootViewController = navigationController
-        
-        UIView.transition(with: keyWindow,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: nil,
-                          completion: nil)
+        navigationController?.pushViewController(egnViewController, animated: true)
     }
 
     // MARK: Actions
