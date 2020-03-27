@@ -123,9 +123,9 @@ class RegistrationConfirmationViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success:
-                strongSelf.showEgnModule()
+                strongSelf.showHome()
             case .invalidPersonalNumber:
-                strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
+                strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindPersonalNumberErrorText)
             default:
                 strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
             }
@@ -135,6 +135,19 @@ class RegistrationConfirmationViewController: UIViewController {
     // MARK: Navigation
 
     private func showEgnModule() {
+        guard let egnViewController =
+            UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "\(EGNViewController.self)")
+                as? EGNViewController    else {
+                    assertionFailure("EGNViewController is not found")
+                    return
+        }
+        egnViewController.viewModel =
+        RegistrationConfirmationViewModel(repository: viewModel.repository)
+        navigationController?.pushViewController(egnViewController, animated: true)
+    }
+    
+    private func showHome() {
         guard let egnViewController =
             UIStoryboard(name: "Main", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(EGNViewController.self)")

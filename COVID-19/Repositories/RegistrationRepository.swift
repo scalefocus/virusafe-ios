@@ -80,7 +80,8 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
                     completion(.generalError)
                     return
                 }
-
+        
+                
                 completion(.success)
             }
         }

@@ -31,6 +31,7 @@ enum Constants {
         static let registrationScreenPhoneTextFieldInvalidFormat = "Невалиден формат"
         static let registrationScreenGeneralErrorText = "Грешка. Проверете дали сте свързани с интернет и опитайте отново."
         static let registrationScreenInvalindNumberErrorText =  "Грешка. Невалиден телефонен номер."
+        static let registrationScreenInvalindPersonalNumberErrorText =  "Грешка. Невалиден граждански номер"
         static let generalWarningText = "Внимание"
         static let genaralAgreedText = "Добре"
         static let registrationScreenTOSText = "За да бъде запазена регистрацията Ви е необходимо да сте съгласни с Общите условия на приложението."

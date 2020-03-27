@@ -48,7 +48,7 @@ class RegistrationConfirmationViewModel {
         shouldShowLoadingIndicator.value = true
         repository.authorisePersonalNumber(personalNumberNumber: personalNumber, completion: { [weak self] result in
             guard let strongSelf = self else { return }
-            strongSelf.isCodeAuthorizationRequestSuccessful.value = result
+            strongSelf.isPersonalNumberRequestSuccessful.value = result
             strongSelf.shouldShowLoadingIndicator.value = false
         })
     }
