@@ -41,6 +41,8 @@ enum Constants {
         static let homeScreenStartCapitalText = "НАЧАЛО"
         static let generalTosText = "Условия за ползване"
         static let healthStatusPopulateAllFiendsErrorText = "За да запазите промените е нужно да попълните всички точки от въпросника"
+        static let healthStatusPopulateErrorAlreadyEnteredSymptomsText = "Вече попълнихте симптомите си по-рано днес. Може да го направите пак след 1 час и 20 минути."
+        static let healthStatusToastErrorAlreadyEnteredSymptomsText = "Моля опитайте отново след: 1 час и 20 минути"
         static let healthStatusTooManyRequestsErrorText =  "Твърде много заявки. Опитайте по-късно."
         static let healthStatusUnknownErrorText = "Възникна грешка. Опитайте по-късно."
         static let healthStatusHealthStatuText = "Здравен статус"
@@ -48,12 +50,12 @@ enum Constants {
         static let generalBackText = "Назад"
         static let generalTextForTourAnswerText = "Благодарим Ви, че сте отговорни!"
         static let generalAgreeIText = "Съгласен съм"
+        static let egnDescriptionText = "Ако желаете да използваме данните Ви за допълнителен анализ и да Ви изпращаме персонализирани съвети, моля въведете единния си граждански номер."
+         static let egnRequestText = "Въведете вашето ЕГН"
+         static let egnRequestPlacegolderText = "ЕГН"
+         static let egnSkipText = "Пропусни"
+         static let egnSubmitText = "Потвърди"
+
         
-       static let egnDescriptionText = "Ако желаете да използваме данните Ви за допълнителен анализ и да Ви изпращаме персонализирани съвети, моля въведете единния си граждански номер."
-        
-        static let egnRequestText = "Въведете вашето ЕГН"
-        static let egnRequestPlacegolderText = "ЕГН"
-        static let egnSkipText = "Пропусни"
-        static let egnSubmitText = "Потвърди"
     }
 }

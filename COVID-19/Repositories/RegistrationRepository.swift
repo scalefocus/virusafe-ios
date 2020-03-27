@@ -67,5 +67,22 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
         }
     }
     
+
+    func authorisePersonalNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
+            PersonalNumerApiRequest(personalNumber: mobileNumber).execute { [weak self] (_, response, error) in
+                guard response?.statusCode != 412 else {
+                    completion(.invalidPhoneNumber)
+                    return
+                }
+
+                guard error == nil else {
+                    completion(.generalError)
+                    return
+                }
+
+                completion(.success)
+            }
+        }
+    
 }
 
