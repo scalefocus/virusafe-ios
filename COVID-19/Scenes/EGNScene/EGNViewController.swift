@@ -21,7 +21,7 @@ class EGNViewController: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
     
     // MARK: View Model
-
+    
     private let viewModel = RegistrationViewModel(repository: RegistrationRepository())
     
     // MARK: Lifecycle
@@ -33,7 +33,7 @@ class EGNViewController: UIViewController {
     }
     
     private func setupUI() {
-        
+        title = Constants.Strings.mobileNumberVerificationТext
         egnSubmitButton.backgroundColor = .healthBlue
         setupEgnTextField()
         egnTitleLabel.text = Constants.Strings.egnRequestText
