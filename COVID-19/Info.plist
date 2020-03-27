@@ -20,6 +20,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>20.3.262046</string>
+	<key>GoogleServicesInfoPlistName</key>
+	<string>$(GOOGLE_SERVICES_INFO_PLSIT_NAME)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
@@ -56,6 +58,7 @@
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
 		<string>location</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
