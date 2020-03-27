@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
         return locationManager
     }()
     
@@ -156,11 +158,22 @@ extension AppDelegate: CLLocationManagerDelegate {
 
         locationManager.startUpdatingLocation()
     }
+
+    func stopListenForLocationChanges() {
+        locationManager.stopUpdatingLocation()
+    }
     
     func requestLocationServicesAutorization() {
         locationManager.requestAlwaysAuthorization()
         // Autostart if possible
         tryStartListenForLocationChanges()
+    }
+
+    func currentLocation() -> (latitude: Double, longitude: Double)? {
+        guard let location = locationManager.location else {
+            return nil
+        }
+        return (latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -211,5 +224,11 @@ extension AppDelegate: CLLocationManagerDelegate {
             UserDefaults.standard.set(newDate, forKey:"nextLocationUpdateTimestamp")
             UserDefaults.standard.synchronize()
         }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // TODO: handle location Error
+        print("============  LOCATION MANAGER ERROR: \(error)  ============")
+        stopListenForLocationChanges()
     }
 }

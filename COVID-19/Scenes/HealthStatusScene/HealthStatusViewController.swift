@@ -20,7 +20,11 @@ class HealthStatusViewController: UIViewController {
     @IBAction func submitButtonDidTap() {
         //Request Location Permissions
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.requestLocationServicesAutorization()
+        if appDelegate.isLocationServicesAuthorized {
+            viewModel.didTapSubmitButton()
+        } else {
+            appDelegate.requestLocationServicesAutorization()
+        }
     }
 
     // MARK: View Model

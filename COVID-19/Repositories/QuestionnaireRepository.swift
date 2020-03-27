@@ -14,7 +14,11 @@ typealias SendAnswersCompletion = ((ApiResult<Void>) -> Void)
 
 protocol QuestionnaireRepositoryProtocol {
     func requestQuestions(with completion: @escaping RequestQuestionCompletion)
-    func sendAnswers(_ answers: [HealthStatusQuestion], for phoneNumber: String, with completion: @escaping SendAnswersCompletion)
+    func sendAnswers(_ answers: [HealthStatusQuestion],
+                     for phoneNumber: String,
+                     at latitude: Double,
+                     longitude: Double,
+                     with completion: @escaping SendAnswersCompletion)
 }
 
 class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
@@ -46,13 +50,17 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
         }
     }
 
-    func sendAnswers(_ answers: [HealthStatusQuestion], for phoneNumber: String, with completion: @escaping SendAnswersCompletion) {
+    func sendAnswers(_ answers: [HealthStatusQuestion],
+                     for phoneNumber: String,
+                     at latitude: Double,
+                     longitude: Double,
+                     with completion: @escaping SendAnswersCompletion) {
         let results: [Answer] = answers.map {
             Answer(answer: "\($0.isActive ?? false)", questionId: $0.questionId)
         }
-        // TODO: Actual location
-        let location = UserLocation(latitude: 0, longitude: 0)
+
         let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+        let location = UserLocation(latitude: latitude, longitude: longitude)
         let questionnaire = Questionnaire(answers: results, location: location, timestamp: timestamp)
 
         AnswersApiRequest(with: questionnaire, phoneNumber: phoneNumber).execute { (data, response, error) in
