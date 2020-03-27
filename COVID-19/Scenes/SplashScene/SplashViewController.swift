@@ -81,9 +81,9 @@ extension SplashViewController {
     
     func fetchCloudValues() {
         // WARNING: Don't actually do this in production!
-        let fetchDuration: TimeInterval = 0
+        let fetchDuration: TimeInterval = 10
         let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0
+        settings.minimumFetchInterval = 5
         
         RemoteConfig.remoteConfig().configSettings = settings
         RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { status, error in
@@ -101,12 +101,13 @@ extension SplashViewController {
             if status == .success {
                 let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue
                 let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "ios_latest_app_version").stringValue
+                let appstoreLink = RemoteConfig.remoteConfig().configValue(forKey: "ios_appstore_link").stringValue
 
                 let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
 
                 PUUpdateApplicationManager.shared.checkForUpdate(shouldForceUpdate: isMandatory,
-                                                                 minimumVersionNeeded: currentAppVersion!,
-                                                                 urlToOpen: "https://www.upnetix.com/",
+                                                                 minimumVersionNeeded: currentAppVersion ?? "1.0",
+                                                                 urlToOpen: appstoreLink ?? "",
                                                                  currentVersion: appVersion,
                                                                  window: UIApplication.shared.keyWindow,
                                                                  alertTitle: Constants.Strings.newVersionAlertTitle,
