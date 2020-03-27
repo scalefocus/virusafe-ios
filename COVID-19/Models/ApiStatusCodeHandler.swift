@@ -59,3 +59,10 @@ final class ApiStatusCodeHandler {
     }
 
 }
+
+struct TooManyRequestsResponse: Codable {
+    var timestamp: String
+    var message: String
+    var cause: String?
+    var errors: [String]
+}

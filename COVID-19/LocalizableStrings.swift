@@ -41,7 +41,7 @@ enum Constants {
         static let homeScreenStartCapitalText = "НАЧАЛО"
         static let generalTosText = "Условия за ползване"
         static let healthStatusPopulateAllFiendsErrorText = "За да запазите промените е нужно да попълните всички точки от въпросника"
-        static let healthStatusTooManyRequestsErrorText =  "Твърде много заявки. Опитайте по-късно."
+        static let healthStatusTooManyRequestsErrorText =  "Моля опитайте отново след"
         static let healthStatusUnknownErrorText = "Възникна грешка. Опитайте по-късно."
         static let healthStatusHealthStatuText = "Здравен статус"
         static let confirmationReadyWithExcalamationMarkText = "Готово!"
@@ -55,5 +55,9 @@ enum Constants {
         static let egnRequestPlacegolderText = "ЕГН"
         static let egnSkipText = "Пропусни"
         static let egnSubmitText = "Потвърди"
+
+        static let dateFormatHours = "часа"
+        static let dateFormatMinutes = "минути"
+        static let dateFormatLittleMoreTime = "малко"
     }
 }

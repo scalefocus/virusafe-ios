@@ -74,9 +74,18 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
             switch statusCodeResult {
                 case .succes:
                     completion(.success(Void()))
-                case .failure:
-                    // No special handling
-                    completion(.failure(.server))
+                case .failure(let reason):
+                    switch reason {
+                        case .tooManyRequests:
+                            let decoder = JSONDecoder()
+                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            let response = try? decoder.decode(TooManyRequestsResponse.self, from: data ?? Data())
+                            let seconds = Int(response?.message ?? "3600") ?? 3600 // if not set return 1 hour by default
+                            completion(.failure(.tooManyRequests(reapeatAfter: seconds)))
+                        default:
+                            // No special handling
+                            completion(.failure(.server))
+                    }
             }
         }
     }
