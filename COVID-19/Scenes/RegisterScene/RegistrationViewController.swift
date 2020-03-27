@@ -107,10 +107,10 @@ class RegistrationViewController: UIViewController {
             switch result {
                 case .success:
                     strongSelf.showRegistrationConfirmation()
-                case .generalError:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
                 case .invalidPhoneNumber:
                     strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
+                default:
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
             }
         }
     }

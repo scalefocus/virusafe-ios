@@ -189,16 +189,18 @@ extension AppDelegate: CLLocationManagerDelegate {
             // !!! Phone is still required in the API, though it can be obtained from the JWT
             // instead of storing the phone and passing it around, just decode it from JWT
             let decoder = JWTDecoder()
-            let token = TokenStore.shared.token!
-            let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
-            let phoneNumber = jwtBody["phoneNumber"] as! String
+            // Not registered yet
+            if let token = TokenStore.shared.token {
+                let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
+                let phoneNumber = jwtBody["phoneNumber"] as! String
 
-            LocationRepository().sendGPSLocation(latitude: locValue.latitude,
-                                                 longitude: locValue.longitude,
-                                                 for: phoneNumber,
-                                                 completion: { result in
-                                                    // Do something
-            })
+                LocationRepository().sendGPSLocation(latitude: locValue.latitude,
+                                                     longitude: locValue.longitude,
+                                                     for: phoneNumber,
+                                                     completion: { result in
+                                                        // Do something
+                })
+            }
 
             var components = DateComponents()
             components.setValue(updateInterval, for: .minute)

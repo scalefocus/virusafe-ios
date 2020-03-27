@@ -95,7 +95,7 @@ extension SplashViewController {
             if let error = error {
                 print("Uh-oh. Got an error fetching remote values \(error)")
                 // !!! safe we don't have reference to RemoteConfig.remoteConfig()
-                self.showToast(message: Constants.Strings.errorConnectionWithServerFailed)
+//                self.showToast(message: Constants.Strings.errorConnectionWithServerFailed)
                 return
             }
 
