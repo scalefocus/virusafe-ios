@@ -9,6 +9,7 @@
 import UIKit
 import PopupUpdate
 import Firebase
+import NetworkKit
 
 class SplashViewController: UIViewController {
 
@@ -72,11 +73,15 @@ class SplashViewController: UIViewController {
 extension SplashViewController {
     
     func loadDefaultValues() {
-      let appDefaults: [String: Any?] = [
-        "is_mandatory" : false,
-        "latest_app_version" : "1"
-      ]
-      RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
+        let appDefaults: [String: Any?] = [
+            "ios_is_mandatory" : false,
+            "ios_latest_app_version" : "1.0",
+            "ios_end_point" : "https://virusafe.scalefocus.dev:8443",
+            "ios_static_content_page_url" : "https://virusafe.scalefocus.dev:8443/information/about-covid.html",
+            "ios_appstore_link" : "https://www.apple.com/ios/app-store/", // TODO: Actual
+            "ios_location_interval_in_mins" : 2
+        ]
+        RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
     }
     
     func fetchCloudValues() {
@@ -99,7 +104,7 @@ extension SplashViewController {
             // TODO: Update AppManager Base URL with the one from the remote congig (do it with environement)
 
             if status == .success {
-                let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue
+                let isMandatory = RemoteConfig.remoteConfig().configValue(forKey: "ios_is_mandatory").boolValue
                 let currentAppVersion = RemoteConfig.remoteConfig().configValue(forKey: "ios_latest_app_version").stringValue
                 let appstoreLink = RemoteConfig.remoteConfig().configValue(forKey: "ios_appstore_link").stringValue
 
@@ -114,9 +119,32 @@ extension SplashViewController {
                                                                  alertDescription: Constants.Strings.newVersionAlertDescription,
                                                                  updateButtonTitle: Constants.Strings.newVersionAlertUpdateButtonTitle,
                                                                  okButtonTitle: Constants.Strings.newVersionAlertOkButtonTitle,
-                                                                 // !!! safe we don't have reference to RemoteConfig.remoteConfig()
-                    urlOpenedClosure: self.handleForceUpdate
+                                                                 urlOpenedClosure: self.handleForceUpdate // !!! safe we don't have reference to RemoteConfig.remoteConfig()
                 )
+
+                // Update APIManager Base url
+                guard let remoteConfigURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_end_point").stringValue else {
+                    return
+                }
+                guard var urlComponents = URLComponents(string: remoteConfigURL) else {
+                    return
+                }
+                let port = urlComponents.port
+                urlComponents.port = nil
+                guard var urlString = urlComponents.url?.absoluteString else {
+                    return
+                }
+                if urlString.suffix(1) == "/" {
+                    urlString.removeLast()
+                }
+                let baseURL = RemoteStageBaseURLs(base: urlString, port: port)
+                let remoteEnvironment = RemoteConfigEnvironment(baseURLs: baseURL)
+                APIManager.shared.remoteEnvironment = remoteEnvironment
+
+                // update static content page url
+                if let staticContentURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_static_content_page_url").stringValue {
+                    StaticContentPage.shared.url = staticContentURL
+                }
             }
         }
     }
@@ -127,7 +155,7 @@ extension SplashViewController {
             return
         }
         // !!! Prevent navigation - solves issue when user gets back from app store and app is not updated
-        if RemoteConfig.remoteConfig().configValue(forKey: "iso_is_mandatory").boolValue {
+        if RemoteConfig.remoteConfig().configValue(forKey: "ios_is_mandatory").boolValue {
             print("Update is mandatory")
             return
         }
@@ -138,3 +166,22 @@ extension SplashViewController {
 // MARK: ToastViewPresentable
 
 extension SplashViewController: ToastViewPresentable {}
+
+// MARK: Networking
+
+struct RemoteConfigEnvironment: EnvironmentInterface {
+    var name = "FirebaseConfig"
+    var baseURLs: BaseURLs
+    var serverTrustPolicies: APITrustPolicies = [:]
+}
+
+struct RemoteStageBaseURLs: BaseURLs {
+    var base: BaseURL
+    var port: Int?
+}
+
+final class StaticContentPage {
+    static var shared = StaticContentPage()
+    private init() { }
+    var url: String = "https://virusafe.scalefocus.dev:8443/information/about-covid.html"
+}

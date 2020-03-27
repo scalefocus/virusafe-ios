@@ -20,7 +20,7 @@ class RegistrationConfirmationViewController: UIViewController {
     @IBOutlet private weak var verificationCodeTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var confirmButton: UIButton!
-    @IBOutlet weak var noCodeReceivedButton: UIButton!
+    @IBOutlet private weak var noCodeReceivedButton: UIButton!
     
     
     // MARK: Settings
