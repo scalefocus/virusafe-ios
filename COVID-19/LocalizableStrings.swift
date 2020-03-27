@@ -16,7 +16,7 @@ enum Constants {
         static let newVersionAlertOkButtonTitle = "Продължи"
         static let errorConnectionWithServerFailed = "Опа! Нещо се обърка"
         static let mobileNumberLabelТext = "Телефон"
-        static let mobileNumberIndentificationLabelТext = "Моля въведете активационния код"
+        static let mobileNumberIndentificationLabelТext = "Въведете верификационния код, изпратен на номер: "
         static let mobileNumberVerificationТext = "Верификация"
         static let mobileNumberEnterPinText =  "Въведете код"
         static let mobileNumberErrorWrongPinText = "Грешка. Проверете кода и опитайте отново."
