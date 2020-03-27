@@ -19,13 +19,15 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>20.3.262046</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GoogleServicesInfoPlistName</key>
 	<string>$(GOOGLE_SERVICES_INFO_PLSIT_NAME)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Used to monitor nearby users of the app</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Used to be monitored be other users of the app</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на министерството и областните РЗИ за по-добро планиране, както и да получавате гео-базирана информация за COVID-19</string>
 	<key>NSLocationAlwaysUsageDescription</key>
