@@ -118,6 +118,18 @@ class RegistrationConfirmationViewController: UIViewController {
                     strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
             }
         }
+        
+        viewModel.isPersonalNumberRequestSuccessful.bind { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                strongSelf.showEgnModule()
+            case .invalidPersonalNumber:
+                strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
+            default:
+                strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+            }
+        }
     }
 
     // MARK: Navigation
@@ -130,7 +142,8 @@ class RegistrationConfirmationViewController: UIViewController {
                     assertionFailure("EGNViewController is not found")
                     return
         }
-        
+        egnViewController.viewModel =
+        RegistrationConfirmationViewModel(repository: viewModel.repository)
         navigationController?.pushViewController(egnViewController, animated: true)
     }
 
