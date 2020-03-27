@@ -107,8 +107,26 @@ class HealthStatusViewController: UIViewController {
     private func bindRequestQuestionsResult() {
         viewModel.requestError.bind { [weak self] error in
             switch error {
-                case .tooManyRequests:
-                    self?.showToast(message: Constants.Strings.healthStatusTooManyRequestsErrorText)
+                case .tooManyRequests(let repeatAfterSeconds):
+                    var message = Constants.Strings.healthStatusTooManyRequestsErrorText + " "
+                    let hours = repeatAfterSeconds / 3600
+                    if hours > 0 {
+                        message += ("\(hours) " + Constants.Strings.dateFormatHours)
+                    }
+                    let minutes = repeatAfterSeconds / 60
+                    if minutes > 0 {
+                        message += ("\(minutes) " + Constants.Strings.dateFormatMinutes)
+                    }
+                    if hours == 0 && minutes == 0 {
+                        message += Constants.Strings.dateFormatLittleMoreTime
+                    }
+                    let alert = UIAlertController(title: nil,
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText,
+                                                  style: .default,
+                                                  handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                 case .server, .general:
                     self?.showToast(message: Constants.Strings.healthStatusUnknownErrorText)
             }
