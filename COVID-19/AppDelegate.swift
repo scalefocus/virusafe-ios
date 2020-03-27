@@ -20,7 +20,14 @@ import NetworkKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var locationManager: CLLocationManager?
+    lazy var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+        return locationManager
+    }()
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -36,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // App Center
@@ -50,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Network Auth
         APIManager.shared.authToken = TokenStore.shared.token
+
+        // Autostart if possible
+        tryStartListenForLocationChanges()
 
         // Init App Window
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -77,6 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: MessagingDelegate
+
 extension AppDelegate: MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
@@ -87,13 +98,12 @@ extension AppDelegate: MessagingDelegate {
       // TODO: If necessary send token to application server.
       // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
-    
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         completionHandler([.alert, .badge, .sound])
     }
-    
-    
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let applicationState = UIApplication.shared.applicationState
@@ -104,17 +114,9 @@ extension AppDelegate: MessagingDelegate {
                 if let urlString = urlData as? String {
                     WebViewController.show(with: .notification(urlString))
                 }
-//                if let url = URL(string: urlData as! String), UIApplication.shared.canOpenURL(url) {
-//                    if #available(iOS 10.0, *) {
-//                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//                    } else {
-//                        UIApplication.shared.openURL(url)
-//                    }
-//                }
             }
         }
-        
-        
+
         completionHandler()
     }
     
@@ -124,22 +126,54 @@ extension AppDelegate: MessagingDelegate {
     }
 }
 
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    
-}
+// MARK: UNUserNotificationCenterDelegate
+
+extension AppDelegate: UNUserNotificationCenterDelegate { }
+
+// MARK: CLLocationManagerDelegate
 
 extension AppDelegate: CLLocationManagerDelegate {
+
+    var isLocationServicesAuthorized: Bool {
+        switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                return false
+            case .authorizedAlways, .authorizedWhenInUse: // authorized is deprecated
+                return true
+            @unknown default:
+                break
+        }
+
+        return false
+    }
+
+    func tryStartListenForLocationChanges() {
+        guard CLLocationManager.locationServicesEnabled() else {
+            return
+        }
+
+        guard isLocationServicesAuthorized else {
+            return
+        }
+
+        locationManager.startUpdatingLocation()
+    }
+
+    func stopListenForLocationChanges() {
+        locationManager.stopUpdatingLocation()
+    }
     
     func requestLocationServicesAutorization() {
-        locationManager = CLLocationManager()
-        locationManager?.requestAlwaysAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        // Autostart if possible
+        tryStartListenForLocationChanges()
+    }
 
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.delegate = self
-            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager?.startUpdatingLocation()
+    func currentLocation() -> (latitude: Double, longitude: Double)? {
+        guard let location = locationManager.location else {
+            return nil
         }
+        return (latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -149,7 +183,7 @@ extension AppDelegate: CLLocationManagerDelegate {
            status == .authorizedAlways {
             NotificationCenter.default.post(name: Notification.Name("didChooseLocationAccess"), object: nil)
         } else {
-            
+            // Do something
         }
     }
 
@@ -164,18 +198,22 @@ extension AppDelegate: CLLocationManagerDelegate {
         if dateNow >= nextLocationUpdateTimestamp {
             guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
 
-
+            // TODO: Remove when it is no longer required
+            // !!! Phone is still required in the API, though it can be obtained from the JWT
+            // instead of storing the phone and passing it around, just decode it from JWT
             let decoder = JWTDecoder()
-            let token = TokenStore.shared.token!
-            let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
-            let phoneNumber = jwtBody["phoneNumber"] as! String
+            // Not registered yet
+            if let token = TokenStore.shared.token {
+                let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
+                let phoneNumber = jwtBody["phoneNumber"] as! String
 
-            LocationRepository().sendGPSLocation(latitude: locValue.latitude,
-                                                 longitude: locValue.longitude,
-                                                 for: phoneNumber,
-                                                 completion: { result in
-                                                    print("\(result)")
-            })
+                LocationRepository().sendGPSLocation(latitude: locValue.latitude,
+                                                     longitude: locValue.longitude,
+                                                     for: phoneNumber,
+                                                     completion: { result in
+                                                        // Do something
+                })
+            }
 
             var components = DateComponents()
             components.setValue(updateInterval, for: .minute)
@@ -186,5 +224,11 @@ extension AppDelegate: CLLocationManagerDelegate {
             UserDefaults.standard.set(newDate, forKey:"nextLocationUpdateTimestamp")
             UserDefaults.standard.synchronize()
         }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // TODO: handle location Error
+        print("============  LOCATION MANAGER ERROR: \(error)  ============")
+        stopListenForLocationChanges()
     }
 }

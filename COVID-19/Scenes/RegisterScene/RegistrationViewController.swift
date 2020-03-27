@@ -21,7 +21,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet private weak var checkBox: CheckBox!
     @IBOutlet private weak var tncButton: UIButton!
     @IBOutlet private weak var registrationLabel: UILabel!
-    @IBOutlet weak var iAgreeWithLabel: UILabel!
+    @IBOutlet private weak var iAgreeWithLabel: UILabel!
     
     // MARK: Settings
 
@@ -107,10 +107,10 @@ class RegistrationViewController: UIViewController {
             switch result {
                 case .success:
                     strongSelf.showRegistrationConfirmation()
-                case .generalError:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
                 case .invalidPhoneNumber:
                     strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
+                default:
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
             }
         }
     }

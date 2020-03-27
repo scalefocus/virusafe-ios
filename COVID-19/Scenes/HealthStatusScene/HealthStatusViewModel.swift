@@ -140,7 +140,10 @@ class HealthStatusViewModel {
         let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
         let phoneNumber = jwtBody["phoneNumber"] as! String
 
-        QuestionnaireRepository().sendAnswers(answeredQuestions, for: phoneNumber) { [weak self] result in
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let location = appDelegate.currentLocation()
+        // Make BE happy if location could not be obtained
+        QuestionnaireRepository().sendAnswers(answeredQuestions, for: phoneNumber, at: location?.latitude ?? 0, longitude: location?.longitude ?? 0) { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             // hide activity indicator

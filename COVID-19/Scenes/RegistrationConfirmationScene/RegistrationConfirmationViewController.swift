@@ -20,7 +20,7 @@ class RegistrationConfirmationViewController: UIViewController {
     @IBOutlet private weak var verificationCodeTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var confirmButton: UIButton!
-    @IBOutlet weak var noCodeReceivedButton: UIButton!
+    @IBOutlet private weak var noCodeReceivedButton: UIButton!
     
     
     // MARK: Settings
@@ -95,13 +95,27 @@ class RegistrationConfirmationViewController: UIViewController {
             }
         }
 
-        viewModel.isRequestSuccessful.bind { [weak self] isRequestSuccessful in
+        viewModel.isCodeAuthorizationRequestSuccessful.bind { [weak self] result in
             guard let strongSelf = self else { return }
+            switch result {
+                case .success:
+                    strongSelf.showEgnModule()
+                case .invalidPhoneNumber:
+                    strongSelf.showToast(message: Constants.Strings.mobileNumberErrorWrongPinText)
+                default:
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+            }
+        }
 
-            if isRequestSuccessful {
-                strongSelf.showEgnModule()
-            } else {
-                strongSelf.showToast(message: Constants.Strings.mobileNumberErrorWrongPinText)
+        viewModel.isResendCodeRequestSuccessful.bind { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+                case .success:
+                    strongSelf.showToast(message: Constants.Strings.mobileNumberSuccessfulPinText)
+                case .invalidPhoneNumber:
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
+                default:
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
             }
         }
     }
@@ -123,8 +137,7 @@ class RegistrationConfirmationViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func resetCodeButtonDidTap (_ sender: Any) {
-        // TODO: Implement reset code API
-        showToast(message: Constants.Strings.mobileNumberSuccessfulPinText)
+        viewModel.didTapResetCodeButton()
     }
     
     @IBAction private func didTapConfirmButton(_ sender: Any) {

@@ -53,7 +53,7 @@ enum Constants {
         
         static let egnRequestText = "Въведете вашето ЕГН"
         static let egnRequestPlacegolderText = "ЕГН"
-        static let egnSkipText = "Пропусн"
+        static let egnSkipText = "Пропусни"
         static let egnSubmitText = "Потвърди"
     }
 }
