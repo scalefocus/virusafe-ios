@@ -40,6 +40,11 @@ class TermsAndConditionsViewController: UIViewController {
         loadTnCFromRtf()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        contentTextView.setContentOffset(.zero, animated: false)
+    }
+
     // MARK: Setup UI
 
     private func setupUI() {
