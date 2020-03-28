@@ -1,5 +1,5 @@
 //
-//  EGNViewController.swift
+//  PersonalInformationViewController.swift
 //  COVID-19
 //
 //  Created by Gandi Pirkov on 27.03.20.
@@ -17,7 +17,7 @@ enum Gender: Int {
     case notSelected = 4
 }
 
-class EGNViewController: UIViewController, Navigateble {
+class PersonalInformationViewController: UIViewController, Navigateble {
 
     // MARK: Navigateble
 
@@ -36,7 +36,7 @@ class EGNViewController: UIViewController, Navigateble {
 
     private let maximumPersonalNumberLength = 10
     private var gender: Gender = Gender.notSelected
-    var shouldHideSkipButton: Bool = false
+    
     
     // MARK: View Model
     
@@ -53,13 +53,11 @@ class EGNViewController: UIViewController, Navigateble {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 80
-        IQKeyboardManager.shared().isEnableAutoToolbar = false
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
-        IQKeyboardManager.shared().isEnableAutoToolbar = true
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,12 +68,8 @@ class EGNViewController: UIViewController, Navigateble {
     
     private func setupUI() {
         setupIconImageViewTint()
-        
-        if shouldHideSkipButton {
-            skipButton.alpha = 0
-        } else {
-            skipButton.alpha = 1
-        }
+
+        skipButton.alpha = viewModel.isInitialFlow ? 1 : 0
         
         title = Constants.Strings.mobileNumberVerificationТext
         egnSubmitButton.backgroundColor = .healthBlue
@@ -177,11 +171,11 @@ class EGNViewController: UIViewController, Navigateble {
 
 // MARK: ToastViewPresentable
 
-extension EGNViewController: ToastViewPresentable {}
+extension PersonalInformationViewController: ToastViewPresentable {}
 
 // MARK: UITextFieldDelegate
 
-extension EGNViewController: UITextFieldDelegate {
+extension PersonalInformationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString

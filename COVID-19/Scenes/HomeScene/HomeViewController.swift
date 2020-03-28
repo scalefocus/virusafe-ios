@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Pulsator
 
 class HomeViewController: UIViewController, Navigateble {
 
@@ -24,7 +23,6 @@ class HomeViewController: UIViewController, Navigateble {
     @IBOutlet private weak var tncButton: UIButton!
     @IBOutlet private weak var moreInfoButton: UIButton!
     @IBOutlet private weak var icon: UIImageView!
-    
 
     // MARK: Lifecycle
 
@@ -53,23 +51,12 @@ class HomeViewController: UIViewController, Navigateble {
 
     // MARK: Actions
 
-    @IBAction func didTapHowItWorksButton(_ sender: Any) {
-        WebViewController.show(with: .content)
+    @IBAction private func didTapHowItWorksButton(_ sender: Any) {
+        navigationDelegate?.navigateTo(step: .about(isInitial: false))
     }
     
-    @IBAction func didTapMyPersonalInfoButton(_ sender: Any) {
-        guard let egnViewController =
-            UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "\(EGNViewController.self)")
-                as? EGNViewController    else {
-                    assertionFailure("EGNViewController is not found")
-                    return
-        }
-        
-        egnViewController.shouldHideSkipButton = true
-        egnViewController.viewModel =
-        RegistrationConfirmationViewModel(repository: RegistrationRepository())
-        navigationController?.pushViewController(egnViewController, animated: true)
+    @IBAction private func didTapMyPersonalInfoButton(_ sender: Any) {
+        navigationDelegate?.navigateTo(step: .personalInformation)
     }
     
     @IBAction private func didTapSurveyButton(_ sender: Any) {

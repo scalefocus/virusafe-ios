@@ -257,18 +257,18 @@ extension AppFlowManager: NavigationDelegate {
     }
 
     private func navigateToPersonalInformationViewController() {
-        guard let egnViewController =
+        guard let personalInformationViewController =
             UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "\(EGNViewController.self)")
-                as? EGNViewController    else {
-                    assertionFailure("EGNViewController is not found")
+                .instantiateViewController(withIdentifier: "\(PersonalInformationViewController.self)")
+                as? PersonalInformationViewController else {
+                    assertionFailure("PersonalInformationViewController is not found")
                     return
         }
         let viewModel = PersonalInformationViewModel(firstLaunchCheckRepository: firstLaunchCheckRepository,
                                                      delegate: self)
-        egnViewController.viewModel = viewModel
-        navigationController.push(viewController: egnViewController)
-        setupBackButton(viewController: egnViewController)
+        personalInformationViewController.viewModel = viewModel
+        navigationController.push(viewController: personalInformationViewController)
+        setupBackButton(viewController: personalInformationViewController)
     }
 
     private func navigateToWebViewController(source: Source, isRoot: Bool) {
