@@ -156,7 +156,7 @@ class EGNViewController: UIViewController, Navigateble {
         viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
     }
     
-    @IBAction func didTapGenderButton(_ sender: UIButton) {
+    @IBAction private func didTapGenderButton(_ sender: UIButton) {
         
         for butto in genderButtons {
             butto.backgroundColor = .white
