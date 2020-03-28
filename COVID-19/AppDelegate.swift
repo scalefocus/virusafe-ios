@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.pausesLocationUpdatesAutomatically = false
         return locationManager
     }()
+
+    private var flowManager: AppFlowManager?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -68,8 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Init App Window
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
+        // init app flow
+        flowManager = AppFlowManager(window: window!) // !!! Force unwrap
         
         return true
     }
@@ -93,14 +95,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Show Notification after wakeup
 
     @objc
-    func onDidReceivePushNotification(_ notification: Notification) {
+    private func onDidReceivePushNotification(_ notification: Notification) {
         let userInfo = notification.userInfo
         guard let urlString = userInfo?["url"] as? String else {
             return
         }
         // Give it some time to present screens
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            WebViewController.show(with: .notification(urlString))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.flowManager?.navigateTo(step: .web(source: .notification(urlString)))
         }
     }
 
@@ -131,7 +133,7 @@ extension AppDelegate: MessagingDelegate {
         if let urlString = userInfo["url"] as? String  {
             if applicationState == .active {
                 // we're in the app just open it
-                WebViewController.show(with: .notification(urlString))
+                flowManager?.navigateTo(step: .web(source: .notification(urlString)))
             } else if applicationState == .inactive || applicationState == .background {
                 // app is moving from background to actives or vice vers
                 NotificationCenter.default.post(name: Notification.Name("PresentWebViewControllerWithPushNotification"),

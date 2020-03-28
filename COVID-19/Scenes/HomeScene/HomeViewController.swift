@@ -7,107 +7,97 @@
 //
 
 import UIKit
-import Pulsator
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, Navigateble {
+
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
 
     // MARK: Outlets
 
-    @IBOutlet private weak var animationBackgroundView: UIView!
     @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var howItWorksButton: UIButton!
+    @IBOutlet private weak var personalInfoButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tncButton: UIButton!
     @IBOutlet private weak var moreInfoButton: UIButton!
-
-    // MARK: Pulsator
-
-    private let defaultPulses = 5
-    private let radiusAdjustment: CGFloat = 36
-    private let minValueForRadius: Float = 0.4
-    private let pulsator = Pulsator()
-
-    private func setupPulsatorLayer() {
-        pulsator.numPulse = defaultPulses
-        pulsator.fromValueForRadius = minValueForRadius
-        pulsator.backgroundColor = UIColor.healthBlue?.cgColor
-        animationBackgroundView.backgroundColor = .healthBlue
-    }
+    @IBOutlet private weak var icon: UIImageView!
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        localize()
-        moreInfoButton.borderColor = .healthBlue ?? .black
-        // add pulse animation behind the button
-        startButton.layer.superlayer?.insertSublayer(pulsator, below: startButton.layer)
-        setupPulsatorLayer()
         
+        setupButtons()
+        localize()
         askForPushNotifications()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.layer.layoutIfNeeded()
-        pulsator.position = startButton.layer.position
-        pulsator.radius = startButton.bounds.width / 2 + radiusAdjustment
-        animationBackgroundView.cornerRadius =
-            animationBackgroundView.bounds.height / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        pulsator.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        pulsator.stop()
     }
 
     // MARK: Actions
 
+    @IBAction private func didTapHowItWorksButton(_ sender: Any) {
+        navigationDelegate?.navigateTo(step: .about(isInitial: false))
+    }
+    
+    @IBAction private func didTapMyPersonalInfoButton(_ sender: Any) {
+        navigationDelegate?.navigateTo(step: .personalInformation)
+    }
+    
     @IBAction private func didTapSurveyButton(_ sender: Any) {
-        let surveyViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
-        navigationController?.pushViewController(surveyViewController, animated: true)
+        navigationDelegate?.navigateTo(step: .healthStatus)
     }
 
     @IBAction private func tncButtonTap() {
-        guard let tncViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
-            as? TermsAndConditionsViewController else {
-                assertionFailure("TermsAndConditionsViewController is not found")
-                return
-        }
-        tncViewController.viewModel = TermsAndConditionsViewModel(isAcceptButtonVisible: false)
-        tncViewController.userResponseHandler = { [weak self] _ in
-            self?.navigationController?.popViewController(animated: false)
-        }
-        navigationController?.pushViewController(tncViewController, animated: true)
+        navigationDelegate?.navigateTo(step: .termsAndConditions)
     }
 
     @IBAction private func moreInfoDidTap() {
-        WebViewController.show(with: .content)
+        navigationDelegate?.navigateTo(step: .web(source: .content))
     }
 
     // MARK: Setup UI
+    
+    private func setupButtons() {
+        moreInfoButton.borderColor = .healthBlue ?? .black
+        startButton.borderColor = .healthBlue ?? .black
+        personalInfoButton.borderColor = .healthBlue ?? .black
+        howItWorksButton.borderColor = .healthBlue ?? .black
+    }
 
     private func localize() {
         title = Constants.Strings.homeScreenStartingScreenText
-        titleLabel.text = Constants.Strings.homeScreenEnterSymptomsText
-
+        titleLabel.text = Constants.Strings.homeScreenMyPersonalContributionText
+        howItWorksButton.setTitle(Constants.Strings.homeScreenHowItWorksText, for: .normal)
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
 
-        startButton.setTitle(Constants.Strings.homeScreenStartCapitalText, for: .normal)
+        startButton.setTitle(Constants.Strings.homeScreenMySymptomsText, for: .normal)
+        personalInfoButton.setTitle(Constants.Strings.homeScreenMyPersonalInfoText, for: .normal)
         tncButton.setTitle(Constants.Strings.generalTosText, for: .normal)
     }
-    
+
+    // MARK: Push Notifications
+
+    // TODO: Refactor This should be in manager class
     private func askForPushNotifications() {
         if #available(iOS 10.0, *) {
           let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

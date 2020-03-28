@@ -10,7 +10,11 @@ import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
-class RegistrationConfirmationViewController: UIViewController {
+class RegistrationConfirmationViewController: UIViewController, Navigateble {
+
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
 
     // MARK: Outlets
     
@@ -99,7 +103,7 @@ class RegistrationConfirmationViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
                 case .success:
-                    strongSelf.showEgnModule()
+                    strongSelf.navigateToNextViewController()
                 case .invalidPhoneNumber:
                     strongSelf.showToast(message: Constants.Strings.mobileNumberErrorWrongPinText)
                 default:
@@ -118,46 +122,13 @@ class RegistrationConfirmationViewController: UIViewController {
                     strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
             }
         }
-        
-        viewModel.isPersonalNumberRequestSuccessful.bind { [weak self] result in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .success:
-                strongSelf.showHome()
-            case .invalidPersonalNumber:
-                strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindPersonalNumberErrorText)
-            default:
-                strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
-            }
-        }
+
     }
 
     // MARK: Navigation
 
-    private func showEgnModule() {
-        guard let egnViewController =
-            UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "\(EGNViewController.self)")
-                as? EGNViewController    else {
-                    assertionFailure("EGNViewController is not found")
-                    return
-        }
-        egnViewController.viewModel =
-        RegistrationConfirmationViewModel(repository: viewModel.repository)
-        navigationController?.pushViewController(egnViewController, animated: true)
-    }
-    
-    private func showHome() {
-        guard let egnViewController =
-            UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "\(EGNViewController.self)")
-                as? EGNViewController    else {
-                    assertionFailure("EGNViewController is not found")
-                    return
-        }
-        egnViewController.viewModel =
-        RegistrationConfirmationViewModel(repository: viewModel.repository)
-        navigationController?.pushViewController(egnViewController, animated: true)
+    private func navigateToNextViewController() {
+        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .about(isInitial: true) : .home)
     }
 
     // MARK: Actions
@@ -168,7 +139,7 @@ class RegistrationConfirmationViewController: UIViewController {
     
     @IBAction private func didTapConfirmButton(_ sender: Any) {
         guard let authorizationCode = verificationCodeTextField.text else { return }
-        
+
         if authorizationCode.count < 6 {
             errorLabel.isHidden = false
             errorLabel.text = Constants.Strings.mobileNumberIncorrectLengthText

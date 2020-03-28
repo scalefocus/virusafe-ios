@@ -11,12 +11,15 @@ import WebKit
 
 enum Source {
     case content
+    case about
     case notification(String)
 
     var urlString: String {
         switch self {
         case .content:
             return StaticContentPage.shared.url
+        case .about:
+            return StaticContentPage.shared.url // TODO: Actual Page
         case .notification(let string):
             return string
         }

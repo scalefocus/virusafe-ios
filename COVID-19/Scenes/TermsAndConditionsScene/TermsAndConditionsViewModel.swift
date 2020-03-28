@@ -11,12 +11,10 @@ import TwoWayBondage
 
 final class TermsAndConditionsViewModel {
 
-    let isAcceptButtonVisible: Bool
-
-    private let defaultAcceptButtonVisibility = true
-
-    init(isAcceptButtonVisible: Bool) {
-        self.isAcceptButtonVisible = isAcceptButtonVisible
+    private (set) var repository: TermsAndConditionsRepository
+    
+    init(repository: TermsAndConditionsRepository) {
+        self.repository = repository
     }
 
 }

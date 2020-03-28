@@ -9,7 +9,26 @@
 import Foundation
 import TwoWayBondage
 
+protocol HealthStatusViewModelDelegate: class {
+    func sendHealtStatus(_ request: AnswersRequest,
+                         shouldDelayRequest: Bool,
+                         with completion: @escaping SendAnswersCompletion)
+}
+
 class HealthStatusViewModel {
+
+    private weak var delegate: HealthStatusViewModelDelegate?
+
+    private var questionnaireRepository: QuestionnaireRepository
+    private var firstLaunchCheckRepository: AppLaunchRepository
+
+    init(questionnaireRepository: QuestionnaireRepository,
+         firstLaunchCheckRepository: AppLaunchRepository,
+         delegate: HealthStatusViewModelDelegate) {
+        self.questionnaireRepository = questionnaireRepository
+        self.firstLaunchCheckRepository = firstLaunchCheckRepository
+        self.delegate = delegate
+    }
     
     typealias NoSymptomsCellConfigurator = BaseViewConfigurator<NoSymptomsTableViewCell>
     typealias QuestionCellConfigurator = BaseViewConfigurator<QuestionTableViewCell>
@@ -20,6 +39,10 @@ class HealthStatusViewModel {
     private var healthStatusData: HealthStatus?
 
     // Observables
+
+    var isInitialFlow: Bool {
+        return !firstLaunchCheckRepository.isAppLaunchedBefore
+    }
 
     let shouldReloadData = Observable<Bool>()
     let isLeavingScreenAvailable = Observable<Bool>()
@@ -87,7 +110,7 @@ class HealthStatusViewModel {
     func getHealthStatusData() {
         // show activity indicator
         shouldShowLoadingIndicator.value = true
-        QuestionnaireRepository().requestQuestions { [weak self] result in
+        questionnaireRepository.requestQuestions { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             defer {
@@ -142,8 +165,15 @@ class HealthStatusViewModel {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let location = appDelegate.currentLocation()
+
+        let request = AnswersRequest(
+            answers: answeredQuestions,
+            phoneNumber: phoneNumber,
+            latitude: location?.latitude ?? 0,
+            longitude: location?.longitude ?? 0)
+
         // Make BE happy if location could not be obtained
-        QuestionnaireRepository().sendAnswers(answeredQuestions, for: phoneNumber, at: location?.latitude ?? 0, longitude: location?.longitude ?? 0) { [weak self] result in
+        delegate?.sendHealtStatus(request, shouldDelayRequest: isInitialFlow) { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             // hide activity indicator

@@ -16,8 +16,6 @@ target 'COVID-19' do
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
 
-  pod 'Pulsator'
-
   pod 'IQKeyboardManager'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
 

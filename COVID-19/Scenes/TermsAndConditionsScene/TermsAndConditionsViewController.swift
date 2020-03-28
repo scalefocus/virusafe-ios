@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias TNCUserResponseHandler = (Bool) -> Void
+typealias TNCUserResponseHandler = () -> Void
 
 class TermsAndConditionsViewController: UIViewController {
 
@@ -23,7 +23,8 @@ class TermsAndConditionsViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func acceptButtonTap() {
-        userResponseHandler?(true)
+        viewModel.repository.isAgree = true
+        userResponseHandler?()
     }
 
     // MARK: ViewModel
@@ -35,7 +36,7 @@ class TermsAndConditionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        acceptButton.isHidden = !viewModel.isAcceptButtonVisible
+        acceptButton.isHidden = viewModel.repository.isAgree
         loadTnCFromRtf()
     }
 

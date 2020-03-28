@@ -9,21 +9,26 @@
 import Foundation
 import TwoWayBondage
 
-class RegistrationConfirmationViewModel {
+final class RegistrationConfirmationViewModel {
     
-    let repository: RegistrationRepository
+    private let registrationRepository: RegistrationRepository
+    private let firstLaunchCheckRepository: AppLaunchRepository
     let shouldShowLoadingIndicator = Observable<Bool>()
     let isCodeAuthorizationRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
     let isResendCodeRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
-    let isPersonalNumberRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
+
+    var isInitialFlow: Bool {
+        return !firstLaunchCheckRepository.isAppLaunchedBefore
+    }
     
-    init(repository: RegistrationRepository) {
-        self.repository = repository
+    init(registrationRepository: RegistrationRepository, firstLaunchCheckRepository: AppLaunchRepository) {
+        self.registrationRepository = registrationRepository
+        self.firstLaunchCheckRepository = firstLaunchCheckRepository
     }
     
     func didTapCodeAuthorization(with authorisationCode: String) {
         shouldShowLoadingIndicator.value = true
-        repository.authoriseVerificationCode(verificationCode: authorisationCode) { [weak self] result in
+        registrationRepository.authoriseVerificationCode(verificationCode: authorisationCode) { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.isCodeAuthorizationRequestSuccessful.value = result
             strongSelf.shouldShowLoadingIndicator.value = false
@@ -31,31 +36,21 @@ class RegistrationConfirmationViewModel {
     }
 
     func didTapResetCodeButton() {
-        guard let phoneNumber = repository.authorisedMobileNumber else {
+        guard let phoneNumber = registrationRepository.authorisedMobileNumber else {
             // we should not be here
             return
         }
         shouldShowLoadingIndicator.value = true
-        repository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] result in
+        registrationRepository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.isResendCodeRequestSuccessful.value = result
             strongSelf.shouldShowLoadingIndicator.value = false
         }
     }
-    
-    func didTapPersonalNumberAuthorization(with personalNumber: String) {
-        
-        shouldShowLoadingIndicator.value = true
-        repository.authorisePersonalNumber(personalNumberNumber: personalNumber, completion: { [weak self] result in
-            guard let strongSelf = self else { return }
-            strongSelf.isPersonalNumberRequestSuccessful.value = result
-            strongSelf.shouldShowLoadingIndicator.value = false
-        })
-    }
 
     func mobileNumber() -> String {
         // TODO: Format phone if needed
-        return repository.authorisedMobileNumber ?? "(+359) XXX-XXX"
+        return registrationRepository.authorisedMobileNumber ?? "(+359) XXX-XXX"
     }
     
 }

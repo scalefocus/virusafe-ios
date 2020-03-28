@@ -17,4 +17,5 @@ enum ApiError: Error {
     case tooManyRequests(reapeatAfter: Int) // Seconds
     case server // returned status code is in range 400...599
     case general // any network error
+    case invalidToken
 }
