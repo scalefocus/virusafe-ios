@@ -10,20 +10,29 @@ import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
+enum Gender: Int {
+    case male = 0
+    case female = 2
+    case other = 3
+    case notSelected = 4
+}
+
 class EGNViewController: UIViewController {
     
     // MARK: Outlets
     
     @IBOutlet private weak var egnTitleLabel: UILabel!
-    @IBOutlet private weak var egnDescriptionLabel: UILabel!
+    @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var egnTextField: SkyFloatingLabelTextField!
-    
     @IBOutlet private weak var egnSubmitButton: UIButton!
-    @IBOutlet private weak var skipButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet private var genderButtons: [UIButton]!
     
     // MARK: Settings
 
     private let maximumPersonalNumberLength = 10
+    private var gender:Gender = Gender.notSelected
+    var shouldHideSkipButton:Bool = false
     
     // MARK: View Model
     
@@ -56,14 +65,27 @@ class EGNViewController: UIViewController {
     // MARK: Setup UI
     
     private func setupUI() {
+        setupIconImageViewTint()
+        
+        if shouldHideSkipButton {
+            skipButton.alpha = 0
+        } else {
+            skipButton.alpha = 1
+        }
+        
         title = Constants.Strings.mobileNumberVerificationТext
         egnSubmitButton.backgroundColor = .healthBlue
         setupEgnTextField()
         egnTitleLabel.text = Constants.Strings.egnRequestText
-        egnDescriptionLabel.text = Constants.Strings.egnDescriptionText
         egnTextField.placeholder = Constants.Strings.egnRequestPlacegolderText
         egnSubmitButton.setTitle(Constants.Strings.egnSubmitText, for: .normal)
         skipButton.setTitle(Constants.Strings.egnSkipText, for: .normal)
+    }
+    
+    private func setupIconImageViewTint() {
+        let userShieldIcon = #imageLiteral(resourceName: "user-shield").withRenderingMode(.alwaysTemplate)
+        iconImageView.image = userShieldIcon
+        iconImageView.tintColor = .healthBlue
     }
     
     private func setupEgnTextField() {
@@ -71,7 +93,6 @@ class EGNViewController: UIViewController {
         egnTextField.placeholder = Constants.Strings.mobileNumberEnterPinText + " "
         // By default title will be same as placeholder
         egnTextField.errorColor = .red
-        // !!! other styles are in stotyboard
     }
     
     // MARK: Actions
@@ -80,6 +101,19 @@ class EGNViewController: UIViewController {
         // TODO: Validation - lenght
         // TODO: Add API Call
         viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
+    }
+    
+    @IBAction func didTapGenderButton(_ sender: UIButton) {
+        
+        for butto in genderButtons {
+            butto.backgroundColor = .white
+            butto.setTitleColor(.healthBlue, for: .normal)
+        }
+        
+        sender.backgroundColor = .healthBlue
+        sender.setTitleColor(.white, for: .normal)
+        
+        self.gender = Gender(rawValue:sender.tag) ?? Gender.other
     }
 
     @IBAction private func didTapSkipButton(_ sender: Any) {

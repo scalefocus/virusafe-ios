@@ -51,12 +51,18 @@ enum Constants {
         static let generalTextForTourAnswerText = "Благодарим Ви, че сте отговорни!"
         static let generalAgreeIText = "Съгласен съм"
         static let egnDescriptionText = "Ако желаете да използваме данните Ви за допълнителен анализ и да Ви изпращаме персонализирани съвети, моля въведете единния си граждански номер."
-        static let egnRequestText = "Въведете вашето ЕГН"
+        static let egnRequestText = "Въведете вашите лични данни"
         static let egnRequestPlacegolderText = "ЕГН"
         static let egnSkipText = "Пропусни"
         static let egnSubmitText = "Потвърди"
         static let dateFormatHours = "часа"
         static let dateFormatMinutes = "минути"
         static let dateFormatLittleMoreTime = "малко"
+        static let homeScreenMySymptomsText = "КАК СЕ ЧУВСТВАШ ДНЕС?"
+        static let homeScreenHowItWorksText = "КАК РАБОТИ ViruSafe"
+        static let homeScreenMyPersonalInfoText = "МОЙТЕ ЛИЧНИ ДАННИ"
+        static let homeScreenLearnMoreAboutCOVIDText = "НАУЧИ ПОВЕЧЕ ЗА КОРОНА ВИРУСА"
+        static let homeScreenMyPersonalContributionText = "Моят личен принос"
+        
     }
 }
