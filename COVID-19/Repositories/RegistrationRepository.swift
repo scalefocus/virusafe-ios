@@ -70,7 +70,9 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
     }
     
     func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-        PersonalNumerApiRequest(identificationNumber: personalNumberNumber, age: age, gender: gender, preExistingConditions: preexistingConditions).execute { (_, response, error) in
+            let request = PersonalNumerApiRequest(bodyJSONObject: ["identificationNumber": personalNumberNumber, "age": "\(age)", "gender": gender, "preExistingConditions": preexistingConditions])
+                
+            request.execute { (_, response, error) in
                 guard response?.statusCode != 412 else {
                     completion(.invalidPersonalNumber)
                     return

@@ -12,9 +12,22 @@ import IQKeyboardManager
 
 enum Gender: Int {
     case male = 0
-    case female = 2
-    case other = 3
-    case notSelected = 4
+    case female
+    case other
+    case notSelected
+    
+    var title: String {
+        switch self {
+        case .male:
+            return "MALE"
+        case .female:
+            return "FEMALE"
+        case .other:
+            return "OTHER"
+        case .notSelected:
+            return ""
+        }
+    }
 }
 
 class PersonalInformationViewController: UIViewController, Navigateble {
