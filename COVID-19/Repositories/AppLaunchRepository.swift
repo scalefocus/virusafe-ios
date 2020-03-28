@@ -14,12 +14,10 @@ final class AppLaunchRepository {
 
     var isAppLaunchedBefore: Bool {
         get {
-            if userDefaults.bool(forKey: "launched_before") {
-                return true
-            }
-
-            userDefaults.set(true, forKey: "launched_before")
-            return false
+            return userDefaults.bool(forKey: "launched_before")
+        }
+        set {
+            userDefaults.set(newValue, forKey: "launched_before")
         }
     }
 }
