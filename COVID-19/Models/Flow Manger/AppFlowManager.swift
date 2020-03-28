@@ -388,6 +388,7 @@ extension AppFlowManager: PersonalInformationViewModelDelegate {
             completion(.success(Void()))
             return
         }
+        firstLaunchCheckRepository.isAppLaunchedBefore = true
         sendHealtStatus(answersRequestStore.request, with: completion)
     }
 
@@ -408,36 +409,48 @@ private extension UINavigationController {
         self.setViewControllers([vc], animated: false)
     }
 
-    func popToRoot(transitionType type: CATransitionType = .fade,
-                   duration: CFTimeInterval = 0.3) {
-        self.addTransition(transitionType: type, duration: duration)
-        self.popToRootViewController(animated: false)
-    }
-    /**
-     Pop current view controller to previous view controller.
-
-     - parameter type:     transition animation type.
-     - parameter duration: transition animation duration.
-     */
-    func pop(transitionType type: CATransitionType = .fade,
-             duration: CFTimeInterval = 0.3) {
-        self.addTransition(transitionType: type, duration: duration)
-        self.popViewController(animated: false)
+    func popToRoot() {
+        self.popToRootViewController(animated: true)
     }
 
-    /**
-     Push a new view controller on the view controllers's stack.
-
-     - parameter vc:       view controller to push.
-     - parameter type:     transition animation type.
-     - parameter duration: transition animation duration.
-     */
-    func push(viewController vc: UIViewController,
-              transitionType type: CATransitionType = .fade,
-              duration: CFTimeInterval = 0.3) {
-        self.addTransition(transitionType: type, duration: duration)
-        self.pushViewController(vc, animated: false)
+    func pop() {
+        self.popViewController(animated: true)
     }
+
+    func push(viewController vc: UIViewController) {
+        self.pushViewController(vc, animated: true)
+    }
+
+//    func popToRoot(transitionType type: CATransitionType = .fade,
+//                   duration: CFTimeInterval = 0.3) {
+//        self.addTransition(transitionType: type, duration: duration)
+//        self.popToRootViewController(animated: false)
+//    }
+//    /**
+//     Pop current view controller to previous view controller.
+//
+//     - parameter type:     transition animation type.
+//     - parameter duration: transition animation duration.
+//     */
+//    func pop(transitionType type: CATransitionType = .fade,
+//             duration: CFTimeInterval = 0.3) {
+//        self.addTransition(transitionType: type, duration: duration)
+//        self.popViewController(animated: false)
+//    }
+
+//    /**
+//     Push a new view controller on the view controllers's stack.
+//
+//     - parameter vc:       view controller to push.
+//     - parameter type:     transition animation type.
+//     - parameter duration: transition animation duration.
+//     */
+//    func push(viewController vc: UIViewController,
+//              transitionType type: CATransitionType = .fade,
+//              duration: CFTimeInterval = 0.3) {
+//        self.addTransition(transitionType: type, duration: duration)
+//        self.pushViewController(vc, animated: false)
+//    }
 
     private func addTransition(transitionType type: CATransitionType = .fade,
                                duration: CFTimeInterval = 0.3) {
