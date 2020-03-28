@@ -9,8 +9,8 @@ import Foundation
 
 public class PersonalNumerApiRequest: BaseAPIRequest {
     
-    public convenience init(personalNumber: String) {
-        self.init(bodyJSONObject: ["personalNumber": personalNumber])
+    public convenience init(identificationNumber: String, age: Int, gender: String, preExistingConditions: String) {
+        self.init(bodyJSONObject: ["identificationNumber": identificationNumber, "age": age, "gender": gender, "preExistingConditions": preExistingConditions])
     }
     
     public override var httpMethod: HTTPMethod {
@@ -18,7 +18,7 @@ public class PersonalNumerApiRequest: BaseAPIRequest {
     }
     
     public override var path: String {
-        return "/personalNumber"
+        return "/personalinfo"
     }
     
     public override var baseUrl: BaseURL {

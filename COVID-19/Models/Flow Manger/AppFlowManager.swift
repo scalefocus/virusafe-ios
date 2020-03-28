@@ -346,9 +346,12 @@ struct AnswersRequest {
     var longitude: Double
 }
 
-struct PersonalInformationRequest {
+struct PersonalInformationRequestData {
     var personalNumber: String // egn/id/pasport number
     var phoneNumber: String?
+    var age: Int
+    var gender: String
+    var preexistingConditions: String
     // TODO: Others
 }
 
@@ -388,10 +391,9 @@ extension AppFlowManager: PersonalInformationViewModelDelegate {
         sendHealtStatus(answersRequestStore.request, with: completion)
     }
 
-    func sendPersonalInformation(_ request: PersonalInformationRequest,
+    func sendPersonalInformation(_ request: PersonalInformationRequestData,
                                  with completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-        registrationRepository.authorisePersonalNumber(personalNumberNumber: request.personalNumber,
-                                                       completion: completion)
+        registrationRepository.sendPersonalInfo(personalNumberNumber: request.personalNumber, age: request.age, gender: request.gender, preexistingConditions: request.preexistingConditions, completion: completion)
     }
 }
 

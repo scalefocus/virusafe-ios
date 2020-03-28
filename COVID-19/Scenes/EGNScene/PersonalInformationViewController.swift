@@ -28,10 +28,12 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     @IBOutlet private weak var egnTitleLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var egnTextField: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var ageTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var egnSubmitButton: UIButton!
     @IBOutlet private weak var skipButton: UIButton!
     @IBOutlet private var genderButtons: [UIButton]!
-    
+    @IBOutlet weak var preexistingConditionsTextField: SkyFloatingLabelTextField!
     // MARK: Settings
 
     private let maximumPersonalNumberLength = 10
@@ -136,7 +138,10 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                     self?.showToast(message: Constants.Strings.healthStatusUnknownErrorText)
             }
         }
-
+        
+        ageTextField.bind(with: viewModel.age)
+        preexistingConditionsTextField.bind(with: viewModel.preexistingConditions)
+  
         // fired only on success
         viewModel.isSendAnswersCompleted.bind { [weak self] result in
             self?.navigationDelegate?.navigateTo(step: .home)

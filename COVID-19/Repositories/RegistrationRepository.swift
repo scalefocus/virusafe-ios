@@ -20,7 +20,7 @@ enum AuthoriseMobileNumberResult {
 protocol RegistrationRepositoryProtocol {
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
-    func authorisePersonalNumber(personalNumberNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
+    func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
@@ -69,8 +69,8 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
         }
     }
     
-    func authorisePersonalNumber(personalNumberNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-            PersonalNumerApiRequest(personalNumber: personalNumberNumber).execute { (_, response, error) in
+    func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
+        PersonalNumerApiRequest(identificationNumber: personalNumberNumber, age: age, gender: gender, preExistingConditions: preexistingConditions).execute { (_, response, error) in
                 guard response?.statusCode != 412 else {
                     completion(.invalidPersonalNumber)
                     return

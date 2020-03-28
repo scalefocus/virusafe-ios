@@ -10,7 +10,7 @@ import Foundation
 import TwoWayBondage
 
 protocol PersonalInformationViewModelDelegate: class {
-    func sendPersonalInformation(_ request: PersonalInformationRequest,
+    func sendPersonalInformation(_ request: PersonalInformationRequestData,
                                  with completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func sendDelayedAnswers(with completion: @escaping SendAnswersCompletion)
 }
@@ -29,16 +29,27 @@ final class PersonalInformationViewModel {
     let requestError = Observable<ApiError>()
     let isSendAnswersCompleted = Observable<Bool>()
     let shouldShowLoadingIndicator = Observable<Bool>()
+    var age = Observable<String>()
+    var gender = Observable<String>()
+    var preexistingConditions = Observable<String>()
+    
 
     init(firstLaunchCheckRepository: AppLaunchRepository,
          delegate: PersonalInformationViewModelDelegate) {
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
         self.delegate = delegate
+        
+        //TEST!
+        self.gender.value = "MALE"
+        self.age.value = "21"
+        self.preexistingConditions.value = ""
     }
     
     func didTapPersonalNumberAuthorization(with personalNumber: String) {
         shouldShowLoadingIndicator.value = true
-        let request = PersonalInformationRequest(personalNumber: personalNumber)
+        let ageString = age.value ?? ""
+        let ageInt = Int(ageString)
+        let request = PersonalInformationRequestData(personalNumber: personalNumber, phoneNumber: nil, age: ageInt ?? 0, gender: gender.value ?? "", preexistingConditions: preexistingConditions.value ?? "")
         delegate?.sendPersonalInformation(request) { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.isPersonalNumberRequestSuccessful.value = result
