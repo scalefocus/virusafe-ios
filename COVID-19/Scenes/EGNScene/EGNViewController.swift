@@ -10,7 +10,11 @@ import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
-class EGNViewController: UIViewController {
+class EGNViewController: UIViewController, Navigateble {
+
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
     
     // MARK: Outlets
     
@@ -27,14 +31,14 @@ class EGNViewController: UIViewController {
     
     // MARK: View Model
     
-    var viewModel:RegistrationConfirmationViewModel!
-    
-    
+    var viewModel: PersonalInformationViewModel!
+
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,36 +77,73 @@ class EGNViewController: UIViewController {
         egnTextField.errorColor = .red
         // !!! other styles are in stotyboard
     }
+
+    // MARK: Bind
+
+    private func setupBindings() {
+        viewModel.isPersonalNumberRequestSuccessful.bind { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+                case .success:
+                    strongSelf.viewModel.didTapSkipButton()
+                case .invalidPersonalNumber:
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindPersonalNumberErrorText)
+                default:
+                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+            }
+        }
+
+        viewModel.requestError.bind { [weak self] error in
+            switch error {
+                case .invalidToken:
+                    self?.navigationDelegate?.navigateTo(step: .register)
+                case .tooManyRequests(let repeatAfterSeconds):
+                    var message = Constants.Strings.healthStatusTooManyRequestsErrorText + " "
+                    let hours = repeatAfterSeconds / 3600
+                    if hours > 0 {
+                        message += ("\(hours) " + Constants.Strings.dateFormatHours)
+                    }
+                    let minutes = repeatAfterSeconds / 60
+                    if minutes > 0 {
+                        message += ("\(minutes) " + Constants.Strings.dateFormatMinutes)
+                    }
+                    if hours == 0 && minutes == 0 {
+                        message += Constants.Strings.dateFormatLittleMoreTime
+                    }
+                    let alert = UIAlertController(title: nil,
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText,
+                                                  style: .default,
+                                                  handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                case .server, .general:
+                    self?.showToast(message: Constants.Strings.healthStatusUnknownErrorText)
+            }
+        }
+
+        // fired only on success
+        viewModel.isSendAnswersCompleted.bind { [weak self] result in
+            self?.navigationDelegate?.navigateTo(step: .home)
+        }
+    }
     
     // MARK: Actions
     
     @IBAction private func didTapSubmitButton(_ sender: Any) {
         // TODO: Validation - lenght
-        // TODO: Add API Call
         viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
     }
 
     @IBAction private func didTapSkipButton(_ sender: Any) {
-        showHomeModule()
-    }
-    
-    // MARK: Navigation
-
-    private func showHomeModule() {
-        guard let keyWindow = UIApplication.shared.keyWindow else { return }
-        
-        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)")
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        keyWindow.rootViewController = navigationController
-        
-        UIView.transition(with: keyWindow,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: nil,
-                          completion: nil)
+        viewModel.didTapSkipButton()
     }
     
 }
+
+// MARK: ToastViewPresentable
+
+extension EGNViewController: ToastViewPresentable {}
 
 // MARK: UITextFieldDelegate
 

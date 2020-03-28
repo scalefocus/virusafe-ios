@@ -43,9 +43,13 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
                         questions?.map { HealthStatusQuestion(questionId: $0.identifier, questionTitle: $0.title, isActive: nil) }
                     )
                     completion(.success(healthStatus))
-                case .failure:
-                    // No special handling
-                    completion(.failure(.server))
+                case .failure(let reason):
+                    switch reason {
+                        case .invalidToken:
+                            completion(.failure(.invalidToken))
+                        default:
+                            completion(.failure(.server))
+                    }
             }
         }
     }
@@ -76,6 +80,8 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
                     completion(.success(Void()))
                 case .failure(let reason):
                     switch reason {
+                        case .invalidToken:
+                            completion(.failure(.invalidToken))
                         case .tooManyRequests:
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase

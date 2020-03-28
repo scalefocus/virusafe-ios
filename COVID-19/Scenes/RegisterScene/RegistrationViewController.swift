@@ -10,8 +10,12 @@ import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, Navigateble {
 
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
+    
     // MARK: Outlets
 
     @IBOutlet private weak var iconImageView: UIImageView!
@@ -29,7 +33,8 @@ class RegistrationViewController: UIViewController {
 
     // MARK: View Model
 
-    private let viewModel = RegistrationViewModel(repository: RegistrationRepository())
+    // Injected from parent in order to get its instance of the RegistrationRepository
+    var viewModel: RegistrationViewModel!
 
     // MARK: Lifecycle
 
@@ -44,6 +49,7 @@ class RegistrationViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 120
         IQKeyboardManager.shared().isEnableAutoToolbar = false
+        checkBox.isSelected = viewModel.termsAndConditionsRepository.isAgree
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,16 +70,8 @@ class RegistrationViewController: UIViewController {
         registrationLabel.text = Constants.Strings.registrationScreenTitle
         iAgreeWithLabel.text = Constants.Strings.iAgreeWithText + " "
         tncButton.setTitle(Constants.Strings.registrationScreenTocText, for: .normal)
-        setupBackButton()
         setupIconImageViewTint()
         setupPhoneNumberTextField()
-    }
-
-    private func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
-                                                           style: .plain,
-                                                           target: nil,
-                                                           action: nil)
     }
 
     private func setupIconImageViewTint() {
@@ -106,28 +104,13 @@ class RegistrationViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
                 case .success:
-                    strongSelf.showRegistrationConfirmation()
+                    strongSelf.navigationDelegate?.navigateTo(step: .registerConfirm)
                 case .invalidPhoneNumber:
                     strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
                 default:
                     strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
             }
         }
-    }
-
-    // MARK: Navigation
-
-    private func showRegistrationConfirmation() {
-        guard let registrationConfirmationVC =
-            UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
-                as? RegistrationConfirmationViewController else {
-                    assertionFailure("RegistrationConfirmationViewController is not found")
-                    return
-        }
-        registrationConfirmationVC.viewModel =
-            RegistrationConfirmationViewModel(repository: viewModel.repository)
-        navigationController?.pushViewController(registrationConfirmationVC, animated: true)
     }
 
     // MARK: Actions
@@ -160,22 +143,12 @@ class RegistrationViewController: UIViewController {
     }
 
     @IBAction private func checkBoxDidTap() {
-        checkBox.isSelected = !checkBox.isSelected
+        viewModel.termsAndConditionsRepository.isAgree = !viewModel.termsAndConditionsRepository.isAgree
+        checkBox.isSelected = viewModel.termsAndConditionsRepository.isAgree
     }
 
     @IBAction private func tncButtonDidTap() {
-        guard let tncViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
-            as? TermsAndConditionsViewController else {
-                assertionFailure("TermsAndConditionsViewController is not found")
-                return
-        }
-        tncViewController.viewModel = TermsAndConditionsViewModel(isAcceptButtonVisible: !checkBox.isSelected)
-        tncViewController.userResponseHandler = { [weak self] isAgree in
-            self?.checkBox.isSelected = isAgree
-            self?.navigationController?.popViewController(animated: false)
-        }
-        navigationController?.pushViewController(tncViewController, animated: true)
+        navigationDelegate?.navigateTo(step: .termsAndConditions)
     }
     
 }

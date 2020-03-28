@@ -31,8 +31,6 @@ final class ApiStatusCodeHandler {
         case 403:
             // clear token
             TokenStore.shared.token = nil
-            // try to navigate registration screen
-            forceNavigateToRegistrationViewController()
             // return error
             return .failure(.invalidToken)
         case 429:
@@ -40,22 +38,6 @@ final class ApiStatusCodeHandler {
         default:
             return .failure(.badStatusCode)
         }
-    }
-
-    private static func forceNavigateToRegistrationViewController() {
-        guard let keyWindow = UIApplication.shared.keyWindow else {
-            return
-        }
-        let registrationViewController =
-            UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "\(RegistrationViewController.self)")
-        let navigationController = UINavigationController(rootViewController: registrationViewController)
-        keyWindow.rootViewController = navigationController
-        UIView.transition(with: keyWindow,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: nil,
-                          completion: nil)
     }
 
 }

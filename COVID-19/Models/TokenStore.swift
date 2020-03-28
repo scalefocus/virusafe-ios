@@ -28,7 +28,7 @@ final class TokenStore {
                 return keychain.get("jwt")
             } else {
                 // app deleted
-                keychain.delete("jwt") // in casex§
+                keychain.delete("jwt") // in case
                 return nil
             }
         }

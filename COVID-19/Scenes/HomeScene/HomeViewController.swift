@@ -9,7 +9,11 @@
 import UIKit
 import Pulsator
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, Navigateble {
+
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
 
     // MARK: Outlets
 
@@ -70,27 +74,15 @@ class HomeViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func didTapSurveyButton(_ sender: Any) {
-        let surveyViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
-        navigationController?.pushViewController(surveyViewController, animated: true)
+        navigationDelegate?.navigateTo(step: .healthStatus)
     }
 
     @IBAction private func tncButtonTap() {
-        guard let tncViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
-            as? TermsAndConditionsViewController else {
-                assertionFailure("TermsAndConditionsViewController is not found")
-                return
-        }
-        tncViewController.viewModel = TermsAndConditionsViewModel(isAcceptButtonVisible: false)
-        tncViewController.userResponseHandler = { [weak self] _ in
-            self?.navigationController?.popViewController(animated: false)
-        }
-        navigationController?.pushViewController(tncViewController, animated: true)
+        navigationDelegate?.navigateTo(step: .termsAndConditions)
     }
 
     @IBAction private func moreInfoDidTap() {
-        WebViewController.show(with: .content)
+        navigationDelegate?.navigateTo(step: .web(source: .content))
     }
 
     // MARK: Setup UI
@@ -107,7 +99,10 @@ class HomeViewController: UIViewController {
         startButton.setTitle(Constants.Strings.homeScreenStartCapitalText, for: .normal)
         tncButton.setTitle(Constants.Strings.generalTosText, for: .normal)
     }
-    
+
+    // MARK: Push Notifications
+
+    // TODO: Refactor This should be in manager class
     private func askForPushNotifications() {
         if #available(iOS 10.0, *) {
           let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

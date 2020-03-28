@@ -11,7 +11,11 @@ import PopupUpdate
 import Firebase
 import NetworkKit
 
-class SplashViewController: UIViewController {
+class SplashViewController: UIViewController, Navigateble {
+
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
 
     // MARK: Outlets
     
@@ -33,6 +37,16 @@ class SplashViewController: UIViewController {
         fetchCloudValues()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
     // UI
     
     private func showSpinner() {
@@ -50,22 +64,9 @@ class SplashViewController: UIViewController {
 
     private func navigateToNextViewController() {
         let isUserRegistered: Bool = (TokenStore.shared.token != nil)
-        showVC(with: isUserRegistered ? "\(HomeViewController.self)" : "\(RegistrationViewController.self)")
+        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : .register)
     }
 
-    private func showVC(with identifier: String) {
-        guard let keyWindow = UIApplication.shared.keyWindow else { return }
-
-        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        keyWindow.rootViewController = navigationController
-        UIView.transition(with: keyWindow,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: nil,
-                          completion: nil)
-    }
-    
 }
 
 // MARK: Firebase

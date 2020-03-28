@@ -9,20 +9,23 @@
 import Foundation
 import TwoWayBondage
 
+final class RegistrationViewModel {
 
-class RegistrationViewModel {
-    
-    let repository: RegistrationRepository
+    private (set) var registrationRepository: RegistrationRepository
+    private (set) var termsAndConditionsRepository: TermsAndConditionsRepository
+
     let shouldShowLoadingIndicator = Observable<Bool>()
     let isRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
     
-    init(repository: RegistrationRepository) {
-        self.repository = repository
+    init(registrationRepository: RegistrationRepository,
+         termsAndConditionsRepository: TermsAndConditionsRepository) {
+        self.registrationRepository = registrationRepository
+        self.termsAndConditionsRepository = termsAndConditionsRepository
     }
     
     func didTapRegistration(with phoneNumber: String) {
         shouldShowLoadingIndicator.value = true
-        repository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] result in
+        registrationRepository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.isRequestSuccessful.value = result
             strongSelf.shouldShowLoadingIndicator.value = false

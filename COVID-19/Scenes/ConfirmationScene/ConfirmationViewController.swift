@@ -8,7 +8,11 @@
 
 import UIKit
 
-final class ConfirmationViewController: UIViewController {
+final class ConfirmationViewController: UIViewController, Navigateble {
+
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
 
     // MARK: Outlets
 
@@ -20,7 +24,7 @@ final class ConfirmationViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func backButtonTap() {
-        navigateBackToHome()
+        navigationDelegate?.navigateTo(step: .home)
     }
 
     // MARK: ViewModel
@@ -64,13 +68,6 @@ final class ConfirmationViewController: UIViewController {
         let checkIcon = #imageLiteral(resourceName: "check-circle-light").withRenderingMode(.alwaysTemplate)
         iconImageView.image = checkIcon
         iconImageView.tintColor = #colorLiteral(red: 60 / 255, green: 140 / 255, blue: 231 / 255, alpha: 1.0) // Editor representation does't look correct, however it works on device
-    }
-
-    // MARK: Navigation
-
-    private func navigateBackToHome() {
-        
-        navigationController?.popToRootViewController(animated: true)
     }
 
 }

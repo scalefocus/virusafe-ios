@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HealthStatusViewController: UIViewController {
+class HealthStatusViewController: UIViewController, Navigateble {
+
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
 
     // MARK: Outlets
 
@@ -29,7 +33,7 @@ class HealthStatusViewController: UIViewController {
 
     // MARK: View Model
 
-    private let viewModel = HealthStatusViewModel()
+    var viewModel: HealthStatusViewModel!
 
     // MARK: Lifecycle
     
@@ -107,6 +111,8 @@ class HealthStatusViewController: UIViewController {
     private func bindRequestQuestionsResult() {
         viewModel.requestError.bind { [weak self] error in
             switch error {
+                case .invalidToken:
+                    self?.navigationDelegate?.navigateTo(step: .register)
                 case .tooManyRequests(let repeatAfterSeconds):
                     var message = Constants.Strings.healthStatusTooManyRequestsErrorText + " "
                     let hours = repeatAfterSeconds / 3600
@@ -135,8 +141,8 @@ class HealthStatusViewController: UIViewController {
 
     private func bindSendAnswersResult() {
         // fired only on success
-        viewModel.isSendAnswersCompleted.bind { [weak self] _ in
-            self?.navigateToConfirmationViewController()
+        viewModel.isSendAnswersCompleted.bind { [weak self] result in
+            self?.navigateToNextViewController()
         }
     }
 
@@ -155,11 +161,8 @@ class HealthStatusViewController: UIViewController {
 
     // MARK: Navigation
 
-    private func navigateToConfirmationViewController() {
-        let confirmationViewController =
-            UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "\(ConfirmationViewController.self)")
-        navigationController?.pushViewController(confirmationViewController, animated: true)
+    private func navigateToNextViewController() {
+        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .personalInformation : .completed)
     }
 
 }
