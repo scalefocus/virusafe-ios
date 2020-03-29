@@ -61,9 +61,9 @@ extension Encodable {
 public struct Questionnaire: Codable {
     public let answers: [Answer]
     public let location: UserLocation
-    public let timestamp: Int
+    public let timestamp: String
 
-    public init(answers: [Answer], location: UserLocation, timestamp: Int) {
+    public init(answers: [Answer], location: UserLocation, timestamp: String) {
         self.answers = answers
         self.location = location
         self.timestamp = timestamp
