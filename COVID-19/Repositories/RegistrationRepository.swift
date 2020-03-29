@@ -20,7 +20,7 @@ enum AuthoriseMobileNumberResult {
 protocol RegistrationRepositoryProtocol {
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
-    func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
+
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
@@ -66,34 +66,6 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             // Update manager
             APIManager.shared.authToken = parsedData.accessToken
             completion(.success)
-        }
-    }
-
-    // TODO: Error handling
-    func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-            let request = PersonalNumerApiRequest(bodyJSONObject: ["identificationNumber": personalNumberNumber, "age": "\(age)", "gender": gender, "preExistingConditions": preexistingConditions])
-                
-            request.execute { (_, response, error) in
-                guard response?.statusCode != 412 else {
-                    completion(.invalidPersonalNumber)
-                    return
-                }
-
-                guard error == nil else {
-                    completion(.generalError)
-                    return
-                }
-        
-                
-                completion(.success)
-            }
-        }
-    
-    func getPersonalInfo(completion: @escaping ((PersonalInformation) -> Void)) {
-        GetPersonalInfoRequest().executeParsed(of: PersonalInformation.self) { (personalInformation, response, error) in
-            if let personalInformation = personalInformation {
-                completion(personalInformation)
-            }
         }
     }
 }

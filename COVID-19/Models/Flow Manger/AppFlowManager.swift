@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NetworkKit
+//import NetworkKit
 
 // TODO: Refactor
 
@@ -53,6 +53,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
     private var termsAndConditionsRepository = TermsAndConditionsRepository()
     private var firstLaunchCheckRepository = AppLaunchRepository()
     private var questionnaireRepository = QuestionnaireRepository()
+    private var personalInformationRepository = PersonalInformationRepository()
 
     private var answersRequestStore: DelayedAnswersRequestStore?
 
@@ -267,6 +268,7 @@ extension AppFlowManager: NavigationDelegate {
                     return
         }
         let viewModel = PersonalInformationViewModel(firstLaunchCheckRepository: firstLaunchCheckRepository,
+                                                     personalInformationRepository: personalInformationRepository,
                                                      delegate: self)
         personalInformationViewController.navigationDelegate = self
         personalInformationViewController.viewModel = viewModel
@@ -387,8 +389,12 @@ extension AppFlowManager: PersonalInformationViewModelDelegate {
     }
 
     func sendPersonalInformation(_ personalInformation: PersonalInformation,
-                                 with completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-        registrationRepository.sendPersonalInfo(personalNumberNumber: personalInformation.identificationNumber, age: personalInformation.age, gender: personalInformation.gender.rawValue, preexistingConditions: personalInformation.preExistingConditions, completion: completion)
+                                 with completion: @escaping SendPersonalInfoCompletion) {
+        personalInformationRepository.sendPersonalInfo(identificationNumber: personalInformation.identificationNumber,
+                                                       age: personalInformation.age,
+                                                       gender: personalInformation.gender?.rawValue,
+                                                       preexistingConditions: personalInformation.preExistingConditions,
+                                                       completion: completion)
     }
 }
 
