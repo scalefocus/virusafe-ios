@@ -53,7 +53,7 @@ enum Constants {
         static let generalPersonalInfoText = "Лични данни"
         static let egnDescriptionText = "Ако желаете да използваме данните Ви за допълнителен анализ и да Ви изпращаме персонализирани съвети, моля въведете единния си граждански номер."
         static let egnRequestText = "Въведете вашите лични данни"
-        static let egnRequestPlaceholderText = "ЕГН/ЛНЧ/Номер на паспорт"
+        static let egnRequestPlaceholderText = "ЕГН/ЛНЧ"
         static let egnPreexistingConditionsText = "Хронични заболявания"
         static let egnSkipText = "Пропусни"
         static let egnSubmitText = "Потвърди"
