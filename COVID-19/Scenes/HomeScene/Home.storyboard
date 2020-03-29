@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -13,14 +13,14 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="Pm6-G1-6uV" customClass="HomeViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rza-Eu-OMJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-23-V39">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="188"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="223"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" image="ic_app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="poB-Ya-7Kz">
-                                        <rect key="frame" x="132" y="44" width="150" height="100"/>
+                                        <rect key="frame" x="132" y="61.666666666666657" width="150" height="100"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="poB-Ya-7Kz" secondAttribute="height" multiplier="3:2" id="XSQ-Rx-WEr"/>
@@ -28,7 +28,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Моят личен принос" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLf-RD-PT0">
-                                        <rect key="frame" x="0.0" y="154" width="414" height="24"/>
+                                        <rect key="frame" x="0.0" y="171.66666666666666" width="414" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="eUv-A4-bNs"/>
                                         </constraints>
@@ -42,15 +42,16 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="25R-iy-Z5B"/>
                                     <constraint firstItem="poB-Ya-7Kz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GFt-23-V39" secondAttribute="top" constant="40" id="4TS-Z3-0r8"/>
                                     <constraint firstAttribute="trailing" secondItem="GLf-RD-PT0" secondAttribute="trailing" id="K6A-F4-5qA"/>
-                                    <constraint firstItem="poB-Ya-7Kz" firstAttribute="centerY" secondItem="GFt-23-V39" secondAttribute="centerY" id="TYd-e1-nMM"/>
+                                    <constraint firstItem="poB-Ya-7Kz" firstAttribute="centerY" secondItem="GFt-23-V39" secondAttribute="centerY" id="Lgg-vr-oBq"/>
                                     <constraint firstItem="GLf-RD-PT0" firstAttribute="leading" secondItem="GFt-23-V39" secondAttribute="leading" id="WvS-hj-ZIl"/>
                                     <constraint firstItem="poB-Ya-7Kz" firstAttribute="centerX" secondItem="GFt-23-V39" secondAttribute="centerX" id="YQ1-Yg-O0l"/>
-                                    <constraint firstAttribute="bottom" secondItem="GLf-RD-PT0" secondAttribute="bottom" constant="10" id="efD-fd-g7L"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GLf-RD-PT0" secondAttribute="bottom" constant="10" id="efD-fd-g7L"/>
                                     <constraint firstItem="GLf-RD-PT0" firstAttribute="top" secondItem="poB-Ya-7Kz" secondAttribute="bottom" constant="10" id="lPi-2p-0KG"/>
+                                    <constraint firstItem="poB-Ya-7Kz" firstAttribute="centerX" secondItem="GFt-23-V39" secondAttribute="centerX" id="oTQ-Vu-TAP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="300" translatesAutoresizingMaskIntoConstraints="NO" id="wTM-ah-KF0">
-                                <rect key="frame" x="0.0" y="313" width="414" height="270"/>
+                                <rect key="frame" x="0.0" y="233" width="414" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="300" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="fzB-j9-wo8">
                                         <rect key="frame" x="20" y="0.0" width="374" height="270"/>
@@ -151,15 +152,15 @@
                                 <constraints>
                                     <constraint firstItem="fzB-j9-wo8" firstAttribute="leading" secondItem="wTM-ah-KF0" secondAttribute="leading" constant="20" id="8TO-Ns-MsJ"/>
                                     <constraint firstAttribute="trailing" secondItem="fzB-j9-wo8" secondAttribute="trailing" constant="20" id="GUg-hX-a6F"/>
-                                    <constraint firstItem="fzB-j9-wo8" firstAttribute="centerX" secondItem="wTM-ah-KF0" secondAttribute="centerX" id="Lk3-Wx-EET"/>
                                     <constraint firstAttribute="trailing" secondItem="fzB-j9-wo8" secondAttribute="trailing" constant="20" id="O5d-wu-G4M"/>
-                                    <constraint firstItem="fzB-j9-wo8" firstAttribute="top" secondItem="wTM-ah-KF0" secondAttribute="top" id="jdL-Dl-NZg"/>
+                                    <constraint firstAttribute="height" constant="270" id="cGl-vS-JmX"/>
+                                    <constraint firstItem="fzB-j9-wo8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wTM-ah-KF0" secondAttribute="top" id="jdL-Dl-NZg"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fzB-j9-wo8" secondAttribute="bottom" id="p73-pf-blH"/>
                                     <constraint firstItem="fzB-j9-wo8" firstAttribute="centerY" secondItem="wTM-ah-KF0" secondAttribute="centerY" id="xEN-Sl-S0l"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vj-bP-xzM">
-                                <rect key="frame" x="136.5" y="603" width="141" height="40"/>
+                                <rect key="frame" x="136.66666666666666" y="523" width="140.99999999999997" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FXS-0Q-2Qa"/>
                                 </constraints>
@@ -172,7 +173,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SF-logo-grey" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-SR-7bN">
-                                <rect key="frame" x="312" y="837" width="78" height="13"/>
+                                <rect key="frame" x="312" y="711" width="78" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FE0-SR-7bN" secondAttribute="height" multiplier="6:1" id="htD-Im-iHK"/>
                                 </constraints>
@@ -187,11 +188,11 @@
                             <constraint firstItem="OER-Lz-gjX" firstAttribute="bottom" secondItem="FE0-SR-7bN" secondAttribute="bottom" constant="12" id="HJ7-dh-PUh"/>
                             <constraint firstItem="3vj-bP-xzM" firstAttribute="top" secondItem="wTM-ah-KF0" secondAttribute="bottom" constant="20" id="J7m-xP-fbZ"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="centerY" secondItem="Rza-Eu-OMJ" secondAttribute="centerY" id="JFO-eG-deT"/>
+                            <constraint firstItem="wTM-ah-KF0" firstAttribute="top" secondItem="GFt-23-V39" secondAttribute="bottom" constant="10" id="NAT-Ok-xmz"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="arC-2T-koj"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="k1W-qx-kVp"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" id="u99-5k-afZ"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="top" secondItem="Rza-Eu-OMJ" secondAttribute="top" id="uGx-le-gzy"/>
-                            <constraint firstItem="wTM-ah-KF0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GFt-23-V39" secondAttribute="bottom" constant="10" id="uVW-Y7-3oc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OER-Lz-gjX"/>
                     </view>
@@ -208,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylF-cV-cof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511.25" y="136.26760563380282"/>
+            <point key="canvasLocation" x="1510.144927536232" y="135.9375"/>
         </scene>
     </scenes>
     <resources>
