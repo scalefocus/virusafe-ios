@@ -55,7 +55,7 @@
                                                                     <constraint firstAttribute="height" constant="45" id="vBd-Eh-4HF"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BBf-ct-6Or" id="LsK-ca-8BI"/>
                                                                 </connections>
