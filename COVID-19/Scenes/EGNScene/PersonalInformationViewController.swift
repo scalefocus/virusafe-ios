@@ -41,7 +41,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     @IBOutlet private weak var egnTitleLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var egnTextField: SkyFloatingLabelTextField!
-    
+    @IBOutlet private weak var egnErrorLabel: UILabel!
+
     @IBOutlet weak var ageTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var egnSubmitButton: UIButton!
     @IBOutlet private weak var skipButton: UIButton!
@@ -50,6 +51,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     
     // MARK: Settings
     private let preexistingConditionsTextLength = 100 // Same as android
+    private let minimumPersonalNumberLength = 9
     private let maximumPersonalNumberLength = 10
     private let maximumAge = 110
     
@@ -199,8 +201,12 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // MARK: Actions
     
     @IBAction private func didTapSubmitButton(_ sender: Any) {
+        let egn = egnTextField.text ?? ""
+        if egn.count > 0 && egn.count < minimumPersonalNumberLength {
+            return
+        }
         var emptyTextFieldsTitles: [String] = []
-        if (egnTextField.text ?? "").isEmpty {
+        if egn.isEmpty {
             emptyTextFieldsTitles.append(Constants.Strings.egnRequestPlaceholderText)
         }
         if (ageTextField.text ?? "").isEmpty {
@@ -253,6 +259,17 @@ extension PersonalInformationViewController: UITextFieldDelegate {
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
         
         if textField == egnTextField {
+            guard newString.length > 0 else {
+                egnErrorLabel.text = nil
+                return true
+            }
+            if (newString.length >= minimumPersonalNumberLength
+                && newString.length <= maximumPersonalNumberLength)
+                || textFieldText.length == maximumPersonalNumberLength {
+                egnErrorLabel.text = nil
+            } else {
+                egnErrorLabel.text = Constants.Strings.mobileNumberIncorrectLengthText
+            }
             return newString.length <= maximumPersonalNumberLength
         } else if textField == ageTextField {
             let newAge:Int = (newString as NSString).integerValue
