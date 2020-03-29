@@ -94,6 +94,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         egnSubmitButton.backgroundColor = .healthBlue
         egnTitleLabel.text = Constants.Strings.egnRequestText
         egnTextField.placeholder = Constants.Strings.egnRequestPlaceholderText
+        ageTextField.placeholder = Constants.Strings.egnAgeText
         preexistingConditionsTextField.placeholder = Constants.Strings.egnPreexistingConditionsText
         egnSubmitButton.setTitle(Constants.Strings.egnSubmitText, for: .normal)
         skipButton.setTitle(Constants.Strings.egnSkipText, for: .normal)
@@ -198,8 +199,35 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // MARK: Actions
     
     @IBAction private func didTapSubmitButton(_ sender: Any) {
-        // TODO: Validation - lenght
-        viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
+        var emptyTextFieldsTitles: [String] = []
+        if (egnTextField.text ?? "").isEmpty {
+            emptyTextFieldsTitles.append(Constants.Strings.egnRequestPlaceholderText)
+        }
+        if (ageTextField.text ?? "").isEmpty {
+            emptyTextFieldsTitles.append(Constants.Strings.egnAgeText)
+        }
+        if (preexistingConditionsTextField.text ?? "").isEmpty {
+            emptyTextFieldsTitles.append(Constants.Strings.egnPreexistingConditionsText)
+        }
+
+        if emptyTextFieldsTitles.isEmpty {
+            viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
+        } else {
+            let message = Constants.Strings.confirmEmptyFieldsAlertMessage + " " + emptyTextFieldsTitles.joined(separator: ", ")
+
+            let alert = UIAlertController(title: nil,
+                                          message: message,
+                                          preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: Constants.Strings.egnSkipText, style: .destructive) { [weak self] action in
+                    self?.viewModel.didTapPersonalNumberAuthorization(with: self?.egnTextField.text ?? "")
+                }
+            )
+            alert.addAction(
+                UIAlertAction(title: Constants.Strings.generalBackText, style: .default) { _ in }
+            )
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
