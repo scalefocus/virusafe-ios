@@ -137,7 +137,16 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         viewModel.requestError.bind { [weak self] error in
             switch error {
                 case .invalidToken:
-                    self?.navigationDelegate?.navigateTo(step: .register)
+                    // TODO: Refactor - duplicated code
+                    let alert = UIAlertController(title: Constants.Strings.invalidTokenAlertTitle,
+                                                  message: Constants.Strings.invalidTokenAlertMessage,
+                                                  preferredStyle: .alert)
+                    alert.addAction(
+                        UIAlertAction(title: Constants.Strings.genaralAgreedText, style: .default) { action in
+                            self?.navigationDelegate?.navigateTo(step: .register)
+                        }
+                    )
+                    self?.present(alert, animated: true, completion: nil)
                 case .tooManyRequests(let repeatAfterSeconds):
                     var message = Constants.Strings.healthStatusTooManyRequestsErrorText + " "
                     let hours = repeatAfterSeconds / 3600

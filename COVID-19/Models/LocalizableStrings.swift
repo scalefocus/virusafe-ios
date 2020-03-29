@@ -68,5 +68,8 @@ enum Constants {
 
         static let webviewScreenTitleNews = "НОВИНИ"
         static let webviewScreenTitleLearnMore = "НАУЧИ ПОВЕЧЕ..."
+
+        static let invalidTokenAlertTitle = "ИЗТЕКЛА СЕСИЯ"
+        static let invalidTokenAlertMessage = "Моля да въведете още веднъж телефонния си номер и код за верификация. Това може да се наложи с цел повторна верификация."
     }
 }
