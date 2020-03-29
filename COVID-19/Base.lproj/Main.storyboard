@@ -33,12 +33,24 @@
                                             <constraint firstAttribute="height" constant="50" id="aYm-Ys-goa"/>
                                         </constraints>
                                     </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_min_zdrave" translatesAutoresizingMaskIntoConstraints="NO" id="I0e-LB-arA">
+                                        <rect key="frame" x="20" y="60" width="163" height="50"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_oper_shtab" translatesAutoresizingMaskIntoConstraints="NO" id="pME-eF-7v6">
+                                        <rect key="frame" x="211" y="60" width="89" height="43"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="I0e-LB-arA" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="63d-Ej-Ypy"/>
+                                    <constraint firstItem="Fgw-iu-EYK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I0e-LB-arA" secondAttribute="bottom" constant="20" id="JsS-m4-dEg"/>
+                                    <constraint firstItem="I0e-LB-arA" firstAttribute="leading" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="20" id="Q8D-5K-B0b"/>
+                                    <constraint firstItem="pME-eF-7v6" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="apz-7L-13p"/>
                                     <constraint firstItem="g1A-VB-LSP" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="1.6" id="cac-py-Pxb"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="0.9" id="jQz-bU-rqw"/>
+                                    <constraint firstAttribute="trailing" secondItem="pME-eF-7v6" secondAttribute="trailing" constant="20" id="kKM-zf-QKT"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="nae-Ol-Dz6"/>
+                                    <constraint firstItem="Fgw-iu-EYK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pME-eF-7v6" secondAttribute="bottom" constant="20" id="qQx-yw-CQa"/>
                                     <constraint firstItem="g1A-VB-LSP" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="u1a-J9-vuX"/>
                                 </constraints>
                             </view>
@@ -59,10 +71,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ue6-k4-UzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1996" y="139"/>
+            <point key="canvasLocation" x="-1996.875" y="138.38028169014083"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_min_zdrave" width="163" height="50"/>
+        <image name="ic_oper_shtab" width="89" height="43"/>
         <image name="logo" width="150" height="208"/>
     </resources>
 </document>
