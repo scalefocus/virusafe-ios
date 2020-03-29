@@ -92,7 +92,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
             guard let strongSelf = self else { return }
             if shouldShowLoadingIndicator {
                 strongSelf.verificationCodeTextField.resignFirstResponder()
-                LoadingIndicatorManager.startActivityIndicator(.whiteLarge,
+                LoadingIndicatorManager.startActivityIndicator(.gray,
                                                                in: strongSelf.view)
             } else {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
@@ -128,7 +128,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     // MARK: Navigation
 
     private func navigateToNextViewController() {
-        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .about(isInitial: true) : .home)
+        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .healthStatus : .home)
     }
 
     // MARK: Actions

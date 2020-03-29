@@ -20,7 +20,7 @@ enum AuthoriseMobileNumberResult {
 protocol RegistrationRepositoryProtocol {
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
-
+    func registerPushToken(_ pushToken: String, completion: @escaping ((ApiResult<Void>) -> Void))
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
@@ -66,6 +66,16 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             // Update manager
             APIManager.shared.authToken = parsedData.accessToken
             completion(.success)
+        }
+    }
+
+    func registerPushToken(_ pushToken: String, completion: @escaping ((ApiResult<Void>) -> Void)) {
+        SendPushTokenRequest(pushToken: pushToken).execute { (_, _, error) in
+            guard error == nil else {
+                completion(.failure(.general))
+                return
+            }
+            completion(.success(Void()))
         }
     }
 }

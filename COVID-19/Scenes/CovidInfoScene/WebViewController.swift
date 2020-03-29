@@ -15,7 +15,6 @@ enum Source {
     case notification(String)
 
     var urlString: String {
-        
         switch self {
         case .content:
             return StaticContentPage.shared.url
@@ -23,6 +22,17 @@ enum Source {
             return AppInfoPage.shared.url
         case .notification(let string):
             return string
+        }
+    }
+
+    var description: String {
+        switch self {
+            case .content:
+                return Constants.Strings.webviewScreenTitleLearnMore
+            case .about:
+                return Constants.Strings.homeScreenHowItWorksText
+            case .notification:
+                return Constants.Strings.webviewScreenTitleNews
         }
     }
 }
@@ -48,6 +58,19 @@ class WebViewController: UIViewController {
         setupUI()
     }
 
+    private var isNavigationBarHiddenInitially: Bool = false
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isNavigationBarHiddenInitially = navigationController?.isNavigationBarHidden ?? false
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(isNavigationBarHiddenInitially, animated: false)
+    }
+
     // MARK: Load
 
     func load(source: Source) {
@@ -57,6 +80,7 @@ class WebViewController: UIViewController {
         }
         let request = URLRequest(url: url)
         webView.load(request)
+        title = source.description
     }
 
     // MARK: Setup UI
@@ -78,7 +102,7 @@ extension WebViewController: WKUIDelegate {
 
 extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        LoadingIndicatorManager.startActivityIndicator(.whiteLarge, in: view)
+        LoadingIndicatorManager.startActivityIndicator(.gray, in: view)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

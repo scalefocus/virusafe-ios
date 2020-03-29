@@ -48,7 +48,14 @@ class HealthStatusViewController: UIViewController, Navigateble {
         // TODO: Show it on button tap
         // TODO: Add auth completion handler
         // ??? Message title to be in Bulgarian (in Info.plist)
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocationState), name: NSNotification.Name(rawValue: "didChooseLocationAccess"), object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didChangeLocationState),
+                                               name: NSNotification.Name(rawValue: "didChooseLocationAccess"),
+                                               object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: Notifications
@@ -101,7 +108,7 @@ class HealthStatusViewController: UIViewController, Navigateble {
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
             if shouldShowLoadingIndicator {
-                LoadingIndicatorManager.startActivityIndicator(.whiteLarge, in: strongSelf.view)
+                LoadingIndicatorManager.startActivityIndicator(.gray, in: strongSelf.view)
             } else {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
             }

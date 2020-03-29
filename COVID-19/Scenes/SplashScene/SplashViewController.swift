@@ -64,7 +64,7 @@ class SplashViewController: UIViewController, Navigateble {
 
     private func navigateToNextViewController() {
         let isUserRegistered: Bool = (TokenStore.shared.token != nil)
-        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : .register)
+        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : .about(isInitial: true))
     }
 
 }
@@ -81,7 +81,7 @@ extension SplashViewController {
             "ios_static_content_page_url" : "https://virusafe.io/information/about-covid.html",
             "ios_appstore_link" : "https://www.apple.com/ios/app-store/", // TODO: Actual
             "ios_location_interval_in_mins" : 2,
-            "ios_app_info_page_url": ""
+            "ios_app_info_page_url": "https://virusafe.io/information/virusafe-why.html"
         ]
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
     }
@@ -147,6 +147,10 @@ extension SplashViewController {
                 if let staticContentURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_static_content_page_url").stringValue {
                     StaticContentPage.shared.url = staticContentURL
                 }
+
+                if let appInfoURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_app_info_page_url").stringValue {
+                    AppInfoPage.shared.url = appInfoURL
+                }
             }
         }
     }
@@ -191,5 +195,5 @@ final class StaticContentPage {
 final class AppInfoPage {
     static var shared = AppInfoPage()
     private init() { }
-    var url: String = RemoteConfig.remoteConfig().configValue(forKey: "ios_app_info_page_url").stringValue ?? ""
+    var url: String = "https://virusafe.io/information/virusafe-why.html"
 }

@@ -65,6 +65,8 @@ enum Constants {
         static let homeScreenMyPersonalInfoText = "МОИТЕ ЛИЧНИ ДАННИ"
         static let homeScreenLearnMoreAboutCOVIDText = "НАУЧИ ПОВЕЧЕ ЗА КОРОНА ВИРУСА"
         static let homeScreenMyPersonalContributionText = "Моят личен принос"
-        
+
+        static let webviewScreenTitleNews = "НОВИНИ"
+        static let webviewScreenTitleLearnMore = "НАУЧИ ПОВЕЧЕ..."
     }
 }
