@@ -76,6 +76,8 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
                     completion(.success(personalInformation))
                 case .failure(let reason):
                     switch reason {
+                        case .invalidEgnOrIdNumber:
+                            completion(.failure(.invalidEgnOrIdNumber))
                         case .invalidToken:
                             completion(.failure(.invalidToken))
                         default:

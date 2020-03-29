@@ -18,4 +18,5 @@ enum ApiError: Error {
     case server // returned status code is in range 400...599
     case general // any network error
     case invalidToken
+    case invalidEgnOrIdNumber
 }

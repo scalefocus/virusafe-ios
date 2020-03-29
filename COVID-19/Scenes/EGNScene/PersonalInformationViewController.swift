@@ -137,10 +137,16 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             }
         }
 
+        // TODO: Refactor - duplicated code
         viewModel.requestError.bind { [weak self] error in
             switch error {
+                case .invalidEgnOrIdNumber:
+                    let alert = UIAlertController(title: nil,
+                                                  message: Constants.Strings.invalidEgnOrIdNumberAlertMessage,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText, style: .default))
+                    self?.present(alert, animated: true, completion: nil)
                 case .invalidToken:
-                    // TODO: Refactor - duplicated code
                     let alert = UIAlertController(title: Constants.Strings.invalidTokenAlertTitle,
                                                   message: Constants.Strings.invalidTokenAlertMessage,
                                                   preferredStyle: .alert)

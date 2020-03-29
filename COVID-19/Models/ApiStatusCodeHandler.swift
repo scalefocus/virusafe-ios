@@ -13,6 +13,7 @@ enum ApiStatusCodeError {
     case invalidToken
     case tooManyRequests
     case badStatusCode
+    case invalidEgnOrIdNumber
 }
 
 enum ApiStatusCodeResult {
@@ -28,15 +29,17 @@ final class ApiStatusCodeHandler {
         }
         // !!! we expect codes to be in range 400...599
         switch statusCode {
-        case 403:
-            // clear token
-            TokenStore.shared.token = nil
-            // return error
-            return .failure(.invalidToken)
-        case 429:
-            return .failure(.tooManyRequests)
-        default:
-            return .failure(.badStatusCode)
+            case 403:
+                // clear token
+                TokenStore.shared.token = nil
+                // return error
+                return .failure(.invalidToken)
+            case 412:
+                return .failure(.invalidToken)
+            case 429:
+                return .failure(.tooManyRequests)
+            default:
+                return .failure(.badStatusCode)
         }
     }
 

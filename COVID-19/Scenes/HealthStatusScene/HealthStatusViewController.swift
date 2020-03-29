@@ -152,7 +152,7 @@ class HealthStatusViewController: UIViewController, Navigateble {
                                                   style: .default,
                                                   handler: nil))
                     self?.present(alert, animated: true, completion: nil)
-                case .server, .general:
+                case .server, .general, .invalidEgnOrIdNumber:
                     self?.showToast(message: Constants.Strings.healthStatusUnknownErrorText)
             }
         }
