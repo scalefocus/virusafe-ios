@@ -71,5 +71,9 @@ enum Constants {
 
         static let invalidTokenAlertTitle = "ИЗТЕКЛА СЕСИЯ"
         static let invalidTokenAlertMessage = "Моля да въведете още веднъж телефонния си номер и код за верификация. Това може да се наложи с цел повторна верификация."
+
+        static let egnAgeText = "Години"
+
+        static let confirmEmptyFieldsAlertMessage = "Сигурни ли сте, че искате да продължите? Не сте попълнили следните полета:"
     }
 }
