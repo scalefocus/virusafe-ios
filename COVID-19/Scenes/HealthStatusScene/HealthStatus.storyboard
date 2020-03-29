@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Health Status View Controller-->
+        <scene sceneID="klH-eB-n4L">
+            <objects>
+                <viewController storyboardIdentifier="HealthStatusViewController" id="5ge-PP-N8L" customClass="HealthStatusViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9jl-Tb-m4B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Fd-v6-Txl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="772"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5ge-PP-N8L" id="08v-lH-NLE"/>
+                                    <outlet property="delegate" destination="5ge-PP-N8L" id="qV1-XY-joQ"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcU-2J-baH">
+                                <rect key="frame" x="24" y="796" width="366" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="shC-OA-cif"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Запази промените">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButtonDidTap" destination="5ge-PP-N8L" eventType="touchUpInside" id="jau-Sy-wh2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qcU-2J-baH" firstAttribute="top" secondItem="7Fd-v6-Txl" secondAttribute="bottom" constant="24" id="3YP-bG-FML"/>
+                            <constraint firstItem="cYF-eD-d2H" firstAttribute="trailing" secondItem="7Fd-v6-Txl" secondAttribute="trailing" id="4f3-Ii-TDg"/>
+                            <constraint firstItem="7Fd-v6-Txl" firstAttribute="top" secondItem="9jl-Tb-m4B" secondAttribute="top" id="MCO-p7-apH"/>
+                            <constraint firstItem="cYF-eD-d2H" firstAttribute="trailing" secondItem="qcU-2J-baH" secondAttribute="trailing" constant="24" id="dSt-lS-iMC"/>
+                            <constraint firstItem="cYF-eD-d2H" firstAttribute="bottom" secondItem="qcU-2J-baH" secondAttribute="bottom" constant="16" id="fSO-sf-zqx"/>
+                            <constraint firstItem="qcU-2J-baH" firstAttribute="leading" secondItem="cYF-eD-d2H" secondAttribute="leading" constant="24" id="gFJ-cp-kGS"/>
+                            <constraint firstItem="7Fd-v6-Txl" firstAttribute="leading" secondItem="cYF-eD-d2H" secondAttribute="leading" id="poY-W2-DSn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cYF-eD-d2H"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kpl-dG-alk"/>
+                    <connections>
+                        <outlet property="submitButton" destination="qcU-2J-baH" id="spk-ca-f9i"/>
+                        <outlet property="tableView" destination="7Fd-v6-Txl" id="4Ze-wA-AKi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTq-1V-u4U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="12898" y="95"/>
+        </scene>
+    </scenes>
+</document>

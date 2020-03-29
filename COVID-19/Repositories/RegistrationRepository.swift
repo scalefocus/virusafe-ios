@@ -68,7 +68,8 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             completion(.success)
         }
     }
-    
+
+    // TODO: Error handling
     func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
             let request = PersonalNumerApiRequest(bodyJSONObject: ["identificationNumber": personalNumberNumber, "age": "\(age)", "gender": gender, "preExistingConditions": preexistingConditions])
                 
