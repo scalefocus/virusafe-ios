@@ -84,14 +84,17 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     
     private func setupUI() {
         setupIconImageViewTint()
-
+        setupEgnTextField()
+        
         skipButton.isHidden = !viewModel.isInitialFlow
         
-        title = Constants.Strings.mobileNumberVerificationТext
+        title = viewModel.isInitialFlow == true ? Constants.Strings.mobileNumberVerificationТext :
+                                                  Constants.Strings.generalPersonalInfoText
+        
         egnSubmitButton.backgroundColor = .healthBlue
-        setupEgnTextField()
         egnTitleLabel.text = Constants.Strings.egnRequestText
-        egnTextField.placeholder = Constants.Strings.egnRequestPlacegolderText
+        egnTextField.placeholder = Constants.Strings.egnRequestPlaceholderText
+        preexistingConditionsTextField.placeholder = Constants.Strings.egnPreexistingConditionsText
         egnSubmitButton.setTitle(Constants.Strings.egnSubmitText, for: .normal)
         skipButton.setTitle(Constants.Strings.egnSkipText, for: .normal)
     }
@@ -103,8 +106,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     }
     
     private func setupEgnTextField() {
-        egnTextField.borderStyle = .none
-        egnTextField.placeholder = Constants.Strings.mobileNumberEnterPinText + " "
+        egnTextField.placeholder = Constants.Strings.egnRequestPlaceholderText + " "
         // By default title will be same as placeholder
         egnTextField.errorColor = .red
     }
