@@ -40,6 +40,7 @@ final class TokenStore {
                 UserDefaults.standard.removeObject(forKey: "isUserRegistered")
                 keychain.delete("jwt")
             }
+            UserDefaults.standard.synchronize()
         }
     }
 
