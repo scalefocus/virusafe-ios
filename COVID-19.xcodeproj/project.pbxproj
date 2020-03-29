@@ -254,6 +254,7 @@
 		024D82E42423A81A00696868 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				38334499242D46240032F153 /* LocalizableStrings.swift */,
 				41D3E66D242F524F00AC96B1 /* Flow Manger */,
 				024D82E72423A84200696868 /* HealthStatus.swift */,
 				41482B18242B49F20062D6E1 /* TokenStore.swift */,
@@ -341,7 +342,6 @@
 				41D3E66B242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist */,
 				38A8F40D2429574F00486007 /* COVID-19.entitlements */,
 				024D82D424239A6100696868 /* Extensions */,
-				38334499242D46240032F153 /* LocalizableStrings.swift */,
 			);
 			path = "COVID-19";
 			sourceTree = "<group>";
