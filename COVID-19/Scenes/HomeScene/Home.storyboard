@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-23-V39">
-                                <rect key="frame" x="0.0" y="44" width="414" height="188"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="188"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" image="ic_app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="poB-Ya-7Kz">
                                         <rect key="frame" x="132" y="44" width="150" height="100"/>
@@ -189,7 +189,7 @@
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="arC-2T-koj"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="k1W-qx-kVp"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" id="u99-5k-afZ"/>
-                            <constraint firstItem="GFt-23-V39" firstAttribute="top" secondItem="OER-Lz-gjX" secondAttribute="top" id="uQ7-0O-XeI"/>
+                            <constraint firstItem="GFt-23-V39" firstAttribute="top" secondItem="Rza-Eu-OMJ" secondAttribute="top" id="uGx-le-gzy"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GFt-23-V39" secondAttribute="bottom" constant="20" id="uVW-Y7-3oc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OER-Lz-gjX"/>

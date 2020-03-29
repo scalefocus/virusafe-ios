@@ -47,9 +47,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     @IBOutlet private weak var skipButton: UIButton!
     @IBOutlet private var genderButtons: [UIButton]!
     @IBOutlet weak var preexistingConditionsTextField: SkyFloatingLabelTextField!
+    
     // MARK: Settings
-
+    private let preexistingConditionsTextLength = 100 // Same as android
     private let maximumPersonalNumberLength = 10
+    private let maximumAge = 110
     
     // MARK: View Model
     
@@ -215,9 +217,19 @@ extension PersonalInformationViewController: ToastViewPresentable {}
 
 extension PersonalInformationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
         
-        return newString.length <= maximumPersonalNumberLength
+        if textField == egnTextField {
+            return newString.length <= maximumPersonalNumberLength
+        } else if textField == ageTextField {
+            let newAge:Int = (newString as NSString).integerValue
+            return newAge >= 0 && newAge <= maximumAge
+        } else if textField ==  preexistingConditionsTextField{
+            return newString.length <= preexistingConditionsTextLength
+        }
+        
+        return true
     }
 }

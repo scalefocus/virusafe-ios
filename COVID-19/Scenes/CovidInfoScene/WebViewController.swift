@@ -15,11 +15,12 @@ enum Source {
     case notification(String)
 
     var urlString: String {
+        
         switch self {
         case .content:
             return StaticContentPage.shared.url
         case .about:
-            return StaticContentPage.shared.url // TODO: Actual Page
+            return AppInfoPage.shared.url
         case .notification(let string):
             return string
         }

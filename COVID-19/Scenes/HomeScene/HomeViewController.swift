@@ -68,7 +68,7 @@ class HomeViewController: UIViewController, Navigateble {
     }
 
     @IBAction private func moreInfoDidTap() {
-        navigationDelegate?.navigateTo(step: .web(source: .content))
+        navigationDelegate?.navigateTo(step: .web(source: .about))
     }
 
     // MARK: Setup UI
