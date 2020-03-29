@@ -92,7 +92,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
             guard let strongSelf = self else { return }
             if shouldShowLoadingIndicator {
                 strongSelf.verificationCodeTextField.resignFirstResponder()
-                LoadingIndicatorManager.startActivityIndicator(.whiteLarge,
+                LoadingIndicatorManager.startActivityIndicator(.gray,
                                                                in: strongSelf.view)
             } else {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)

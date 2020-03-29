@@ -128,7 +128,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
             if shouldShowLoadingIndicator {
-                LoadingIndicatorManager.startActivityIndicator(.whiteLarge, in: strongSelf.view)
+                LoadingIndicatorManager.startActivityIndicator(.gray, in: strongSelf.view)
             } else {
                 LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
             }

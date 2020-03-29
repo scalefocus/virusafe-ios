@@ -46,7 +46,7 @@ open class LoadingIndicatorManager {
     ///   - backgroundColor: The dim background color; default is: (red: 0, green: 0, blue: 0, alpha: 0.3)
     open class func startActivityIndicator(_ activityIndicatorStyle:UIActivityIndicatorView.Style,
                                            in view: UIView,
-                                           backgroundColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)) {
+                                           backgroundColor: UIColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.65)) {
         
         //do NOT add second activityIndicator to view that already have subview activityIndicator
         if let _ = view.viewWithTag(ACTIVITY_INDICATOR_TAG_SPECIFIC_VIEW) as? UIActivityIndicatorView { return }
@@ -81,11 +81,11 @@ open class LoadingIndicatorManager {
     /// The default whole screen blocking UI activity indicator.
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
         activityIndicator.hidesWhenStopped = true
         
         activityIndicator.tag = ACTIVITY_INDICATOR_TAG_WHOLE_SCREEN
-        activityIndicator.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
+        activityIndicator.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.65).cgColor
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         return activityIndicator
