@@ -64,7 +64,7 @@ class SplashViewController: UIViewController, Navigateble {
 
     private func navigateToNextViewController() {
         let isUserRegistered: Bool = (TokenStore.shared.token != nil)
-        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : .register)
+        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : .about(isInitial: true))
     }
 
 }
