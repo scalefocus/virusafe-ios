@@ -63,7 +63,7 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
             Answer(answer: "\($0.isActive ?? false)", questionId: $0.questionId)
         }
 
-        let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+        let timestamp = "\(Int64(Date().timeIntervalSince1970 * 1000))"
         let location = UserLocation(latitude: latitude, longitude: longitude)
         let questionnaire = Questionnaire(answers: results, location: location, timestamp: timestamp)
 
