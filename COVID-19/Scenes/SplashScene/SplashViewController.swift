@@ -77,8 +77,8 @@ extension SplashViewController {
         let appDefaults: [String: Any?] = [
             "ios_is_mandatory" : false,
             "ios_latest_app_version" : "1.0",
-            "ios_end_point" : "https://virusafe.scalefocus.dev:8443",
-            "ios_static_content_page_url" : "https://virusafe.scalefocus.dev:8443/information/about-covid.html",
+            "ios_end_point" : "https://virusafe.io",
+            "ios_static_content_page_url" : "https://virusafe.io/information/about-covid.html",
             "ios_appstore_link" : "https://www.apple.com/ios/app-store/", // TODO: Actual
             "ios_location_interval_in_mins" : 2,
             "ios_app_info_page_url": ""
@@ -131,7 +131,7 @@ extension SplashViewController {
                 guard var urlComponents = URLComponents(string: remoteConfigURL) else {
                     return
                 }
-                var port = urlComponents.port
+                let port = urlComponents.port
                 urlComponents.port = nil
                 guard var urlString = urlComponents.url?.absoluteString else {
                     return
@@ -139,7 +139,6 @@ extension SplashViewController {
                 if urlString.suffix(1) == "/" {
                     urlString.removeLast()
                 }
-//                port = nil // TEMP TEST
                 let baseURL = RemoteStageBaseURLs(base: urlString, port: port)
                 let remoteEnvironment = RemoteConfigEnvironment(baseURLs: baseURL)
                 APIManager.shared.remoteEnvironment = remoteEnvironment
@@ -186,7 +185,7 @@ struct RemoteStageBaseURLs: BaseURLs {
 final class StaticContentPage {
     static var shared = StaticContentPage()
     private init() { }
-    var url: String = "https://virusafe.scalefocus.dev:8443/information/about-covid.html"
+    var url: String = "https://virusafe.io/information/about-covid.html"
 }
 
 final class AppInfoPage {

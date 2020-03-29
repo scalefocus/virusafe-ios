@@ -62,8 +62,8 @@ struct DevEnvironment: EnvironmentInterface {
 }
 
 struct DevBaseURLs: BaseURLs {
-    var base: BaseURL = "https://virusafe.scalefocus.dev"
-    var port: Int? = 8443
+    var base: BaseURL = "https://virusafe.io"
+    var port: Int? = nil
 }
 
 /*************************************/
@@ -77,8 +77,8 @@ struct StageEnvironment: EnvironmentInterface {
 }
 
 struct StageBaseURLs: BaseURLs {
-    var base: BaseURL = "https://virusafe.scalefocus.dev"
-    var port: Int? = 8443
+    var base: BaseURL = "https://virusafe.io"
+    var port: Int? = nil
 }
 
 /*************************************/
@@ -92,6 +92,6 @@ struct LiveEnvironment: EnvironmentInterface {
 }
 
 struct LiveBaseURLs: BaseURLs {
-    var base: BaseURL = "https://virusafe.scalefocus.dev"
-    var port: Int? = 8443
+    var base: BaseURL = "https://virusafe.io"
+    var port: Int? = nil
 }
