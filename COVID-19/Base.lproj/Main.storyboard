@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kxR-V2-vjV">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -13,21 +13,21 @@
             <objects>
                 <viewController storyboardIdentifier="SplashViewController" id="kxR-V2-vjV" customClass="SplashViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="waC-fN-py3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-DJ-ry5" customClass="RadialGradientView" customModule="COVID_19" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Fgw-iu-EYK">
-                                        <rect key="frame" x="60" y="155.5" width="200" height="200"/>
+                                        <rect key="frame" x="107" y="231.33333333333337" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Fgw-iu-EYK" secondAttribute="height" multiplier="1:1" id="oM4-Lh-1kn"/>
                                             <constraint firstAttribute="height" constant="200" id="wqv-mW-7jL"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-VB-LSP">
-                                        <rect key="frame" x="135" y="429.5" width="50" height="50"/>
+                                        <rect key="frame" x="182" y="563.66666666666663" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g1A-VB-LSP" secondAttribute="height" multiplier="1:1" id="O8p-aB-kOl"/>
                                             <constraint firstAttribute="height" constant="50" id="aYm-Ys-goa"/>
@@ -37,7 +37,7 @@
                                         <rect key="frame" x="20" y="60" width="163" height="50"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_oper_shtab" translatesAutoresizingMaskIntoConstraints="NO" id="pME-eF-7v6">
-                                        <rect key="frame" x="211" y="60" width="89" height="43"/>
+                                        <rect key="frame" x="305" y="60" width="89" height="43"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
