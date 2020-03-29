@@ -31,7 +31,20 @@ class HomeViewController: UIViewController, Navigateble {
         
         setupButtons()
         localize()
+
         askForPushNotifications()
+
+        // Listen for token changes
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didChangeFCMToken(_:)),
+                                               name: NSNotification.Name("FCMToken"),
+                                               object: nil)
+
+        sendPushToken()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewDidLayoutSubviews() {
@@ -111,6 +124,30 @@ class HomeViewController: UIViewController, Navigateble {
         }
 
         UIApplication.shared.registerForRemoteNotifications()
+    }
+
+    @objc
+    private func didChangeFCMToken(_ notification: Notification) {
+        sendPushToken()
+    }
+
+    private func sendPushToken() {
+        let userDefaults = UserDefaults.standard
+        let fcmToken = PushTokenStore.shared.fcmToken ?? ""
+        // !!! Token was already registered with the server
+        guard userDefaults.string(forKey: "push_token") != fcmToken else {
+            return
+        }
+
+        RegistrationRepository().registerPushToken(fcmToken) { result in
+            switch result {
+                case .success:
+                    userDefaults.set(fcmToken, forKey: "push_token")
+                case .failure:
+                    // No error handling - this should be silent
+                    break
+            }
+        }
     }
     
 }
