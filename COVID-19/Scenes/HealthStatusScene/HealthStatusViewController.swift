@@ -48,7 +48,14 @@ class HealthStatusViewController: UIViewController, Navigateble {
         // TODO: Show it on button tap
         // TODO: Add auth completion handler
         // ??? Message title to be in Bulgarian (in Info.plist)
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocationState), name: NSNotification.Name(rawValue: "didChooseLocationAccess"), object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didChangeLocationState),
+                                               name: NSNotification.Name(rawValue: "didChooseLocationAccess"),
+                                               object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: Notifications
