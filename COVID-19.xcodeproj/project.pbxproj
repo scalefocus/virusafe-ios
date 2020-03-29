@@ -78,6 +78,12 @@
 		4170C237242A05F8003EA70A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C236242A05F8003EA70A /* CheckBox.swift */; };
 		4170C239242A14D3003EA70A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
 		4170C23D242A36A6003EA70A /* QuestionnaireRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */; };
+		4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865824308FC3006CC2D9 /* TnC.storyboard */; };
+		4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865A24309054006CC2D9 /* PersonalInformation.storyboard */; };
+		4179865D2430907A006CC2D9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865C2430907A006CC2D9 /* Home.storyboard */; };
+		4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865E243092D2006CC2D9 /* Confirmation.storyboard */; };
+		41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41798660243092FC006CC2D9 /* HealthStatus.storyboard */; };
+		4179866324309342006CC2D9 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179866224309342006CC2D9 /* Registration.storyboard */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 		4181C716242D059E00FFDF7C /* TnC.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4181C715242D059E00FFDF7C /* TnC.rtf */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
@@ -195,6 +201,12 @@
 		4170C236242A05F8003EA70A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		4170C238242A14D3003EA70A /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireRepository.swift; sourceTree = "<group>"; };
+		4179865824308FC3006CC2D9 /* TnC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TnC.storyboard; sourceTree = "<group>"; };
+		4179865A24309054006CC2D9 /* PersonalInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformation.storyboard; sourceTree = "<group>"; };
+		4179865C2430907A006CC2D9 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		4179865E243092D2006CC2D9 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
+		41798660243092FC006CC2D9 /* HealthStatus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthStatus.storyboard; sourceTree = "<group>"; };
+		4179866224309342006CC2D9 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		4181C715242D059E00FFDF7C /* TnC.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TnC.rtf; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
@@ -358,6 +370,7 @@
 				02B9A6C624238E0E00B1A4C0 /* HealthStatusScene */,
 				4170C2282428B47A003EA70A /* ConfirmationScene */,
 				4170C22D2428CFD3003EA70A /* TermsAndConditionsScene */,
+				4179866224309342006CC2D9 /* Registration.storyboard */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -375,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */,
+				4179865C2430907A006CC2D9 /* Home.storyboard */,
 			);
 			path = HomeScene;
 			sourceTree = "<group>";
@@ -386,6 +400,7 @@
 				02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */,
 				02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */,
 				024D82E22423A80400696868 /* HealthStatus.json */,
+				41798660243092FC006CC2D9 /* HealthStatus.storyboard */,
 			);
 			path = HealthStatusScene;
 			sourceTree = "<group>";
@@ -516,6 +531,7 @@
 			children = (
 				38650B6E242DFB110013DF5E /* PersonalInformationViewController.swift */,
 				41D3E672242F782700AC96B1 /* PersonalInformationViewModel.swift */,
+				4179865A24309054006CC2D9 /* PersonalInformation.storyboard */,
 			);
 			path = EGNScene;
 			sourceTree = "<group>";
@@ -534,6 +550,7 @@
 			children = (
 				4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */,
 				4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */,
+				4179865E243092D2006CC2D9 /* Confirmation.storyboard */,
 			);
 			path = ConfirmationScene;
 			sourceTree = "<group>";
@@ -543,6 +560,7 @@
 			children = (
 				4170C2302428D019003EA70A /* TermsAndConditionsViewController.swift */,
 				4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */,
+				4179865824308FC3006CC2D9 /* TnC.storyboard */,
 			);
 			path = TermsAndConditionsScene;
 			sourceTree = "<group>";
@@ -628,14 +646,20 @@
 			files = (
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
 				41D3E669242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist in Resources */,
+				4179865D2430907A006CC2D9 /* Home.storyboard in Resources */,
 				41D3E66C242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist in Resources */,
 				024D82E32423A80400696868 /* HealthStatus.json in Resources */,
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
 				4181C716242D059E00FFDF7C /* TnC.rtf in Resources */,
+				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
+				4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */,
+				4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
+				4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */,
+				41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
