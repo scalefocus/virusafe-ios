@@ -9,9 +9,9 @@
 import Foundation
 
 struct PersonalInformation: Codable {
-    var identificationNumber: String // egn/id/pasport number
+    var identificationNumber: String? // egn/id/pasport number
     var phoneNumber: String
-    var age: Int
-    var gender: Gender
-    var preExistingConditions: String
+    var age: Int?
+    var gender: Gender?
+    var preExistingConditions: String?
 }
