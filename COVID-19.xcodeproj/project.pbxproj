@@ -969,7 +969,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -996,7 +996,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "covid19-healthcare-prod";
 				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1082,7 +1082,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = ViruSafeDevelopmentProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug Information Services";
 		};
@@ -1163,7 +1163,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = ViruSafeAppStoreProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Release Information Services";
 		};
