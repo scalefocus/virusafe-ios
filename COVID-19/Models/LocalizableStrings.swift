@@ -25,7 +25,7 @@ enum Constants {
         static let generalErrorIncorrectFormatText = "Невалиден формат"
         static let mobileNumberNoCodeReceivedButton = "Не получих код"
         static let registrationScreenTitle = "Регистрация"
-        static let registrationScreenPhoneTextFieldPlaceholder = "Телефонен номер"
+        static let registrationScreenPhoneTextFieldPlaceholder = "Мобилен номер (08XXXXXXXX)" //"Телефонен номер"
         static let registrationScreenPhoneTextFieldEmpty = "Полето не може да е празно"
         static let registrationScreenPhoneTextFieldInvalidLenght = "Полето трябва да съдържа повече символи"
         static let registrationScreenPhoneTextFieldInvalidFormat = "Невалиден формат"
