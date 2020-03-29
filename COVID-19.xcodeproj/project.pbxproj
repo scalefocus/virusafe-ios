@@ -84,6 +84,7 @@
 		4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865E243092D2006CC2D9 /* Confirmation.storyboard */; };
 		41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41798660243092FC006CC2D9 /* HealthStatus.storyboard */; };
 		4179866324309342006CC2D9 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179866224309342006CC2D9 /* Registration.storyboard */; };
+		4179866524309BBD006CC2D9 /* PersonalInformationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 		4181C716242D059E00FFDF7C /* TnC.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4181C715242D059E00FFDF7C /* TnC.rtf */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
@@ -207,6 +208,7 @@
 		4179865E243092D2006CC2D9 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		41798660243092FC006CC2D9 /* HealthStatus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthStatus.storyboard; sourceTree = "<group>"; };
 		4179866224309342006CC2D9 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationRepository.swift; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		4181C715242D059E00FFDF7C /* TnC.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TnC.rtf; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				41482B1E242B78B00062D6E1 /* LocationRepository.swift */,
 				41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */,
 				41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */,
+				4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
 				41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */,
 				3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */,
+				4179866524309BBD006CC2D9 /* PersonalInformationRepository.swift in Sources */,
 				3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */,
 				3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */,
 				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,

@@ -112,21 +112,14 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // MARK: Bind
 
     private func setupBindings() {
-        viewModel.isPersonalNumberRequestSuccessful.bind { [weak self] result in
+        viewModel.isSendPersonalInformationCompleted.bind { [weak self] result in
+            self?.navigationDelegate?.navigateTo(step: .home)
             guard let strongSelf = self else { return }
-            switch result {
-                case .success:
-                    if !strongSelf.viewModel.isInitialFlow {
-//                        strongSelf.navigationController?.popViewController(animated: true)
-                        strongSelf.navigationDelegate?.navigateTo(step: .home)
-                    }
-                    else {
-                        strongSelf.viewModel.didTapSkipButton()
-                    }
-                case .invalidPersonalNumber:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindPersonalNumberErrorText)
-                default:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+            if !strongSelf.viewModel.isInitialFlow {
+                strongSelf.navigationDelegate?.navigateTo(step: .home)
+            }
+            else {
+                strongSelf.viewModel.didTapSkipButton()
             }
         }
         
@@ -187,7 +180,6 @@ class PersonalInformationViewController: UIViewController, Navigateble {
   
         // fired only on success
         viewModel.isSendAnswersCompleted.bind { [weak self] result in
-//            self?.navigationController?.popToRootViewController(animated: true)
             self?.navigationDelegate?.navigateTo(step: .completed)
         }
     }
