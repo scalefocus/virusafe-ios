@@ -128,7 +128,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     // MARK: Navigation
 
     private func navigateToNextViewController() {
-        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .about(isInitial: true) : .home)
+        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .healthStatus : .home)
     }
 
     // MARK: Actions

@@ -90,13 +90,13 @@ final class AppFlowManager: StateMachineDelegateProtocol {
                 return true
             case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
                 return true
-            case (.home, .healthStatus), (.initialAbout, .healthStatus):
+            case (.home, .healthStatus), (.registerConfirm, .healthStatus):
                 return true
             case (.healthStatus, .success), (.personalInformation, .success):
                 return true
             case (.register, .registerConfirm):
                 return true
-            case (.registerConfirm, .initialAbout):
+            case (.ready, .initialAbout):
                 return true
             case (.home, .personalInformation), (.healthStatus, .personalInformation):
                 return true
@@ -107,13 +107,13 @@ final class AppFlowManager: StateMachineDelegateProtocol {
 
     func didTransition(from oldState: StateType, to newState: StateType) {
         switch (oldState, newState) {
-        case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
+            case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
                 previousStatesStack = [newState]
                 setHomeAsRootViewController()
             case (_, .register):
                 previousStatesStack = [newState]
                 setRegisterAsRootViewController()
-            case (.home, .healthStatus), (.initialAbout, .healthStatus):
+            case (.home, .healthStatus), (.registerConfirm, .healthStatus):
                 previousStatesStack.append(newState)
                 navigateToHealthStatusViewController()
             case (.healthStatus, .success), (.personalInformation, .success):
@@ -122,7 +122,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             case (.register, .registerConfirm):
                 previousStatesStack.append(newState)
                 navigateToRegistrationConfirmation()
-            case (.registerConfirm, .initialAbout):
+            case (.ready, .initialAbout):
                 previousStatesStack = [newState]
                 navigateToWebViewController(source: .about, isRoot: true)
             case (.home, .personalInformation), (.healthStatus, .personalInformation):
@@ -297,13 +297,13 @@ extension AppFlowManager: NavigationDelegate {
             title: Constants.Strings.newVersionAlertOkButtonTitle,
             style: .plain,
             target: self,
-            action: #selector(AppFlowManager.showHealthStatusFromAbout))
+            action: #selector(AppFlowManager.navigateToNextControllerFromInitialAbout))
         viewController.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
     @objc
-    private func showHealthStatusFromAbout(sender: UIBarButtonItem) {
-        navigateTo(step: .healthStatus)
+    private func navigateToNextControllerFromInitialAbout(sender: UIBarButtonItem) {
+        navigateTo(step: .register)
     }
 
     // Navigate back
