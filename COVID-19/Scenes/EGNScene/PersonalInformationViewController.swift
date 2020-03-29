@@ -50,7 +50,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     
     // MARK: Settings
     private let preexistingConditionsTextLength = 100 // Same as android
-    private let maximumPersonalNumberLength = 10
+    private let maximumPersonalNumberLength = 20
     private let maximumAge = 110
     
     // MARK: View Model
