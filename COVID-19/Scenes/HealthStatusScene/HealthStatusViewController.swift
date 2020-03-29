@@ -24,10 +24,13 @@ class HealthStatusViewController: UIViewController, Navigateble {
     @IBAction func submitButtonDidTap() {
         //Request Location Permissions
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if appDelegate.isLocationServicesAuthorized {
-            viewModel.didTapSubmitButton()
-        } else {
-            appDelegate.requestLocationServicesAutorization()
+        switch CLLocationManager.authorizationStatus() {
+            case .restricted, .denied, .authorizedAlways, .authorizedWhenInUse: // authorized is deprecated
+                viewModel.didTapSubmitButton()
+            case .notDetermined:
+                appDelegate.requestLocationServicesAutorization()
+            @unknown default:
+                viewModel.didTapSubmitButton()
         }
     }
 
