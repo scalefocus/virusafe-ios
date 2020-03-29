@@ -59,6 +59,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
     // MARK: Object lifecyle
 
     init(window: UIWindow) {
+        // !!! Only Splash Screen is in Main
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard
             .instantiateInitialViewController()! // !!! Force unwrap
@@ -176,7 +177,7 @@ extension AppFlowManager: NavigationDelegate {
             return
         }
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "\(HomeViewController.self)")
             as! HomeViewController // !!! Force unwrap
         homeViewController.navigationDelegate = self
@@ -189,7 +190,7 @@ extension AppFlowManager: NavigationDelegate {
             return
         }
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Registration", bundle: nil)
         let registerViewController = storyboard.instantiateViewController(withIdentifier: "\(RegistrationViewController.self)")
             as! RegistrationViewController // !!! Force unwrap
         let registrationViewModel = RegistrationViewModel(registrationRepository: registrationRepository,
@@ -200,7 +201,7 @@ extension AppFlowManager: NavigationDelegate {
     }
 
     private func navigateToTermsAndConditions() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "TnC", bundle: nil)
         guard let tncViewController = storyboard
             .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
             as? TermsAndConditionsViewController else {
@@ -216,7 +217,7 @@ extension AppFlowManager: NavigationDelegate {
     }
 
     private func navigateToHealthStatusViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "HealthStatus", bundle: nil)
         let healthStatusViewController = storyboard
             .instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
             as! HealthStatusViewController // !!! Force unwrap
@@ -233,7 +234,7 @@ extension AppFlowManager: NavigationDelegate {
 
     private func navigateToConfirmationViewController() {
         let confirmationViewController =
-            UIStoryboard(name: "Main", bundle: nil)
+            UIStoryboard(name: "Confirmation", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(ConfirmationViewController.self)")
         as! ConfirmationViewController // !!! Force unwrap
         confirmationViewController.navigationDelegate = self
@@ -242,7 +243,7 @@ extension AppFlowManager: NavigationDelegate {
 
     private func navigateToRegistrationConfirmation() {
         guard let registrationConfirmationVC =
-            UIStoryboard(name: "Main", bundle: nil)
+            UIStoryboard(name: "Registration", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
                 as? RegistrationConfirmationViewController else {
                     assertionFailure("RegistrationConfirmationViewController is not found")
@@ -259,7 +260,7 @@ extension AppFlowManager: NavigationDelegate {
 
     private func navigateToPersonalInformationViewController() {
         guard let personalInformationViewController =
-            UIStoryboard(name: "Main", bundle: nil)
+            UIStoryboard(name: "PersonalInformation", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(PersonalInformationViewController.self)")
                 as? PersonalInformationViewController else {
                     assertionFailure("PersonalInformationViewController is not found")
