@@ -143,6 +143,7 @@ class HomeViewController: UIViewController, Navigateble {
             switch result {
                 case .success:
                     userDefaults.set(fcmToken, forKey: "push_token")
+                    userDefaults.synchronize()
                 case .failure:
                     // No error handling - this should be silent
                     break

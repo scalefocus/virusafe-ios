@@ -18,6 +18,7 @@ final class AppLaunchRepository {
         }
         set {
             userDefaults.set(newValue, forKey: "launched_before")
+            userDefaults.synchronize()
         }
     }
 }
