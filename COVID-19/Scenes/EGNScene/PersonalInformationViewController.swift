@@ -10,22 +10,22 @@ import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
-enum Gender: Int {
-    case male = 0
-    case female
-    case other
-    case notSelected
-    
-    var title: String {
+enum Gender: String, Codable, CaseIterable {
+    case male = "MALE"
+    case female = "FEMALE"
+    case other = "OTHER"
+    case notSelected = ""
+
+    var tag: Int {
         switch self {
         case .male:
-            return "MALE"
+            return 0
         case .female:
-            return "FEMALE"
+            return 1
         case .other:
-            return "OTHER"
+            return 2
         case .notSelected:
-            return ""
+            return 3
         }
     }
 }
@@ -50,8 +50,6 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // MARK: Settings
 
     private let maximumPersonalNumberLength = 10
-    private var gender: Gender = Gender.notSelected
-    
     
     // MARK: View Model
     
@@ -61,6 +59,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.start()
         setupUI()
         setupBindings()
     }
@@ -84,7 +83,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     private func setupUI() {
         setupIconImageViewTint()
 
-        skipButton.alpha = viewModel.isInitialFlow ? 1 : 0
+        skipButton.isHidden = !viewModel.isInitialFlow
         
         title = Constants.Strings.mobileNumberVerificationТext
         egnSubmitButton.backgroundColor = .healthBlue
@@ -115,11 +114,26 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             guard let strongSelf = self else { return }
             switch result {
                 case .success:
-                    strongSelf.viewModel.didTapSkipButton()
+                    if !strongSelf.viewModel.isInitialFlow {
+//                        strongSelf.navigationController?.popViewController(animated: true)
+                        strongSelf.navigationDelegate?.navigateTo(step: .home)
+                    }
+                    else {
+                        strongSelf.viewModel.didTapSkipButton()
+                    }
                 case .invalidPersonalNumber:
                     strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindPersonalNumberErrorText)
                 default:
                     strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+            }
+        }
+        
+        viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
+            guard let strongSelf = self else { return }
+            if shouldShowLoadingIndicator {
+                LoadingIndicatorManager.startActivityIndicator(.whiteLarge, in: strongSelf.view)
+            } else {
+                LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
             }
         }
 
@@ -154,10 +168,25 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         
         ageTextField.bind(with: viewModel.age)
         preexistingConditionsTextField.bind(with: viewModel.preexistingConditions)
+        egnTextField.bind(with: viewModel.identificationNumber)
+        viewModel.gender.bindAndFire { [weak self] value in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            for button in strongSelf.genderButtons {
+                button.backgroundColor = .white
+                button.setTitleColor(.healthBlue, for: .normal)
+            }
+            
+            strongSelf.genderButtons[value.tag].setTitleColor(.white, for: .normal)
+            strongSelf.genderButtons[value.tag].backgroundColor = .healthBlue
+        }
   
         // fired only on success
         viewModel.isSendAnswersCompleted.bind { [weak self] result in
-            self?.navigationDelegate?.navigateTo(step: .home)
+//            self?.navigationController?.popToRootViewController(animated: true)
+            self?.navigationDelegate?.navigateTo(step: .completed)
         }
     }
     
@@ -169,16 +198,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     }
     
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
-        
-        for butto in genderButtons {
-            butto.backgroundColor = .white
-            butto.setTitleColor(.healthBlue, for: .normal)
-        }
-        
-        sender.backgroundColor = .healthBlue
-        sender.setTitleColor(.white, for: .normal)
-        
-        self.gender = Gender(rawValue:sender.tag) ?? Gender.other
+        viewModel.gender.value = Gender.allCases.first(where: { $0.tag == sender.tag }) ?? Gender.other
     }
 
     @IBAction private func didTapSkipButton(_ sender: Any) {

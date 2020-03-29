@@ -130,7 +130,7 @@ extension SplashViewController {
                 guard var urlComponents = URLComponents(string: remoteConfigURL) else {
                     return
                 }
-                let port = urlComponents.port
+                var port = urlComponents.port
                 urlComponents.port = nil
                 guard var urlString = urlComponents.url?.absoluteString else {
                     return
@@ -138,6 +138,7 @@ extension SplashViewController {
                 if urlString.suffix(1) == "/" {
                     urlString.removeLast()
                 }
+//                port = nil // TEMP TEST
                 let baseURL = RemoteStageBaseURLs(base: urlString, port: port)
                 let remoteEnvironment = RemoteConfigEnvironment(baseURLs: baseURL)
                 APIManager.shared.remoteEnvironment = remoteEnvironment

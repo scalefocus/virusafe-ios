@@ -88,5 +88,12 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             }
         }
     
+    func getPersonalInfo(completion: @escaping ((PersonalInformation) -> Void)) {
+        GetPersonalInfoRequest().executeParsed(of: PersonalInformation.self) { (personalInformation, response, error) in
+            if let personalInformation = personalInformation {
+                completion(personalInformation)
+            }
+        }
+    }
 }
 
