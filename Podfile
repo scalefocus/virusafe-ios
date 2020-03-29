@@ -12,6 +12,7 @@ target 'COVID-19' do
   pod 'AppCenter', '~> 3.0.0'
 
   pod 'PopupUpdate'
+  pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
