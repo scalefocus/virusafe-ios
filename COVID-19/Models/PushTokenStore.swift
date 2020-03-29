@@ -15,12 +15,8 @@ final class PushTokenStore {
     static var shared: PushTokenStore = PushTokenStore()
     private init() { }
 
-    
-
     var fcmToken: String? {
         didSet {
-            
-
             let dataDict: [String: String] = ["token": fcmToken ?? ""]
             NotificationCenter.default.post(name: Notification.Name("FCMToken"),
                                             object: nil,
