@@ -35,7 +35,7 @@ final class ApiStatusCodeHandler {
                 // return error
                 return .failure(.invalidToken)
             case 412:
-                return .failure(.invalidToken)
+                return .failure(.invalidEgnOrIdNumber)
             case 429:
                 return .failure(.tooManyRequests)
             default:
