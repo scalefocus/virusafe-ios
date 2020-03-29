@@ -20,7 +20,7 @@ enum AuthoriseMobileNumberResult {
 protocol RegistrationRepositoryProtocol {
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
-    func authorisePersonalNumber(personalNumberNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
+    func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
@@ -69,8 +69,10 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
         }
     }
     
-    func authorisePersonalNumber(personalNumberNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-            PersonalNumerApiRequest(personalNumber: personalNumberNumber).execute { (_, response, error) in
+    func sendPersonalInfo(personalNumberNumber: String, age: Int, gender: String, preexistingConditions: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
+            let request = PersonalNumerApiRequest(bodyJSONObject: ["identificationNumber": personalNumberNumber, "age": "\(age)", "gender": gender, "preExistingConditions": preexistingConditions])
+                
+            request.execute { (_, response, error) in
                 guard response?.statusCode != 412 else {
                     completion(.invalidPersonalNumber)
                     return
@@ -86,5 +88,12 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             }
         }
     
+    func getPersonalInfo(completion: @escaping ((PersonalInformation) -> Void)) {
+        GetPersonalInfoRequest().executeParsed(of: PersonalInformation.self) { (personalInformation, response, error) in
+            if let personalInformation = personalInformation {
+                completion(personalInformation)
+            }
+        }
+    }
 }
 

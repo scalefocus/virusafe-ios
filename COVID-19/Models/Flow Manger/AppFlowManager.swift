@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkKit
 
 // TODO: Refactor
 
@@ -85,7 +86,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
                 return true
             case (_, .register):
                 return true
-            case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home):
+            case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
                 return true
             case (.home, .healthStatus), (.initialAbout, .healthStatus):
                 return true
@@ -104,7 +105,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
 
     func didTransition(from oldState: StateType, to newState: StateType) {
         switch (oldState, newState) {
-            case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home):
+        case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
                 previousStatesStack = [newState]
                 setHomeAsRootViewController()
             case (_, .register):
@@ -266,6 +267,7 @@ extension AppFlowManager: NavigationDelegate {
         }
         let viewModel = PersonalInformationViewModel(firstLaunchCheckRepository: firstLaunchCheckRepository,
                                                      delegate: self)
+        personalInformationViewController.navigationDelegate = self
         personalInformationViewController.viewModel = viewModel
         navigationController.push(viewController: personalInformationViewController)
         setupBackButton(viewController: personalInformationViewController)
@@ -346,12 +348,6 @@ struct AnswersRequest {
     var longitude: Double
 }
 
-struct PersonalInformationRequest {
-    var personalNumber: String // egn/id/pasport number
-    var phoneNumber: String?
-    // TODO: Others
-}
-
 // MARK: HealthStatusViewModelDelegate
 
 extension AppFlowManager: HealthStatusViewModelDelegate {
@@ -389,10 +385,9 @@ extension AppFlowManager: PersonalInformationViewModelDelegate {
         sendHealtStatus(answersRequestStore.request, with: completion)
     }
 
-    func sendPersonalInformation(_ request: PersonalInformationRequest,
+    func sendPersonalInformation(_ personalInformation: PersonalInformation,
                                  with completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-        registrationRepository.authorisePersonalNumber(personalNumberNumber: request.personalNumber,
-                                                       completion: completion)
+        registrationRepository.sendPersonalInfo(personalNumberNumber: personalInformation.identificationNumber, age: personalInformation.age, gender: personalInformation.gender.rawValue, preexistingConditions: personalInformation.preExistingConditions, completion: completion)
     }
 }
 

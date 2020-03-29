@@ -8,9 +8,10 @@
 
 import Foundation
 import TwoWayBondage
+import NetworkKit
 
 protocol PersonalInformationViewModelDelegate: class {
-    func sendPersonalInformation(_ request: PersonalInformationRequest,
+    func sendPersonalInformation(_ request: PersonalInformation,
                                  with completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func sendDelayedAnswers(with completion: @escaping SendAnswersCompletion)
 }
@@ -20,6 +21,7 @@ final class PersonalInformationViewModel {
     private weak var delegate: PersonalInformationViewModelDelegate?
 
     let firstLaunchCheckRepository: AppLaunchRepository
+    let registrationRepository = RegistrationRepository()
 
     var isInitialFlow: Bool {
         return !firstLaunchCheckRepository.isAppLaunchedBefore
@@ -29,6 +31,11 @@ final class PersonalInformationViewModel {
     let requestError = Observable<ApiError>()
     let isSendAnswersCompleted = Observable<Bool>()
     let shouldShowLoadingIndicator = Observable<Bool>()
+    var age = Observable<String>()
+    var gender = Observable<Gender>()
+    var preexistingConditions = Observable<String>()
+    var identificationNumber = Observable<String>()
+    
 
     init(firstLaunchCheckRepository: AppLaunchRepository,
          delegate: PersonalInformationViewModelDelegate) {
@@ -36,9 +43,20 @@ final class PersonalInformationViewModel {
         self.delegate = delegate
     }
     
+    func start() {
+        registrationRepository.getPersonalInfo { (personalInformation) in
+            self.gender.value = personalInformation.gender
+            self.age.value = "\(personalInformation.age)"
+            self.preexistingConditions.value = personalInformation.preExistingConditions
+            self.identificationNumber.value = personalInformation.identificationNumber
+        }
+    }
+    
     func didTapPersonalNumberAuthorization(with personalNumber: String) {
         shouldShowLoadingIndicator.value = true
-        let request = PersonalInformationRequest(personalNumber: personalNumber)
+        let ageString = age.value ?? ""
+        let ageInt = Int(ageString)
+        let request = PersonalInformation(identificationNumber: personalNumber, phoneNumber: "", age: ageInt ?? 0, gender: gender.value ?? .other, preExistingConditions: preexistingConditions.value ?? "")
         delegate?.sendPersonalInformation(request) { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.isPersonalNumberRequestSuccessful.value = result

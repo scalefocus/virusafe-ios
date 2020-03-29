@@ -1,20 +1,16 @@
 //
-//  PersonalNumerApiRequest.swift
+//  GetPersonalInfoRequest.swift
 //  NetworkKit
 //
-//  Created by Gandi Pirkov on 27.03.20.
+//  Created by Valentin Kalchev on 28.03.20.
 //
 
 import Foundation
 
-public class PersonalNumerApiRequest: BaseAPIRequest {
-    
-    public convenience init(identificationNumber: String, age: Int, gender: String, preExistingConditions: String) {
-        self.init(bodyJSONObject: ["identificationNumber": identificationNumber, "age": age, "gender": gender, "preExistingConditions": preExistingConditions])
-    }
+public class GetPersonalInfoRequest: BaseAPIRequest {
     
     public override var httpMethod: HTTPMethod {
-        return .post
+        return .get
     }
     
     public override var path: String {
@@ -25,7 +21,6 @@ public class PersonalNumerApiRequest: BaseAPIRequest {
         return APIManager.shared.baseURLs.base
     }
     
-    
     public override var baseUrlPort: Int? {
         return APIManager.shared.baseURLs.port
     }
@@ -34,4 +29,3 @@ public class PersonalNumerApiRequest: BaseAPIRequest {
         return .none
     }
 }
-
