@@ -80,7 +80,8 @@ extension SplashViewController {
             "ios_end_point" : "https://virusafe.scalefocus.dev:8443",
             "ios_static_content_page_url" : "https://virusafe.scalefocus.dev:8443/information/about-covid.html",
             "ios_appstore_link" : "https://www.apple.com/ios/app-store/", // TODO: Actual
-            "ios_location_interval_in_mins" : 2
+            "ios_location_interval_in_mins" : 2,
+            "ios_app_info_page_url": ""
         ]
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
     }
@@ -186,4 +187,10 @@ final class StaticContentPage {
     static var shared = StaticContentPage()
     private init() { }
     var url: String = "https://virusafe.scalefocus.dev:8443/information/about-covid.html"
+}
+
+final class AppInfoPage {
+    static var shared = AppInfoPage()
+    private init() { }
+    var url: String = RemoteConfig.remoteConfig().configValue(forKey: "ios_app_info_page_url").stringValue ?? ""
 }
