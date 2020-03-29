@@ -11,7 +11,7 @@ public class GpsApiRequest: BaseAPIRequest {
     private var phoneNumber: String = ""
     private var bluetoothId: String = ""
     
-    public convenience init(location: UserLocation, phoneNumber: String, timestamp: Int, bluetoothId: String = "0") {
+    public convenience init(location: UserLocation, phoneNumber: String, timestamp: String, bluetoothId: String = "0") {
         let jsonDict: [String: Any] = [
             "location": location.asDictionary(),
             "timestamp": timestamp

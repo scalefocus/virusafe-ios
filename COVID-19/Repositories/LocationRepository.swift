@@ -25,7 +25,7 @@ class LocationRepository: LocationRepositoryProtocol {
                          for phoneNumber: String,
                          completion: @escaping SendLocationCompletion) {
         let location = UserLocation(latitude: latitude, longitude: longitude)
-        let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+        let timestamp = "\(Int64(Date().timeIntervalSince1970 * 1000))"
         // ??? Pass BT id
         GpsApiRequest(location: location,
                       phoneNumber: phoneNumber,

@@ -235,6 +235,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                                                      longitude: locValue.longitude,
                                                      for: phoneNumber,
                                                      completion: { result in
+                                                        print("\(result)")
                                                         // Do something
                 })
             }
