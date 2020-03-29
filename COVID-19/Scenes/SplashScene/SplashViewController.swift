@@ -64,7 +64,8 @@ class SplashViewController: UIViewController, Navigateble {
 
     private func navigateToNextViewController() {
         let isUserRegistered: Bool = (TokenStore.shared.token != nil)
-        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : .about(isInitial: true))
+        let isAppLaunchedBefore = AppLaunchRepository().isAppLaunchedBefore
+        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : (isAppLaunchedBefore ? .register : .about(isInitial: true)))
     }
 
 }
@@ -79,7 +80,7 @@ extension SplashViewController {
             "ios_latest_app_version" : "1.0",
             "ios_end_point" : "https://virusafe.io",
             "ios_static_content_page_url" : "https://virusafe.io/information/about-covid.html",
-            "ios_appstore_link" : "https://www.apple.com/ios/app-store/", // TODO: Actual
+            "ios_appstore_link" : "https://apps.apple.com/in/app/ViruSafe/id1504661908",
             "ios_location_interval_in_mins" : 2,
             "ios_app_info_page_url": "https://virusafe.io/information/virusafe-why.html"
         ]
