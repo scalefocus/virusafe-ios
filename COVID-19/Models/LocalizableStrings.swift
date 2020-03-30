@@ -76,5 +76,6 @@ enum Constants {
 
         static let confirmEmptyFieldsAlertMessage = "Сигурни ли сте, че искате да продължите? Не сте попълнили следните полета:"
         static let invalidEgnOrIdNumberAlertMessage = "Невалидно ЕГН или ЛНЧ"
+        static let chooseLanguageTitle = "Избор на език"
     }
 }

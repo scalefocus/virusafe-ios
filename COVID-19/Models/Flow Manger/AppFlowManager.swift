@@ -21,6 +21,7 @@ enum NavigationStep {
     case completed
     case about(isInitial: Bool)
     case personalInformation
+    case languages
 }
 
 protocol NavigationDelegate: class {
@@ -41,6 +42,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
         case personalInformation
         case success // confirm
         case initialAbout
+        case languages
 
         case pop
     }
@@ -100,6 +102,8 @@ final class AppFlowManager: StateMachineDelegateProtocol {
                 return true
             case (.home, .personalInformation), (.healthStatus, .personalInformation):
                 return true
+            case (.home, .languages):
+                return true
             default:
                 return false
         }
@@ -128,6 +132,9 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             case (.home, .personalInformation), (.healthStatus, .personalInformation):
                 previousStatesStack.append(newState)
                 navigateToPersonalInformationViewController()
+            case (.home,.languages):
+                previousStatesStack.append(newState)
+                navigateToLanguagesViewController()
             default:
                 break
         }
@@ -165,6 +172,8 @@ extension AppFlowManager: NavigationDelegate {
                 }
             case .personalInformation:
                 stateMachine.state = .personalInformation
+            case .languages:
+                stateMachine.state = .languages
             @unknown default:
                 assertionFailure("Unhandled navigation step: \(step)")
         }
@@ -232,7 +241,19 @@ extension AppFlowManager: NavigationDelegate {
         navigationController.push(viewController: healthStatusViewController)
         setupBackButton(viewController: healthStatusViewController)
     }
+    
+    private func navigateToLanguagesViewController() {
+        let storyboard = UIStoryboard(name: "Languages", bundle: nil)
+        let languagesViewController = storyboard
+            .instantiateViewController(withIdentifier: "\(LanguagesViewController.self)")
+            as! LanguagesViewController // !!! Force unwrap
 
+        languagesViewController.navigationDelegate = self
+
+        navigationController.push(viewController: languagesViewController)
+        setupBackButton(viewController: languagesViewController)
+    }
+    
     private func navigateToConfirmationViewController() {
         let confirmationViewController =
             UIStoryboard(name: "Confirmation", bundle: nil)
