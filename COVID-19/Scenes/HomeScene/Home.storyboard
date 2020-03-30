@@ -186,9 +186,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
-                                <rect key="frame" x="24" y="536" width="51.5" height="20"/>
+                                <rect key="frame" x="24" y="534.5" width="51.5" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="kNU-SS-zpP"/>
+                                    <constraint firstAttribute="height" constant="30" id="kNU-SS-zpP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -205,14 +205,14 @@
                         <constraints>
                             <constraint firstItem="GFt-23-V39" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" id="1rF-Ee-prp"/>
                             <constraint firstItem="OER-Lz-gjX" firstAttribute="trailing" secondItem="FE0-SR-7bN" secondAttribute="trailing" constant="24" id="37A-4E-7IL"/>
-                            <constraint firstItem="FE0-SR-7bN" firstAttribute="bottom" secondItem="Tw1-Cb-xIU" secondAttribute="bottom" id="6SQ-ua-iMW"/>
                             <constraint firstItem="OER-Lz-gjX" firstAttribute="bottom" secondItem="FE0-SR-7bN" secondAttribute="bottom" constant="12" id="HJ7-dh-PUh"/>
+                            <constraint firstItem="Tw1-Cb-xIU" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" constant="24" id="Ivf-9o-blc"/>
                             <constraint firstItem="FE0-SR-7bN" firstAttribute="top" secondItem="wTM-ah-KF0" secondAttribute="bottom" id="MvU-LN-Jic"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="top" secondItem="GFt-23-V39" secondAttribute="bottom" id="NAT-Ok-xmz"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="arC-2T-koj"/>
-                            <constraint firstItem="Tw1-Cb-xIU" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" constant="24" id="jXh-pm-Zr4"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="k1W-qx-kVp"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="height" secondItem="Rza-Eu-OMJ" secondAttribute="height" multiplier="1:3" id="ooy-Jr-DE2"/>
+                            <constraint firstItem="FE0-SR-7bN" firstAttribute="centerY" secondItem="Tw1-Cb-xIU" secondAttribute="centerY" id="ryZ-lY-Mm4"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" id="u99-5k-afZ"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="top" secondItem="Rza-Eu-OMJ" secondAttribute="top" id="uGx-le-gzy"/>
                         </constraints>
@@ -232,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylF-cV-cof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1510.144927536232" y="135.9375"/>
+            <point key="canvasLocation" x="1509.375" y="135.21126760563379"/>
         </scene>
     </scenes>
     <resources>
