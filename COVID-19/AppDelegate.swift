@@ -15,6 +15,7 @@ import Firebase
 import IQKeyboardManager
 import FirebaseMessaging
 import NetworkKit
+import UpnetixLocalizer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,9 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        //Localizer
+        Localizer.shared.initialize(locale: Locale.current, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty) {
+            
+        }
+        //Localizer.shared.getAvailableLocales(withCompletion: <#T##([Language], String?) -> Void#>)
+        //Localizer.shared.changeLocale(desiredLocale: <#T##Locale#>, changeCallback: <#T##Localizer.ChangeLocaleCallback?##Localizer.ChangeLocaleCallback?##(Bool, Locale) -> Void#>)
+        
         // Firebase
         FirebaseApp.configure()
         
+        //Firebase Push Notifications
         Messaging.messaging().delegate = self
         
         if #available(iOS 10.0, *) {
@@ -74,6 +83,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         flowManager = AppFlowManager(window: window!) // !!! Force unwrap
         
         return true
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        Localizer.shared.willEnterForeground()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        Localizer.shared.willTerminate()
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        Localizer.shared.didEnterBackground()
     }
 
     // MARK: UISceneSession Lifecycle

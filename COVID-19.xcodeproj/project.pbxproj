@@ -603,6 +603,7 @@
 				5463F928ED335AA42F535C73 /* [CP] Embed Pods Frameworks */,
 				41D3E66A242E24DF00AC96B1 /* Google Services */,
 				4179866C2430FB97006CC2D9 /* Crashlytics */,
+				385BDD652431E44F00476F69 /* UpnetixLocalizer */,
 			);
 			buildRules = (
 			);
@@ -694,6 +695,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		385BDD652431E44F00476F69 /* UpnetixLocalizer */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = UpnetixLocalizer;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
 		};
 		4179866C2430FB97006CC2D9 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
