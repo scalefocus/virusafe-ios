@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, Navigateble {
     @IBOutlet private weak var tncButton: UIButton!
     @IBOutlet private weak var moreInfoButton: UIButton!
     @IBOutlet private weak var icon: UIImageView!
+    @IBOutlet private weak var languagesButton: UIButton!
 
     // MARK: Lifecycle
 
@@ -78,6 +79,10 @@ class HomeViewController: UIViewController, Navigateble {
 
     @IBAction private func tncButtonTap() {
         navigationDelegate?.navigateTo(step: .termsAndConditions)
+    }
+    
+    @IBAction private func languagesButtonTap() {
+        navigationDelegate?.navigateTo(step: .languages)
     }
 
     @IBAction private func moreInfoDidTap() {
