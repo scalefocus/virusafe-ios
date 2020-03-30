@@ -49,8 +49,17 @@ public final class APIManager: ApiManagerProtocol {
     /// EnvironmentsAndBaseURLs and held by the APIConfig instance.
     /// Used for convenience.
     public final var baseURLs: BaseURLs {
-        return config.environment.value.baseURLs
+        return environmentValue.baseURLs
     }
+
+    private var environmentValue: EnvironmentInterface {
+        if let remote = remoteEnvironment {
+            return remote
+        }
+        return config.environment.value
+    }
+
+    public final var remoteEnvironment: EnvironmentInterface?
     
     /// The current selected environment in the APIConfig instance. Just for convenience and accessibility, should always point to the APIConfig instance.
     public final var environment: Environment {
@@ -111,7 +120,7 @@ public final class APIManager: ApiManagerProtocol {
         self.authenticator = authenticator
         cacher = withCacher
         networker.delegate = reachabilityDelegate
-        networker.configureWith(serverTrustPolicies: environment.value.serverTrustPolicies)
+        networker.configureWith(serverTrustPolicies: environmentValue.serverTrustPolicies)
     }
     
     public final func startReachabilityObserving() {

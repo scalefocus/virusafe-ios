@@ -32,6 +32,8 @@ public protocol APIRequest {
     
     /// Base url(<host.com>). Must NOT end with "/"
     var baseUrl: BaseURL {get}
+
+    var baseUrlPort: Int? {get}
     
     /// Base path of the endpoint, without any possible parameters. Must begin with "/" and must NOT end with "/"
     var path: String {get}
@@ -139,6 +141,9 @@ extension APIRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = baseUrl.components(separatedBy: "://").first
         urlComponents.host = baseUrl.components(separatedBy: "://").last
+        if let port = baseUrlPort {
+            urlComponents.port = port
+        }
         urlComponents.path = path
         if let queryParameters = queryParameters {
             urlComponents.queryItems = queryParameters.map { URLQueryItem(name: $0.key, value: $0.value) }

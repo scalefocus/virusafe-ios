@@ -8,6 +8,19 @@ target 'COVID-19' do
   use_frameworks!
   
   pod 'NetworkKit'                     , :path => 'ModuleFrameworks/NetworkKit'
+  pod 'TwoWayBondage', '~> 1.0.2'
+  pod 'AppCenter', '~> 3.0.0'
+
+  pod 'PopupUpdate'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Messaging'
+
+  pod 'IQKeyboardManager'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+
+  pod 'KeychainSwift'
 
 end
 

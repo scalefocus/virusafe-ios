@@ -16,6 +16,10 @@ public class BaseAPIRequest: APIRequest {
     public var baseUrl: BaseURL {
         preconditionFailure("This method needs to be overriden by concrete subclass.")
     }
+
+    public var baseUrlPort: Int? {
+        preconditionFailure("This method needs to be overriden by concrete subclass.")
+    }
     
     public var path: String {
         return ""
@@ -27,6 +31,8 @@ public class BaseAPIRequest: APIRequest {
     
     public var headers: [String: String] {
         var dict: [String: String] = ["Content-Type": "application/json"]
+        // Should be in all API Calls
+        dict["ClientId"] = "10724363-412a-4849-b538-0c16dd7dc29e"
         if let token = APIManager.shared.authToken {
             dict["Authorization"] = "Bearer \(token)"
         }

@@ -38,6 +38,7 @@ build/
 *.dep
 # Cocoapods
 Pods/
+Podfile.lock
 .gitmodules
 # AppCode specific files
 .idea/

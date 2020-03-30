@@ -1,94 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kxR-V2-vjV">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Registration View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Splash View Controller-->
+        <scene sceneID="czr-MF-IlJ">
             <objects>
-                <viewController storyboardIdentifier="RegistrationViewController" id="BYZ-38-t0r" customClass="RegistrationViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController storyboardIdentifier="SplashViewController" id="kxR-V2-vjV" customClass="SplashViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="waC-fN-py3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-zi-hQ2">
-                                <rect key="frame" x="178.5" y="438" width="57" height="30"/>
-                                <state key="normal" title="Register"/>
-                                <connections>
-                                    <action selector="didTapRegisterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mf6-JU-Ft0"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-DJ-ry5" customClass="RadialGradientView" customModule="COVID_19" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Fgw-iu-EYK">
+                                        <rect key="frame" x="107" y="231.33333333333337" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Fgw-iu-EYK" secondAttribute="height" multiplier="1:1" id="oM4-Lh-1kn"/>
+                                            <constraint firstAttribute="height" constant="200" id="wqv-mW-7jL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-VB-LSP">
+                                        <rect key="frame" x="182" y="563.66666666666663" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="g1A-VB-LSP" secondAttribute="height" multiplier="1:1" id="O8p-aB-kOl"/>
+                                            <constraint firstAttribute="height" constant="50" id="aYm-Ys-goa"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_min_zdrave" translatesAutoresizingMaskIntoConstraints="NO" id="I0e-LB-arA">
+                                        <rect key="frame" x="20" y="60" width="163" height="50"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_oper_shtab" translatesAutoresizingMaskIntoConstraints="NO" id="pME-eF-7v6">
+                                        <rect key="frame" x="305" y="60" width="89" height="43"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="I0e-LB-arA" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="63d-Ej-Ypy"/>
+                                    <constraint firstItem="Fgw-iu-EYK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I0e-LB-arA" secondAttribute="bottom" constant="20" id="JsS-m4-dEg"/>
+                                    <constraint firstItem="I0e-LB-arA" firstAttribute="leading" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="20" id="Q8D-5K-B0b"/>
+                                    <constraint firstItem="pME-eF-7v6" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="apz-7L-13p"/>
+                                    <constraint firstItem="g1A-VB-LSP" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="1.6" id="cac-py-Pxb"/>
+                                    <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="0.9" id="jQz-bU-rqw"/>
+                                    <constraint firstAttribute="trailing" secondItem="pME-eF-7v6" secondAttribute="trailing" constant="20" id="kKM-zf-QKT"/>
+                                    <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="nae-Ol-Dz6"/>
+                                    <constraint firstItem="Fgw-iu-EYK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pME-eF-7v6" secondAttribute="bottom" constant="20" id="qQx-yw-CQa"/>
+                                    <constraint firstItem="g1A-VB-LSP" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="u1a-J9-vuX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="5qw-zi-hQ2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dXD-C4-p2V"/>
-                            <constraint firstItem="5qw-zi-hQ2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="io9-F1-iog"/>
+                            <constraint firstItem="dH6-DJ-ry5" firstAttribute="top" secondItem="waC-fN-py3" secondAttribute="top" id="83i-Ro-kg3"/>
+                            <constraint firstItem="dH6-DJ-ry5" firstAttribute="leading" secondItem="ryv-L3-85T" secondAttribute="leading" id="AN3-gI-nVu"/>
+                            <constraint firstItem="ryv-L3-85T" firstAttribute="trailing" secondItem="dH6-DJ-ry5" secondAttribute="trailing" id="I8r-2k-ven"/>
+                            <constraint firstAttribute="bottom" secondItem="dH6-DJ-ry5" secondAttribute="bottom" id="ywV-Pt-O9n"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="ryv-L3-85T"/>
                     </view>
+                    <connections>
+                        <outlet property="loadingIndicatorView" destination="g1A-VB-LSP" id="12B-6w-usC"/>
+                        <outlet property="logoImageView" destination="Fgw-iu-EYK" id="hh3-FB-ep3"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ue6-k4-UzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17" y="136"/>
-        </scene>
-        <!--Home View Controller-->
-        <scene sceneID="XTD-V1-enZ">
-            <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="RAA-pi-AAL" customClass="HomeViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KVh-68-OXX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME SCREEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EB9-TF-s7V">
-                                <rect key="frame" x="148" y="442.5" width="118.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0x-Fv-PDp">
-                                <rect key="frame" x="148" y="500" width="118.5" height="30"/>
-                                <state key="normal" title="Survey"/>
-                                <connections>
-                                    <action selector="didTapSurveyButton:" destination="RAA-pi-AAL" eventType="touchUpInside" id="l2M-t1-vKm"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="EB9-TF-s7V" firstAttribute="centerX" secondItem="TdR-W7-KN8" secondAttribute="centerX" id="BAH-fo-l9A"/>
-                            <constraint firstItem="K0x-Fv-PDp" firstAttribute="top" secondItem="EB9-TF-s7V" secondAttribute="bottom" constant="36.5" id="BhZ-wr-UwS"/>
-                            <constraint firstItem="K0x-Fv-PDp" firstAttribute="leading" secondItem="EB9-TF-s7V" secondAttribute="leading" id="Csn-wi-EFj"/>
-                            <constraint firstItem="K0x-Fv-PDp" firstAttribute="trailing" secondItem="EB9-TF-s7V" secondAttribute="trailing" id="seo-6s-ltT"/>
-                            <constraint firstItem="EB9-TF-s7V" firstAttribute="centerY" secondItem="TdR-W7-KN8" secondAttribute="centerY" id="yPB-gw-a0n"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="TdR-W7-KN8"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="FGx-7U-d15"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aRK-yU-gmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="899" y="136"/>
-        </scene>
-        <!--Health Status View Controller-->
-        <scene sceneID="Ml4-5C-wsV">
-            <objects>
-                <viewController storyboardIdentifier="HealthStatusViewController" id="TFx-3e-9p4" customClass="HealthStatusViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NaJ-dd-Lza">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="t6y-YI-9F0"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="hcB-HJ-nEN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JJm-nn-RdX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1739" y="136"/>
+            <point key="canvasLocation" x="-1996.875" y="138.38028169014083"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_min_zdrave" width="163" height="50"/>
+        <image name="ic_oper_shtab" width="89" height="43"/>
+        <image name="logo" width="150" height="208"/>
+    </resources>
 </document>
