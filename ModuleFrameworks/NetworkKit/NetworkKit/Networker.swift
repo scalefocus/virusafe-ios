@@ -12,11 +12,20 @@ public class Networker: NetworkingInterface {
     
     let networkReachabilityManager = NetworkReachabilityManager()
     private var sessionManager: SessionManager?
+    private lazy var backgroundSessionManager: SessionManager = {
+        return SessionManager(configuration: backgroundSessionConfiguration)
+    }()
+    private let backgroundSessionConfiguration =
+        URLSessionConfiguration.background(withIdentifier: "com.upnetix.networker.background")
     
     weak public var delegate: ReachabilityProtocol?
     
     public func send(request: APIRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void) {
-        if let sessionManager = sessionManager {
+        if request.shouldWorkInBackground {
+            backgroundSessionManager.request(request.asUrlRequest()).response { (response) in
+                completion(response.data, response.response, response.error)
+            }
+        } else if let sessionManager = sessionManager {
             sessionManager.request(request.asUrlRequest()).response { (response) in
                 completion(response.data, response.response, response.error)
             }
@@ -72,9 +81,11 @@ public class Networker: NetworkingInterface {
                                                              validateHost: true)
             }
         }
-        
+
         sessionManager = SessionManager(configuration: URLSessionConfiguration.default,
                                         serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicy))
+        backgroundSessionManager = SessionManager(configuration: backgroundSessionConfiguration,
+                                                  serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicy))
     }
 }
 

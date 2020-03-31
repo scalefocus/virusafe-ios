@@ -25,7 +25,14 @@ final class TokenStore {
     var token: String? {
         get {
             if UserDefaults.standard.bool(forKey: "isUserRegistered") {
-                return keychain.get("jwt")
+                let token = keychain.get("jwt")
+                if !UserDefaults.standard.bool(forKey: "migrated") && UserDefaults.standard.bool(forKey: "launched_before") {
+                    UserDefaults.standard.set(true, forKey: "migrated")
+                    if let token  = token {
+                        keychain.set(token, forKey: "jwt", withAccess: .accessibleAfterFirstUnlock)
+                    }
+                }
+                return token
             } else {
                 // app deleted
                 keychain.delete("jwt") // in case
@@ -35,7 +42,7 @@ final class TokenStore {
         set {
             if let token = newValue {
                 UserDefaults.standard.set(true, forKey: "isUserRegistered")
-                keychain.set(token, forKey: "jwt")
+                keychain.set(token, forKey: "jwt", withAccess: .accessibleAfterFirstUnlock)
             } else {
                 UserDefaults.standard.removeObject(forKey: "isUserRegistered")
                 keychain.delete("jwt")
