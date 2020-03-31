@@ -65,6 +65,9 @@
 		3803B02C2425498F0076EE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
 		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
+		385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
+		385BDD6A243203A900476F69 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
+		385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */; };
 		38650B6F242DFB110013DF5E /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650B6E242DFB110013DF5E /* PersonalInformationViewController.swift */; };
 		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
 		41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
@@ -189,6 +192,9 @@
 		3803B0122425498F0076EE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		38334499242D46240032F153 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
+		385BDD672432038800476F69 /* LanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
+		385BDD69243203A900476F69 /* Languages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Languages.storyboard; sourceTree = "<group>"; };
+		385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewModel.swift; sourceTree = "<group>"; };
 		38650B6E242DFB110013DF5E /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
 		38A8F40D2429574F00486007 /* COVID-19.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID-19.entitlements"; sourceTree = "<group>"; };
 		41482B18242B49F20062D6E1 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
@@ -270,8 +276,8 @@
 		024D82E42423A81A00696868 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				38334499242D46240032F153 /* LocalizableStrings.swift */,
 				41D3E66D242F524F00AC96B1 /* Flow Manger */,
+				38334499242D46240032F153 /* LocalizableStrings.swift */,
 				024D82E72423A84200696868 /* HealthStatus.swift */,
 				41482B18242B49F20062D6E1 /* TokenStore.swift */,
 				41482B1C242B60480062D6E1 /* JWTDecoder.swift */,
@@ -367,6 +373,7 @@
 		02B9A6C324238DF200B1A4C0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				385BDD662432034B00476F69 /* Languages */,
 				38650B6D242DFABF0013DF5E /* EGNScene */,
 				41482B24242B88180062D6E1 /* CovidInfoScene */,
 				024D8303242527B800696868 /* SplashScene */,
@@ -532,6 +539,16 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		385BDD662432034B00476F69 /* Languages */ = {
+			isa = PBXGroup;
+			children = (
+				385BDD672432038800476F69 /* LanguagesViewController.swift */,
+				385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */,
+				385BDD69243203A900476F69 /* Languages.storyboard */,
+			);
+			path = Languages;
+			sourceTree = "<group>";
+		};
 		38650B6D242DFABF0013DF5E /* EGNScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +683,7 @@
 				4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
+				385BDD6A243203A900476F69 /* Languages.storyboard in Resources */,
 				4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */,
 				41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */,
 			);
@@ -813,6 +831,7 @@
 				024D83022425130B00696868 /* SplashViewController.swift in Sources */,
 				024D82E82423A84200696868 /* HealthStatus.swift in Sources */,
 				024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */,
+				385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */,
 				FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */,
 				4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */,
 				024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */,
@@ -838,6 +857,7 @@
 				3803B0132425498F0076EE00 /* EasedValue.m in Sources */,
 				3803B01C2425498F0076EE00 /* UIView+Ext.m in Sources */,
 				3803B01B2425498F0076EE00 /* NSString+Ext.m in Sources */,
+				385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */,
 				3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */,
 				3803B02C2425498F0076EE00 /* Reachability.m in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,

@@ -76,5 +76,7 @@ enum Constants {
 
         static var confirmEmptyFieldsAlertMessage = "Сигурни ли сте, че искате да продължите? Не сте попълнили следните полета:" //Localizer.shared.getString(key: "")
         static var invalidEgnOrIdNumberAlertMessage = "Невалидно ЕГН или ЛНЧ" //Localizer.shared.getString(key: "")
+        static let chooseLanguageTitle = "Избор на език" //Localizer.shared.getString(key: "")
+
     }
 }
