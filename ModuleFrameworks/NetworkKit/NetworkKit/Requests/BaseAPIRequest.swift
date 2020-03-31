@@ -50,6 +50,10 @@ public class BaseAPIRequest: APIRequest {
     public var timeout: TimeInterval {
         return 30
     }
+
+    public var shouldWorkInBackground: Bool {
+        return false
+    }
     
     public var tokenRefreshCount: Int?
     

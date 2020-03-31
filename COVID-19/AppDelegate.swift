@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.distanceFilter = 8
         return locationManager
     }()
 
@@ -236,6 +237,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     // TODO: Refactor
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let dateNow = Date()
+        print(locations)
 
         let updateInterval = RemoteConfig.remoteConfig().configValue(forKey: "ios_location_interval_in_mins").numberValue?.intValue
         let nextLocationUpdateTimestamp: Date =

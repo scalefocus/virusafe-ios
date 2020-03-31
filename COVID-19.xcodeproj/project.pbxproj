@@ -99,6 +99,9 @@
 		41D3E673242F782700AC96B1 /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E672242F782700AC96B1 /* PersonalInformationViewModel.swift */; };
 		41D3E675242F7C7200AC96B1 /* TermsAndConditionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */; };
 		41D3E677242F8DC800AC96B1 /* AppLaunchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */; };
+		41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
+		41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
+		41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
 		FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +230,9 @@
 		41D3E672242F782700AC96B1 /* PersonalInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewModel.swift; sourceTree = "<group>"; };
 		41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsRepository.swift; sourceTree = "<group>"; };
 		41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchRepository.swift; sourceTree = "<group>"; };
+		41FEF62A243360DD006D30B2 /* BLEService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
+		41FEF62D24336230006D30B2 /* BLEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEViewController.swift; sourceTree = "<group>"; };
+		41FEF62F2433625A006D30B2 /* BLE.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BLE.storyboard; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D1CD7FD0D446B912A7D0A1 /* Pods-COVID-19.release information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release information services.xcconfig"; sourceTree = "<group>"; };
 		C8428FC855E76DBCA0DA2996 /* Pods-COVID-19.debug information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug information services.xcconfig"; sourceTree = "<group>"; };
@@ -285,6 +291,7 @@
 				4181C713242CDD1400FFDF7C /* ApiResult.swift */,
 				FBC1C355242FF77F008C237B /* PersonalInformation.swift */,
 				417986682430B7BE006CC2D9 /* PushTokenStore.swift */,
+				41FEF62A243360DD006D30B2 /* BLEService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -374,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				385BDD662432034B00476F69 /* Languages */,
+				41FEF62C243361E8006D30B2 /* TestBLE */,
 				38650B6D242DFABF0013DF5E /* EGNScene */,
 				41482B24242B88180062D6E1 /* CovidInfoScene */,
 				024D8303242527B800696868 /* SplashScene */,
@@ -597,6 +605,15 @@
 			path = "Flow Manger";
 			sourceTree = "<group>";
 		};
+		41FEF62C243361E8006D30B2 /* TestBLE */ = {
+			isa = PBXGroup;
+			children = (
+				41FEF62D24336230006D30B2 /* BLEViewController.swift */,
+				41FEF62F2433625A006D30B2 /* BLE.storyboard */,
+			);
+			path = TestBLE;
+			sourceTree = "<group>";
+		};
 		9F4DA72F5F25B5412264AC67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +695,7 @@
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
 				4181C716242D059E00FFDF7C /* TnC.rtf in Resources */,
+				41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */,
 				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
 				4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */,
 				4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */,
@@ -804,6 +822,7 @@
 				3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */,
 				4179866524309BBD006CC2D9 /* PersonalInformationRepository.swift in Sources */,
 				3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */,
+				41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */,
 				417986692430B7BE006CC2D9 /* PushTokenStore.swift in Sources */,
 				3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */,
 				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,
@@ -865,6 +884,7 @@
 				0277EA7B2426766F00941863 /* String+IsNumber.swift in Sources */,
 				41D3E66F242F527300AC96B1 /* StateMachine.swift in Sources */,
 				4170C239242A14D3003EA70A /* Toast.swift in Sources */,
+				41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */,
 				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
 				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
 				3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */,

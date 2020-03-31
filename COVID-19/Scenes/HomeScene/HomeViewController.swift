@@ -92,6 +92,12 @@ class HomeViewController: UIViewController, Navigateble {
         navigationDelegate?.navigateTo(step: .web(source: .content))
     }
 
+    @IBAction private func didTapHiddenButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "BLE", bundle: nil)
+        let testVC = storyboard.instantiateViewController(withIdentifier: "\(BLEViewController.self)")
+        navigationController?.pushViewController(testVC, animated: true)
+    }
+
     // MARK: Setup UI
     
     private func setupButtons() {

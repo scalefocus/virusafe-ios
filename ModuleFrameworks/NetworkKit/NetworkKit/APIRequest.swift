@@ -72,6 +72,8 @@ public protocol APIRequest {
          customCachingIdentifierParams: [String: String]?)
     
     var parser: ParserInterface? {get set}
+
+    var shouldWorkInBackground: Bool { get }
 }
 
 extension APIRequest {

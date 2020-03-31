@@ -47,4 +47,8 @@ public class GpsApiRequest: BaseAPIRequest {
     public override var authorizationRequirement: AuthorizationRequirement {
         return .none
     }
+
+    public override var shouldWorkInBackground: Bool {
+        return true
+    }
 }

@@ -179,12 +179,18 @@
                                     <constraint firstItem="fzB-j9-wo8" firstAttribute="centerY" secondItem="wTM-ah-KF0" secondAttribute="centerY" id="xEN-Sl-S0l"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SF-logo-grey" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-SR-7bN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="251" image="SF-logo-grey" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-SR-7bN">
                                 <rect key="frame" x="218" y="543" width="78" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FE0-SR-7bN" secondAttribute="height" multiplier="6:1" id="htD-Im-iHK"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-Ex-pRr">
+                                <rect key="frame" x="218" y="543" width="78" height="13"/>
+                                <connections>
+                                    <action selector="didTapHiddenButton:" destination="Pm6-G1-6uV" eventType="touchUpInside" id="kbO-z4-NUH"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
                                 <rect key="frame" x="24" y="534.5" width="51.5" height="30"/>
                                 <constraints>
@@ -207,14 +213,18 @@
                             <constraint firstItem="OER-Lz-gjX" firstAttribute="trailing" secondItem="FE0-SR-7bN" secondAttribute="trailing" constant="24" id="37A-4E-7IL"/>
                             <constraint firstItem="OER-Lz-gjX" firstAttribute="bottom" secondItem="FE0-SR-7bN" secondAttribute="bottom" constant="12" id="HJ7-dh-PUh"/>
                             <constraint firstItem="Tw1-Cb-xIU" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" constant="24" id="Ivf-9o-blc"/>
+                            <constraint firstItem="tPl-Ex-pRr" firstAttribute="top" secondItem="FE0-SR-7bN" secondAttribute="top" id="Lc6-HI-cmM"/>
+                            <constraint firstItem="tPl-Ex-pRr" firstAttribute="leading" secondItem="FE0-SR-7bN" secondAttribute="leading" id="MeQ-By-qp7"/>
                             <constraint firstItem="FE0-SR-7bN" firstAttribute="top" secondItem="wTM-ah-KF0" secondAttribute="bottom" id="MvU-LN-Jic"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="top" secondItem="GFt-23-V39" secondAttribute="bottom" id="NAT-Ok-xmz"/>
+                            <constraint firstItem="tPl-Ex-pRr" firstAttribute="trailing" secondItem="FE0-SR-7bN" secondAttribute="trailing" id="ZyR-2U-As8"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="arC-2T-koj"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="trailing" secondItem="OER-Lz-gjX" secondAttribute="trailing" id="k1W-qx-kVp"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="height" secondItem="Rza-Eu-OMJ" secondAttribute="height" multiplier="1:3" id="ooy-Jr-DE2"/>
                             <constraint firstItem="FE0-SR-7bN" firstAttribute="centerY" secondItem="Tw1-Cb-xIU" secondAttribute="centerY" id="ryZ-lY-Mm4"/>
                             <constraint firstItem="wTM-ah-KF0" firstAttribute="leading" secondItem="OER-Lz-gjX" secondAttribute="leading" id="u99-5k-afZ"/>
                             <constraint firstItem="GFt-23-V39" firstAttribute="top" secondItem="Rza-Eu-OMJ" secondAttribute="top" id="uGx-le-gzy"/>
+                            <constraint firstItem="tPl-Ex-pRr" firstAttribute="bottom" secondItem="FE0-SR-7bN" secondAttribute="bottom" id="wcK-Vj-RjJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OER-Lz-gjX"/>
                     </view>
