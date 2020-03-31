@@ -98,7 +98,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         egnTextField.placeholder = Constants.Strings.egnRequestPlaceholderText
         ageTextField.placeholder = Constants.Strings.egnAgeText
         preexistingConditionsTextField.placeholder = Constants.Strings.egnPreexistingConditionsText
-        egnSubmitButton.setTitle(Constants.Strings.egnSubmitText, for: .normal)
+        egnSubmitButton.setTitle(Constants.Strings.generalConfirmText, for: .normal)
         skipButton.setTitle(Constants.Strings.egnSkipText, for: .normal)
     }
     

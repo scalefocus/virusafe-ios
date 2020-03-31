@@ -67,8 +67,9 @@ class RegistrationViewController: UIViewController, Navigateble {
 
     private func setupUI() {
         confirmButton.backgroundColor = .healthBlue
+        confirmButton.setTitle(Constants.Strings.generalConfirmText, for: .normal)
         registrationLabel.text = Constants.Strings.registrationScreenTitle
-        iAgreeWithLabel.text = Constants.Strings.iAgreeWithText + " "
+        iAgreeWithLabel.text = Constants.Strings.generalAgreeIText + " "
         tncButton.setTitle(Constants.Strings.registrationScreenTocText, for: .normal)
         setupIconImageViewTint()
         setupPhoneNumberTextField()

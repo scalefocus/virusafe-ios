@@ -35,10 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         //Localizer
-        Localizer.shared.initialize(locale: Locale.current, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty) {
+        let locale = Locale(identifier: "en-GB")
+        Localizer.shared.initialize(locale: locale, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty) {
             
         }
-        //Localizer.shared.getAvailableLocales(withCompletion: <#T##([Language], String?) -> Void#>)
+        //Localizer.shared.getAvailableLocnales(withCompletion: <#T##([Language], String?) -> Void#>)
         //Localizer.shared.changeLocale(desiredLocale: <#T##Locale#>, changeCallback: <#T##Localizer.ChangeLocaleCallback?##Localizer.ChangeLocaleCallback?##(Bool, Locale) -> Void#>)
         
         // Firebase

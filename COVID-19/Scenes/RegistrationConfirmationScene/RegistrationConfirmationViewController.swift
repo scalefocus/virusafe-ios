@@ -45,6 +45,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
         mobileNumberLabel.text = Constants.Strings.mobileNumberLabelТext +
         ": " + viewModel.mobileNumber()
         textLabel.text = Constants.Strings.mobileNumberIndentificationLabelТext
+        confirmButton.setTitle(Constants.Strings.generalConfirmText, for: .normal)
         noCodeReceivedButton.setTitle(Constants.Strings.mobileNumberNoCodeReceivedButton, for: .normal)
     }
     
