@@ -98,7 +98,7 @@ extension SplashViewController {
             if let error = error {
                 print("Uh-oh. Got an error fetching remote values \(error)")
                 // !!! safe we don't have reference to RemoteConfig.remoteConfig()
-//                self.showToast(message: Constants.Strings.errorConnectionWithServerFailed)
+//                self.showToast(message: "something_went_wrong".localized())
                 return
             }
 
@@ -118,10 +118,10 @@ extension SplashViewController {
                                                                  urlToOpen: appstoreLink ?? "",
                                                                  currentVersion: appVersion,
                                                                  window: UIApplication.shared.keyWindow,
-                                                                 alertTitle: Constants.Strings.newVersionAlertTitle,
-                                                                 alertDescription: Constants.Strings.newVersionAlertDescription,
-                                                                 updateButtonTitle: Constants.Strings.newVersionAlertUpdateButtonTitle,
-                                                                 okButtonTitle: Constants.Strings.newVersionAlertOkButtonTitle,
+                                                                 alertTitle: "new_version_label".localized(),
+                                                                 alertDescription: "new_version_msg".localized(),
+                                                                 updateButtonTitle: "update_label".localized(),
+                                                                 okButtonTitle: "continue_label".localized(),
                                                                  urlOpenedClosure: self.handleForceUpdate // !!! safe we don't have reference to RemoteConfig.remoteConfig()
                 )
 

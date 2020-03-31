@@ -35,9 +35,14 @@ class TermsAndConditionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        
         acceptButton.isHidden = viewModel.repository.isAgree
         loadTnCFromRtf()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         setupUI()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -54,8 +59,9 @@ class TermsAndConditionsViewController: UIViewController {
     }
 
     private func localize() {
-        titleLabel.text = Constants.Strings.generalTosText
-        acceptButton.setTitle(Constants.Strings.generalAgreeIText, for: .normal)
+        title = "terms_n_conditions_label".localized()
+        titleLabel.text = "terms_n_conditions_label".localized()
+        acceptButton.setTitle("i_agree_label".localized(), for: .normal)
     }
 
     private func loadTnCFromRtf() {

@@ -40,12 +40,14 @@ class RegistrationViewController: UIViewController, Navigateble {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         setupBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupUI()
+        
         navigationController?.setNavigationBarHidden(true, animated: animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 120
         IQKeyboardManager.shared().isEnableAutoToolbar = false
@@ -67,10 +69,10 @@ class RegistrationViewController: UIViewController, Navigateble {
 
     private func setupUI() {
         confirmButton.backgroundColor = .healthBlue
-        confirmButton.setTitle(Constants.Strings.generalConfirmText, for: .normal)
-        registrationLabel.text = Constants.Strings.registrationScreenTitle
-        iAgreeWithLabel.text = Constants.Strings.generalAgreeIText + " "
-        tncButton.setTitle(Constants.Strings.registrationScreenTocText, for: .normal)
+        confirmButton.setTitle("confirm_label".localized(), for: .normal)
+        registrationLabel.text = "registration_title".localized()
+        iAgreeWithLabel.text = "i_agree_label".localized() + " "
+        tncButton.setTitle("terms_of_use".localized(), for: .normal)
         setupIconImageViewTint()
         setupPhoneNumberTextField()
     }
@@ -83,7 +85,7 @@ class RegistrationViewController: UIViewController, Navigateble {
 
     private func setupPhoneNumberTextField() {
         phoneNumberTextField.borderStyle = .none
-        phoneNumberTextField.placeholder = Constants.Strings.registrationScreenPhoneTextFieldPlaceholder
+        phoneNumberTextField.placeholder = "mobile_hint".localized()
         // By default title will be the same
         phoneNumberTextField.errorColor = .red
         // !!! other styles are in stotyboard
@@ -107,9 +109,9 @@ class RegistrationViewController: UIViewController, Navigateble {
                 case .success:
                     strongSelf.navigationDelegate?.navigateTo(step: .registerConfirm)
                 case .invalidPhoneNumber:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
+                    strongSelf.showToast(message: "invalid_phone_msg".localized())
                 default:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+                    strongSelf.showToast(message: "no_internet_msg".localized())
             }
         }
     }
@@ -119,23 +121,23 @@ class RegistrationViewController: UIViewController, Navigateble {
     @IBAction private func didTapRegisterButton(_ sender: Any) {
         guard let phoneNumber = phoneNumberTextField.text, phoneNumber.count >= 5 else {
             errorLabel.isHidden = false
-            errorLabel.text = Constants.Strings.registrationScreenPhoneTextFieldInvalidLenght
+            errorLabel.text = "field_length_error_msg".localized()
             return
         }
 
         guard phoneNumber.isPhoneNumber else {
             errorLabel.isHidden = false
-            errorLabel.text = Constants.Strings.generalErrorIncorrectFormatText
+            errorLabel.text = "field_invalid_format_msg".localized()
             return
         }
 
         errorLabel.isHidden = true
 
         guard checkBox.isSelected else {
-            let alert = UIAlertController(title: Constants.Strings.generalWarningText,
-                                          message: Constants.Strings.registrationScreenTOSText,
+            let alert = UIAlertController(title: "warning_label".localized(),
+                                          message: "error_accept_terms_and_conditions".localized(),
                                           preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText, style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "ok_label".localized(), style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             return
         }

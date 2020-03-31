@@ -40,17 +40,20 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        
         setupBindings()
-        mobileNumberLabel.text = Constants.Strings.mobileNumberLabelТext +
+        
+        mobileNumberLabel.text = "phone_text".localized() +
         ": " + viewModel.mobileNumber()
-        textLabel.text = Constants.Strings.mobileNumberIndentificationLabelТext
-        confirmButton.setTitle(Constants.Strings.generalConfirmText, for: .normal)
-        noCodeReceivedButton.setTitle(Constants.Strings.mobileNumberNoCodeReceivedButton, for: .normal)
+        textLabel.text = "verification_code_title".localized().replacingOccurrences(of: "\\n", with: "\n")
+        confirmButton.setTitle("confirm_label".localized(), for: .normal)
+        noCodeReceivedButton.setTitle("missing_verification_code".localized(), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupUI()
+        
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 80
         IQKeyboardManager.shared().isEnableAutoToolbar = false
     }
@@ -68,7 +71,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     // MARK: Setup UI
 
     private func setupUI() {
-        title = Constants.Strings.mobileNumberVerificationТext
+        title = "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n")
         confirmButton.backgroundColor = .healthBlue
         setupIconImageViewTint()
         setupVerificationCodeTextField()
@@ -82,7 +85,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
 
     private func setupVerificationCodeTextField() {
         verificationCodeTextField.borderStyle = .none
-        verificationCodeTextField.placeholder = Constants.Strings.mobileNumberEnterPinText + " "
+        verificationCodeTextField.placeholder = "verification_code_hint".localized() + " "
         // By default title will be same as placeholder
         verificationCodeTextField.errorColor = .red
         // !!! other styles are in stotyboard
@@ -106,9 +109,9 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
                 case .success:
                     strongSelf.navigateToNextViewController()
                 case .invalidPhoneNumber:
-                    strongSelf.showToast(message: Constants.Strings.mobileNumberErrorWrongPinText)
+                    strongSelf.showToast(message: "invalid_pin_msg".localized())
                 default:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+                    strongSelf.showToast(message: "no_internet_msg".localized())
             }
         }
 
@@ -116,11 +119,11 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
             guard let strongSelf = self else { return }
             switch result {
                 case .success:
-                    strongSelf.showToast(message: Constants.Strings.mobileNumberSuccessfulPinText)
+                    strongSelf.showToast(message: "verification_code_send_again".localized())
                 case .invalidPhoneNumber:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenInvalindNumberErrorText)
+                    strongSelf.showToast(message: "invalid_phone_msg".localized())
                 default:
-                    strongSelf.showToast(message: Constants.Strings.registrationScreenGeneralErrorText)
+                    strongSelf.showToast(message: "no_internet_msg".localized())
             }
         }
 
@@ -143,11 +146,11 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
 
         if authorizationCode.count < 6 {
             errorLabel.isHidden = false
-            errorLabel.text = Constants.Strings.mobileNumberIncorrectLengthText
+            errorLabel.text = "field_invalid_format_msg".localized()
             return
         } else if !authorizationCode.isDigitsOnly {
             errorLabel.isHidden = false
-            errorLabel.text = Constants.Strings.generalErrorIncorrectFormatText
+            errorLabel.text = "field_invalid_format_msg".localized()
             return
         } else {
             errorLabel.isHidden = true

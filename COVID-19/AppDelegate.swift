@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         //Localizer
-        let locale = Locale(identifier: "en-GB")
+        let locale = Locale(identifier: "bg")
         Localizer.shared.initialize(locale: locale, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty) {
             
         }
@@ -278,4 +278,16 @@ extension AppDelegate: CLLocationManagerDelegate {
         print("============  LOCATION MANAGER ERROR: \(error)  ============")
         stopListenForLocationChanges()
     }
+}
+
+extension String {
+    /// Helpful function to access the localization from everywhere
+    ///
+    /// - Returns: The value in the localizations
+    func localized() -> String {
+
+        return Localizer.shared.getString(key: "Common.\(self)").replacingOccurrences(of: "$s", with: "$@")
+
+    }
+
 }

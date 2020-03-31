@@ -273,6 +273,7 @@
                         <outlet property="egnSubmitButton" destination="5Zw-6Y-eaH" id="DR9-sE-BR2"/>
                         <outlet property="egnTextField" destination="Y30-vm-DKk" id="ncC-en-dhO"/>
                         <outlet property="egnTitleLabel" destination="irB-7C-9gS" id="5lq-tI-2AL"/>
+                        <outlet property="genderLable" destination="eyn-gl-i0e" id="AmM-kz-C5t"/>
                         <outlet property="iconImageView" destination="gQm-bl-JUH" id="dLY-wV-MCO"/>
                         <outlet property="preexistingConditionsTextField" destination="HuG-fG-Fcg" id="Twc-V9-FwQ"/>
                         <outlet property="skipButton" destination="0O2-lo-4Nu" id="Kcg-mE-cf0"/>

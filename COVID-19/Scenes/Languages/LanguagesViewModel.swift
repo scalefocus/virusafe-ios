@@ -11,5 +11,5 @@ import Foundation
 
 final class LanguagesViewModel {
     //TODO: Fix format of data when we connect to Flex
-    var laguanges:[(String,String)] = [("BGN","Български"), ("MKD", "Македонски"), ("ENG","English")]
+    var laguanges:[(String,String)] = [("bg","Български"), ("en_GB","English")]
 }

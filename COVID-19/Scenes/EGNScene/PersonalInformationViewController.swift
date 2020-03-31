@@ -43,6 +43,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     @IBOutlet private weak var egnTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var egnErrorLabel: UILabel!
 
+    @IBOutlet weak var genderLable: UILabel!
     @IBOutlet weak var ageTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var egnSubmitButton: UIButton!
     @IBOutlet private weak var skipButton: UIButton!
@@ -64,12 +65,14 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.start()
-        setupUI()
         setupBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupUI()
+        
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 80
     }
 
@@ -90,16 +93,20 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         
         skipButton.isHidden = !viewModel.isInitialFlow
         
-        title = viewModel.isInitialFlow == true ? Constants.Strings.mobileNumberVerificationТext :
-                                                  Constants.Strings.generalPersonalInfoText
+        title = viewModel.isInitialFlow == true ? "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n") :
+                                                  "my_personal_data".localized()
         
         egnSubmitButton.backgroundColor = .healthBlue
-        egnTitleLabel.text = Constants.Strings.egnRequestText
-        egnTextField.placeholder = Constants.Strings.egnRequestPlaceholderText
-        ageTextField.placeholder = Constants.Strings.egnAgeText
-        preexistingConditionsTextField.placeholder = Constants.Strings.egnPreexistingConditionsText
-        egnSubmitButton.setTitle(Constants.Strings.generalConfirmText, for: .normal)
-        skipButton.setTitle(Constants.Strings.egnSkipText, for: .normal)
+        egnTitleLabel.text = "personal_data_title".localized()
+        egnTextField.placeholder = "identification_number_hint".localized()
+        ageTextField.placeholder = "age_hint".localized()
+        genderLable.text = "gender_hint".localized()
+        preexistingConditionsTextField.placeholder = "chronical_conditions_hint".localized()
+        egnSubmitButton.setTitle("confirm_label".localized(), for: .normal)
+        skipButton.setTitle("skip_label".localized(), for: .normal)
+        genderButtons[Gender.female.tag].setTitle("gender_female".localized(), for: .normal)
+        genderButtons[Gender.male.tag].setTitle("gender_male".localized(), for: .normal)
+        genderButtons[Gender.other.tag].setTitle("gender_other".localized(), for: .normal)
     }
     
     private func setupIconImageViewTint() {
@@ -109,7 +116,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     }
     
     private func setupEgnTextField() {
-        egnTextField.placeholder = Constants.Strings.egnRequestPlaceholderText + " "
+        egnTextField.placeholder = "identification_number_hint".localized() + " "
         // By default title will be same as placeholder
         egnTextField.errorColor = .red
     }
@@ -142,42 +149,42 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             switch error {
                 case .invalidEgnOrIdNumber:
                     let alert = UIAlertController(title: nil,
-                                                  message: Constants.Strings.invalidEgnOrIdNumberAlertMessage,
+                                                  message: "invalid_egn_msg".localized(),
                                                   preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText, style: .default))
+                    alert.addAction(UIAlertAction(title: "ok_label".localized(), style: .default))
                     self?.present(alert, animated: true, completion: nil)
                 case .invalidToken:
-                    let alert = UIAlertController(title: Constants.Strings.invalidTokenAlertTitle,
-                                                  message: Constants.Strings.invalidTokenAlertMessage,
+                    let alert = UIAlertController(title: "redirect_to_registration_msg".localized(),
+                                                  message: "redirect_to_registration_msg".localized(),
                                                   preferredStyle: .alert)
                     alert.addAction(
-                        UIAlertAction(title: Constants.Strings.genaralAgreedText, style: .default) { action in
+                        UIAlertAction(title: "ok_label".localized(), style: .default) { action in
                             self?.navigationDelegate?.navigateTo(step: .register)
                         }
                     )
                     self?.present(alert, animated: true, completion: nil)
                 case .tooManyRequests(let repeatAfterSeconds):
-                    var message = Constants.Strings.healthStatusTooManyRequestsErrorText + " "
+                    var message = "too_many_requests_msg".localized() + " "
                     let hours = repeatAfterSeconds / 3600
                     if hours > 0 {
-                        message += ("\(hours) " + Constants.Strings.dateFormatHours)
+                        message += ("\(hours) " + "hours_label".localized())
                     }
                     let minutes = repeatAfterSeconds / 60
                     if minutes > 0 {
-                        message += ("\(minutes) " + Constants.Strings.dateFormatMinutes)
+                        message += ("\(minutes) " + "minutes_label".localized())
                     }
                     if hours == 0 && minutes == 0 {
-                        message += Constants.Strings.dateFormatLittleMoreTime
+                        message += "little_more_time".localized()
                     }
                     let alert = UIAlertController(title: nil,
                                                   message: message,
                                                   preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText,
+                    alert.addAction(UIAlertAction(title: "ok_label".localized(),
                                                   style: .default,
                                                   handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 case .server, .general:
-                    self?.showToast(message: Constants.Strings.healthStatusUnknownErrorText)
+                    self?.showToast(message: "generic_error_msg".localized())
             }
         }
         
@@ -213,30 +220,30 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         }
         var emptyTextFieldsTitles: [String] = []
         if egn.isEmpty {
-            emptyTextFieldsTitles.append(Constants.Strings.egnRequestPlaceholderText)
+            emptyTextFieldsTitles.append("identification_number_hint".localized())
         }
         if (ageTextField.text ?? "").isEmpty {
-            emptyTextFieldsTitles.append(Constants.Strings.egnAgeText)
+            emptyTextFieldsTitles.append("age_hint".localized())
         }
         if (preexistingConditionsTextField.text ?? "").isEmpty {
-            emptyTextFieldsTitles.append(Constants.Strings.egnPreexistingConditionsText)
+            emptyTextFieldsTitles.append("chronical_conditions_hint".localized())
         }
 
         if emptyTextFieldsTitles.isEmpty {
             viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
         } else {
-            let message = Constants.Strings.confirmEmptyFieldsAlertMessage + " " + emptyTextFieldsTitles.joined(separator: ", ")
+            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "\\n%1$s", with: "") + " " + emptyTextFieldsTitles.joined(separator: "")
 
             let alert = UIAlertController(title: nil,
                                           message: message,
                                           preferredStyle: .alert)
             alert.addAction(
-                UIAlertAction(title: Constants.Strings.egnSkipText, style: .destructive) { [weak self] action in
+                UIAlertAction(title: "skip_label".localized(), style: .destructive) { [weak self] action in
                     self?.viewModel.didTapPersonalNumberAuthorization(with: self?.egnTextField.text ?? "")
                 }
             )
             alert.addAction(
-                UIAlertAction(title: Constants.Strings.generalBackText, style: .default) { _ in }
+                UIAlertAction(title: "back_text".localized(), style: .default) { _ in }
             )
             present(alert, animated: true, completion: nil)
         }
@@ -274,7 +281,7 @@ extension PersonalInformationViewController: UITextFieldDelegate {
                 || textFieldText.length == maximumPersonalNumberLength {
                 egnErrorLabel.text = nil
             } else {
-                egnErrorLabel.text = Constants.Strings.mobileNumberIncorrectLengthText
+                egnErrorLabel.text = "field_invalid_format_msg".localized()
             }
             return newString.length <= maximumPersonalNumberLength
         } else if textField == ageTextField {

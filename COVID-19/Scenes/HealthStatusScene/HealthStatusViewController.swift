@@ -42,8 +42,7 @@ class HealthStatusViewController: UIViewController, Navigateble {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // setup
-        setupVC()
+        
         setupBindigs()
         // get data
         viewModel.getHealthStatusData()
@@ -55,6 +54,13 @@ class HealthStatusViewController: UIViewController, Navigateble {
                                                selector: #selector(didChangeLocationState),
                                                name: NSNotification.Name(rawValue: "didChooseLocationAccess"),
                                                object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // setup
+        setupVC()
     }
 
     deinit {
@@ -96,10 +102,10 @@ class HealthStatusViewController: UIViewController, Navigateble {
             if isLeavingScreenAvailable {
                 strongSelf.viewModel.sendAnswers()
             } else {
-                let alert = UIAlertController(title: Constants.Strings.generalWarningText,
-                                              message: Constants.Strings.healthStatusPopulateAllFiendsErrorText,
+                let alert = UIAlertController(title: "warning_label".localized(),
+                                              message: "warning_msg".localized(),
                                               preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText,
+                alert.addAction(UIAlertAction(title: "ok_label".localized(),
                                               style: UIAlertAction.Style.default,
                                               handler: nil))
                 strongSelf.present(alert, animated: true, completion: nil)
@@ -123,37 +129,37 @@ class HealthStatusViewController: UIViewController, Navigateble {
             switch error {
                 case .invalidToken:
                     // TODO: Refactor - duplicated code
-                    let alert = UIAlertController(title: Constants.Strings.invalidTokenAlertTitle,
-                                                  message: Constants.Strings.invalidTokenAlertMessage,
+                    let alert = UIAlertController(title: "redirect_to_registration_msg".localized(),
+                                                  message: "redirect_to_registration_msg".localized(),
                                                   preferredStyle: .alert)
                     alert.addAction(
-                        UIAlertAction(title: Constants.Strings.genaralAgreedText, style: .default) { action in
+                        UIAlertAction(title: "ok_label".localized(), style: .default) { action in
                                 self?.navigationDelegate?.navigateTo(step: .register)
                         }
                     )
                     self?.present(alert, animated: true, completion: nil)
                 case .tooManyRequests(let repeatAfterSeconds):
-                    var message = Constants.Strings.healthStatusTooManyRequestsErrorText + " "
+                    var message = "too_many_requests_msg".localized() + " "
                     let hours = repeatAfterSeconds / 3600
                     if hours > 0 {
-                        message += ("\(hours) " + Constants.Strings.dateFormatHours)
+                        message += ("\(hours) " + "hours_label".localized())
                     }
                     let minutes = repeatAfterSeconds / 60
                     if minutes > 0 {
-                        message += ("\(minutes) " + Constants.Strings.dateFormatMinutes)
+                        message += ("\(minutes) " + "minutes_label".localized())
                     }
                     if hours == 0 && minutes == 0 {
-                        message += Constants.Strings.dateFormatLittleMoreTime
+                        message += "little_more_time".localized()
                     }
                     let alert = UIAlertController(title: nil,
                                                   message: message,
                                                   preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: Constants.Strings.genaralAgreedText,
+                    alert.addAction(UIAlertAction(title: "ok_label".localized(),
                                                   style: .default,
                                                   handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 case .server, .general, .invalidEgnOrIdNumber:
-                    self?.showToast(message: Constants.Strings.healthStatusUnknownErrorText)
+                    self?.showToast(message: "generic_error_msg".localized())
             }
         }
     }
@@ -168,7 +174,7 @@ class HealthStatusViewController: UIViewController, Navigateble {
     // MARK: Setup UI
     
     private func setupVC() {
-        title = Constants.Strings.healthStatusHealthStatuText
+        title = "health_status".localized()
 
         tableView.tableFooterView = UIView()
         tableView.register(cellNames: "\(QuestionTableViewCell.self)",
@@ -176,6 +182,8 @@ class HealthStatusViewController: UIViewController, Navigateble {
 
         submitButton.backgroundColor = .healthBlue
         submitButton.layer.borderColor = UIColor.healthBlue?.cgColor
+        
+        submitButton.setTitle("save_changes_label".localized(), for: .normal)
     }
 
     // MARK: Navigation

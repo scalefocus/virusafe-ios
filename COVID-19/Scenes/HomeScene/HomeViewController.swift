@@ -31,7 +31,7 @@ class HomeViewController: UIViewController, Navigateble {
         super.viewDidLoad()
         
         setupButtons()
-        localize()
+        
 
         askForPushNotifications()
 
@@ -55,6 +55,9 @@ class HomeViewController: UIViewController, Navigateble {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        localize()
+        
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -99,18 +102,19 @@ class HomeViewController: UIViewController, Navigateble {
     }
 
     private func localize() {
-        title = Constants.Strings.homeScreenStartingScreenText
-        titleLabel.text = Constants.Strings.homeScreenMyPersonalContributionText
-        howItWorksButton.setTitle(Constants.Strings.homeScreenHowItWorksText, for: .normal)
+        titleLabel.text = "my_contribution_title".localized()
+        howItWorksButton.setTitle("how_it_works".localized(), for: .normal)
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
 
-        startButton.setTitle(Constants.Strings.homeScreenMySymptomsText, for: .normal)
-        personalInfoButton.setTitle(Constants.Strings.homeScreenMyPersonalInfoText, for: .normal)
-        tncButton.setTitle(Constants.Strings.generalTosText, for: .normal)
+        startButton.setTitle("how_do_you_feel_today".localized(), for: .normal)
+        personalInfoButton.setTitle("my_personal_data".localized(), for: .normal)
+        tncButton.setTitle("terms_n_conditions_label".localized(), for: .normal)
+        moreInfoButton.setTitle("learn_more".localized(), for: .normal)
+        languagesButton.setTitle("language".localized(), for: .normal)
     }
 
     // MARK: Push Notifications
