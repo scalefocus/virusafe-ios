@@ -115,14 +115,12 @@ final class BLEService: NSObject {
         // !!! If we use lazy var for centralManager -
         // centralManagerDidUpdateState will not be called when created
         centralManager = CBCentralManager(delegate: self,
-                                          queue: nil)
-        // TODO: Add restore when you are sure how it works
-        //                                          options: [CBCentralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.central"])
+                                          queue: nil,
+                                          options: [CBCentralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.central"])
         // !!! Similar
         peripheralManager = CBPeripheralManager(delegate: self,
-                                                queue: nil)
-        // TODO: Add restore when you are sure how it works
-        //                                                options: [CBCentralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.peripheral"])
+                                                queue: nil,
+                                                options: [CBPeripheralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.peripheral"])
 
         // TODO: Add wait for Authorization timer
     }
@@ -136,11 +134,11 @@ final class BLEService: NSObject {
     // MARK: Advertising (Beacon)
 
     private func beaconServiceUUID() -> CBUUID {
-        return CBUUID(string: BLEServiceConstants.beaconServiceUUID)
+        return CBUUID(string: Constants.beaconServiceUUID)
     }
 
     private func beaconCharacteristicUUID() -> CBUUID {
-        return CBUUID(string: BLEServiceConstants.beaconLocalCharacteristicUUID)
+        return CBUUID(string: Constants.beaconLocalCharacteristicUUID)
     }
 
     // local characteristic
@@ -154,7 +152,7 @@ final class BLEService: NSObject {
 
     func startAdvertising() {
         let advertisingData: [String: Any] = [
-            CBAdvertisementDataLocalNameKey: BLEServiceConstants.beaconLocalName,
+            CBAdvertisementDataLocalNameKey: Constants.beaconLocalName,
             CBAdvertisementDataServiceUUIDsKey: [beaconServiceUUID()]
         ]
         let service = CBMutableService(type: beaconServiceUUID(), primary: true)
@@ -194,7 +192,7 @@ final class BLEService: NSObject {
         startReportTimer()
         startProcessPeripheralsTimer()
 
-        let services: [CBUUID] = [CBUUID(string: BLEServiceConstants.beaconServiceUUID)]
+        let services: [CBUUID] = [CBUUID(string: Constants.beaconServiceUUID)]
         let options: [String: Any] = [CBCentralManagerScanOptionAllowDuplicatesKey: true]
         self.centralManager.scanForPeripherals(withServices: services, options: options)
     }
@@ -231,7 +229,7 @@ final class BLEService: NSObject {
 
     private func startProcessPeripheralsTimer() {
         //        queue.async {
-        let timer = Timer(timeInterval: BLEServiceConstants.processPeripheralTimerInterval,
+        let timer = Timer(timeInterval: Constants.processPeripheralTimerInterval,
                           target: self,
                           selector: #selector(self.processPeripherals(_:)),
                           userInfo: nil,
@@ -243,7 +241,7 @@ final class BLEService: NSObject {
 
     private func startReportTimer() {
         //        queue.async {
-        let timer = Timer(timeInterval: BLEServiceConstants.updateTimerInterval,
+        let timer = Timer(timeInterval: Constants.updateTimerInterval,
                           target: self,
                           selector: #selector(self.reportRangesToDelegate(_:)),
                           userInfo: nil,
@@ -255,7 +253,7 @@ final class BLEService: NSObject {
 
     private func startRescanTimer() {
         //        queue.async {
-        let timer = Timer(timeInterval: BLEServiceConstants.restartScanTimerInterval,
+        let timer = Timer(timeInterval: Constants.restartScanTimerInterval,
                           target: self,
                           selector: #selector(self.restartScanForDevices(_:)),
                           userInfo: nil,
@@ -456,6 +454,13 @@ extension BLEService: CBCentralManagerDelegate {
 
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
         print("central will restore state")
+        guard let restoredPeripherals = dict[CBCentralManagerRestoredStatePeripheralsKey] as? [CBPeripheral] else {
+            return
+        }
+        synchronized(self) {
+            peripheralsToBeValidated = restoredPeripherals
+        }
+
     }
 }
 

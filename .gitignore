@@ -52,3 +52,6 @@ sonar-reports/
 
 # Gemfile
 Gemfile.lock
+
+# fastlane specific
+**/report.xml
