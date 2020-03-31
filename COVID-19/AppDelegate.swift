@@ -15,6 +15,7 @@ import Firebase
 import IQKeyboardManager
 import FirebaseMessaging
 import NetworkKit
+import UpnetixLocalizer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,9 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        //Localizer
+        let locale = Locale(identifier: "bg")
+        Localizer.shared.initialize(locale: locale, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty) {
+            
+        }
+        //Localizer.shared.getAvailableLocnales(withCompletion: <#T##([Language], String?) -> Void#>)
+        //Localizer.shared.changeLocale(desiredLocale: <#T##Locale#>, changeCallback: <#T##Localizer.ChangeLocaleCallback?##Localizer.ChangeLocaleCallback?##(Bool, Locale) -> Void#>)
+        
         // Firebase
         FirebaseApp.configure()
         
+        //Firebase Push Notifications
         Messaging.messaging().delegate = self
         
         if #available(iOS 10.0, *) {
@@ -75,6 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         flowManager = AppFlowManager(window: window!) // !!! Force unwrap
         
         return true
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        Localizer.shared.willEnterForeground()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        Localizer.shared.willTerminate()
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        Localizer.shared.didEnterBackground()
     }
 
     // MARK: UISceneSession Lifecycle
@@ -258,4 +280,16 @@ extension AppDelegate: CLLocationManagerDelegate {
         print("============  LOCATION MANAGER ERROR: \(error)  ============")
         stopListenForLocationChanges()
     }
+}
+
+extension String {
+    /// Helpful function to access the localization from everywhere
+    ///
+    /// - Returns: The value in the localizations
+    func localized() -> String {
+
+        return Localizer.shared.getString(key: "Common.\(self)").replacingOccurrences(of: "$s", with: "$@")
+
+    }
+
 }

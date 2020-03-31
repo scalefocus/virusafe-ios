@@ -28,11 +28,11 @@ enum Source {
     var description: String {
         switch self {
             case .content:
-                return Constants.Strings.webviewScreenTitleLearnMore
+                return "learn_more_web_view_title".localized()
             case .about:
-                return Constants.Strings.homeScreenHowItWorksText
+                return "how_it_works".localized()
             case .notification:
-                return Constants.Strings.webviewScreenTitleNews
+                return "news_label".localized()
         }
     }
 }
@@ -55,13 +55,15 @@ class WebViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
     }
 
     private var isNavigationBarHiddenInitially: Bool = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupUI()
+        
         isNavigationBarHiddenInitially = navigationController?.isNavigationBarHidden ?? false
         navigationController?.setNavigationBarHidden(false, animated: false)
     }

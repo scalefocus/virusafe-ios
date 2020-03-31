@@ -247,8 +247,7 @@ extension AppFlowManager: NavigationDelegate {
         let languagesViewController = storyboard
             .instantiateViewController(withIdentifier: "\(LanguagesViewController.self)")
             as! LanguagesViewController // !!! Force unwrap
-
-        languagesViewController.navigationDelegate = self
+        
 
         navigationController.push(viewController: languagesViewController)
         setupBackButton(viewController: languagesViewController)
@@ -315,7 +314,7 @@ extension AppFlowManager: NavigationDelegate {
 
     private func setupAboutNextButton(viewController: UIViewController) {
         let rightBarButtonItem = UIBarButtonItem(
-            title: Constants.Strings.newVersionAlertOkButtonTitle,
+            title: "continue_label".localized(),
             style: .plain,
             target: self,
             action: #selector(AppFlowManager.navigateToNextControllerFromInitialAbout))
@@ -331,17 +330,24 @@ extension AppFlowManager: NavigationDelegate {
 
     private func setupBackButton(viewController: UIViewController) {
         viewController.navigationItem.hidesBackButton = true
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
                                                                           style: .plain,
                                                                           target: self,
                                                                           action: #selector(AppFlowManager.back(sender:)))
     }
     private func setupBackButtonNoStateMachine(viewController: UIViewController) {
         viewController.navigationItem.hidesBackButton = true
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Constants.Strings.generalBackText,
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
                                                                           style: .plain,
                                                                           target: self,
                                                                           action: #selector(AppFlowManager.backNoStateMachine(sender:)))
+    }
+    
+    func localozeBackButton(viewController: UIViewController) {
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
+                                                                          style: .plain,
+                                                                          target: self,
+                                                                          action: #selector(AppFlowManager.back(sender:)))
     }
 
     @objc

@@ -58,10 +58,10 @@ final class ConfirmationViewController: UIViewController, Navigateble {
     }
 
     private func localize() {
-        title = Constants.Strings.confirmationReadyWithExcalamationMarkText
-        titleLabel.text = Constants.Strings.confirmationReadyWithExcalamationMarkText
-        textLabel.text = Constants.Strings.generalTextForTourAnswerText
-        backButton.setTitle(Constants.Strings.generalBackText, for: .normal)
+        title = "done_title".localized()
+        titleLabel.text = "done_title".localized()
+        textLabel.text = "done_msg".localized()
+        backButton.setTitle("back_text".localized(), for: .normal)
     }
 
     private func tintCheckIcon() {

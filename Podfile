@@ -11,7 +11,9 @@ target 'COVID-19' do
   pod 'TwoWayBondage', '~> 1.0.2'
   pod 'AppCenter', '~> 3.0.0'
 
+  pod 'UpnetixLocalizer', '~> 2.1.2'
   pod 'PopupUpdate'
+  
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'

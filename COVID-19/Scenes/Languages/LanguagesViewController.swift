@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import UpnetixLocalizer
 
-class LanguagesViewController: UIViewController, Navigateble {
-    var navigationDelegate: NavigationDelegate?
+class LanguagesViewController: UIViewController {
+    
+    // MARK: View Model
+    
     private let languagesViewControllerModel = LanguagesViewModel()
-
+    
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        setupUI()
     }
     
     private func setupUI() {
-        title = Constants.Strings.chooseLanguageTitle
+        title = "select_language".localized()
     }
     
 
@@ -32,6 +41,15 @@ extension LanguagesViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
+        
+        let languageData = languagesViewControllerModel.laguanges[indexPath.row]
+        let locale = Locale(identifier: languageData.0)
+        Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
+            print(desiredLocale)
+            if didChange {
+                self?.setupUI()
+            }
+        }
         
     }
 
@@ -54,7 +72,7 @@ extension LanguagesViewController: UITableViewDataSource {
         let languageData = languagesViewControllerModel.laguanges[indexPath.row];
         cell.textLabel?.text = languageData.1
         
-        if Locale.current.currencyCode ?? "BGN" == languageData.0 {
+        if Localizer.shared.getCurrentLocale().identifier == languageData.0 {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             cell.accessoryType = .checkmark
         }

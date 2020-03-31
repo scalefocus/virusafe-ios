@@ -10,6 +10,8 @@ import UIKit
 
 class NoSymptomsTableViewCell: UITableViewCell, Configurable {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var noSymptomsLable: UILabel!
     @IBOutlet private weak var checkBoxImageView: UIImageView!
     private var isCheckBoxSelected = false
     private var didTapCheckBoxCallback: ((Bool) -> Void)?
@@ -20,6 +22,9 @@ class NoSymptomsTableViewCell: UITableViewCell, Configurable {
         checkBoxImageView.tintColor = .healthBlue
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCheckBox))
         checkBoxImageView.addGestureRecognizer(tap)
+        
+        titleLabel.text = "self_check_title".localized().replacingOccurrences(of: "\\", with: "")
+        noSymptomsLable.text = "no_symptoms".localized()
     }
     
     func configureWith(_ data: NoSymptomsCellModel) {

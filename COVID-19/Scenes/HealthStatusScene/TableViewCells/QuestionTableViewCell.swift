@@ -23,6 +23,9 @@ class QuestionTableViewCell: UITableViewCell, Configurable {
         noButton.layer.borderColor = UIColor.healthBlue?.cgColor
         yesButton.setTitleColor(.healthBlue, for: .normal)
         noButton.setTitleColor(.healthBlue, for: .normal)
+        
+        yesButton.setTitle("yes_label".localized(), for: .normal)
+        noButton.setTitle("no_label".localized(), for: .normal)
     }
     
     func configureWith(_ data: QuestionCellModel) {
