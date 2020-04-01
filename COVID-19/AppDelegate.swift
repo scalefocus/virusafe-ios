@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "en_GB"
+        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
         let locale = Locale(identifier: savedLocale)
         Localizer.shared.initialize(locale: locale, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty) {
         }
