@@ -28,7 +28,8 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
                           gender: String?,
                           preexistingConditions: String?,
                           completion: @escaping SendPersonalInfoCompletion) {
-        let request = SendPersonalInformationApiRequest(identificationNumber: identificationNumber,
+        let normalizedPersonalIdentificationNumber = (identificationNumber?.count == 0) ? nil : identificationNumber
+        let request = SendPersonalInformationApiRequest(identificationNumber: normalizedPersonalIdentificationNumber,
                                                         age: age,
                                                         gender: gender,
                                                         preExistingConditions: preexistingConditions)
