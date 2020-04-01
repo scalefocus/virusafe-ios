@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>20.3.311609</string>
 	<key>GoogleServicesInfoPlistName</key>
 	<string>$(GOOGLE_SERVICES_INFO_PLSIT_NAME)</string>
 	<key>LSRequiresIPhoneOS</key>

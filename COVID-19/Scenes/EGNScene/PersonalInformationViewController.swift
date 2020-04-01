@@ -82,6 +82,16 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         view.endEditing(true)
     }
 
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if egnTextField.isFirstResponder || ageTextField.isFirstResponder || preexistingConditionsTextField.isFirstResponder {
+            DispatchQueue.main.async {
+                UIMenuController.shared.setMenuVisible(false, animated: false)
+            }
+        }
+
+        return super.canPerformAction(action, withSender: sender)
+    }
+
     // MARK: Setup UI
     
     private func setupUI() {
@@ -228,7 +238,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         if emptyTextFieldsTitles.isEmpty {
             viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
         } else {
-            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "\\n%1$s", with: "") + " " + emptyTextFieldsTitles.joined(separator: "")
+            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " " + emptyTextFieldsTitles.joined(separator: "")
 
             let alert = UIAlertController(title: nil,
                                           message: message,
