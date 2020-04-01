@@ -85,6 +85,16 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         view.endEditing(true)
     }
 
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if egnTextField.isFirstResponder || ageTextField.isFirstResponder || preexistingConditionsTextField.isFirstResponder {
+            DispatchQueue.main.async {
+                UIMenuController.shared.setMenuVisible(false, animated: false)
+            }
+        }
+
+        return super.canPerformAction(action, withSender: sender)
+    }
+
     // MARK: Setup UI
     
     private func setupUI() {
