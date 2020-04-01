@@ -96,7 +96,7 @@
                                                                                 <rect key="frame" x="0.0" y="5" width="374" height="40"/>
                                                                                 <subviews>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inC-K5-Pgs">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="118" height="40"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="40" id="SR5-qB-dmM"/>
                                                                                         </constraints>
@@ -120,7 +120,7 @@
                                                                                         </connections>
                                                                                     </button>
                                                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1S-BH-BuZ">
-                                                                                        <rect key="frame" x="128" y="0.0" width="118" height="40"/>
+                                                                                        <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                                         <state key="normal" title="Жена">
                                                                                             <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -140,31 +140,9 @@
                                                                                             <action selector="didTapGenderButton:" destination="BBf-ct-6Or" eventType="touchUpInside" id="okP-ig-6Tb"/>
                                                                                         </connections>
                                                                                     </button>
-                                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoO-4Y-zAi">
-                                                                                        <rect key="frame" x="256" y="0.0" width="118" height="40"/>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                                        <state key="normal" title="Друго">
-                                                                                            <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                                                        </state>
-                                                                                        <userDefinedRuntimeAttributes>
-                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                                <real key="value" value="1"/>
-                                                                                            </userDefinedRuntimeAttribute>
-                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                <real key="value" value="20"/>
-                                                                                            </userDefinedRuntimeAttribute>
-                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                                <color key="value" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                                                            </userDefinedRuntimeAttribute>
-                                                                                        </userDefinedRuntimeAttributes>
-                                                                                        <connections>
-                                                                                            <action selector="didTapGenderButton:" destination="BBf-ct-6Or" eventType="touchUpInside" id="ehB-67-3qc"/>
-                                                                                        </connections>
-                                                                                    </button>
                                                                                 </subviews>
                                                                                 <constraints>
                                                                                     <constraint firstItem="K1S-BH-BuZ" firstAttribute="width" secondItem="inC-K5-Pgs" secondAttribute="width" id="397-dV-H7g"/>
-                                                                                    <constraint firstItem="zoO-4Y-zAi" firstAttribute="width" secondItem="inC-K5-Pgs" secondAttribute="width" id="vw2-x4-wAz"/>
                                                                                 </constraints>
                                                                             </stackView>
                                                                         </subviews>
@@ -279,7 +257,6 @@
                         <outlet property="skipButton" destination="0O2-lo-4Nu" id="Kcg-mE-cf0"/>
                         <outletCollection property="genderButtons" destination="inC-K5-Pgs" collectionClass="NSMutableArray" id="QxF-ig-wg1"/>
                         <outletCollection property="genderButtons" destination="K1S-BH-BuZ" collectionClass="NSMutableArray" id="Eog-27-c92"/>
-                        <outletCollection property="genderButtons" destination="zoO-4Y-zAi" collectionClass="NSMutableArray" id="tPK-BJ-Fig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rzi-dr-P9S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -76,6 +76,7 @@
                     </view>
                     <connections>
                         <outlet property="confirmButton" destination="0KS-wu-9HF" id="ihu-ZJ-58E"/>
+                        <outlet property="tableView" destination="eQm-7h-99R" id="lb7-JZ-FsO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Z1-C2-6D6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

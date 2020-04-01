@@ -14,6 +14,7 @@ class LanguagesViewController: UIViewController {
     // MARK: Outlets
     
     @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: View Model
     
@@ -23,6 +24,20 @@ class LanguagesViewController: UIViewController {
     
     @IBAction func didTapConfirm(_ sender: Any) {
         
+        if viewModel.isInitialFlow {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let languageData = viewModel.laguanges[indexPath.row]
+                let locale = Locale(identifier: languageData.0)
+                Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
+                    print(desiredLocale)
+                    if didChange {
+                        self?.setupUI()
+                    }
+                }
+            }
+            
+            // TODO: Continue to next screen of initialFlow
+        }
     }
     
     // MARK: Lifecycle
@@ -30,7 +45,7 @@ class LanguagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if viewModel.isInitialFlow {
+        if !viewModel.isInitialFlow {
             confirmButton.isHidden = false
         } else {
             confirmButton.isHidden = true
@@ -61,12 +76,14 @@ extension LanguagesViewController:UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         
-        let languageData = viewModel.laguanges[indexPath.row]
-        let locale = Locale(identifier: languageData.0)
-        Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
-            print(desiredLocale)
-            if didChange {
-                self?.setupUI()
+        if !viewModel.isInitialFlow {
+            let languageData = viewModel.laguanges[indexPath.row]
+            let locale = Locale(identifier: languageData.0)
+            Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
+                print(desiredLocale)
+                if didChange {
+                    self?.setupUI()
+                }
             }
         }
         
