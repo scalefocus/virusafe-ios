@@ -139,6 +139,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
                 previousStatesStack.append(newState)
                 navigateToLanguagesViewController()
             case (.ready,.initialLanguages):
+                previousStatesStack.append(newState)
                 navigateToLanguagesViewController()
             default:
                 break
@@ -257,11 +258,18 @@ extension AppFlowManager: NavigationDelegate {
             .instantiateViewController(withIdentifier: "\(LanguagesViewController.self)")
             as! LanguagesViewController // !!! Force unwrap
         
+        languagesViewController.title = "select_language".localized()
         languagesViewController.viewModel = LanguagesViewModel.init(firstLaunchCheckRepository: firstLaunchCheckRepository)
-        
+        languagesViewController.navigationDelegate = self
 
-        navigationController.push(viewController: languagesViewController)
-        setupBackButton(viewController: languagesViewController)
+        
+        if !languagesViewController.viewModel.isInitialFlow {
+            navigationController.push(viewController: languagesViewController)
+            setupBackButton(viewController: languagesViewController)
+        } else {
+            navigationController.setNavigationBarHidden(false, animated: false)
+            navigationController.setRoot(viewController: languagesViewController)
+        }
     }
     
     private func navigateToConfirmationViewController() {

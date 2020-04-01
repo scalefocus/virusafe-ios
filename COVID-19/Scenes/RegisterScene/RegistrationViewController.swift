@@ -71,8 +71,8 @@ class RegistrationViewController: UIViewController, Navigateble {
         confirmButton.backgroundColor = .healthBlue
         confirmButton.setTitle("confirm_label".localized(), for: .normal)
         registrationLabel.text = "registration_title".localized()
-        iAgreeWithLabel.text = "i_agree_label".localized() + " "
-        tncButton.setTitle("terms_of_use".localized(), for: .normal)
+        iAgreeWithLabel.text = "i_agree_with_label".localized() + " "
+        tncButton.setTitle("terms_n_conditions_small_caps_label".localized(), for: .normal)
         setupIconImageViewTint()
         setupPhoneNumberTextField()
     }

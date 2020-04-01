@@ -28,20 +28,22 @@ class LanguagesViewController: UIViewController, Navigateble {
     
     @IBAction func didTapConfirm(_ sender: Any) {
         
-        if viewModel.isInitialFlow {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let languageData = viewModel.laguanges[indexPath.row]
-                let locale = Locale(identifier: languageData.0)
-                Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
-                    print(desiredLocale)
-                    if didChange {
-                        self?.setupUI()
-                    }
-                }
-            }
+        guard viewModel.isInitialFlow == true else { return }
+        
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-           navigateToNextViewController()
+        let languageData = viewModel.laguanges[indexPath.row]
+        let locale = Locale(identifier: languageData.0)
+        Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
+            print(desiredLocale)
+            if didChange {
+                self?.setupUI()
+                UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
+                UserDefaults.standard.synchronize()
+                self?.navigateToNextViewController()
+            }
         }
+    
     }
     
     // MARK: Lifecycle
@@ -49,7 +51,7 @@ class LanguagesViewController: UIViewController, Navigateble {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !viewModel.isInitialFlow {
+        if viewModel.isInitialFlow {
             confirmButton.isHidden = false
         } else {
             confirmButton.isHidden = true
@@ -91,6 +93,7 @@ extension LanguagesViewController:UITableViewDelegate {
                 print(desiredLocale)
                 if didChange {
                     self?.setupUI()
+                    UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
                 }
             }
         }
