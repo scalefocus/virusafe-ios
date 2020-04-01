@@ -24,6 +24,27 @@ class LanguagesViewController: UIViewController, Navigateble {
     
     var viewModel:LanguagesViewModel!
     
+    // MARK: Bind
+
+    private func setupBindings() {
+        viewModel.laguanges.bind { [weak self] languages in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        
+        viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                if shouldShowLoadingIndicator {
+                    LoadingIndicatorManager.startActivityIndicator(.gray, in: strongSelf.view)
+                } else {
+                    LoadingIndicatorManager.stopActivityIndicator(in: strongSelf.view)
+                }
+            }
+        }
+    }
+    
     // MARK: Actions
     
     @IBAction func didTapConfirm(_ sender: Any) {
@@ -32,7 +53,7 @@ class LanguagesViewController: UIViewController, Navigateble {
         
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-        let languageData = viewModel.laguanges[indexPath.row]
+        let languageData = viewModel.laguanges.value![indexPath.row]
         let locale = Locale(identifier: languageData.0)
         Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
             print(desiredLocale)
@@ -50,6 +71,8 @@ class LanguagesViewController: UIViewController, Navigateble {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupBindings()
         
         if viewModel.isInitialFlow {
             confirmButton.isHidden = false
@@ -87,7 +110,7 @@ extension LanguagesViewController:UITableViewDelegate {
         cell?.accessoryType = .checkmark
         
         if !viewModel.isInitialFlow {
-            let languageData = viewModel.laguanges[indexPath.row]
+            let languageData = viewModel.laguanges.value![indexPath.row]
             let locale = Locale(identifier: languageData.0)
             Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
                 print(desiredLocale)
@@ -110,13 +133,13 @@ extension LanguagesViewController:UITableViewDelegate {
 // MARK: UITableViewDataSource
 extension LanguagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.laguanges.count
+        return viewModel.laguanges.value?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "languageCell", for: indexPath)
-        let languageData = viewModel.laguanges[indexPath.row];
+        let languageData = viewModel.laguanges.value![indexPath.row];
         cell.textLabel?.text = languageData.1
         
         if Localizer.shared.getCurrentLocale().identifier == languageData.0 {

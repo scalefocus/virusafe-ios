@@ -35,11 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
-        let locale = Locale(identifier: savedLocale)
-        Localizer.shared.initialize(locale: locale, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty) {
-        }
-        
         // Firebase
         FirebaseApp.configure()
         
@@ -54,6 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        //Initialize Localizaer
+        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
+        let locale = Locale(identifier: savedLocale)
+        
+        Localizer.shared.initialize(locale: locale, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty)
         
         // App Center
         MSAppCenter.start("e78845ce-5af8-49bc-9cf4-35bcb984fdc5", withServices: [
