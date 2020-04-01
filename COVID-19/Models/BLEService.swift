@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import CoreLocation
 
 private enum BLEServiceConstants {
 
@@ -90,8 +91,22 @@ final class BLEService: NSObject {
 
     private var centralManager: CBCentralManager!
     private var peripheralManager: CBPeripheralManager!
+
+    // Get notified when exit region - hope this will wake app when killed
+    lazy var locationManager: CLLocationManager = {
+        DispatchQueue.main.sync {
+            let locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.allowsBackgroundLocationUpdates = true
+            locationManager.pausesLocationUpdatesAutomatically = false
+            locationManager.distanceFilter = 10
+            return locationManager
+        }
+    }()
+
     // Good practice, but I'm not able to fire timers
-    //    private let queue = DispatchQueue(label: "com.scalefocus.bt", attributes: .concurrent)
+    private let backgroundConcurrentQueue = DispatchQueue(label: "com.scalefocus.bt", attributes: .concurrent)
 
     private weak var delegate: BLEServiceDelegate?
 
@@ -115,14 +130,12 @@ final class BLEService: NSObject {
         // !!! If we use lazy var for centralManager -
         // centralManagerDidUpdateState will not be called when created
         centralManager = CBCentralManager(delegate: self,
-                                          queue: nil)
-        // TODO: Add restore when you are sure how it works
-        //                                          options: [CBCentralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.central"])
+                                          queue: backgroundConcurrentQueue,
+                                          options: [CBCentralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.central"])
         // !!! Similar
         peripheralManager = CBPeripheralManager(delegate: self,
-                                                queue: nil)
-        // TODO: Add restore when you are sure how it works
-        //                                                options: [CBCentralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.peripheral"])
+                                                queue: backgroundConcurrentQueue,
+                                                options: [CBPeripheralManagerOptionRestoreIdentifierKey : "com.scalefocus.bt.peripheral"])
 
         // TODO: Add wait for Authorization timer
     }
@@ -225,53 +238,38 @@ final class BLEService: NSObject {
 
     // MARK: Timers
 
-    weak var reportTimer: Timer?
-    weak var processPeripheralsTimer: Timer?
-    weak var rescanTimer: Timer?
+    private var reportTimer: DispatchSourceTimer?
+    private var processPeripheralsTimer: DispatchSourceTimer?
+    private var rescanTimer: DispatchSourceTimer?
 
     private func startProcessPeripheralsTimer() {
-        //        queue.async {
-        let timer = Timer(timeInterval: BLEServiceConstants.processPeripheralTimerInterval,
-                          target: self,
-                          selector: #selector(self.processPeripherals(_:)),
-                          userInfo: nil,
-                          repeats: false)
-        RunLoop.current.add(timer, forMode: .common)
-        self.processPeripheralsTimer = timer
-        //        }
+        processPeripheralsTimer = DispatchSource.singleTimer(interval: .seconds(Int(BLEServiceConstants.processPeripheralTimerInterval)),
+                                                             leeway: .microseconds(300),
+                                                             queue: backgroundConcurrentQueue,
+                                                             handler: processPeripherals)
     }
 
     private func startReportTimer() {
-        //        queue.async {
-        let timer = Timer(timeInterval: BLEServiceConstants.updateTimerInterval,
-                          target: self,
-                          selector: #selector(self.reportRangesToDelegate(_:)),
-                          userInfo: nil,
-                          repeats: true)
-        RunLoop.current.add(timer, forMode: .common)
-        self.reportTimer = timer
-        //        }
+        reportTimer = DispatchSource.repeatingTimer(interval: .seconds(Int(BLEServiceConstants.updateTimerInterval)),
+                                                    leeway: .microseconds(300),
+                                                    queue: backgroundConcurrentQueue,
+                                                    handler: reportRangesToDelegate)
     }
 
     private func startRescanTimer() {
-        //        queue.async {
-        let timer = Timer(timeInterval: BLEServiceConstants.restartScanTimerInterval,
-                          target: self,
-                          selector: #selector(self.restartScanForDevices(_:)),
-                          userInfo: nil,
-                          repeats: false)
-        RunLoop.current.add(timer, forMode: .common)
-        self.rescanTimer = timer
-        //        }
+        rescanTimer = DispatchSource.singleTimer(interval: .seconds(Int(BLEServiceConstants.restartScanTimerInterval)),
+                                                 leeway: .microseconds(300),
+                                                 queue: backgroundConcurrentQueue,
+                                                 handler: restartScanForDevices)
     }
 
     private func stopReportTimer() {
-        reportTimer?.invalidate()
+        reportTimer?.cancel()
         reportTimer = nil
     }
 
     @objc
-    private func reportRangesToDelegate(_ timer: Timer) {
+    private func reportRangesToDelegate() {
         for (peripheralKey, peripheralUUID) in peripheralUUIDSMatching {
             let ranges = peripheralDetected[peripheralKey]
             uuidsDetected[peripheralUUID] = ranges
@@ -292,7 +290,7 @@ final class BLEService: NSObject {
     }
 
     @objc
-    private func processPeripherals(_ timer: Timer) {
+    private func processPeripherals() {
         guard peripheralsToBeValidated.count > 0 else {
             startProcessPeripheralsTimer()
             return
@@ -313,7 +311,7 @@ final class BLEService: NSObject {
     }
 
     @objc
-    private func restartScanForDevices(_ timer: Timer) {
+    private func restartScanForDevices() {
         cancelPeripheralToBeValidatedConnections()
         startScanForDevices()
     }
@@ -357,12 +355,12 @@ final class BLEService: NSObject {
         return BLEDeviceRange(wirh: proximity)
     }
 
-    // MARK: Thread safe
+    // MARK: Mutex
 
     private func synchronized(_ lock: Any, closure: () -> ()) {
-        objc_sync_enter(lock)
-        closure()
-        objc_sync_exit(lock)
+        backgroundConcurrentQueue.sync {
+            closure()
+        }
     }
 
     // MARK: Clean
@@ -383,6 +381,32 @@ final class BLEService: NSObject {
             peripheralUUIDSMatching.removeAll()
             uuidsDetected.removeAll()
         }
+    }
+
+    // MARK: Region monitoring
+
+    private func startMonitoring() {
+        switch CLLocationManager.authorizationStatus() {
+            case .authorizedAlways, .authorizedWhenInUse:
+                if let regionCenter = locationManager.location?.coordinate {
+                    startMonitoring(with: regionCenter)
+            }
+            default:
+                locationManager.requestAlwaysAuthorization()
+        }
+    }
+
+    private var currentRegion: CLCircularRegion?
+
+    private func startMonitoring(with center: CLLocationCoordinate2D) {
+        let region = CLCircularRegion(center: center,
+                                      radius: CLLocationDistance(10), // TODO: Make it constant
+            identifier: "com.upnetix.bt.region-monitoring")
+        if let currentRegion = self.currentRegion {
+            locationManager.stopMonitoring(for: currentRegion)
+        }
+        currentRegion = region
+        locationManager.startMonitoring(for: region)
     }
 }
 
@@ -456,6 +480,13 @@ extension BLEService: CBCentralManagerDelegate {
 
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
         print("central will restore state")
+        guard let restoredPeripherals = dict[CBCentralManagerRestoredStatePeripheralsKey] as? [CBPeripheral] else {
+            return
+        }
+        synchronized(self) {
+            peripheralsToBeValidated = restoredPeripherals
+        }
+
     }
 }
 
@@ -580,5 +611,52 @@ extension BLEService: CBPeripheralDelegate {
 
         print("discover service for \(peripheral.identifier.uuidString.uppercased())")
         peripheral.discoverCharacteristics([beaconCharacteristicUUID()], for: service)
+    }
+}
+
+// MARK: Create timers helpers
+
+extension DispatchSource {
+    class func singleTimer(interval: DispatchTimeInterval,
+                           leeway: DispatchTimeInterval = .nanoseconds(0),
+                           queue: DispatchQueue,
+                           handler: @escaping () -> Void) -> DispatchSourceTimer {
+        let result = DispatchSource.makeTimerSource(queue: queue)
+        result.setEventHandler(handler: handler)
+        result.schedule(deadline: .now() + interval, repeating: .never, leeway: leeway)
+        result.resume()
+        return result
+    }
+
+    class func repeatingTimer(interval: DispatchTimeInterval,
+                              leeway: DispatchTimeInterval = .nanoseconds(0),
+                              queue: DispatchQueue,
+                              handler: @escaping () -> Void) -> DispatchSourceTimer {
+        let result = DispatchSource.makeTimerSource(queue: queue)
+        result.setEventHandler(handler: handler)
+        result.schedule(deadline: .now() + interval, repeating: interval, leeway: leeway)
+        result.resume()
+        return result
+    }
+}
+
+// MARK: CLLocationManagerDelegate
+
+extension BLEService: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("location manager change authorization status")
+        startMonitoring()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("location manager exit region")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("location manager exit region")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print("location manager start monitoring")
     }
 }
