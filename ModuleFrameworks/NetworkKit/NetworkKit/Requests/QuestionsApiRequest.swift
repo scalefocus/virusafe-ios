@@ -8,6 +8,13 @@
 import Foundation
 
 public class QuestionsApiRequest: BaseAPIRequest {
+    private var language: String = ""
+    
+    public convenience init(language: String) {
+        self.init()
+        self.language = language
+    }
+    
     public override var httpMethod: HTTPMethod {
         return .get
     }
@@ -26,7 +33,10 @@ public class QuestionsApiRequest: BaseAPIRequest {
 
     public override var headers: [String: String] {
         var defaultHeaders = super.headers
+        
         defaultHeaders["Accept"] = "application/json"
+        defaultHeaders["language"] = language
+        
         return defaultHeaders
     }
 

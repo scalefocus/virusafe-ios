@@ -8,6 +8,7 @@
 
 import Foundation
 import TwoWayBondage
+import UpnetixLocalizer
 
 protocol HealthStatusViewModelDelegate: class {
     func sendHealtStatus(_ request: AnswersRequest,
@@ -110,7 +111,12 @@ class HealthStatusViewModel {
     func getHealthStatusData() {
         // show activity indicator
         shouldShowLoadingIndicator.value = true
-        questionnaireRepository.requestQuestions { [weak self] result in
+        
+        //TODO : better way to map languages
+        let currentLocale = Localizer.shared.getCurrentLocale()
+        let serverLocaleValue = currentLocale.identifier == "bg" ? "bg" : "en"
+        
+        questionnaireRepository.requestQuestions(with: serverLocaleValue) { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             defer {

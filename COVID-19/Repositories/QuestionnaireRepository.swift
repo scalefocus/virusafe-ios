@@ -13,7 +13,7 @@ typealias RequestQuestionCompletion = ((ApiResult<HealthStatus>) -> Void)
 typealias SendAnswersCompletion = ((ApiResult<Void>) -> Void)
 
 protocol QuestionnaireRepositoryProtocol {
-    func requestQuestions(with completion: @escaping RequestQuestionCompletion)
+    func requestQuestions(with locale: String, and completion: @escaping RequestQuestionCompletion)
     func sendAnswers(_ answers: [HealthStatusQuestion],
                      for phoneNumber: String,
                      at latitude: Double,
@@ -28,8 +28,8 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
     // 2) execute() which doesn't parse and just returns data
     // P.S -> In many cases you should use the extension executeParsedWithHandling() and executeWithHandling()
     // which adds error handling/showing alerts/etc
-    func requestQuestions(with completion: @escaping RequestQuestionCompletion) {
-        QuestionsApiRequest().executeParsed(of: [Question].self) { (questions, response, error) in
+    func requestQuestions(with locale: String, and completion: @escaping RequestQuestionCompletion) {
+        QuestionsApiRequest(language: locale).executeParsed(of: [Question].self) { (questions, response, error) in
             guard let statusCode = response?.statusCode, error == nil else {
                 completion(.failure(.general))
                 return
