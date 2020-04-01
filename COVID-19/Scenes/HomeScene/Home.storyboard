@@ -191,7 +191,7 @@
                                     <action selector="didTapHiddenButton:" destination="Pm6-G1-6uV" eventType="touchUpInside" id="kbO-z4-NUH"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
                                 <rect key="frame" x="24" y="534.5" width="51.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kNU-SS-zpP"/>

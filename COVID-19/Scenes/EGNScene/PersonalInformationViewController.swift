@@ -13,7 +13,6 @@ import IQKeyboardManager
 enum Gender: String, Codable, CaseIterable {
     case male = "MALE"
     case female = "FEMALE"
-    case other = "OTHER"
     case notSelected = ""
 
     var tag: Int {
@@ -22,10 +21,8 @@ enum Gender: String, Codable, CaseIterable {
             return 0
         case .female:
             return 1
-        case .other:
-            return 2
         case .notSelected:
-            return 3
+            return 2
         }
     }
 }
@@ -116,7 +113,6 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         skipButton.setTitle("skip_label".localized(), for: .normal)
         genderButtons[Gender.female.tag].setTitle("gender_female".localized(), for: .normal)
         genderButtons[Gender.male.tag].setTitle("gender_male".localized(), for: .normal)
-        genderButtons[Gender.other.tag].setTitle("gender_other".localized(), for: .normal)
     }
     
     private func setupIconImageViewTint() {
@@ -242,7 +238,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         if emptyTextFieldsTitles.isEmpty {
             viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
         } else {
-            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "\\n%1$s", with: "") + " " + emptyTextFieldsTitles.joined(separator: "")
+            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " " + emptyTextFieldsTitles.joined(separator: "")
 
             let alert = UIAlertController(title: nil,
                                           message: message,
@@ -260,7 +256,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     }
     
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
-        viewModel.gender.value = Gender.allCases.first(where: { $0.tag == sender.tag }) ?? Gender.other
+        viewModel.gender.value = Gender.allCases.first(where: { $0.tag == sender.tag }) ?? Gender.notSelected
     }
 
     @IBAction private func didTapSkipButton(_ sender: Any) {

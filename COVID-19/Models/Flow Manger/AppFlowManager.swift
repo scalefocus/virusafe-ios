@@ -21,7 +21,7 @@ enum NavigationStep {
     case completed
     case about(isInitial: Bool)
     case personalInformation
-    case languages
+    case languages(isInitial: Bool)
 }
 
 protocol NavigationDelegate: class {
@@ -42,6 +42,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
         case personalInformation
         case success // confirm
         case initialAbout
+        case initialLanguages
         case languages
 
         case pop
@@ -98,7 +99,9 @@ final class AppFlowManager: StateMachineDelegateProtocol {
                 return true
             case (.register, .registerConfirm):
                 return true
-            case (.ready, .initialAbout):
+            case (.initialLanguages, .initialAbout):
+                return true
+            case (.ready, .initialLanguages):
                 return true
             case (.home, .personalInformation), (.healthStatus, .personalInformation):
                 return true
@@ -126,13 +129,16 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             case (.register, .registerConfirm):
                 previousStatesStack.append(newState)
                 navigateToRegistrationConfirmation()
-            case (.ready, .initialAbout):
+            case (.initialLanguages, .initialAbout):
                 previousStatesStack = [newState]
                 navigateToWebViewController(source: .about, isRoot: true)
             case (.home, .personalInformation), (.healthStatus, .personalInformation):
                 previousStatesStack.append(newState)
                 navigateToPersonalInformationViewController()
             case (.home,.languages):
+                previousStatesStack.append(newState)
+                navigateToLanguagesViewController()
+            case (.ready,.initialLanguages):
                 previousStatesStack.append(newState)
                 navigateToLanguagesViewController()
             default:
@@ -172,8 +178,12 @@ extension AppFlowManager: NavigationDelegate {
                 }
             case .personalInformation:
                 stateMachine.state = .personalInformation
-            case .languages:
-                stateMachine.state = .languages
+            case .languages(let isInitial):
+                if isInitial {
+                    stateMachine.state = .initialLanguages
+                } else {
+                    stateMachine.state = .languages
+                }
             @unknown default:
                 assertionFailure("Unhandled navigation step: \(step)")
         }
@@ -248,9 +258,18 @@ extension AppFlowManager: NavigationDelegate {
             .instantiateViewController(withIdentifier: "\(LanguagesViewController.self)")
             as! LanguagesViewController // !!! Force unwrap
         
+        languagesViewController.title = "select_language".localized()
+        languagesViewController.viewModel = LanguagesViewModel.init(firstLaunchCheckRepository: firstLaunchCheckRepository)
+        languagesViewController.navigationDelegate = self
 
-        navigationController.push(viewController: languagesViewController)
-        setupBackButton(viewController: languagesViewController)
+        
+        if !languagesViewController.viewModel.isInitialFlow {
+            navigationController.push(viewController: languagesViewController)
+            setupBackButton(viewController: languagesViewController)
+        } else {
+            navigationController.setNavigationBarHidden(false, animated: false)
+            navigationController.setRoot(viewController: languagesViewController)
+        }
     }
     
     private func navigateToConfirmationViewController() {

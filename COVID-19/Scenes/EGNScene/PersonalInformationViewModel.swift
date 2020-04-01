@@ -80,7 +80,7 @@ final class PersonalInformationViewModel {
         let request = PersonalInformation(identificationNumber: personalNumber,
                                           phoneNumber: "", // !!! It is not important in the request
                                           age: ageInt ?? 0,
-                                          gender: gender.value ?? .other,
+                                          gender: gender.value ?? .notSelected,
                                           preExistingConditions: preexistingConditions.value ?? "")
         delegate?.sendPersonalInformation(request) { [weak self] result in
             // if we're gone do nothing
