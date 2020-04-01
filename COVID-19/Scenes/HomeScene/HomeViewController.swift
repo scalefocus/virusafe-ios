@@ -85,7 +85,7 @@ class HomeViewController: UIViewController, Navigateble {
     }
     
     @IBAction private func languagesButtonTap() {
-        navigationDelegate?.navigateTo(step: .languages)
+        navigationDelegate?.navigateTo(step: .languages(isInitial: false))
     }
 
     @IBAction private func moreInfoDidTap() {

@@ -9,7 +9,11 @@
 import UIKit
 import UpnetixLocalizer
 
-class LanguagesViewController: UIViewController {
+class LanguagesViewController: UIViewController, Navigateble {
+    
+    // MARK: Navigateble
+
+    weak var navigationDelegate: NavigationDelegate?
     
     // MARK: Outlets
     
@@ -36,7 +40,7 @@ class LanguagesViewController: UIViewController {
                 }
             }
             
-            // TODO: Continue to next screen of initialFlow
+           navigateToNextViewController()
         }
     }
     
@@ -63,6 +67,10 @@ class LanguagesViewController: UIViewController {
         
         confirmButton.backgroundColor = .healthBlue
         confirmButton.setTitle("confirm_label".localized(), for: .normal)
+    }
+    
+    private func navigateToNextViewController() {
+        navigationDelegate?.navigateTo(step: .about(isInitial: viewModel.isInitialFlow))
     }
     
 
