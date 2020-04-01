@@ -11,14 +11,30 @@ import UpnetixLocalizer
 
 class LanguagesViewController: UIViewController {
     
+    // MARK: Outlets
+    
+    @IBOutlet weak var confirmButton: UIButton!
+    
     // MARK: View Model
     
-    private let languagesViewControllerModel = LanguagesViewModel()
+    var viewModel:LanguagesViewModel!
+    
+    // MARK: Actions
+    
+    @IBAction func didTapConfirm(_ sender: Any) {
+        
+    }
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if viewModel.isInitialFlow {
+            confirmButton.isHidden = false
+        } else {
+            confirmButton.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +45,9 @@ class LanguagesViewController: UIViewController {
     
     private func setupUI() {
         title = "select_language".localized()
+        
+        confirmButton.backgroundColor = .healthBlue
+        confirmButton.setTitle("confirm_label".localized(), for: .normal)
     }
     
 
@@ -42,7 +61,7 @@ extension LanguagesViewController:UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         
-        let languageData = languagesViewControllerModel.laguanges[indexPath.row]
+        let languageData = viewModel.laguanges[indexPath.row]
         let locale = Locale(identifier: languageData.0)
         Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
             print(desiredLocale)
@@ -63,13 +82,13 @@ extension LanguagesViewController:UITableViewDelegate {
 // MARK: UITableViewDataSource
 extension LanguagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return languagesViewControllerModel.laguanges.count
+        return viewModel.laguanges.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "languageCell", for: indexPath)
-        let languageData = languagesViewControllerModel.laguanges[indexPath.row];
+        let languageData = viewModel.laguanges[indexPath.row];
         cell.textLabel?.text = languageData.1
         
         if Localizer.shared.getCurrentLocale().identifier == languageData.0 {

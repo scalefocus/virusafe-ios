@@ -248,6 +248,8 @@ extension AppFlowManager: NavigationDelegate {
             .instantiateViewController(withIdentifier: "\(LanguagesViewController.self)")
             as! LanguagesViewController // !!! Force unwrap
         
+        languagesViewController.viewModel = LanguagesViewModel.init(firstLaunchCheckRepository: firstLaunchCheckRepository)
+        
 
         navigationController.push(viewController: languagesViewController)
         setupBackButton(viewController: languagesViewController)

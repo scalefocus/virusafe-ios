@@ -12,4 +12,13 @@ import Foundation
 final class LanguagesViewModel {
     //TODO: Fix format of data when we connect to Flex
     var laguanges:[(String,String)] = [("bg","Български"), ("en_GB","English")]
+    private let firstLaunchCheckRepository: AppLaunchRepository
+    
+    var isInitialFlow: Bool {
+        return !firstLaunchCheckRepository.isAppLaunchedBefore
+    }
+    
+    init(firstLaunchCheckRepository: AppLaunchRepository) {
+        self.firstLaunchCheckRepository = firstLaunchCheckRepository
+    }
 }
