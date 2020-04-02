@@ -190,9 +190,7 @@ final class BLEService: NSObject {
 
     // Unused, but could be helpfil
     private func canAdvertise() -> Bool {
-        if #available(iOS 13.1, *) {
-            return CBPeripheralManager.authorization == .allowedAlways
-        } else if #available(iOS 13.0, *) {
+         if #available(iOS 13.0, *) {
             return peripheralManager.authorization == .allowedAlways
         } else if #available(iOS 7.0, *) {
             return CBPeripheralManager.authorizationStatus() == .authorized
