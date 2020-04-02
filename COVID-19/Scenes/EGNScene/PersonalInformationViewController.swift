@@ -231,14 +231,14 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         if (ageTextField.text ?? "").isEmpty {
             emptyTextFieldsTitles.append("age_hint".localized())
         }
-        if (preexistingConditionsTextField.text ?? "").isEmpty {
-            emptyTextFieldsTitles.append("chronical_conditions_hint".localized())
-        }
+//        if (preexistingConditionsTextField.text ?? "").isEmpty {
+//            emptyTextFieldsTitles.append("chronical_conditions_hint".localized())
+//        }
 
         if emptyTextFieldsTitles.isEmpty {
             viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
         } else {
-            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " " + emptyTextFieldsTitles.joined(separator: "")
+            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " " + emptyTextFieldsTitles.joined(separator: ", ")
 
             let alert = UIAlertController(title: nil,
                                           message: message,

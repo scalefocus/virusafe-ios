@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>20.4.21033</string>
+	<string>20.4.21134</string>
 	<key>GoogleServicesInfoPlistName</key>
 	<string>$(GOOGLE_SERVICES_INFO_PLSIT_NAME)</string>
 	<key>LSRequiresIPhoneOS</key>
