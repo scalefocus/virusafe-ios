@@ -296,7 +296,7 @@ extension PersonalInformationViewController: UITextFieldDelegate {
                 if let birthdate = data.birthdate {
                     let years = Date.yearsBetween(startDate: birthdate, endDate: Date())
                     // ??? Check if years is empty
-                    ageTextField.text = "\(years)"
+                    viewModel.age.value = "\(years)"
                 }
 
                 viewModel.gender.value = data.sex
