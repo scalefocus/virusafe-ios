@@ -273,11 +273,11 @@ extension PersonalInformationViewController: ToastViewPresentable {}
 
 extension PersonalInformationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
         
         if textField == egnTextField {
+            // Validation
             guard newString.length > 0 else {
                 egnErrorLabel.text = nil
                 return true
@@ -289,6 +289,18 @@ extension PersonalInformationViewController: UITextFieldDelegate {
             } else {
                 egnErrorLabel.text = "field_invalid_format_msg".localized()
             }
+
+            // Parse if valid egn
+            if let data = EGNHelper().parse(egn: newString as String) {
+                if let birthdate = data.birthdate {
+                    let years = Date.yearsBetween(startDate: birthdate, endDate: Date())
+                    // ??? Check if years is empty
+                    ageTextField.text = "\(years)"
+                }
+
+                viewModel.gender.value = data.sex
+            }
+
             return newString.length <= maximumPersonalNumberLength
         } else if textField == ageTextField {
             let newAge:Int = (newString as NSString).integerValue
@@ -298,5 +310,15 @@ extension PersonalInformationViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+extension Date {
+    static func yearsBetween(startDate: Date, endDate: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year],
+                                                 from: startDate,
+                                                 to: endDate)
+        return components.year ?? 0
     }
 }
