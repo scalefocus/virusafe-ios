@@ -23,8 +23,6 @@ final class LanguagesViewModel {
     
     init(firstLaunchCheckRepository: AppLaunchRepository) {
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
-        getAvailableLanguages()
-        
     }
     
     func getAvailableLanguages() {

@@ -73,7 +73,7 @@ class LanguagesViewController: UIViewController, Navigateble {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.getAvailableLanguages()
         setupBindings()
         
         if viewModel.isInitialFlow {
