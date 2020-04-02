@@ -52,11 +52,8 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
                         case .invalidToken:
                             completion(.failure(.invalidToken))
                         case .tooManyRequests:
-                            let decoder = JSONDecoder()
-                            decoder.keyDecodingStrategy = .convertFromSnakeCase
-                            let response = try? decoder.decode(TooManyRequestsResponse.self, from: data ?? Data())
-                            let seconds = Int(response?.message ?? "3600") ?? 3600 // if not set return 1 hour by default
-                            completion(.failure(.tooManyRequests(reapeatAfter: seconds)))
+                            let reapeatAfter = TooManyRequestestHandler().handle(data: data)
+                            completion(.failure(.tooManyRequests(reapeatAfter: reapeatAfter)))
                         default:
                             // No special handling
                             completion(.failure(.server))

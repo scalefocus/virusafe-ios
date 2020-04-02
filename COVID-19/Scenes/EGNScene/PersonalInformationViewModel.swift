@@ -29,7 +29,7 @@ final class PersonalInformationViewModel {
 
     let isSendPersonalInformationCompleted = Observable<Bool>()
 
-    let isSendAnswersCompleted = Observable<Bool>()
+//    let isSendAnswersCompleted = Observable<Bool>()
     let shouldShowLoadingIndicator = Observable<Bool>()
 
     var age = Observable<String>()
@@ -91,25 +91,27 @@ final class PersonalInformationViewModel {
             switch result {
                 case .success:
                     strongSelf.isSendPersonalInformationCompleted.value = true
+                    // !!! If first launch of the app, mark registration as completed
+                    strongSelf.firstLaunchCheckRepository.isAppLaunchedBefore = true
                 case .failure(let reason):
                     strongSelf.requestError.value = reason
             }
         }
     }
 
-    func didTapSkipButton() {
-        shouldShowLoadingIndicator.value = true
-        delegate?.sendDelayedAnswers { [weak self] result in
-            // if we're gone do nothing
-            guard let strongSelf = self else { return }
-            // hide activity indicator
-            strongSelf.shouldShowLoadingIndicator.value = false
-            switch result {
-                case .success:
-                    strongSelf.isSendAnswersCompleted.value = true
-                case .failure(let reason):
-                    strongSelf.requestError.value = reason
-            }
-        }
-    }
+//    func didTapSkipButton() {
+//        shouldShowLoadingIndicator.value = true
+//        delegate?.sendDelayedAnswers { [weak self] result in
+//            // if we're gone do nothing
+//            guard let strongSelf = self else { return }
+//            // hide activity indicator
+//            strongSelf.shouldShowLoadingIndicator.value = false
+//            switch result {
+//                case .success:
+//                    strongSelf.isSendAnswersCompleted.value = true
+//                case .failure(let reason):
+//                    strongSelf.requestError.value = reason
+//            }
+//        }
+//    }
 }

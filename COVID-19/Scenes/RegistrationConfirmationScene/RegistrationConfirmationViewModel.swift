@@ -30,8 +30,8 @@ final class RegistrationConfirmationViewModel {
         shouldShowLoadingIndicator.value = true
         registrationRepository.authoriseVerificationCode(verificationCode: authorisationCode) { [weak self] result in
             guard let strongSelf = self else { return }
-            strongSelf.isCodeAuthorizationRequestSuccessful.value = result
             strongSelf.shouldShowLoadingIndicator.value = false
+            strongSelf.isCodeAuthorizationRequestSuccessful.value = result
         }
     }
 
@@ -43,8 +43,8 @@ final class RegistrationConfirmationViewModel {
         shouldShowLoadingIndicator.value = true
         registrationRepository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] result in
             guard let strongSelf = self else { return }
-            strongSelf.isResendCodeRequestSuccessful.value = result
             strongSelf.shouldShowLoadingIndicator.value = false
+            strongSelf.isResendCodeRequestSuccessful.value = result
         }
     }
 

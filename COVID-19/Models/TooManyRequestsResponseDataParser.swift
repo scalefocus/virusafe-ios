@@ -13,18 +13,10 @@ enum Timeout {
 }
 
 struct TooManyRequestsResponse: Codable {
-    var timestamp: String
+    var timestamp: String?
     var message: String
     var cause: String?
-    var errors: [String]
-}
-
-struct TooManyRequestsResponseDataParser {
-    func parse(_ data: Data) -> TooManyRequestsResponse? {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try? decoder.decode(TooManyRequestsResponse.self, from: data)
-    }
+    var errors: [String]?
 }
 
 extension TooManyRequestsResponse {
@@ -36,9 +28,17 @@ extension TooManyRequestsResponse {
     }
 }
 
+struct TooManyRequestsResponseDataParser {
+    func parse(_ data: Data) -> TooManyRequestsResponse? {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return try? decoder.decode(TooManyRequestsResponse.self, from: data)
+    }
+}
+
 extension UIAlertController {
     static func rateLimitExceededAlert(repeatAfterSeconds: Int) -> UIAlertController {
-        var message = "too_many_requests_msg".localized() + " "
+        var message = "too_many_requests_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " "
 
         let hours = repeatAfterSeconds / 3600
         if hours > 0 {
@@ -47,6 +47,9 @@ extension UIAlertController {
 
         let minutes = repeatAfterSeconds / 60
         if minutes > 0 {
+            if hours > 0 {
+                message += " "
+            }
             message += ("\(minutes) " + "minutes_label".localized())
         }
 

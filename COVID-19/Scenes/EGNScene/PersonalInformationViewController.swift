@@ -44,13 +44,12 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     @IBOutlet weak var genderLable: UILabel!
     @IBOutlet weak var ageTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var egnSubmitButton: UIButton!
-    @IBOutlet private weak var skipButton: UIButton!
     @IBOutlet private var genderButtons: [UIButton]!
     @IBOutlet weak var preexistingConditionsTextField: SkyFloatingLabelTextField!
     
     // MARK: Settings
     private let preexistingConditionsTextLength = 100 // Same as android
-    private let minimumPersonalNumberLength = 9
+//    private let minimumPersonalNumberLength = 9
     private let maximumPersonalNumberLength = 10
     private let maximumAge = 110
     
@@ -98,9 +97,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     private func setupUI() {
         setupIconImageViewTint()
         setupEgnTextField()
-        
-        skipButton.isHidden = !viewModel.isInitialFlow
-        
+
         title = viewModel.isInitialFlow == true ? "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n") :
                                                   "my_personal_data".localized()
         
@@ -111,7 +108,6 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         genderLable.text = "gender_hint".localized()
         preexistingConditionsTextField.placeholder = "chronical_conditions_hint".localized()
         egnSubmitButton.setTitle("confirm_label".localized(), for: .normal)
-        skipButton.setTitle("skip_label".localized(), for: .normal)
         genderButtons[Gender.female.tag].setTitle("gender_female".localized(), for: .normal)
         genderButtons[Gender.male.tag].setTitle("gender_male".localized(), for: .normal)
     }
@@ -132,14 +128,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
 
     private func setupBindings() {
         viewModel.isSendPersonalInformationCompleted.bind { [weak self] result in
-            self?.navigationDelegate?.navigateTo(step: .home)
-            guard let strongSelf = self else { return }
-            if !strongSelf.viewModel.isInitialFlow {
-                strongSelf.navigationDelegate?.navigateTo(step: .home)
-            }
-            else {
-                strongSelf.viewModel.didTapSkipButton()
-            }
+            self?.navigateToNextViewController()
         }
         
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
@@ -196,55 +185,51 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         }
   
         // fired only on success
-        viewModel.isSendAnswersCompleted.bind { [weak self] result in
-            self?.navigationDelegate?.navigateTo(step: .completed)
-        }
+//        viewModel.isSendAnswersCompleted.bind { [weak self] result in
+//            self?.navigateToNextViewController()
+//        }
+    }
+
+    // MARK: Navigation
+
+    private func navigateToNextViewController() {
+        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .healthStatus : .home)
     }
     
     // MARK: Actions
     
     @IBAction private func didTapSubmitButton(_ sender: Any) {
-        let egn = egnTextField.text ?? ""
-        if egn.count > 0 && egn.count < minimumPersonalNumberLength {
-            return
-        }
-        var emptyTextFieldsTitles: [String] = []
-        if egn.isEmpty {
-            emptyTextFieldsTitles.append("identification_number_hint".localized())
-        }
-        if (ageTextField.text ?? "").isEmpty {
-            emptyTextFieldsTitles.append("age_hint".localized())
-        }
-//        if (preexistingConditionsTextField.text ?? "").isEmpty {
-//            emptyTextFieldsTitles.append("chronical_conditions_hint".localized())
-//        }
-
-        if emptyTextFieldsTitles.isEmpty {
-            viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
-        } else {
-            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " " + emptyTextFieldsTitles.joined(separator: ", ")
-
+        guard let egn = egnTextField.text, !egn.isEmpty && EGNHelper().isValid(egn: egn) else {
             let alert = UIAlertController(title: nil,
-                                          message: message,
+                                          message: "invalid_egn_msg".localized(),
                                           preferredStyle: .alert)
             alert.addAction(
-                UIAlertAction(title: "skip_label".localized(), style: .destructive) { [weak self] action in
-                    self?.viewModel.didTapPersonalNumberAuthorization(with: self?.egnTextField.text ?? "")
+                UIAlertAction(title: "ok_label".localized(), style: .default) { action in
+                    self.egnTextField.becomeFirstResponder()
                 }
             )
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
+        guard let text = ageTextField.text, let age = Int(text), age >= 16 else {
+            let alert = UIAlertController(title: nil,
+                                          message: "invalid_min_age_msg".localized(),
+                                          preferredStyle: .alert)
             alert.addAction(
-                UIAlertAction(title: "back_text".localized(), style: .default) { _ in }
+                UIAlertAction(title: "ok_label".localized(), style: .default) { action in
+                    self.egnTextField.becomeFirstResponder()
+                }
             )
             present(alert, animated: true, completion: nil)
+            return
         }
+
+        viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
     }
     
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
         viewModel.gender.value = Gender.allCases.first(where: { $0.tag == sender.tag }) ?? Gender.notSelected
-    }
-
-    @IBAction private func didTapSkipButton(_ sender: Any) {
-        viewModel.didTapSkipButton()
     }
     
 }
@@ -261,17 +246,23 @@ extension PersonalInformationViewController: UITextFieldDelegate {
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
         
         if textField == egnTextField {
+            submitButtonLocked(false)
+
             // Validation
             guard newString.length > 0 else {
                 egnErrorLabel.text = nil
                 return true
             }
-            if (newString.length >= minimumPersonalNumberLength
-                && newString.length <= maximumPersonalNumberLength)
-                || textFieldText.length == maximumPersonalNumberLength {
-                egnErrorLabel.text = nil
-            } else {
+
+            if newString.length < maximumPersonalNumberLength {
                 egnErrorLabel.text = "field_invalid_format_msg".localized()
+                return true
+            }
+
+            egnErrorLabel.text = nil
+
+            if newString.length > maximumPersonalNumberLength {
+                return false
             }
 
             // Parse if valid egn
@@ -284,10 +275,9 @@ extension PersonalInformationViewController: UITextFieldDelegate {
 
                 viewModel.gender.value = data.sex
                 
-                personalInfoFields(locked:true)
-            
+                submitButtonLocked(true)
             } else {
-                personalInfoFields(locked:false)
+                egnErrorLabel.text = "field_invalid_format_msg".localized()
             }
 
             return newString.length <= maximumPersonalNumberLength
@@ -301,11 +291,8 @@ extension PersonalInformationViewController: UITextFieldDelegate {
         return true
     }
     
-    func personalInfoFields(locked:Bool) {
-        for button in genderButtons {
-            button.isEnabled = !locked
-        }
-        ageTextField.isEnabled = !locked
+    func submitButtonLocked(_ locked: Bool) {
+        egnSubmitButton.isEnabled = locked
     }
 }
 
