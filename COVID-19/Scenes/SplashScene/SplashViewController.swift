@@ -65,7 +65,17 @@ class SplashViewController: UIViewController, Navigateble {
     private func navigateToNextViewController() {
         let isUserRegistered: Bool = (TokenStore.shared.token != nil)
         let isAppLaunchedBefore = AppLaunchRepository().isAppLaunchedBefore
-        navigationDelegate?.navigateTo(step: isUserRegistered ? .home : (isAppLaunchedBefore ? .register : .languages(isInitial: true)))
+        switch (isUserRegistered, isAppLaunchedBefore) {
+            case (true, true):
+                // Initial flow completed at some point user returns to app
+                navigationDelegate?.navigateTo(step: .home)
+            case (false, true):
+                // App was killed after expired session and now user returns
+                navigationDelegate?.navigateTo(step: .register)
+            default:
+                // First run or killed after confirm pin
+                navigationDelegate?.navigateTo(step: .languages(isInitial: true))
+        }
     }
 
 }

@@ -172,7 +172,7 @@ class HealthStatusViewController: UIViewController, Navigateble {
     // MARK: Navigation
 
     private func navigateToNextViewController() {
-        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .personalInformation : .completed)
+        navigationDelegate?.navigateTo(step: .completed)
     }
 
 }

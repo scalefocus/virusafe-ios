@@ -93,7 +93,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
                 return true
             case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
                 return true
-            case (.home, .healthStatus), (.registerConfirm, .healthStatus):
+            case (.home, .healthStatus), (.personalInformation, .healthStatus):
                 return true
             case (.healthStatus, .success), (.personalInformation, .success):
                 return true
@@ -103,7 +103,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
                 return true
             case (.ready, .initialLanguages):
                 return true
-            case (.home, .personalInformation), (.healthStatus, .personalInformation):
+            case (.home, .personalInformation), (.registerConfirm, .personalInformation):
                 return true
             case (.home, .languages):
                 return true
@@ -120,7 +120,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             case (_, .register):
                 previousStatesStack = [newState]
                 setRegisterAsRootViewController()
-            case (.home, .healthStatus), (.registerConfirm, .healthStatus):
+            case (.home, .healthStatus), (.personalInformation, .healthStatus):
                 previousStatesStack.append(newState)
                 navigateToHealthStatusViewController()
             case (.healthStatus, .success), (.personalInformation, .success):
@@ -132,13 +132,13 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             case (.initialLanguages, .initialAbout):
                 previousStatesStack = [newState]
                 navigateToWebViewController(source: .about, isRoot: true)
-            case (.home, .personalInformation), (.healthStatus, .personalInformation):
+            case (.home, .personalInformation), (.registerConfirm, .personalInformation):
                 previousStatesStack.append(newState)
                 navigateToPersonalInformationViewController()
-            case (.home,.languages):
+            case (.home, .languages):
                 previousStatesStack.append(newState)
                 navigateToLanguagesViewController()
-            case (.ready,.initialLanguages):
+            case (.ready, .initialLanguages):
                 previousStatesStack.append(newState)
                 navigateToLanguagesViewController()
             default:
