@@ -300,6 +300,11 @@ extension PersonalInformationViewController: UITextFieldDelegate {
                 }
 
                 viewModel.gender.value = data.sex
+                
+                personalInfoFields(locked:true)
+            
+            } else {
+                personalInfoFields(locked:false)
             }
 
             return newString.length <= maximumPersonalNumberLength
@@ -311,6 +316,13 @@ extension PersonalInformationViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    func personalInfoFields(locked:Bool) {
+        for button in genderButtons {
+            button.isEnabled = !locked
+        }
+        ageTextField.isEnabled = !locked
     }
 }
 
