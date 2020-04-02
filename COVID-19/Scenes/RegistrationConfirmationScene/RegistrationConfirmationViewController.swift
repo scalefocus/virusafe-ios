@@ -109,6 +109,8 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
                 case .success:
                     strongSelf.navigateToNextViewController()
                 case .invalidPhoneNumber:
+                    strongSelf.showToast(message: "invalid_phone_msg".localized())
+                case .invalidPin:
                     strongSelf.showToast(message: "invalid_pin_msg".localized())
                 default:
                     strongSelf.showToast(message: "no_internet_msg".localized())
@@ -122,6 +124,9 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
                     strongSelf.showToast(message: "verification_code_send_again".localized())
                 case .invalidPhoneNumber:
                     strongSelf.showToast(message: "invalid_phone_msg".localized())
+                case .tooManyRequests(let reapeatAfter):
+                    let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
+                    self?.present(alert, animated: true, completion: nil)
                 default:
                     strongSelf.showToast(message: "no_internet_msg".localized())
             }
