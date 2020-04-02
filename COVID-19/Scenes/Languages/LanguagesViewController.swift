@@ -63,6 +63,8 @@ class LanguagesViewController: UIViewController, Navigateble {
                 UserDefaults.standard.synchronize()
                 self?.navigateToNextViewController()
             }
+
+            // TODO: Handle error
         }
     
     }
@@ -92,16 +94,26 @@ class LanguagesViewController: UIViewController, Navigateble {
         
         confirmButton.backgroundColor = .healthBlue
         confirmButton.setTitle("confirm_label".localized(), for: .normal)
+
+        // TODO: Change back button if exists
+
+        // TODO: Refactor to move this side effect
+        StaticContentPage.shared.url = "url_about_covid".localized()
+        AppInfoPage.shared.url = "url_virusafe_why".localized()
+
+        // back button
+        let item = navigationItem.leftBarButtonItem
+        let button = item?.customView as? UIButton
+        button?.setTitleColor(.healthBlue, for: .normal)
+        button?.setTitle("back_text".localized(), for: .normal)
+        button?.sizeToFit()
     }
     
     private func navigateToNextViewController() {
         navigationDelegate?.navigateTo(step: .about(isInitial: viewModel.isInitialFlow))
     }
-    
 
 }
-
-
 
 // MARK: UITableViewDelegate
 extension LanguagesViewController:UITableViewDelegate {
@@ -118,6 +130,7 @@ extension LanguagesViewController:UITableViewDelegate {
                     self?.setupUI()
                     UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
                 }
+                // TODO: Handle error
             }
         }
         

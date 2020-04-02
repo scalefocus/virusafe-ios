@@ -349,24 +349,24 @@ extension AppFlowManager: NavigationDelegate {
 
     private func setupBackButton(viewController: UIViewController) {
         viewController.navigationItem.hidesBackButton = true
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
-                                                                          style: .plain,
-                                                                          target: self,
-                                                                          action: #selector(AppFlowManager.back(sender:)))
-    }
-    private func setupBackButtonNoStateMachine(viewController: UIViewController) {
-        viewController.navigationItem.hidesBackButton = true
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
-                                                                          style: .plain,
-                                                                          target: self,
-                                                                          action: #selector(AppFlowManager.backNoStateMachine(sender:)))
+        let button = UIButton(type: .custom)
+        button.setTitle("back_text".localized(), for: .normal)
+        button.addTarget(self,
+                         action: #selector(AppFlowManager.back(sender:)),
+                         for: .touchUpInside)
+        button.setTitleColor(.healthBlue, for: .normal)
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
     }
     
-    func localozeBackButton(viewController: UIViewController) {
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
-                                                                          style: .plain,
-                                                                          target: self,
-                                                                          action: #selector(AppFlowManager.back(sender:)))
+    private func setupBackButtonNoStateMachine(viewController: UIViewController) {
+        viewController.navigationItem.hidesBackButton = true
+        let button = UIButton(type: .custom)
+        button.setTitle("back_text".localized(), for: .normal)
+        button.setTitleColor(.healthBlue, for: .normal)
+        button.addTarget(self,
+                         action: #selector(AppFlowManager.backNoStateMachine(sender:)),
+                         for: .touchUpInside)
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
     }
 
     @objc

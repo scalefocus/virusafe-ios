@@ -189,14 +189,16 @@
                                     <action selector="didTapHiddenButton:" destination="Pm6-G1-6uV" eventType="touchUpInside" id="kbO-z4-NUH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
-                                <rect key="frame" x="24" y="534.5" width="51.5" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
+                                <rect key="frame" x="24" y="534.5" width="100" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="fYp-IU-Zg0"/>
                                     <constraint firstAttribute="height" constant="30" id="kNU-SS-zpP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <state key="normal" title="Език" image="globe" catalog="system">
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Език" image="globe">
                                     <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                 </state>
@@ -245,7 +247,7 @@
     </scenes>
     <resources>
         <image name="SF-logo-grey" width="78" height="13"/>
-        <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="globe" width="24" height="24"/>
         <image name="ic_app_logo" width="138" height="135"/>
     </resources>
 </document>
