@@ -65,7 +65,8 @@ class TermsAndConditionsViewController: UIViewController {
     }
 
     private func loadTnCFromRtf() {
-        if let rtfPath = Bundle.main.url(forResource: "TnC", withExtension: "rtf") {
+        let language = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
+        if let rtfPath = Bundle.main.url(forResource: "TnC-\(language)", withExtension: "rtf") {
             do {
                 let attributedStringWithRtf: NSAttributedString = try NSAttributedString(url: rtfPath, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
                 // TODO: Refactor to avoid this side effect

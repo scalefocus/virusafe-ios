@@ -91,7 +91,6 @@
 		4179866524309BBD006CC2D9 /* PersonalInformationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */; };
 		417986692430B7BE006CC2D9 /* PushTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417986682430B7BE006CC2D9 /* PushTokenStore.swift */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
-		4181C716242D059E00FFDF7C /* TnC.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4181C715242D059E00FFDF7C /* TnC.rtf */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E669242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E668242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist */; };
 		41D3E66C242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist */; };
@@ -104,6 +103,8 @@
 		41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
 		41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
 		41FEF634243518F4006D30B2 /* EGNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* EGNHelper.swift */; };
+		5C23C9E32436775700F9CEDB /* TnC-bg.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E12436775600F9CEDB /* TnC-bg.rtf */; };
+		5C23C9E42436775700F9CEDB /* TnC-en-GB.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */; };
 		FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 /* End PBXBuildFile section */
 
@@ -224,7 +225,6 @@
 		4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationRepository.swift; sourceTree = "<group>"; };
 		417986682430B7BE006CC2D9 /* PushTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTokenStore.swift; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
-		4181C715242D059E00FFDF7C /* TnC.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TnC.rtf; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E668242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Info-Services.plist"; sourceTree = "<group>"; };
 		41D3E66B242E2F3E00AC96B1 /* GoogleService-Info-Upnetix.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Upnetix.plist"; sourceTree = "<group>"; };
@@ -237,6 +237,8 @@
 		41FEF62D24336230006D30B2 /* BLEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEViewController.swift; sourceTree = "<group>"; };
 		41FEF62F2433625A006D30B2 /* BLE.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BLE.storyboard; sourceTree = "<group>"; };
 		41FEF633243518F4006D30B2 /* EGNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EGNHelper.swift; sourceTree = "<group>"; };
+		5C23C9E12436775600F9CEDB /* TnC-bg.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-bg.rtf"; sourceTree = "<group>"; };
+		5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-en-GB.rtf"; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D1CD7FD0D446B912A7D0A1 /* Pods-COVID-19.release information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release information services.xcconfig"; sourceTree = "<group>"; };
 		C8428FC855E76DBCA0DA2996 /* Pods-COVID-19.debug information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug information services.xcconfig"; sourceTree = "<group>"; };
@@ -372,7 +374,8 @@
 				02B9A6B1242371F300B1A4C0 /* Main.storyboard */,
 				024D82E42423A81A00696868 /* Models */,
 				02B9A6B4242371F500B1A4C0 /* Assets.xcassets */,
-				4181C715242D059E00FFDF7C /* TnC.rtf */,
+				5C23C9E12436775600F9CEDB /* TnC-bg.rtf */,
+				5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
 				41D3E668242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist */,
@@ -700,7 +703,7 @@
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
-				4181C716242D059E00FFDF7C /* TnC.rtf in Resources */,
+				5C23C9E42436775700F9CEDB /* TnC-en-GB.rtf in Resources */,
 				41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */,
 				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
 				4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */,
@@ -710,6 +713,7 @@
 				385BDD6A243203A900476F69 /* Languages.storyboard in Resources */,
 				4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */,
 				41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */,
+				5C23C9E32436775700F9CEDB /* TnC-bg.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
