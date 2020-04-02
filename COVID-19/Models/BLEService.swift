@@ -227,13 +227,11 @@ final class BLEService: NSObject {
     }
 
     // Unused, but could be helpfil
-    private func canScan() -> Bool {
-        if #available(iOS 13.1, *) {
-            return CBCentralManager.authorization == .allowedAlways
-        } else if #available(iOS 13.0, *) {
+    private func isBluetoothAuthorized() -> Bool {
+        if #available(iOS 13.0, *) {
             return centralManager.authorization == .allowedAlways
         }
-        return true
+        return CBPeripheralManager.authorizationStatus() == .authorized
     }
 
     // MARK: Timers
