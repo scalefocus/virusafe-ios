@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="0fq-ju-bQB">
-                                                <rect key="frame" x="20" y="20" width="374" height="564"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="536"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-k6-aD7">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="86"/>
@@ -66,7 +66,7 @@
                                                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Години" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-8U-DfZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Години" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-8U-DfZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="135" width="374" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="Uyw-lV-NSY"/>
@@ -95,7 +95,7 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yjF-ht-dh4">
                                                                                 <rect key="frame" x="0.0" y="5" width="374" height="40"/>
                                                                                 <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inC-K5-Pgs">
+                                                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inC-K5-Pgs">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="40" id="SR5-qB-dmM"/>
@@ -119,7 +119,7 @@
                                                                                             <action selector="didTapGenderButton:" destination="BBf-ct-6Or" eventType="touchUpInside" id="f55-1J-n9Q"/>
                                                                                         </connections>
                                                                                     </button>
-                                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1S-BH-BuZ">
+                                                                                    <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1S-BH-BuZ">
                                                                                         <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                                         <state key="normal" title="Жена">
@@ -140,7 +140,7 @@
                                                                                             <action selector="didTapGenderButton:" destination="BBf-ct-6Or" eventType="touchUpInside" id="okP-ig-6Tb"/>
                                                                                         </connections>
                                                                                     </button>
-                                                                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoO-4Y-zAi">
+                                                                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoO-4Y-zAi">
                                                                                         <rect key="frame" x="374" y="0.0" width="182" height="40"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                                         <state key="normal" title="Друго">
@@ -193,7 +193,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ACo-zE-g9g">
-                                                        <rect key="frame" x="0.0" y="496" width="374" height="68"/>
+                                                        <rect key="frame" x="0.0" y="496" width="374" height="40"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zw-6Y-eaH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -214,18 +214,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="didTapSubmitButton:" destination="BBf-ct-6Or" eventType="touchUpInside" id="w0z-Mp-uUO"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0O2-lo-4Nu">
-                                                                <rect key="frame" x="151" y="48" width="72" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="g8I-9A-buN"/>
-                                                                </constraints>
-                                                                <state key="normal" title="Пропусни">
-                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="didTapSkipButton:" destination="BBf-ct-6Or" eventType="touchUpInside" id="Pdw-eb-6xk"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -276,7 +264,6 @@
                         <outlet property="genderLable" destination="eyn-gl-i0e" id="AmM-kz-C5t"/>
                         <outlet property="iconImageView" destination="gQm-bl-JUH" id="dLY-wV-MCO"/>
                         <outlet property="preexistingConditionsTextField" destination="HuG-fG-Fcg" id="Twc-V9-FwQ"/>
-                        <outlet property="skipButton" destination="0O2-lo-4Nu" id="Kcg-mE-cf0"/>
                         <outletCollection property="genderButtons" destination="inC-K5-Pgs" collectionClass="NSMutableArray" id="QxF-ig-wg1"/>
                         <outletCollection property="genderButtons" destination="K1S-BH-BuZ" collectionClass="NSMutableArray" id="Eog-27-c92"/>
                         <outletCollection property="genderButtons" destination="zoO-4Y-zAi" collectionClass="NSMutableArray" id="tPK-BJ-Fig"/>

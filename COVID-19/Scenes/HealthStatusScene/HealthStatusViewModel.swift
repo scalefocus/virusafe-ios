@@ -172,14 +172,14 @@ class HealthStatusViewModel {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let location = appDelegate.currentLocation()
 
+        // Make BE happy if location could not be obtained
         let request = AnswersRequest(
             answers: answeredQuestions,
             phoneNumber: phoneNumber,
             latitude: location?.latitude ?? 0,
             longitude: location?.longitude ?? 0)
 
-        // Make BE happy if location could not be obtained
-        delegate?.sendHealtStatus(request, shouldDelayRequest: isInitialFlow) { [weak self] result in
+        delegate?.sendHealtStatus(request, shouldDelayRequest: false) { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             // hide activity indicator

@@ -124,15 +124,18 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
 
 final class TooManyRequestestHandler {
     func handle(data: Data?, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
+        let reapeatAfter = handle(data: data)
+        completion(.tooManyRequests(reapeatAfter: reapeatAfter))
+    }
+
+    func handle(data: Data?) -> Int {
         guard let data = data else {
-            completion(.tooManyRequests(reapeatAfter: Timeout.defaultInSeconds))
-            return
+            return Timeout.defaultInSeconds
         }
         guard let paresedData = TooManyRequestsResponseDataParser().parse(data) else {
-            completion(.tooManyRequests(reapeatAfter: Timeout.defaultInSeconds))
-            return
+            return Timeout.defaultInSeconds
         }
-        completion(.tooManyRequests(reapeatAfter: paresedData.reapeatAfter))
+        return paresedData.reapeatAfter
     }
 }
 
