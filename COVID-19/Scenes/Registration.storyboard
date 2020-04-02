@@ -44,7 +44,7 @@
                                                             <constraint firstAttribute="height" constant="45" id="u42-I3-kHT"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="kHq-Rd-HIu" id="77S-ru-bhI"/>
                                                         </connections>
@@ -211,7 +211,7 @@
                                                             <constraint firstAttribute="height" constant="45" id="lDk-9k-wei"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="teH-NA-k6A" id="s6Z-gr-baQ"/>
                                                         </connections>

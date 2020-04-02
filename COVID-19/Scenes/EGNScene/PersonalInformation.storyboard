@@ -49,13 +49,13 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vda-KU-syW">
                                                         <rect key="frame" x="0.0" y="121" width="374" height="340"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ЕГН/ЛНЧ/Номер на паспорт" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y30-vm-DKk" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ЕГН/ЛНЧ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y30-vm-DKk" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="vBd-Eh-4HF"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BBf-ct-6Or" id="LsK-ca-8BI"/>
                                                                 </connections>
@@ -72,7 +72,7 @@
                                                                     <constraint firstAttribute="height" constant="45" id="Uyw-lV-NSY"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BBf-ct-6Or" id="oYs-tu-0qb"/>
                                                                 </connections>
@@ -185,7 +185,7 @@
                                                                     <constraint firstAttribute="height" constant="45" id="hcC-op-gGD"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="BBf-ct-6Or" id="MEj-Lq-MX4"/>
                                                                 </connections>
