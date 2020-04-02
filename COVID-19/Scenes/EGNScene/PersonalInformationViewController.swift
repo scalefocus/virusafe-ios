@@ -193,15 +193,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // MARK: Navigation
 
     private func navigateToNextViewController() {
-        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .healthStatus : .completed)
+        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .healthStatus : .home)
     }
     
     // MARK: Actions
     
     @IBAction private func didTapSubmitButton(_ sender: Any) {
-        if let egn = egnTextField.text, !egn.isEmpty {
-            viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
-        } else {
+        guard let egn = egnTextField.text, !egn.isEmpty && EGNHelper().isValid(egn: egn) else {
             let alert = UIAlertController(title: nil,
                                           message: "invalid_egn_msg".localized(),
                                           preferredStyle: .alert)
@@ -211,7 +209,23 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                 }
             )
             present(alert, animated: true, completion: nil)
+            return
         }
+
+        guard let text = ageTextField.text, let age = Int(text), age >= 16 else {
+            let alert = UIAlertController(title: nil,
+                                          message: "invalid_min_age_msg".localized(),
+                                          preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: "ok_label".localized(), style: .default) { action in
+                    self.egnTextField.becomeFirstResponder()
+                }
+            )
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
+        viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
     }
     
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
@@ -262,6 +276,8 @@ extension PersonalInformationViewController: UITextFieldDelegate {
                 viewModel.gender.value = data.sex
                 
                 submitButtonLocked(true)
+            } else {
+                egnErrorLabel.text = "field_invalid_format_msg".localized()
             }
 
             return newString.length <= maximumPersonalNumberLength
