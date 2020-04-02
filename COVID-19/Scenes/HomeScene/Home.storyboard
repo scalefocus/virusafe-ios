@@ -54,30 +54,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="300" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="fzB-j9-wo8">
                                         <rect key="frame" x="20" y="14" width="280" height="325"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cI-5e-eld">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="mA1-HO-5Da"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                <state key="normal" title="КАК РАБОТИ ViruSafe">
-                                                    <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="didTapHowItWorksButton:" destination="Pm6-G1-6uV" eventType="touchUpInside" id="8PC-Vn-H4F"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dw-cQ-YvW">
-                                                <rect key="frame" x="0.0" y="75" width="280" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="EtH-z1-3Cy"/>
                                                 </constraints>
@@ -99,7 +77,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0u-TG-UQc">
-                                                <rect key="frame" x="0.0" y="150" width="280" height="45"/>
+                                                <rect key="frame" x="0.0" y="75" width="280" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="Anu-95-ARZ"/>
                                                 </constraints>
@@ -120,18 +98,40 @@
                                                     <action selector="didTapMyPersonalInfoButton:" destination="Pm6-G1-6uV" eventType="touchUpInside" id="fOb-4V-QnV"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrc-71-PLT">
+                                                <rect key="frame" x="0.0" y="150" width="280" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="Xh5-3S-T43"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="4" maxX="16" maxY="4"/>
+                                                <state key="normal" title="НАУЧИ ПОВЕЧЕ ЗА КОРОНАВИРУСА">
+                                                    <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="moreInfoDidTap" destination="Pm6-G1-6uV" eventType="touchUpInside" id="WdO-se-Mkx"/>
+                                                </connections>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6BF-FE-T97">
                                                 <rect key="frame" x="0.0" y="225" width="280" height="100"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrc-71-PLT">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cI-5e-eld">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="45"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="45" id="Xh5-3S-T43"/>
+                                                            <constraint firstAttribute="height" constant="45" id="mA1-HO-5Da"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                        <inset key="contentEdgeInsets" minX="16" minY="4" maxX="16" maxY="4"/>
-                                                        <state key="normal" title="НАУЧИ ПОВЕЧЕ ЗА КОРОНАВИРУСА">
+                                                        <state key="normal" title="КАК РАБОТИ ViruSafe">
                                                             <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -143,7 +143,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="moreInfoDidTap" destination="Pm6-G1-6uV" eventType="touchUpInside" id="WdO-se-Mkx"/>
+                                                            <action selector="didTapHowItWorksButton:" destination="Pm6-G1-6uV" eventType="touchUpInside" id="8PC-Vn-H4F"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vj-bP-xzM">
@@ -163,9 +163,7 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="p0u-TG-UQc" firstAttribute="width" secondItem="8cI-5e-eld" secondAttribute="width" id="DxD-Gh-drQ"/>
                                             <constraint firstItem="6BF-FE-T97" firstAttribute="leading" secondItem="fzB-j9-wo8" secondAttribute="leading" id="ID2-X5-Usv"/>
-                                            <constraint firstItem="9dw-cQ-YvW" firstAttribute="width" secondItem="8cI-5e-eld" secondAttribute="width" id="VCc-7t-Gn7"/>
                                             <constraint firstAttribute="trailing" secondItem="6BF-FE-T97" secondAttribute="trailing" id="one-2L-iWy"/>
                                         </constraints>
                                     </stackView>
@@ -191,14 +189,16 @@
                                     <action selector="didTapHiddenButton:" destination="Pm6-G1-6uV" eventType="touchUpInside" id="kbO-z4-NUH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
-                                <rect key="frame" x="24" y="534.5" width="51.5" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tw1-Cb-xIU">
+                                <rect key="frame" x="24" y="534.5" width="100" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="fYp-IU-Zg0"/>
                                     <constraint firstAttribute="height" constant="30" id="kNU-SS-zpP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <state key="normal" title="Език" image="globe" catalog="system">
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Език" image="globe">
                                     <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                 </state>
@@ -247,7 +247,7 @@
     </scenes>
     <resources>
         <image name="SF-logo-grey" width="78" height="13"/>
-        <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="globe" width="24" height="24"/>
         <image name="ic_app_logo" width="138" height="135"/>
     </resources>
 </document>

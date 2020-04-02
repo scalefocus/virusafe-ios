@@ -102,6 +102,7 @@
 		41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
 		41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
 		41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
+		41FEF634243518F4006D30B2 /* EGNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* EGNHelper.swift */; };
 		FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +234,7 @@
 		41FEF62A243360DD006D30B2 /* BLEService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
 		41FEF62D24336230006D30B2 /* BLEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEViewController.swift; sourceTree = "<group>"; };
 		41FEF62F2433625A006D30B2 /* BLE.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BLE.storyboard; sourceTree = "<group>"; };
+		41FEF633243518F4006D30B2 /* EGNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EGNHelper.swift; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D1CD7FD0D446B912A7D0A1 /* Pods-COVID-19.release information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release information services.xcconfig"; sourceTree = "<group>"; };
 		C8428FC855E76DBCA0DA2996 /* Pods-COVID-19.debug information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug information services.xcconfig"; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				FBC1C355242FF77F008C237B /* PersonalInformation.swift */,
 				417986682430B7BE006CC2D9 /* PushTokenStore.swift */,
 				41FEF62A243360DD006D30B2 /* BLEService.swift */,
+				41FEF633243518F4006D30B2 /* EGNHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -748,7 +751,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "chmod +x ./Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh\n././Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"dba49d8b-63b6-4b67-b8f4-a45f8cb7bdc0\" DOMAINS=\"Common\" BASE_URL=\"http://10.0.4.17:8085/api/localizations/v1.1\"\n";
+			shellScript = "chmod +x ./Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh\n././Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"dba49d8b-63b6-4b67-b8f4-a45f8cb7bdc0\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.scalefocus.dev:8443/api/\"\n";
 		};
 		4179866C2430FB97006CC2D9 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -886,6 +889,7 @@
 				4170C239242A14D3003EA70A /* Toast.swift in Sources */,
 				41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */,
 				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
+				41FEF634243518F4006D30B2 /* EGNHelper.swift in Sources */,
 				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
 				3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */,
 			);

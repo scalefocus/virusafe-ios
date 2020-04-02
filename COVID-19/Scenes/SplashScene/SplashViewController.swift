@@ -144,14 +144,14 @@ extension SplashViewController {
                 let remoteEnvironment = RemoteConfigEnvironment(baseURLs: baseURL)
                 APIManager.shared.remoteEnvironment = remoteEnvironment
 
-                // update static content page url
-                if let staticContentURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_static_content_page_url").stringValue {
-                    StaticContentPage.shared.url = staticContentURL
-                }
-
-                if let appInfoURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_app_info_page_url").stringValue {
-                    AppInfoPage.shared.url = appInfoURL
-                }
+//                // update static content page url
+//                if let staticContentURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_static_content_page_url").stringValue {
+//                    StaticContentPage.shared.url = staticContentURL
+//                }
+//
+//                if let appInfoURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_app_info_page_url").stringValue {
+//                    AppInfoPage.shared.url = appInfoURL
+//                }
             }
         }
     }
@@ -190,11 +190,11 @@ struct RemoteStageBaseURLs: BaseURLs {
 final class StaticContentPage {
     static var shared = StaticContentPage()
     private init() { }
-    var url: String = "https://virusafe.io/information/about-covid.html"
+    var url: String = "url_about_covid".localized()
 }
 
 final class AppInfoPage {
     static var shared = AppInfoPage()
     private init() { }
-    var url: String = "https://virusafe.io/information/virusafe-why.html"
+    var url: String = "url_virusafe_why".localized()
 }
