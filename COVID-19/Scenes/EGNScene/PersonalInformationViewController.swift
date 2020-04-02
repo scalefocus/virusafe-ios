@@ -238,7 +238,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         if emptyTextFieldsTitles.isEmpty {
             viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
         } else {
-            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " " + emptyTextFieldsTitles.joined(separator: "")
+            let message = "personal_data_empty_field_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " " + emptyTextFieldsTitles.joined(separator: ", ")
 
             let alert = UIAlertController(title: nil,
                                           message: message,
