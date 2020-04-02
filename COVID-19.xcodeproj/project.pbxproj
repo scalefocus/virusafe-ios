@@ -81,6 +81,7 @@
 		4170C237242A05F8003EA70A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C236242A05F8003EA70A /* CheckBox.swift */; };
 		4170C239242A14D3003EA70A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
 		4170C23D242A36A6003EA70A /* QuestionnaireRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */; };
+		417341D82436138800365FD6 /* TooManyRequestsResponseDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */; };
 		4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865824308FC3006CC2D9 /* TnC.storyboard */; };
 		4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865A24309054006CC2D9 /* PersonalInformation.storyboard */; };
 		4179865D2430907A006CC2D9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865C2430907A006CC2D9 /* Home.storyboard */; };
@@ -213,6 +214,7 @@
 		4170C236242A05F8003EA70A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		4170C238242A14D3003EA70A /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireRepository.swift; sourceTree = "<group>"; };
+		417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooManyRequestsResponseDataParser.swift; sourceTree = "<group>"; };
 		4179865824308FC3006CC2D9 /* TnC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TnC.storyboard; sourceTree = "<group>"; };
 		4179865A24309054006CC2D9 /* PersonalInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformation.storyboard; sourceTree = "<group>"; };
 		4179865C2430907A006CC2D9 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				417986682430B7BE006CC2D9 /* PushTokenStore.swift */,
 				41FEF62A243360DD006D30B2 /* BLEService.swift */,
 				41FEF633243518F4006D30B2 /* EGNHelper.swift */,
+				417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */,
 				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,
 				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
+				417341D82436138800365FD6 /* TooManyRequestsResponseDataParser.swift in Sources */,
 				41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */,
 				024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */,
 				38650B6F242DFB110013DF5E /* PersonalInformationViewController.swift in Sources */,
