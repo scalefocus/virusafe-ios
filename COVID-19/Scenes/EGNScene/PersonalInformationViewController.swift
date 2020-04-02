@@ -231,9 +231,9 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         if (ageTextField.text ?? "").isEmpty {
             emptyTextFieldsTitles.append("age_hint".localized())
         }
-        if (preexistingConditionsTextField.text ?? "").isEmpty {
-            emptyTextFieldsTitles.append("chronical_conditions_hint".localized())
-        }
+//        if (preexistingConditionsTextField.text ?? "").isEmpty {
+//            emptyTextFieldsTitles.append("chronical_conditions_hint".localized())
+//        }
 
         if emptyTextFieldsTitles.isEmpty {
             viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
