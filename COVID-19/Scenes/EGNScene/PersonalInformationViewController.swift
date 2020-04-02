@@ -170,25 +170,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                         }
                     )
                     self?.present(alert, animated: true, completion: nil)
-                case .tooManyRequests(let repeatAfterSeconds):
-                    var message = "too_many_requests_msg".localized() + " "
-                    let hours = repeatAfterSeconds / 3600
-                    if hours > 0 {
-                        message += ("\(hours) " + "hours_label".localized())
-                    }
-                    let minutes = repeatAfterSeconds / 60
-                    if minutes > 0 {
-                        message += ("\(minutes) " + "minutes_label".localized())
-                    }
-                    if hours == 0 && minutes == 0 {
-                        message += "little_more_time".localized()
-                    }
-                    let alert = UIAlertController(title: nil,
-                                                  message: message,
-                                                  preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ok_label".localized(),
-                                                  style: .default,
-                                                  handler: nil))
+                case .tooManyRequests(let reapeatAfter):
+                    let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
                     self?.present(alert, animated: true, completion: nil)
                 case .server, .general:
                     self?.showToast(message: "generic_error_msg".localized())

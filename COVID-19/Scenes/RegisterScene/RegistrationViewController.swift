@@ -110,6 +110,9 @@ class RegistrationViewController: UIViewController, Navigateble {
                     strongSelf.navigationDelegate?.navigateTo(step: .registerConfirm)
                 case .invalidPhoneNumber:
                     strongSelf.showToast(message: "invalid_phone_msg".localized())
+                case .tooManyRequests(let reapeatAfter):
+                    let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
+                    self?.present(alert, animated: true, completion: nil)
                 default:
                     strongSelf.showToast(message: "no_internet_msg".localized())
             }
