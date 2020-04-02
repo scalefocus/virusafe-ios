@@ -39,7 +39,13 @@ final class LanguagesViewModel {
             var currentLanguages:[(String, String)] = []
             
             for language in langauges {
-                currentLanguages.append((language.code, language.name))
+                if language.code == "bg" {
+                    currentLanguages.append((language.code, "Български"))
+                } else if language.code == "en-GB" || language.code == "en" {
+                    currentLanguages.append((language.code, "English"))
+                } else {
+                    currentLanguages.append((language.code, language.name))
+                }
             }
             
             self.laguanges.value = currentLanguages

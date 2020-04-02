@@ -14,6 +14,7 @@ enum Gender: String, Codable, CaseIterable {
     case male = "MALE"
     case female = "FEMALE"
     case notSelected = ""
+    case other = "OTHER"
 
     var tag: Int {
         switch self {
@@ -21,7 +22,7 @@ enum Gender: String, Codable, CaseIterable {
             return 0
         case .female:
             return 1
-        case .notSelected:
+        case .notSelected, .other:
             return 2
         }
     }
