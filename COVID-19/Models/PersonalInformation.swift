@@ -10,7 +10,8 @@ import Foundation
 
 struct PersonalInformation: Codable {
     var identificationNumber: String? // egn/id/pasport number
-    var phoneNumber: String?
+    var identificationType: IdentificationNumberType?
+    var phoneNumber: String? // !!! It is not important in the request, but esential in the response
     var age: Int?
     var gender: Gender?
     var preExistingConditions: String?

@@ -9,16 +9,26 @@ import Foundation
 
 public class SendPersonalInformationApiRequest: BaseAPIRequest {
     
-    public convenience init(identificationNumber: String?, age: Int?, gender: String?, preExistingConditions: String?) {
+    public convenience init(identificationNumber: String?,
+                            identificationType: String?,
+                            age: Int?,
+                            gender: String?,
+                            preExistingConditions: String?) {
         var jsonObject: [String: Any] = [:]
         if let identificationNumber = identificationNumber {
             jsonObject["identificationNumber"] = identificationNumber
+        }
+        if let identificationType = identificationType {
+            jsonObject["identificationType"] = identificationType
         }
         if let age = age {
             jsonObject["age"] = age
         }
         if let gender = gender {
             jsonObject["gender"] = gender
+        }
+        if let preExistingConditions = preExistingConditions {
+            jsonObject["preExistingConditions"] = preExistingConditions
         }
         if let preExistingConditions = preExistingConditions {
             jsonObject["preExistingConditions"] = preExistingConditions

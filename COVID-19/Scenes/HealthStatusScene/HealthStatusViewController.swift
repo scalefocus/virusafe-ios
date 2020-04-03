@@ -129,14 +129,9 @@ class HealthStatusViewController: UIViewController, Navigateble {
             switch error {
                 case .invalidToken:
                     // TODO: Refactor - duplicated code
-                    let alert = UIAlertController(title: "redirect_to_registration_msg".localized(),
-                                                  message: "redirect_to_registration_msg".localized(),
-                                                  preferredStyle: .alert)
-                    alert.addAction(
-                        UIAlertAction(title: "ok_label".localized(), style: .default) { action in
-                                self?.navigationDelegate?.navigateTo(step: .register)
-                        }
-                    )
+                    let alert = UIAlertController.invalidTokenAlert() { [weak self] in
+                        self?.navigationDelegate?.navigateTo(step: .register)
+                    }
                     self?.present(alert, animated: true, completion: nil)
                 case .tooManyRequests(let reapeatAfter):
                     let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
