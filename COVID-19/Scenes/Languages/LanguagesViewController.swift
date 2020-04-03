@@ -158,6 +158,8 @@ extension LanguagesViewController: UITableViewDataSource {
         if Localizer.shared.getCurrentLocale().identifier == languageData.0 {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
         
         return cell
