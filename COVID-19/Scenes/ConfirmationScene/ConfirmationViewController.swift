@@ -61,7 +61,7 @@ final class ConfirmationViewController: UIViewController, Navigateble {
         title = "done_title".localized()
         titleLabel.text = "done_title".localized()
         textLabel.text = "done_msg".localized()
-        backButton.setTitle("back_text".localized(), for: .normal)
+        backButton.setTitle("continue_label".localized(), for: .normal)
     }
 
     private func tintCheckIcon() {
