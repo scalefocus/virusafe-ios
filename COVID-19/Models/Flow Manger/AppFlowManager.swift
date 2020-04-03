@@ -348,25 +348,20 @@ extension AppFlowManager: NavigationDelegate {
     // Navigate back
 
     private func setupBackButton(viewController: UIViewController) {
-        viewController.navigationItem.hidesBackButton = true
-        let button = UIButton(type: .custom)
-        button.setTitle("back_text".localized(), for: .normal)
-        button.addTarget(self,
-                         action: #selector(AppFlowManager.back(sender:)),
-                         for: .touchUpInside)
-        button.setTitleColor(.healthBlue, for: .normal)
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        navigationController.navigationBar.tintColor = UIColor.healthBlue
+        viewController.navigationItem.leftBarButtonItem?.tintColor = UIColor.healthBlue
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
+                                                                          style: .plain,
+                                                                          target: self,
+                                                                          action: #selector(AppFlowManager.back(sender:)))
     }
     
     private func setupBackButtonNoStateMachine(viewController: UIViewController) {
-        viewController.navigationItem.hidesBackButton = true
-        let button = UIButton(type: .custom)
-        button.setTitle("back_text".localized(), for: .normal)
-        button.setTitleColor(.healthBlue, for: .normal)
-        button.addTarget(self,
-                         action: #selector(AppFlowManager.backNoStateMachine(sender:)),
-                         for: .touchUpInside)
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        navigationController.navigationBar.tintColor = UIColor.healthBlue
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
+                                                                          style: .plain,
+                                                                          target: self,
+                                                                          action: #selector(AppFlowManager.backNoStateMachine(sender:)))
     }
 
     @objc
