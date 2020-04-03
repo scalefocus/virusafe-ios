@@ -246,14 +246,16 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="ageErrorLabel" destination="dEW-eT-w49" id="F08-6r-xu4"/>
                         <outlet property="ageTextField" destination="Sk3-8U-DfZ" id="ac1-rF-OAE"/>
-                        <outlet property="egnErrorLabel" destination="ECr-4T-aey" id="w1J-oy-h5o"/>
-                        <outlet property="egnSubmitButton" destination="5Zw-6Y-eaH" id="DR9-sE-BR2"/>
-                        <outlet property="egnTextField" destination="Y30-vm-DKk" id="ncC-en-dhO"/>
-                        <outlet property="egnTitleLabel" destination="irB-7C-9gS" id="5lq-tI-2AL"/>
-                        <outlet property="genderLable" destination="eyn-gl-i0e" id="AmM-kz-C5t"/>
+                        <outlet property="genderLabel" destination="eyn-gl-i0e" id="AmM-kz-C5t"/>
                         <outlet property="iconImageView" destination="gQm-bl-JUH" id="dLY-wV-MCO"/>
+                        <outlet property="personalIdentifierErrorLabel" destination="ECr-4T-aey" id="w1J-oy-h5o"/>
+                        <outlet property="personalIdentifierTextField" destination="Y30-vm-DKk" id="ncC-en-dhO"/>
+                        <outlet property="personalIdentifierTypeSegmentControl" destination="BB6-g8-lAz" id="fvS-7n-7Yi"/>
                         <outlet property="preexistingConditionsTextField" destination="HuG-fG-Fcg" id="Twc-V9-FwQ"/>
+                        <outlet property="screenTitleLabel" destination="irB-7C-9gS" id="5lq-tI-2AL"/>
+                        <outlet property="submitButton" destination="5Zw-6Y-eaH" id="DR9-sE-BR2"/>
                         <outletCollection property="genderButtons" destination="K1S-BH-BuZ" collectionClass="NSMutableArray" id="Eog-27-c92"/>
                         <outletCollection property="genderButtons" destination="inC-K5-Pgs" collectionClass="NSMutableArray" id="QxF-ig-wg1"/>
                     </connections>

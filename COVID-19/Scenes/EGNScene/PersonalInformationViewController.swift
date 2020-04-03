@@ -36,16 +36,17 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     
     // MARK: Outlets
     
-    @IBOutlet private weak var egnTitleLabel: UILabel!
+    @IBOutlet private weak var screenTitleLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
-    @IBOutlet private weak var egnTextField: SkyFloatingLabelTextField!
-    @IBOutlet private weak var egnErrorLabel: UILabel!
-
-    @IBOutlet weak var genderLable: UILabel!
-    @IBOutlet weak var ageTextField: SkyFloatingLabelTextField!
-    @IBOutlet private weak var egnSubmitButton: UIButton!
+    @IBOutlet private weak var personalIdentifierTypeSegmentControl: UISegmentedControl!
+    @IBOutlet private weak var personalIdentifierTextField: SkyFloatingLabelTextField!
+    @IBOutlet private weak var personalIdentifierErrorLabel: UILabel!
+    @IBOutlet private weak var ageTextField: SkyFloatingLabelTextField!
+    @IBOutlet private weak var ageErrorLabel: UILabel!
+    @IBOutlet private weak var genderLabel: UILabel!
     @IBOutlet private var genderButtons: [UIButton]!
-    @IBOutlet weak var preexistingConditionsTextField: SkyFloatingLabelTextField!
+    @IBOutlet private weak var preexistingConditionsTextField: SkyFloatingLabelTextField!
+    @IBOutlet private weak var submitButton: UIButton!
     
     // MARK: Settings
     private let preexistingConditionsTextLength = 100 // Same as android
@@ -83,7 +84,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     }
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if egnTextField.isFirstResponder || ageTextField.isFirstResponder || preexistingConditionsTextField.isFirstResponder {
+        if personalIdentifierTextField.isFirstResponder || ageTextField.isFirstResponder || preexistingConditionsTextField.isFirstResponder {
             DispatchQueue.main.async {
                 UIMenuController.shared.setMenuVisible(false, animated: false)
             }
@@ -101,13 +102,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         title = viewModel.isInitialFlow == true ? "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n") :
                                                   "my_personal_data".localized()
         
-        egnSubmitButton.backgroundColor = .healthBlue
-        egnTitleLabel.text = "personal_data_title".localized()
-        egnTextField.placeholder = "identification_number_hint".localized()
+        submitButton.backgroundColor = .healthBlue
+        screenTitleLabel.text = "personal_data_title".localized()
+        personalIdentifierTextField.placeholder = "identification_number_hint".localized()
         ageTextField.placeholder = "age_hint".localized()
-        genderLable.text = "gender_hint".localized()
+        genderLabel.text = "gender_hint".localized()
         preexistingConditionsTextField.placeholder = "chronical_conditions_hint".localized()
-        egnSubmitButton.setTitle("confirm_label".localized(), for: .normal)
+        submitButton.setTitle("confirm_label".localized(), for: .normal)
         genderButtons[Gender.female.tag].setTitle("gender_female".localized(), for: .normal)
         genderButtons[Gender.male.tag].setTitle("gender_male".localized(), for: .normal)
     }
@@ -119,9 +120,9 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     }
     
     private func setupEgnTextField() {
-        egnTextField.placeholder = "identification_number_hint".localized() + " "
+        personalIdentifierTextField.placeholder = "identification_number_hint".localized() + " "
         // By default title will be same as placeholder
-        egnTextField.errorColor = .red
+        personalIdentifierTextField.errorColor = .red
     }
 
     // MARK: Bind
@@ -169,7 +170,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         
         ageTextField.bind(with: viewModel.age)
         preexistingConditionsTextField.bind(with: viewModel.preexistingConditions)
-        egnTextField.bind(with: viewModel.identificationNumber)
+        personalIdentifierTextField.bind(with: viewModel.identificationNumber)
         viewModel.gender.bindAndFire { [weak self] value in
             guard let strongSelf = self else {
                 return
@@ -199,13 +200,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // MARK: Actions
     
     @IBAction private func didTapSubmitButton(_ sender: Any) {
-        guard let egn = egnTextField.text, !egn.isEmpty && EGNHelper().isValid(egn: egn) else {
+        guard let egn = personalIdentifierTextField.text, !egn.isEmpty && EGNHelper().isValid(egn: egn) else {
             let alert = UIAlertController(title: nil,
                                           message: "invalid_egn_msg".localized(),
                                           preferredStyle: .alert)
             alert.addAction(
                 UIAlertAction(title: "ok_label".localized(), style: .default) { action in
-                    self.egnTextField.becomeFirstResponder()
+                    self.personalIdentifierTextField.becomeFirstResponder()
                 }
             )
             present(alert, animated: true, completion: nil)
@@ -218,14 +219,14 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                                           preferredStyle: .alert)
             alert.addAction(
                 UIAlertAction(title: "ok_label".localized(), style: .default) { action in
-                    self.egnTextField.becomeFirstResponder()
+                    self.personalIdentifierTextField.becomeFirstResponder()
                 }
             )
             present(alert, animated: true, completion: nil)
             return
         }
 
-        viewModel.didTapPersonalNumberAuthorization(with: egnTextField.text ?? "")
+        viewModel.didTapPersonalNumberAuthorization(with: personalIdentifierTextField.text ?? "")
     }
     
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
@@ -245,21 +246,21 @@ extension PersonalInformationViewController: UITextFieldDelegate {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
         
-        if textField == egnTextField {
+        if textField == personalIdentifierTextField {
             submitButtonLocked(false)
 
             // Validation
             guard newString.length > 0 else {
-                egnErrorLabel.text = nil
+                personalIdentifierErrorLabel.text = nil
                 return true
             }
 
             if newString.length < maximumPersonalNumberLength {
-                egnErrorLabel.text = "field_invalid_format_msg".localized()
+                personalIdentifierErrorLabel.text = "field_invalid_format_msg".localized()
                 return true
             }
 
-            egnErrorLabel.text = nil
+            personalIdentifierErrorLabel.text = nil
 
             if newString.length > maximumPersonalNumberLength {
                 submitButtonLocked(true)
@@ -278,7 +279,7 @@ extension PersonalInformationViewController: UITextFieldDelegate {
                 
                 submitButtonLocked(true)
             } else {
-                egnErrorLabel.text = "field_invalid_format_msg".localized()
+                personalIdentifierErrorLabel.text = "field_invalid_format_msg".localized()
             }
 
             return newString.length <= maximumPersonalNumberLength
@@ -294,7 +295,7 @@ extension PersonalInformationViewController: UITextFieldDelegate {
     
     func submitButtonLocked(_ locked: Bool) {
         // TODO: Make it more reactive
-        egnSubmitButton.isEnabled = locked
+        submitButton.isEnabled = locked
     }
 }
 
