@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kxR-V2-vjV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kxR-V2-vjV">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,10 +33,10 @@
                                             <constraint firstAttribute="height" constant="50" id="aYm-Ys-goa"/>
                                         </constraints>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_min_zdrave" translatesAutoresizingMaskIntoConstraints="NO" id="I0e-LB-arA">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_min_zdrave-bg" translatesAutoresizingMaskIntoConstraints="NO" id="I0e-LB-arA">
                                         <rect key="frame" x="20" y="60" width="163" height="50"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_oper_shtab" translatesAutoresizingMaskIntoConstraints="NO" id="pME-eF-7v6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_oper_shtab-bg" translatesAutoresizingMaskIntoConstraints="NO" id="pME-eF-7v6">
                                         <rect key="frame" x="305" y="60" width="89" height="43"/>
                                     </imageView>
                                 </subviews>
@@ -67,6 +67,8 @@
                     <connections>
                         <outlet property="loadingIndicatorView" destination="g1A-VB-LSP" id="12B-6w-usC"/>
                         <outlet property="logoImageView" destination="Fgw-iu-EYK" id="hh3-FB-ep3"/>
+                        <outlet property="ministryOfHealthImageView" destination="I0e-LB-arA" id="d7o-Xa-zxF"/>
+                        <outlet property="operationsCenterImageView" destination="pME-eF-7v6" id="VBe-ef-Pva"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ue6-k4-UzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -75,8 +77,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_min_zdrave" width="163" height="50"/>
-        <image name="ic_oper_shtab" width="89" height="43"/>
+        <image name="ic_min_zdrave-bg" width="163" height="50"/>
+        <image name="ic_oper_shtab-bg" width="89" height="43"/>
         <image name="logo" width="150" height="208"/>
     </resources>
 </document>

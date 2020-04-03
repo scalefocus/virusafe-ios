@@ -11,30 +11,27 @@ import PopupUpdate
 import Firebase
 import NetworkKit
 
+// MARK: Navigateble
 class SplashViewController: UIViewController, Navigateble {
-
-    // MARK: Navigateble
-
-    weak var navigationDelegate: NavigationDelegate?
-
     // MARK: Outlets
-    
     @IBOutlet private weak var loadingIndicatorView: UIView!
     @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var ministryOfHealthImageView: UIImageView!
+    @IBOutlet private weak var operationsCenterImageView: UIImageView!
     
-    // MARK: Lifecycle
-
+    // MARK: Properties
+      weak var navigationDelegate: NavigationDelegate?
+    
+    // MARK: Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         showSpinner()
-        
         //load firebase default values
         loadDefaultValues()
-        
         // fetch remoe config
         fetchCloudValues()
+        // setup images views depending on the locale
+        setupImages()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +44,7 @@ class SplashViewController: UIViewController, Navigateble {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
-    // UI
-    
+     // MARK: Private methods
     private func showSpinner() {
         let indicator = UIActivityIndicatorView(frame: loadingIndicatorView.bounds)
         indicator.style = .whiteLarge
@@ -59,9 +55,14 @@ class SplashViewController: UIViewController, Navigateble {
             strongSelf.loadingIndicatorView.addSubview(indicator)
         }
     }
+    
+    private func setupImages() {
+        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
+        ministryOfHealthImageView.image = UIImage(named: "ic_min_zdrave-\(savedLocale)")
+        operationsCenterImageView.image =  UIImage(named: "ic_oper_shtab-\(savedLocale)")
+    }
 
     // MARK: Navigation
-
     private func navigateToNextViewController() {
         let isUserRegistered: Bool = (TokenStore.shared.token != nil)
         let isAppLaunchedBefore = AppLaunchRepository().isAppLaunchedBefore
@@ -81,9 +82,7 @@ class SplashViewController: UIViewController, Navigateble {
 }
 
 // MARK: Firebase
-
 extension SplashViewController {
-    
     func loadDefaultValues() {
         let appDefaults: [String: Any?] = [
             "ios_is_mandatory" : false,
@@ -181,11 +180,9 @@ extension SplashViewController {
 }
 
 // MARK: ToastViewPresentable
-
 extension SplashViewController: ToastViewPresentable {}
 
-// MARK: Networking
-
+// MARK: Networkin
 struct RemoteConfigEnvironment: EnvironmentInterface {
     var name = "FirebaseConfig"
     var baseURLs: BaseURLs
