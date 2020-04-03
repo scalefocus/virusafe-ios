@@ -132,7 +132,7 @@ final class PersonalInformationViewModel {
 
     // Validation
 
-    var validationError = Observable<PersonalInformationValidationError>()
+    var validationErrors = Observable<[PersonalInformationValidationError]>()
     var isInputValid = Observable<Bool>(false)
 
     // MARK: Settings
@@ -221,6 +221,23 @@ final class PersonalInformationViewModel {
             return true
         }
 
+        switch identificationNumberType.value {
+            case .bulgarianCitizenUCN:
+                return identificationNumberTextFieldWillUpdateText(ucn: newString)
+            case .foreignerPIN:
+                return identificationNumberTextFieldWillUpdateText(pin: newString)
+            case .identificationCard:
+                return identificationNumberTextFieldWillUpdateText(cardId: newString)
+            default:
+                // in case
+                return true
+        }
+
+        // in case
+        return true
+    }
+
+    private func identificationNumberTextFieldWillUpdateText(ucn newString: NSString) -> Bool {
         if newString.length > UCNHelper.maximumPersonalNumberLength {
             return false
         }
@@ -229,12 +246,21 @@ final class PersonalInformationViewModel {
             return true
         }
 
-        // Try parse, if valid egn auto populate disabled controls
+        // !!! Side effect
+        // If lenght is exact try parse it, if valid egn auto populate disabled controls
         if let data = UCNHelper().parse(egn: newString as String) {
             setModelsFromParsedUCNData(data)
         }
 
-        return newString.length <= UCNHelper.maximumPersonalNumberLength
+        return true
+    }
+
+    private func identificationNumberTextFieldWillUpdateText(pin newString: NSString) -> Bool {
+        return (newString.length > 0 && newString.length <= PINForeignerHelper.maximumPersonalNumberLength)
+    }
+
+    private func identificationNumberTextFieldWillUpdateText(cardId newString: NSString) -> Bool {
+        return (newString.length > 0 && newString.length <= IDCardHelper.maximumPersonalNumberLength)
     }
 
     func ageTextFieldWillUpdateText(_ newString: NSString) -> Bool {
@@ -255,24 +281,29 @@ final class PersonalInformationViewModel {
     }
 
     func validate() {
-        do {
-            try validateInput()
-            isInputValid.value = true
-        }
-        catch let error as PersonalInformationValidationError {
-            validationError.value = error
-            isInputValid.value = false
-        } catch {
-            // Do nothing
-        }
+        let errors = validateInput()
+        validationErrors.value = validateInput()
+        isInputValid.value = (errors.count == 0)
     }
 
     // MARK: Validations
 
-    private func validateInput() throws -> Void {
-        try validateIdentificationNumber()
-        try validateAge()
-        try validateGender()
+    private func validateInput() -> [PersonalInformationValidationError] {
+        var errors: [PersonalInformationValidationError] = []
+        validateAndCatchError(from: validateIdentificationNumber, errors: &errors)
+        validateAndCatchError(from: validateAge, errors: &errors)
+        validateAndCatchError(from: validateGender, errors: &errors)
+        return errors
+    }
+
+    private func validateAndCatchError(from validationFunc: () throws -> Void, errors: inout [PersonalInformationValidationError]) {
+        do {
+            try validationFunc()
+        } catch let error as PersonalInformationValidationError {
+            errors.append(error)
+        } catch {
+            // Do nothing
+        }
     }
 
     private func validateGender() throws -> Void {

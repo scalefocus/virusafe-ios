@@ -161,22 +161,26 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             }
             self?.submitButton.isUserInteractionEnabled = value
         }
-        viewModel.validationError.bind { [weak self] value in
-            self?.handleValidationError(value)
+        viewModel.validationErrors.bind { [weak self] value in
+            self?.handleValidationErrors(value)
         }
     }
 
-    private func handleValidationError(_ error: PersonalInformationValidationError) {
-        switch error {
-            case .unknownIdentificationNumberType, .unknownGender:
-                // Do nothing (it is not possible to get here)
-                break
-            case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN, .invalidForeignerPIN, .invalidIdentificationCard:
-                identificationNumberErrorLabel.text = "field_invalid_format_msg".localized()
-            case .emptyAge, .overMaximumAge:
-                ageErrorLabel.text = "invalid_age_msg".localized()
-            case .underMinimumAge:
-                ageErrorLabel.text = "invalid_min_age_msg".localized()
+    private func handleValidationErrors(_ errors: [PersonalInformationValidationError]) {
+        ageErrorLabel.text = nil
+        identificationNumberErrorLabel.text = nil
+        for error in errors {
+            switch error {
+                case .unknownIdentificationNumberType, .unknownGender:
+                    // Do nothing (it is not possible to get here)
+                    break
+                case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN, .invalidForeignerPIN, .invalidIdentificationCard:
+                    identificationNumberErrorLabel.text = "field_invalid_format_msg".localized()
+                case .emptyAge, .overMaximumAge:
+                    ageErrorLabel.text = "invalid_age_msg".localized()
+                case .underMinimumAge:
+                    ageErrorLabel.text = "invalid_min_age_msg".localized()
+            }
         }
     }
 
@@ -224,6 +228,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     private func handleIdentificationNumberTypeChanged(_ identificationNumberType: IdentificationNumberType) {
         identificationNumberTypeSegmentControl.selectedSegmentIndex = identificationNumberType.segmentIndex
 
+        viewModel.identificationNumber.value = nil
+//        viewModel.age.value = nil
+        identificationNumberTextField.text = nil
+//        ageTextField.text = nil
+//
         let isFirstResponder = identificationNumberTextField.isFirstResponder
         identificationNumberTextField.resignFirstResponder()
 
