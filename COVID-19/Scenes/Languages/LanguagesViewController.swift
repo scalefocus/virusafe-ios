@@ -48,25 +48,9 @@ class LanguagesViewController: UIViewController, Navigateble {
     // MARK: Actions
     
     @IBAction func didTapConfirm(_ sender: Any) {
-        
         guard viewModel.isInitialFlow == true else { return }
+        self.navigateToNextViewController()
         
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            
-        let languageData = viewModel.laguanges.value![indexPath.row]
-        let locale = Locale(identifier: languageData.0)
-        Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
-            print(desiredLocale)
-            if didChange {
-                self?.setupUI()
-                UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
-                UserDefaults.standard.synchronize()
-                self?.navigateToNextViewController()
-            }
-
-            // TODO: Handle error
-        }
-    
     }
     
     // MARK: Lifecycle
@@ -121,19 +105,17 @@ extension LanguagesViewController:UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         
-        if !viewModel.isInitialFlow {
-            let languageData = viewModel.laguanges.value![indexPath.row]
-            let locale = Locale(identifier: languageData.0)
-            Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
-                print(desiredLocale)
-                if didChange {
-                    self?.setupUI()
-                    UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
-                }
+        let languageData = viewModel.laguanges.value![indexPath.row]
+        let locale = Locale(identifier: languageData.0)
+        Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
+            print(desiredLocale)
+            if didChange {
+                self?.setupUI()
+                UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
+            } else {
                 // TODO: Handle error
             }
         }
-        
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
