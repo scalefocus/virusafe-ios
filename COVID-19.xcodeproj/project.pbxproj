@@ -1073,6 +1073,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.healthcare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1099,6 +1100,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.healthcare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "58e4f0a4-0997-4168-bb47-2a47f0a60543";

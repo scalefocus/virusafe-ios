@@ -84,6 +84,18 @@ class SplashViewController: UIViewController, Navigateble {
 // MARK: Firebase
 extension SplashViewController {
     func loadDefaultValues() {
+
+        #if UPNETIX
+        let appDefaults: [String: Any?] = [
+            "ios_is_mandatory" : false,
+            "ios_latest_app_version" : "1.0",
+            "ios_end_point" : "https://virusafe.scalefocus.dev",
+            "ios_static_content_page_url" : "https://virusafe.scalefocus.dev/information/about-covid.html",
+            "ios_appstore_link" : "https://apps.apple.com/in/app/ViruSafe/id1504661908",
+            "ios_location_interval_in_mins" : 2,
+            "ios_app_info_page_url": "https://virusafe.scalefocus.dev/information/virusafe-why.html"
+        ]
+        #else // UPNETIX
         let appDefaults: [String: Any?] = [
             "ios_is_mandatory" : false,
             "ios_latest_app_version" : "1.0",
@@ -93,6 +105,7 @@ extension SplashViewController {
             "ios_location_interval_in_mins" : 2,
             "ios_app_info_page_url": "https://virusafe.io/information/virusafe-why.html"
         ]
+        #endif
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
     }
     
@@ -152,15 +165,6 @@ extension SplashViewController {
                 let baseURL = RemoteStageBaseURLs(base: urlString, port: port)
                 let remoteEnvironment = RemoteConfigEnvironment(baseURLs: baseURL)
                 APIManager.shared.remoteEnvironment = remoteEnvironment
-
-//                // update static content page url
-//                if let staticContentURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_static_content_page_url").stringValue {
-//                    StaticContentPage.shared.url = staticContentURL
-//                }
-//
-//                if let appInfoURL = RemoteConfig.remoteConfig().configValue(forKey: "ios_app_info_page_url").stringValue {
-//                    AppInfoPage.shared.url = appInfoURL
-//                }
             }
         }
     }
