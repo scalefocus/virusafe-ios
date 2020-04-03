@@ -103,8 +103,6 @@
 		41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
 		41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
 		41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
-		5C23C9E32436775700F9CEDB /* TnC-bg.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E12436775600F9CEDB /* TnC-bg.rtf */; };
-		5C23C9E42436775700F9CEDB /* TnC-en-GB.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */; };
 		5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
 		FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 /* End PBXBuildFile section */
@@ -238,8 +236,6 @@
 		41FEF62D24336230006D30B2 /* BLEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEViewController.swift; sourceTree = "<group>"; };
 		41FEF62F2433625A006D30B2 /* BLE.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BLE.storyboard; sourceTree = "<group>"; };
 		41FEF633243518F4006D30B2 /* UCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCNHelper.swift; sourceTree = "<group>"; };
-		5C23C9E12436775600F9CEDB /* TnC-bg.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-bg.rtf"; sourceTree = "<group>"; };
-		5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-en-GB.rtf"; sourceTree = "<group>"; };
 		5C23C9F0243754AB00F9CEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5C23C9F2243754BF00F9CEDB /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,9 +373,7 @@
 				02B9A6B1242371F300B1A4C0 /* Main.storyboard */,
 				024D82E42423A81A00696868 /* Models */,
 				02B9A6B4242371F500B1A4C0 /* Assets.xcassets */,
-				5C23C9E12436775600F9CEDB /* TnC-bg.rtf */,
 				5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */,
-				5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
 				41D3E668242E1ECC00AC96B1 /* GoogleService-Info-Info-Services.plist */,
@@ -708,7 +702,6 @@
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
-				5C23C9E42436775700F9CEDB /* TnC-en-GB.rtf in Resources */,
 				5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */,
 				41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */,
 				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
@@ -719,7 +712,6 @@
 				385BDD6A243203A900476F69 /* Languages.storyboard in Resources */,
 				4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */,
 				41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */,
-				5C23C9E32436775700F9CEDB /* TnC-bg.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

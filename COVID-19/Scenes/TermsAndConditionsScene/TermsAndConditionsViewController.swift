@@ -37,7 +37,7 @@ class TermsAndConditionsViewController: UIViewController {
         super.viewDidLoad()
         
         acceptButton.isHidden = viewModel.repository.isAgree
-        loadTnCFromRtf()
+        loadHtmlFormat()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,18 +64,21 @@ class TermsAndConditionsViewController: UIViewController {
         acceptButton.setTitle("i_agree_label".localized(), for: .normal)
     }
 
-    private func loadTnCFromRtf() {
-        let language = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
-        if let rtfPath = Bundle.main.url(forResource: "TnC-\(language)", withExtension: "rtf") {
-            do {
-                let attributedStringWithRtf: NSAttributedString = try NSAttributedString(url: rtfPath, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
-                // TODO: Refactor to avoid this side effect
-                self.contentTextView.attributedText = attributedStringWithRtf
-            } catch let error {
-                // TODO: Handle error
-                print("Got an error \(error)")
-            }
-        }
+    private func loadHtmlFormat() {
+        let text = "tnc_part_one".localized() + "tnc_part_two".localized()
+        self.contentTextView.attributedText = text.htmlToAttributedString
     }
 
 }
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+}
+
