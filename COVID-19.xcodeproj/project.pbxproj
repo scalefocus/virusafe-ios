@@ -105,6 +105,7 @@
 		41FEF634243518F4006D30B2 /* EGNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* EGNHelper.swift */; };
 		5C23C9E32436775700F9CEDB /* TnC-bg.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E12436775600F9CEDB /* TnC-bg.rtf */; };
 		5C23C9E42436775700F9CEDB /* TnC-en-GB.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */; };
+		5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
 		FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 /* End PBXBuildFile section */
 
@@ -239,6 +240,8 @@
 		41FEF633243518F4006D30B2 /* EGNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EGNHelper.swift; sourceTree = "<group>"; };
 		5C23C9E12436775600F9CEDB /* TnC-bg.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-bg.rtf"; sourceTree = "<group>"; };
 		5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-en-GB.rtf"; sourceTree = "<group>"; };
+		5C23C9F0243754AB00F9CEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C23C9F2243754BF00F9CEDB /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		900FB5D22E4AC06017B386FC /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D1CD7FD0D446B912A7D0A1 /* Pods-COVID-19.release information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release information services.xcconfig"; sourceTree = "<group>"; };
 		C8428FC855E76DBCA0DA2996 /* Pods-COVID-19.debug information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug information services.xcconfig"; sourceTree = "<group>"; };
@@ -375,6 +378,7 @@
 				024D82E42423A81A00696868 /* Models */,
 				02B9A6B4242371F500B1A4C0 /* Assets.xcassets */,
 				5C23C9E12436775600F9CEDB /* TnC-bg.rtf */,
+				5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */,
 				5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
@@ -679,6 +683,7 @@
 			knownRegions = (
 				en,
 				Base,
+				bg,
 			);
 			mainGroup = 02B9A69F242371F300B1A4C0;
 			productRefGroup = 02B9A6A9242371F300B1A4C0 /* Products */;
@@ -704,6 +709,7 @@
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
 				5C23C9E42436775700F9CEDB /* TnC-en-GB.rtf in Resources */,
+				5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */,
 				41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */,
 				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
 				4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */,
@@ -922,6 +928,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C23C9F0243754AB00F9CEDB /* en */,
+				5C23C9F2243754BF00F9CEDB /* bg */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -929,6 +944,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -989,6 +1005,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1096,6 +1113,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1182,6 +1200,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
