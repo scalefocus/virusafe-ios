@@ -102,7 +102,7 @@
 		41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
 		41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
 		41FEF6302433625A006D30B2 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
-		41FEF634243518F4006D30B2 /* EGNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* EGNHelper.swift */; };
+		41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
 		5C23C9E32436775700F9CEDB /* TnC-bg.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E12436775600F9CEDB /* TnC-bg.rtf */; };
 		5C23C9E42436775700F9CEDB /* TnC-en-GB.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */; };
 		5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
@@ -237,7 +237,7 @@
 		41FEF62A243360DD006D30B2 /* BLEService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
 		41FEF62D24336230006D30B2 /* BLEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEViewController.swift; sourceTree = "<group>"; };
 		41FEF62F2433625A006D30B2 /* BLE.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BLE.storyboard; sourceTree = "<group>"; };
-		41FEF633243518F4006D30B2 /* EGNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EGNHelper.swift; sourceTree = "<group>"; };
+		41FEF633243518F4006D30B2 /* UCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCNHelper.swift; sourceTree = "<group>"; };
 		5C23C9E12436775600F9CEDB /* TnC-bg.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-bg.rtf"; sourceTree = "<group>"; };
 		5C23C9E22436775700F9CEDB /* TnC-en-GB.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "TnC-en-GB.rtf"; sourceTree = "<group>"; };
 		5C23C9F0243754AB00F9CEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 				FBC1C355242FF77F008C237B /* PersonalInformation.swift */,
 				417986682430B7BE006CC2D9 /* PushTokenStore.swift */,
 				41FEF62A243360DD006D30B2 /* BLEService.swift */,
-				41FEF633243518F4006D30B2 /* EGNHelper.swift */,
+				41FEF633243518F4006D30B2 /* UCNHelper.swift */,
 				417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */,
 			);
 			path = Models;
@@ -903,7 +903,7 @@
 				4170C239242A14D3003EA70A /* Toast.swift in Sources */,
 				41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */,
 				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
-				41FEF634243518F4006D30B2 /* EGNHelper.swift in Sources */,
+				41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */,
 				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
 				3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */,
 			);

@@ -59,6 +59,9 @@
                                                                     <segment title="Second"/>
                                                                     <segment title=""/>
                                                                 </segments>
+                                                                <connections>
+                                                                    <action selector="didChangePersonalIdentifierType:" destination="BBf-ct-6Or" eventType="valueChanged" id="KDJ-3l-DfD"/>
+                                                                </connections>
                                                             </segmentedControl>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iq2-eY-70F">
                                                                 <rect key="frame" x="0.0" y="56" width="327" height="44"/>
@@ -71,6 +74,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                         <connections>
+                                                                            <action selector="textFieldDidChange:" destination="BBf-ct-6Or" eventType="editingChanged" id="BF9-5C-DLJ"/>
                                                                             <outlet property="delegate" destination="BBf-ct-6Or" id="LsK-ca-8BI"/>
                                                                         </connections>
                                                                     </textField>
@@ -79,7 +83,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="750" id="yii-Qm-EdD"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -88,7 +92,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="90n-cK-kSS">
                                                                 <rect key="frame" x="0.0" y="124" width="327" height="44"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Години" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-8U-DfZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Години" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-8U-DfZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="44" id="Uyw-lV-NSY"/>
@@ -96,6 +100,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                         <connections>
+                                                                            <action selector="textFieldDidChange:" destination="BBf-ct-6Or" eventType="editingChanged" id="nhY-OB-rZx"/>
                                                                             <outlet property="delegate" destination="BBf-ct-6Or" id="oYs-tu-0qb"/>
                                                                         </connections>
                                                                     </textField>
@@ -104,8 +109,8 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="750" id="KOT-36-Mgf"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -250,9 +255,9 @@
                         <outlet property="ageTextField" destination="Sk3-8U-DfZ" id="ac1-rF-OAE"/>
                         <outlet property="genderLabel" destination="eyn-gl-i0e" id="AmM-kz-C5t"/>
                         <outlet property="iconImageView" destination="gQm-bl-JUH" id="dLY-wV-MCO"/>
-                        <outlet property="personalIdentifierErrorLabel" destination="ECr-4T-aey" id="w1J-oy-h5o"/>
-                        <outlet property="personalIdentifierTextField" destination="Y30-vm-DKk" id="ncC-en-dhO"/>
-                        <outlet property="personalIdentifierTypeSegmentControl" destination="BB6-g8-lAz" id="fvS-7n-7Yi"/>
+                        <outlet property="identificationNumberErrorLabel" destination="ECr-4T-aey" id="w1J-oy-h5o"/>
+                        <outlet property="identificationNumberTextField" destination="Y30-vm-DKk" id="ncC-en-dhO"/>
+                        <outlet property="identificationNumberTypeSegmentControl" destination="BB6-g8-lAz" id="fvS-7n-7Yi"/>
                         <outlet property="preexistingConditionsTextField" destination="HuG-fG-Fcg" id="Twc-V9-FwQ"/>
                         <outlet property="screenTitleLabel" destination="irB-7C-9gS" id="5lq-tI-2AL"/>
                         <outlet property="submitButton" destination="5Zw-6Y-eaH" id="DR9-sE-BR2"/>
