@@ -262,6 +262,7 @@ extension PersonalInformationViewController: UITextFieldDelegate {
             egnErrorLabel.text = nil
 
             if newString.length > maximumPersonalNumberLength {
+                submitButtonLocked(true)
                 return false
             }
 
@@ -292,6 +293,7 @@ extension PersonalInformationViewController: UITextFieldDelegate {
     }
     
     func submitButtonLocked(_ locked: Bool) {
+        // TODO: Make it more reactive
         egnSubmitButton.isEnabled = locked
     }
 }
