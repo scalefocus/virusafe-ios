@@ -140,10 +140,10 @@ extension String {
 
 final class PINForeignerHelper {
     private let weights: [Int]  = [21, 19, 17, 13, 11, 9, 7, 3, 1]
-    private let length = 10
+    static let maximumPersonalNumberLength = 10
 
     func isValid(pin: String) -> Bool {
-        guard pin.count == length else {
+        guard pin.count == PINForeignerHelper.maximumPersonalNumberLength else {
             // Invalid length
             return false
         }
@@ -170,13 +170,13 @@ final class PINForeignerHelper {
 }
 
 final class IDCardHelper {
-    private let minLength = 5
-    private let maxLength = 20
+    static let minimumPersonalNumberLength = 5
+    static let maximumPersonalNumberLength = 20
 
     let pattern = "^[a-zA-Z0-9]{5,20}$"
     
     func isValid(id: String) -> Bool {
-        if id.count < minLength || id.count > maxLength {
+        if id.count < IDCardHelper.minimumPersonalNumberLength || id.count > IDCardHelper.maximumPersonalNumberLength {
             return false
         }
 
