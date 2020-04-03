@@ -27,7 +27,7 @@ struct EGNData {
 final class UCNHelper {
 
     private let weights: [Int]  = [2, 4, 8, 5, 10, 9, 7, 3, 6]
-    private let length = 10
+    static let maximumPersonalNumberLength = 10
 
     func parse(egn: String) -> EGNData? {
         guard isValid(egn: egn) else {
@@ -49,7 +49,7 @@ final class UCNHelper {
     }
 
     func isValid(egn: String) -> Bool {
-        guard egn.count == length else {
+        guard egn.count == UCNHelper.maximumPersonalNumberLength else {
             // Invalid length
             return false
         }
@@ -140,10 +140,10 @@ extension String {
 
 final class PINForeignerHelper {
     private let weights: [Int]  = [21, 19, 17, 13, 11, 9, 7, 3, 1]
-    private let length = 10
+    static let maximumPersonalNumberLength = 10
 
     func isValid(pin: String) -> Bool {
-        guard pin.count == length else {
+        guard pin.count == PINForeignerHelper.maximumPersonalNumberLength else {
             // Invalid length
             return false
         }
@@ -164,14 +164,24 @@ final class PINForeignerHelper {
             sum += ((Int(String(pin[index])) ?? 0) * weights[offset])
         }
         let calculatedChecksum = sum % 10
-        return checksum == calculatedChecksum
+        let result = checksum == calculatedChecksum
+        return result
     }
 }
 
 final class IDCardHelper {
-    private let length = 10
+    static let minimumPersonalNumberLength = 5
+    static let maximumPersonalNumberLength = 20
+
+    let pattern = "^[a-zA-Z0-9]{5,20}$"
     
     func isValid(id: String) -> Bool {
-        return id.count == length
+        if id.count < IDCardHelper.minimumPersonalNumberLength || id.count > IDCardHelper.maximumPersonalNumberLength {
+            return false
+        }
+
+        let predicate = NSPredicate(format: "self MATCHES [c] %@", pattern)
+        let result = predicate.evaluate(with: id)
+        return result
     }
 }

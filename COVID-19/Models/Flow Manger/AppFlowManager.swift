@@ -432,6 +432,7 @@ extension AppFlowManager: PersonalInformationViewModelDelegate {
     func sendPersonalInformation(_ personalInformation: PersonalInformation,
                                  with completion: @escaping SendPersonalInfoCompletion) {
         personalInformationRepository.sendPersonalInfo(identificationNumber: personalInformation.identificationNumber,
+                                                       identificationType: personalInformation.identificationType?.rawValue,
                                                        age: personalInformation.age,
                                                        gender: personalInformation.gender?.rawValue,
                                                        preexistingConditions: personalInformation.preExistingConditions,
