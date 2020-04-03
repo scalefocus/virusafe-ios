@@ -23,9 +23,7 @@ final class PersonalInformationViewModel {
     private let firstLaunchCheckRepository: AppLaunchRepository
     private let personalInformationRepository: PersonalInformationRepository
 
-    var isInitialFlow: Bool {
-        return !firstLaunchCheckRepository.isAppLaunchedBefore
-    }
+    let isInitialFlow: Bool
 
     let isSendPersonalInformationCompleted = Observable<Bool>()
 
@@ -45,6 +43,7 @@ final class PersonalInformationViewModel {
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
         self.personalInformationRepository = personalInformationRepository
         self.delegate = delegate
+        isInitialFlow = !firstLaunchCheckRepository.isAppLaunchedBefore
     }
     
     func start() {
