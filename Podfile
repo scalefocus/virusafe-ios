@@ -26,6 +26,29 @@ target 'COVID-19' do
 
 end
 
+target 'COVID-19-MKD' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  
+  pod 'NetworkKit'                     , :path => 'ModuleFrameworks/NetworkKit'
+  pod 'TwoWayBondage', '~> 1.0.2'
+  pod 'AppCenter', '~> 3.0.0'
+
+  pod 'UpnetixLocalizer', '~> 2.1.2'
+  pod 'PopupUpdate'
+  
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Messaging'
+
+  pod 'IQKeyboardManager'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+
+  pod 'KeychainSwift'
+
+end
+
 post_install do |installer|
   installer.pods_project.targets.each do |target|
       if ['Alamofire', 'CryptoSwift', 'NetworkKit'].include? target.name

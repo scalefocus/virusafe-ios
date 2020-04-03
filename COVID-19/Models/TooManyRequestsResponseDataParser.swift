@@ -6,7 +6,7 @@
 //  Copyright © 2020 Upnetix AD. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Timeout {
     static let defaultInSeconds: Int = 0
