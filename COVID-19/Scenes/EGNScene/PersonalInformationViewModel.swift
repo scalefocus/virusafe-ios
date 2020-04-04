@@ -233,7 +233,6 @@ final class PersonalInformationViewModel {
                 return true
         }
 
-        // in case
         return true
     }
 

@@ -3,17 +3,17 @@
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://bitbucket.upnetix.com/scm/il/podspecrepo.git'
 
-target 'COVID-19' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-  
+# Comment the next line if you don't want to use dynamic frameworks
+use_frameworks!
+
+def app_pods
   pod 'NetworkKit'                     , :path => 'ModuleFrameworks/NetworkKit'
   pod 'TwoWayBondage', '~> 1.0.2'
   pod 'AppCenter', '~> 3.0.0'
 
   pod 'UpnetixLocalizer', '~> 2.1.2'
   pod 'PopupUpdate'
-  
+
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
@@ -23,30 +23,14 @@ target 'COVID-19' do
   pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   pod 'KeychainSwift'
+end
 
+target 'COVID-19' do
+  app_pods
 end
 
 target 'COVID-19-MKD' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-  
-  pod 'NetworkKit'                     , :path => 'ModuleFrameworks/NetworkKit'
-  pod 'TwoWayBondage', '~> 1.0.2'
-  pod 'AppCenter', '~> 3.0.0'
-
-  pod 'UpnetixLocalizer', '~> 2.1.2'
-  pod 'PopupUpdate'
-  
-  pod 'Firebase/Crashlytics'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/RemoteConfig'
-  pod 'Firebase/Messaging'
-
-  pod 'IQKeyboardManager'
-  pod 'SkyFloatingLabelTextField', '~> 3.0'
-
-  pod 'KeychainSwift'
-
+  app_pods
 end
 
 post_install do |installer|
