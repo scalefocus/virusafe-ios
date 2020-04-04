@@ -29,6 +29,10 @@ target 'COVID-19' do
   app_pods
 end
 
+target 'COVID-19-GOV' do
+  app_pods
+end
+
 target 'COVID-19-MKD' do
   app_pods
 end
