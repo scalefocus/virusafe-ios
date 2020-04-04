@@ -76,6 +76,15 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         return super.canPerformAction(action, withSender: sender)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        identificationNumberTypeSegmentControl.layer.cornerRadius =
+            identificationNumberTypeSegmentControl.bounds.height / 2
+        identificationNumberTypeSegmentControl.layer.borderColor = UIColor.healthBlue?.cgColor
+        identificationNumberTypeSegmentControl.layer.borderWidth = 1
+        identificationNumberTypeSegmentControl.layer.masksToBounds = true
+    }
+
     // MARK: Setup UI
     
     private func setupUI() {
@@ -88,6 +97,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         
         submitButton.backgroundColor = .healthBlue
         submitButton.setTitle("confirm_label".localized(), for: .normal)
+        submitButton.setTitleColor(.white, for: .normal)
+        submitButton.setTitleColor(.lightText, for: .disabled)
 
         screenTitleLabel.text = "personal_data_title".localized()
         identificationNumberTextField.placeholder = "identification_number_hint".localized()
@@ -113,7 +124,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             .setTitle("identification_number_pin_segment".localized(),
                       forSegmentAt: IdentificationNumberType.foreignerPIN.segmentIndex)
         identificationNumberTypeSegmentControl
-            .setTitle("identification_number_id_segment".localized(),
+            .setTitle("passport_hint".localized(),
                       forSegmentAt: IdentificationNumberType.identificationCard.segmentIndex)
         identificationNumberTypeSegmentControl.tintColor = .healthBlue
     }
@@ -159,7 +170,15 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                 self?.identificationNumberErrorLabel.text = nil
                 self?.ageErrorLabel.text = nil
             }
-            self?.submitButton.isUserInteractionEnabled = value
+
+            if value {
+                self?.submitButton.isEnabled = true
+                self?.submitButton.backgroundColor = .healthBlue
+            } else {
+                self?.submitButton.isEnabled = value
+                self?.submitButton.backgroundColor =
+                    UIColor.lightGray.withAlphaComponent(0.3)
+            }
         }
         viewModel.validationErrors.bind { [weak self] value in
             self?.handleValidationErrors(value)

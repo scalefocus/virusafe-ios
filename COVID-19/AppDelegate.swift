@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import CoreLocation
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
@@ -16,6 +17,7 @@ import IQKeyboardManager
 import FirebaseMessaging
 import NetworkKit
 import UpnetixLocalizer
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
