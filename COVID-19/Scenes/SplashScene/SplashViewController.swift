@@ -84,18 +84,7 @@ class SplashViewController: UIViewController, Navigateble {
 // MARK: Firebase
 extension SplashViewController {
     func loadDefaultValues() {
-
-        #if UPNETIX
-        let appDefaults: [String: Any?] = [
-            "ios_is_mandatory" : false,
-            "ios_latest_app_version" : "1.0",
-            "ios_end_point" : "https://virusafe.scalefocus.dev",
-            "ios_static_content_page_url" : "https://virusafe.scalefocus.dev/information/about-covid.html",
-            "ios_appstore_link" : "https://apps.apple.com/in/app/ViruSafe/id1504661908",
-            "ios_location_interval_in_mins" : 2,
-            "ios_app_info_page_url": "https://virusafe.scalefocus.dev/information/virusafe-why.html"
-        ]
-        #else // UPNETIX
+        // TODO: Different defaults for different targets
         let appDefaults: [String: Any?] = [
             "ios_is_mandatory" : false,
             "ios_latest_app_version" : "1.0",
@@ -105,7 +94,6 @@ extension SplashViewController {
             "ios_location_interval_in_mins" : 2,
             "ios_app_info_page_url": "https://virusafe.io/information/virusafe-why.html"
         ]
-        #endif
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
     }
     
