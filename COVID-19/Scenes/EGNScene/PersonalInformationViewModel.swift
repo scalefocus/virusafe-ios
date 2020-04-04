@@ -137,7 +137,7 @@ final class PersonalInformationViewModel {
 
     // MARK: Settings
 
-    private let minimumAge = 16
+    private let minimumAge = 14
     private let maximumAge = 110
     private let preexistingConditionsTextLength = 100
 
@@ -172,6 +172,8 @@ final class PersonalInformationViewModel {
                         self?.requestError.value = .general
                         return
                     }
+                    // !!! It is important to be set before age and identificationNumber, because it has some side effects in controller
+                    self?.identificationNumberType.value = personalInformation.identificationType ?? .bulgarianCitizenUCN
                     self?.gender.value = personalInformation.gender ?? .male
                     if let age = personalInformation.age {
                         self?.age.value = "\(age)"
@@ -180,7 +182,7 @@ final class PersonalInformationViewModel {
                     }
                     self?.preexistingConditions.value = personalInformation.preExistingConditions
                     self?.identificationNumber.value = personalInformation.identificationNumber
-                    self?.identificationNumberType.value = personalInformation.identificationType ?? .bulgarianCitizenUCN
+                    self?.validate()
                 case .failure(let error):
                     self?.requestError.value = error
             }
@@ -282,7 +284,8 @@ final class PersonalInformationViewModel {
     func validate() {
         let errors = validateInput()
         validationErrors.value = validateInput()
-        isInputValid.value = (errors.count == 0)
+        let importantErrors = errors.filter { $0 != .emptyAge }
+        isInputValid.value = (importantErrors.count == 0)
     }
 
     // MARK: Validations
