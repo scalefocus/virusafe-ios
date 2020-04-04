@@ -59,6 +59,7 @@ class LanguagesViewController: UIViewController, Navigateble {
         super.viewDidLoad()
         viewModel.getAvailableLanguages()
         setupBindings()
+        tableView.tableFooterView = UIView() // to remove separators that we dont need
         
         if viewModel.isInitialFlow {
             confirmButton.isHidden = false
@@ -91,6 +92,7 @@ class LanguagesViewController: UIViewController, Navigateble {
         button?.setTitleColor(.healthBlue, for: .normal)
         button?.setTitle("back_text".localized(), for: .normal)
         button?.sizeToFit()
+        navigationItem.leftBarButtonItem?.title = "back_text".localized()
     }
     
     private func navigateToNextViewController() {
