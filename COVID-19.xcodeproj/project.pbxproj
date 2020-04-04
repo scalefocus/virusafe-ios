@@ -37,7 +37,7 @@
 		02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */; };
 		02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
 		13AE75B8F1970E91C0E33019 /* Pods_COVID_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA7D0084B974E6C8FEF0C98 /* Pods_COVID_19.framework */; };
-		34CC17724F21013CB52B856E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		34CC17724F21013CB52B856E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		3803B0132425498F0076EE00 /* EasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDC2425498F0076EE00 /* EasedValue.m */; };
 		3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDF2425498F0076EE00 /* INWeightedAverage.m */; };
 		3803B0152425498F0076EE00 /* GCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE12425498F0076EE00 /* GCDUtilities.m */; };
@@ -460,7 +460,7 @@
 			files = (
 				38AD4BBD243770F100E57800 /* CoreLocation.framework in Frameworks */,
 				3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */,
-				34CC17724F21013CB52B856E /* BuildFile in Frameworks */,
+				34CC17724F21013CB52B856E /* (null) in Frameworks */,
 				13AE75B8F1970E91C0E33019 /* Pods_COVID_19.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1706,7 +1706,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20.3.292300;
 				DEVELOPMENT_TEAM = UWBDU93DZY;
-				GOOGLE_SERVICES_INFO_PLSIT_NAME = "GoogleService-Info-Upnetix";
 				INFOPLIST_FILE = "COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1733,7 +1732,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 20.3.292300;
 				DEVELOPMENT_TEAM = UWBDU93DZY;
-				GOOGLE_SERVICES_INFO_PLSIT_NAME = "GoogleService-Info-Upnetix";
 				INFOPLIST_FILE = "COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1846,7 +1844,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 20.3.292300;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
-				GOOGLE_SERVICES_INFO_PLSIT_NAME = "GoogleService-Info-Upnetix";
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1873,7 +1870,6 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 20.3.292300;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
-				GOOGLE_SERVICES_INFO_PLSIT_NAME = "GoogleService-Info-Upnetix";
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
