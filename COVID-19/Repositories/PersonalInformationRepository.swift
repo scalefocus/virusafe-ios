@@ -14,7 +14,8 @@ typealias SendPersonalInfoCompletion = ((ApiResult<Void>) -> Void)
 
 protocol PersonalInformationRepositoryProtocol {
     func requestPersonalInfo(completion: @escaping RequestPersonalInformationCompletion)
-    func sendPersonalInfo(identificationNumber: String?, // personal or id or passport number
+    func sendPersonalInfo(identificationNumber: String?,
+                          identificationType: String?,
                           age: Int?,
                           gender: String?,
                           preexistingConditions: String?,
@@ -24,12 +25,14 @@ protocol PersonalInformationRepositoryProtocol {
 final class PersonalInformationRepository: PersonalInformationRepositoryProtocol {
     // !!! Fields are not required
     func sendPersonalInfo(identificationNumber: String?,
+                          identificationType: String?,
                           age: Int?,
                           gender: String?,
                           preexistingConditions: String?,
                           completion: @escaping SendPersonalInfoCompletion) {
         let normalizedPersonalIdentificationNumber = (identificationNumber?.count == 0) ? nil : identificationNumber
         let request = SendPersonalInformationApiRequest(identificationNumber: normalizedPersonalIdentificationNumber,
+                                                        identificationType: identificationType,
                                                         age: age,
                                                         gender: gender,
                                                         preExistingConditions: preexistingConditions)

@@ -22,17 +22,12 @@ class HomeViewController: UIViewController, Navigateble {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tncButton: UIButton!
     @IBOutlet private weak var moreInfoButton: UIButton!
-    @IBOutlet private weak var icon: UIImageView!
     @IBOutlet private weak var languagesButton: UIButton!
-
+    @IBOutlet private weak var titleDescriptionLabel: UILabel!
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupButtons()
-        
-
         askForPushNotifications()
 
         // Listen for token changes
@@ -99,27 +94,21 @@ class HomeViewController: UIViewController, Navigateble {
     }
 
     // MARK: Setup UI
-    
-    private func setupButtons() {
-        moreInfoButton.borderColor = .healthBlue ?? .black
-        startButton.borderColor = .healthBlue ?? .black
-        personalInfoButton.borderColor = .healthBlue ?? .black
-        howItWorksButton.borderColor = .healthBlue ?? .black
-    }
 
     private func localize() {
-        titleLabel.text = "my_contribution_title".localized()
-        howItWorksButton.setTitle("how_it_works".localized(), for: .normal)
+        titleLabel.text = "my_contribution_title".localized().uppercased()
+        titleDescriptionLabel.text = "my_contribution_title_description".localized()
+        howItWorksButton.setTitle("how_it_works".localized().uppercased(), for: .normal)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
                                                            style: .plain,
                                                            target: nil,
                                                            action: nil)
 
-        startButton.setTitle("how_do_you_feel_today".localized(), for: .normal)
-        personalInfoButton.setTitle("my_personal_data".localized(), for: .normal)
+        startButton.setTitle("how_do_you_feel_today".localized().uppercased(), for: .normal)
+        personalInfoButton.setTitle("my_personal_data".localized().uppercased(), for: .normal)
         tncButton.setTitle("terms_n_conditions_label".localized(), for: .normal)
-        moreInfoButton.setTitle("learn_more".localized(), for: .normal)
+        moreInfoButton.setTitle("learn_more".localized().uppercased(), for: .normal)
         languagesButton.setTitle("language".localized(), for: .normal)
     }
 
