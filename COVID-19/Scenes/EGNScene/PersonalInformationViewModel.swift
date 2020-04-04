@@ -192,11 +192,17 @@ final class PersonalInformationViewModel {
     func sendPersonalInformation() {
         // show activity indicator
         isLoading.value = true
+        var ageOrNil: Int? = nil
+        if let value = age.value, !value.isEmpty {
+            if let age = Int(value), age > 0 {
+                ageOrNil = age
+            }
+        }
         // prepare request
         let request = PersonalInformation(identificationNumber: identificationNumber.value,
                                           identificationType: identificationNumberType.value ?? .notSelected,
                                           phoneNumber: "", // !!! It is not important in the request
-                                          age: Int(age.value ?? "") ?? 0,
+                                          age: ageOrNil,
                                           gender: gender.value ?? .notSelected,
                                           preExistingConditions: preexistingConditions.value ?? "")
         // send request
