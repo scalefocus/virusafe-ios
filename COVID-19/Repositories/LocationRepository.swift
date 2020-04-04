@@ -30,10 +30,13 @@ class LocationRepository: LocationRepositoryProtocol {
                          completion: @escaping SendLocationCompletion) {
         let location = UserLocation(latitude: latitude, longitude: longitude)
         let timestamp = "\(Int64(Date().timeIntervalSince1970 * 1000))"
+
+        let bluetoothId = BLEBeaconIdentifierHelper.readIdentifierFromJWTToken() ?? "0"
         // ??? Pass BT id
         GpsApiRequest(location: location,
                       phoneNumber: phoneNumber,
-                      timestamp: timestamp)
+                      timestamp: timestamp,
+                      bluetoothId: bluetoothId)
             .execute { (data, response, error) in
                 guard let statusCode = response?.statusCode, error == nil else {
                     completion(.failure(.general))
@@ -78,5 +81,21 @@ class LocationRepository: LocationRepositoryProtocol {
                         completion(.failure(.server))
                 }
             }
+    }
+}
+
+// !!! We will set this token in advertising data
+final class BLEBeaconIdentifierHelper {
+    static func readIdentifierFromJWTToken() -> String? {
+        let decoder = JWTDecoder()
+        // Not registered yet
+        guard let token = TokenStore.shared.token else {
+            return nil
+        }
+        let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
+        guard let userGuid = jwtBody["userGuid"] as? String else {
+            return nil
+        }
+        return userGuid
     }
 }
