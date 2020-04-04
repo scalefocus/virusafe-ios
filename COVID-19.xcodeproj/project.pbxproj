@@ -167,6 +167,7 @@
 		38AD4BBB243768BF00E57800 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179866224309342006CC2D9 /* Registration.storyboard */; };
 		38AD4BBD243770F100E57800 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		38AD4BBE243770FE00E57800 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
+		412D72302438BBA10037C228 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 412D722F2438BBA10037C228 /* GoogleService-Info.plist */; };
 		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
 		41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
 		41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1E242B78B00062D6E1 /* LocationRepository.swift */; };
@@ -269,7 +270,6 @@
 		4166B3DE2438A68300CC8614 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
 		4166B3DF2438A68300CC8614 /* PersonalInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865A24309054006CC2D9 /* PersonalInformation.storyboard */; };
 		4166B3E02438A68300CC8614 /* HealthStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41798660243092FC006CC2D9 /* HealthStatus.storyboard */; };
-		4166B3E12438A68300CC8614 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
 		4166B3E22438A68300CC8614 /* HealthStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = 024D82E22423A80400696868 /* HealthStatus.json */; };
 		4170C22A2428B4C0003EA70A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */; };
 		4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
@@ -404,6 +404,7 @@
 		38AD4BBC243770F100E57800 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3BA7D0084B974E6C8FEF0C98 /* Pods_COVID_19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA88D1083290FABBC541C6D /* Pods-COVID-19-MKD.release information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-MKD.release information services.xcconfig"; path = "Target Support Files/Pods-COVID-19-MKD/Pods-COVID-19-MKD.release information services.xcconfig"; sourceTree = "<group>"; };
+		412D722F2438BBA10037C228 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41482B18242B49F20062D6E1 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 		41482B1C242B60480062D6E1 /* JWTDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecoder.swift; sourceTree = "<group>"; };
 		41482B1E242B78B00062D6E1 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
@@ -610,7 +611,7 @@
 				5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
-				41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */,
+				412D722B2438BB450037C228 /* GoogleServices */,
 				38A8F40D2429574F00486007 /* COVID-19.entitlements */,
 				024D82D424239A6100696868 /* Extensions */,
 			);
@@ -811,6 +812,39 @@
 				4179865A24309054006CC2D9 /* PersonalInformation.storyboard */,
 			);
 			path = EGNScene;
+			sourceTree = "<group>";
+		};
+		412D722B2438BB450037C228 /* GoogleServices */ = {
+			isa = PBXGroup;
+			children = (
+				412D722E2438BB690037C228 /* Macedonia */,
+				412D722D2438BB5A0037C228 /* Upnetix */,
+				412D722C2438BB550037C228 /* Gov */,
+			);
+			path = GoogleServices;
+			sourceTree = "<group>";
+		};
+		412D722C2438BB550037C228 /* Gov */ = {
+			isa = PBXGroup;
+			children = (
+				412D722F2438BBA10037C228 /* GoogleService-Info.plist */,
+			);
+			path = Gov;
+			sourceTree = "<group>";
+		};
+		412D722D2438BB5A0037C228 /* Upnetix */ = {
+			isa = PBXGroup;
+			children = (
+				41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */,
+			);
+			path = Upnetix;
+			sourceTree = "<group>";
+		};
+		412D722E2438BB690037C228 /* Macedonia */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Macedonia;
 			sourceTree = "<group>";
 		};
 		41482B24242B88180062D6E1 /* CovidInfoScene */ = {
@@ -1048,11 +1082,11 @@
 				4166B3DA2438A68300CC8614 /* QuestionTableViewCell.xib in Resources */,
 				4166B3DB2438A68300CC8614 /* InfoPlist.strings in Resources */,
 				4166B3DC2438A68300CC8614 /* Registration.storyboard in Resources */,
+				412D72302438BBA10037C228 /* GoogleService-Info.plist in Resources */,
 				4166B3DD2438A68300CC8614 /* Confirmation.storyboard in Resources */,
 				4166B3DE2438A68300CC8614 /* Languages.storyboard in Resources */,
 				4166B3DF2438A68300CC8614 /* PersonalInformation.storyboard in Resources */,
 				4166B3E02438A68300CC8614 /* HealthStatus.storyboard in Resources */,
-				4166B3E12438A68300CC8614 /* GoogleService-Info.plist in Resources */,
 				4166B3E22438A68300CC8614 /* HealthStatus.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
