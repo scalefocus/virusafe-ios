@@ -1286,7 +1286,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "chmod +x ./Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh\n././Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"0cab6d50-93d1-4c22-baf2-2e645aabaa2f\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.io/api/localizations/v1.1\"\n";
+			shellScript = "chmod +x ./Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh\n././Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"85472152-fdff-49da-9e88-ea3060a6f898\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.io/api/localizations/v1.1\"\n";
 		};
 		4179866C2430FB97006CC2D9 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1880,7 +1880,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.3.292300;
+				CURRENT_PROJECT_VERSION = 20.4.42100;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1906,7 +1906,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.3.292300;
+				CURRENT_PROJECT_VERSION = 20.4.42100;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
