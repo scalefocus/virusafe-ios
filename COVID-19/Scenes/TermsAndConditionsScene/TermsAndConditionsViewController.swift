@@ -15,8 +15,6 @@ class TermsAndConditionsViewController: UIViewController {
     var userResponseHandler: TNCUserResponseHandler?
 
     // MARK: Outlets
-
-    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var contentTextView: UITextView!
     @IBOutlet private weak var acceptButton: UIButton!
 
@@ -60,7 +58,6 @@ class TermsAndConditionsViewController: UIViewController {
 
     private func localize() {
         title = "terms_n_conditions_label".localized()
-        titleLabel.text = "terms_n_conditions_label".localized()
         acceptButton.setTitle("i_agree_label".localized(), for: .normal)
     }
 

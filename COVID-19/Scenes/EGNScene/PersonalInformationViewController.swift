@@ -98,15 +98,14 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         //Thre is no other way to get the segmented control selected element background view and round its corners
         let segmentSubviews = identificationNumberTypeSegmentControl.subviews
         
-        for i in 0...segmentSubviews.count - 1{
-            if let subview = segmentSubviews[i] as? UIImageView{
-                if i == identificationNumberTypeSegmentControl.selectedSegmentIndex {
-                    subview.backgroundColor = selectedColor
-                    subview.cornerRadius = identificationNumberTypeSegmentControl.bounds.height / 2
-                } else{
+        let subviews = segmentSubviews.filter { $0.isKind(of: UIImageView.self) }
+        for i in 0...subviews.count - 1{
+            if i == identificationNumberTypeSegmentControl.selectedSegmentIndex {
+                subviews[i].backgroundColor = selectedColor
+                subviews[i].cornerRadius = identificationNumberTypeSegmentControl.bounds.height / 2
+            } else{
 
-                    subview.backgroundColor = .clear
-                }
+                subviews[i].backgroundColor = .clear
             }
         }
         
