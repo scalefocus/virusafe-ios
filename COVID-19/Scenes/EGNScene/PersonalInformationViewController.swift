@@ -78,14 +78,41 @@ class PersonalInformationViewController: UIViewController, Navigateble {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        identificationNumberTypeSegmentControl.layer.cornerRadius =
-            identificationNumberTypeSegmentControl.bounds.height / 2
-        identificationNumberTypeSegmentControl.layer.borderColor = UIColor.healthBlue?.cgColor
-        identificationNumberTypeSegmentControl.layer.borderWidth = 1
-        identificationNumberTypeSegmentControl.layer.masksToBounds = true
+        
+        customiseSegmentedControl()
+        
     }
 
     // MARK: Setup UI
+    
+    private func customiseSegmentedControl() {
+        let selectedColor = UIColor.healthBlue ?? UIColor.white
+        
+        identificationNumberTypeSegmentControl.layer.cornerRadius =
+            identificationNumberTypeSegmentControl.bounds.height / 2
+        identificationNumberTypeSegmentControl.layer.borderColor = selectedColor.cgColor
+        identificationNumberTypeSegmentControl.layer.borderWidth = 1
+        identificationNumberTypeSegmentControl.layer.masksToBounds = true
+        
+        //Rounding the Corners of the segmented Control selection
+        //Thre is no other way to get the segmented control selected element background view and round its corners
+        let segmentSubviews = identificationNumberTypeSegmentControl.subviews
+        
+        for i in 0...segmentSubviews.count - 1{
+            if let subview = segmentSubviews[i] as? UIImageView{
+                if i == identificationNumberTypeSegmentControl.selectedSegmentIndex {
+                    subview.backgroundColor = selectedColor
+                    subview.cornerRadius = identificationNumberTypeSegmentControl.bounds.height / 2
+                } else{
+
+                    subview.backgroundColor = .clear
+                }
+            }
+        }
+        
+        identificationNumberTypeSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        identificationNumberTypeSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: selectedColor], for: .normal)
+    }
     
     private func setupUI() {
         title = viewModel.isInitialFlow == true ? "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n") :
@@ -262,15 +289,15 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             case .bulgarianCitizenUCN:
                 identificationNumberTextField.keyboardType = .numberPad
                 setGenderButtonsUserInteraction(false)
-                ageTextField.isUserInteractionEnabled = false
+                ageTextField.isEnabled = false
             case .foreignerPIN:
                 identificationNumberTextField.keyboardType = .numberPad
                 setGenderButtonsUserInteraction(true)
-                ageTextField.isUserInteractionEnabled = true
+                ageTextField.isEnabled = true
             case .identificationCard:
                 identificationNumberTextField.keyboardType = .default
                 setGenderButtonsUserInteraction(true)
-                ageTextField.isUserInteractionEnabled = true
+                ageTextField.isEnabled = true
             default:
                 break // Do nothing
         }
@@ -282,7 +309,9 @@ class PersonalInformationViewController: UIViewController, Navigateble {
 
     private func setGenderButtonsUserInteraction(_ isEnabled: Bool) {
         for button in genderButtons {
-            button.isUserInteractionEnabled = isEnabled
+            button.isEnabled = isEnabled
+            genderLabel.isEnabled = isEnabled
+            button.borderColor = isEnabled ? .healthBlue ?? .white : UIColor.lightGray.withAlphaComponent(0.3)
         }
     }
 
