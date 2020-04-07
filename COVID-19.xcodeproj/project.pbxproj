@@ -215,6 +215,9 @@
 		41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
 		41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
 		5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
+		5C8904A6243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
+		5C8904A7243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
+		5C8904A8243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
 		B4205A550899F809912CC656 /* Pods_COVID_19_MKD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B37A1C8C8799886865DB8D /* Pods_COVID_19_MKD.framework */; };
 		BF5125823B8AAE39257C112A /* Pods_COVID_19_GOV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670695968118EE6BF660EDDF /* Pods_COVID_19_GOV.framework */; };
 		FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
@@ -302,6 +305,7 @@
 		4333593BB3D37825B7EAA5D3 /* Pods-COVID-19-GOV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-GOV.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19-GOV/Pods-COVID-19-GOV.debug.xcconfig"; sourceTree = "<group>"; };
 		5C23C9F0243754AB00F9CEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5C23C9F2243754BF00F9CEDB /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSegmentController.swift; sourceTree = "<group>"; };
 		670695968118EE6BF660EDDF /* Pods_COVID_19_GOV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19_GOV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE276842B04DE767E147A0D /* Pods-COVID-19-MKD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-MKD.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19-MKD/Pods-COVID-19-MKD.debug.xcconfig"; sourceTree = "<group>"; };
 		913D441E1D237BAE7B2E982C /* Pods-COVID-19-MKD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-MKD.release.xcconfig"; path = "Target Support Files/Pods-COVID-19-MKD/Pods-COVID-19-MKD.release.xcconfig"; sourceTree = "<group>"; };
@@ -429,6 +433,7 @@
 				024D83092425332800696868 /* RadialGradientView.swift */,
 				4170C236242A05F8003EA70A /* CheckBox.swift */,
 				4170C238242A14D3003EA70A /* Toast.swift */,
+				5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1068,6 +1073,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */,
+				5C8904A6243C91A400FB946B /* RoundedSegmentController.swift in Sources */,
 				41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */,
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
 				41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */,
@@ -1126,6 +1132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38AD4BB024375CD600E57800 /* Array+SafeAt.swift in Sources */,
+				5C8904A8243C91A400FB946B /* RoundedSegmentController.swift in Sources */,
 				38AD4B7024375B5800E57800 /* PersonalInformationRepository.swift in Sources */,
 				38AD4BA324375C9A00E57800 /* QuestionTableViewCell.swift in Sources */,
 				38AD4BAF24375CD600E57800 /* UIViewExtension.swift in Sources */,
@@ -1184,6 +1191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4166B3812438A68300CC8614 /* RegistrationConfirmationViewController.swift in Sources */,
+				5C8904A7243C91A400FB946B /* RoundedSegmentController.swift in Sources */,
 				4166B3832438A68300CC8614 /* JWTDecoder.swift in Sources */,
 				4166B3842438A68300CC8614 /* RegistrationViewModel.swift in Sources */,
 				4166B3852438A68300CC8614 /* LocationRepository.swift in Sources */,
