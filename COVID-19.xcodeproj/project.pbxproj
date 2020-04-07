@@ -38,32 +38,6 @@
 		02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
 		13AE75B8F1970E91C0E33019 /* Pods_COVID_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA7D0084B974E6C8FEF0C98 /* Pods_COVID_19.framework */; };
 		34CC17724F21013CB52B856E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		3803B0132425498F0076EE00 /* EasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDC2425498F0076EE00 /* EasedValue.m */; };
-		3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDF2425498F0076EE00 /* INWeightedAverage.m */; };
-		3803B0152425498F0076EE00 /* GCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE12425498F0076EE00 /* GCDUtilities.m */; };
-		3803B0162425498F0076EE00 /* ReachabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE22425498F0076EE00 /* ReachabilityService.m */; };
-		3803B0172425498F0076EE00 /* NSSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE62425498F0076EE00 /* NSSet+Ext.m */; };
-		3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE82425498F0076EE00 /* NSObject+Ext.m */; };
-		3803B0192425498F0076EE00 /* NSMutableArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */; };
-		3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */; };
-		3803B01B2425498F0076EE00 /* NSString+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFED2425498F0076EE00 /* NSString+Ext.m */; };
-		3803B01C2425498F0076EE00 /* UIView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEE2425498F0076EE00 /* UIView+Ext.m */; };
-		3803B01D2425498F0076EE00 /* NSMutableSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */; };
-		3803B01E2425498F0076EE00 /* NSRangeExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF22425498F0076EE00 /* NSRangeExt.m */; };
-		3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */; };
-		3803B0202425498F0076EE00 /* NSFileManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */; };
-		3803B0212425498F0076EE00 /* UIColor+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF72425498F0076EE00 /* UIColor+Ext.m */; };
-		3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */; };
-		3803B0232425498F0076EE00 /* UIScreen+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */; };
-		3803B0242425498F0076EE00 /* UILabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFC2425498F0076EE00 /* UILabel+Ext.m */; };
-		3803B0252425498F0076EE00 /* NSArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFE2425498F0076EE00 /* NSArray+Ext.m */; };
-		3803B0262425498F0076EE00 /* CBCentralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */; };
-		3803B0272425498F0076EE00 /* CLBeacon+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0032425498F0076EE00 /* CLBeacon+Ext.m */; };
-		3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0082425498F0076EE00 /* NSDate+Ext.m */; };
-		3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */; };
-		3803B02A2425498F0076EE00 /* UIImage+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00C2425498F0076EE00 /* UIImage+Ext.m */; };
-		3803B02B2425498F0076EE00 /* INBeaconService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00F2425498F0076EE00 /* INBeaconService.m */; };
-		3803B02C2425498F0076EE00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
 		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
@@ -97,37 +71,9 @@
 		38AD4B7124375B6000E57800 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D83092425332800696868 /* RadialGradientView.swift */; };
 		38AD4B7224375B6000E57800 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C236242A05F8003EA70A /* CheckBox.swift */; };
 		38AD4B7324375B6000E57800 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
-		38AD4B7424375B8000E57800 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
-		38AD4B7524375B8F00E57800 /* INBeaconService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00F2425498F0076EE00 /* INBeaconService.m */; };
-		38AD4B7624375B9B00E57800 /* NSObject+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE82425498F0076EE00 /* NSObject+Ext.m */; };
-		38AD4B7724375BA800E57800 /* NSSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE62425498F0076EE00 /* NSSet+Ext.m */; };
-		38AD4B7824375BB100E57800 /* NSMutableArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */; };
-		38AD4B7924375BB600E57800 /* CBUUID+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */; };
-		38AD4B7A24375BBD00E57800 /* NSString+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFED2425498F0076EE00 /* NSString+Ext.m */; };
-		38AD4B7B24375BC100E57800 /* UIView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEE2425498F0076EE00 /* UIView+Ext.m */; };
-		38AD4B7C24375BC500E57800 /* NSMutableSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */; };
-		38AD4B7D24375BD200E57800 /* NSRangeExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF22425498F0076EE00 /* NSRangeExt.m */; };
-		38AD4B7E24375BD600E57800 /* NSDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */; };
-		38AD4B7F24375BDC00E57800 /* NSFileManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */; };
-		38AD4B8024375BE000E57800 /* UIColor+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF72425498F0076EE00 /* UIColor+Ext.m */; };
-		38AD4B8124375BE500E57800 /* NSMutableDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */; };
-		38AD4B8224375BEA00E57800 /* UIScreen+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */; };
-		38AD4B8324375BEE00E57800 /* UILabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFC2425498F0076EE00 /* UILabel+Ext.m */; };
-		38AD4B8424375BF700E57800 /* NSArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFE2425498F0076EE00 /* NSArray+Ext.m */; };
-		38AD4B8524375BFC00E57800 /* CBCentralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */; };
-		38AD4B8624375C0100E57800 /* CLBeacon+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0032425498F0076EE00 /* CLBeacon+Ext.m */; };
-		38AD4B8724375C0800E57800 /* NSDate+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0082425498F0076EE00 /* NSDate+Ext.m */; };
-		38AD4B8824375C1300E57800 /* CBPeripheralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */; };
-		38AD4B8924375C1800E57800 /* UIImage+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00C2425498F0076EE00 /* UIImage+Ext.m */; };
-		38AD4B8A24375C2400E57800 /* EasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDC2425498F0076EE00 /* EasedValue.m */; };
-		38AD4B8B24375C2D00E57800 /* INWeightedAverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDF2425498F0076EE00 /* INWeightedAverage.m */; };
-		38AD4B8C24375C3200E57800 /* GCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE12425498F0076EE00 /* GCDUtilities.m */; };
-		38AD4B8D24375C3700E57800 /* ReachabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE22425498F0076EE00 /* ReachabilityService.m */; };
 		38AD4B8E24375C5A00E57800 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
 		38AD4B8F24375C5A00E57800 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */; };
 		38AD4B9024375C5A00E57800 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
-		38AD4B9124375C5F00E57800 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
-		38AD4B9224375C5F00E57800 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
 		38AD4B9324375C6500E57800 /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650B6E242DFB110013DF5E /* PersonalInformationViewController.swift */; };
 		38AD4B9424375C6500E57800 /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E672242F782700AC96B1 /* PersonalInformationViewModel.swift */; };
 		38AD4B9524375C6500E57800 /* PersonalInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865A24309054006CC2D9 /* PersonalInformation.storyboard */; };
@@ -174,20 +120,13 @@
 		41482B26242B88380062D6E1 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41482B25242B88380062D6E1 /* WebView.storyboard */; };
 		41482B28242B891A0062D6E1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B27242B891A0062D6E1 /* WebViewController.swift */; };
 		4166B37A2438907B00CC8614 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
-		4166B37B243892F400CC8614 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
-		4166B37F2438A68300CC8614 /* NSRangeExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF22425498F0076EE00 /* NSRangeExt.m */; };
-		4166B3802438A68300CC8614 /* UIColor+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF72425498F0076EE00 /* UIColor+Ext.m */; };
 		4166B3812438A68300CC8614 /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */; };
-		4166B3822438A68300CC8614 /* GCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE12425498F0076EE00 /* GCDUtilities.m */; };
 		4166B3832438A68300CC8614 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
 		4166B3842438A68300CC8614 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FA2424EA2E00696868 /* RegistrationViewModel.swift */; };
 		4166B3852438A68300CC8614 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1E242B78B00062D6E1 /* LocationRepository.swift */; };
-		4166B3862438A68300CC8614 /* NSDate+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0082425498F0076EE00 /* NSDate+Ext.m */; };
 		4166B3872438A68300CC8614 /* PersonalInformationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */; };
-		4166B3882438A68300CC8614 /* NSDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */; };
 		4166B3892438A68300CC8614 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
 		4166B38A2438A68300CC8614 /* PushTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417986682430B7BE006CC2D9 /* PushTokenStore.swift */; };
-		4166B38B2438A68300CC8614 /* NSObject+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE82425498F0076EE00 /* NSObject+Ext.m */; };
 		4166B38C2438A68300CC8614 /* TextField+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F22424AA3400696868 /* TextField+SetImage.swift */; };
 		4166B38D2438A68300CC8614 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
 		4166B38E2438A68300CC8614 /* TooManyRequestsResponseDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */; };
@@ -195,7 +134,6 @@
 		4166B3902438A68300CC8614 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82D824239AE100696868 /* QuestionTableViewCell.swift */; };
 		4166B3912438A68300CC8614 /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650B6E242DFB110013DF5E /* PersonalInformationViewController.swift */; };
 		4166B3922438A68300CC8614 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D8306242532F500696868 /* UIColor+Hex.swift */; };
-		4166B3932438A68300CC8614 /* INBeaconService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00F2425498F0076EE00 /* INBeaconService.m */; };
 		4166B3942438A68300CC8614 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
 		4166B3952438A68300CC8614 /* RegistrationConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F82424E9A900696868 /* RegistrationConfirmationViewModel.swift */; };
 		4166B3962438A68300CC8614 /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E672242F782700AC96B1 /* PersonalInformationViewModel.swift */; };
@@ -204,12 +142,8 @@
 		4166B3992438A68300CC8614 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
 		4166B39A2438A68300CC8614 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		4166B39B2438A68300CC8614 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
-		4166B39C2438A68300CC8614 /* INWeightedAverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDF2425498F0076EE00 /* INWeightedAverage.m */; };
 		4166B39D2438A68300CC8614 /* QuestionnaireRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C23C242A36A6003EA70A /* QuestionnaireRepository.swift */; };
-		4166B39E2438A68300CC8614 /* NSArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFE2425498F0076EE00 /* NSArray+Ext.m */; };
 		4166B39F2438A68300CC8614 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */; };
-		4166B3A02438A68300CC8614 /* UIScreen+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */; };
-		4166B3A12438A68300CC8614 /* CBCentralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */; };
 		4166B3A22438A68300CC8614 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D83012425130B00696868 /* SplashViewController.swift */; };
 		4166B3A32438A68300CC8614 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
 		4166B3A42438A68300CC8614 /* NoSymptomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */; };
@@ -217,45 +151,28 @@
 		4166B3A62438A68300CC8614 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 		4166B3A72438A68300CC8614 /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
 		4166B3A82438A68300CC8614 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DC24239F0D00696868 /* UIViewExtension.swift */; };
-		4166B3A92438A68300CC8614 /* NSMutableSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */; };
 		4166B3AA2438A68300CC8614 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B27242B891A0062D6E1 /* WebViewController.swift */; };
-		4166B3AB2438A68300CC8614 /* NSSet+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE62425498F0076EE00 /* NSSet+Ext.m */; };
 		4166B3AC2438A68300CC8614 /* AppLaunchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */; };
 		4166B3AD2438A68300CC8614 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FD2424EA7800696868 /* RegistrationRepository.swift */; };
 		4166B3AE2438A68300CC8614 /* HealthStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */; };
 		4166B3AF2438A68300CC8614 /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 		4166B3B02438A68300CC8614 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FF2424FB8300696868 /* UtilFunctions.swift */; };
 		4166B3B12438A68300CC8614 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D83092425332800696868 /* RadialGradientView.swift */; };
-		4166B3B22438A68300CC8614 /* CLBeacon+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0032425498F0076EE00 /* CLBeacon+Ext.m */; };
-		4166B3B32438A68300CC8614 /* ReachabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFE22425498F0076EE00 /* ReachabilityService.m */; };
 		4166B3B42438A68300CC8614 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */; };
 		4166B3B52438A68300CC8614 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C236242A05F8003EA70A /* CheckBox.swift */; };
 		4166B3B62438A68300CC8614 /* TermsAndConditionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */; };
-		4166B3B72438A68300CC8614 /* UILabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFFC2425498F0076EE00 /* UILabel+Ext.m */; };
 		4166B3B82438A68300CC8614 /* LoadingIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F62424E92200696868 /* LoadingIndicatorManager.swift */; };
-		4166B3B92438A68300CC8614 /* NSFileManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */; };
-		4166B3BA2438A68300CC8614 /* NSMutableArray+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */; };
-		4166B3BB2438A68300CC8614 /* UIImage+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00C2425498F0076EE00 /* UIImage+Ext.m */; };
-		4166B3BC2438A68300CC8614 /* EasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFDC2425498F0076EE00 /* EasedValue.m */; };
-		4166B3BD2438A68300CC8614 /* UIView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEE2425498F0076EE00 /* UIView+Ext.m */; };
-		4166B3BE2438A68300CC8614 /* NSString+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFED2425498F0076EE00 /* NSString+Ext.m */; };
 		4166B3BF2438A68300CC8614 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */; };
-		4166B3C02438A68300CC8614 /* CBPeripheralManager+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */; };
-		4166B3C12438A68300CC8614 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803B0112425498F0076EE00 /* Reachability.m */; };
 		4166B3C22438A68300CC8614 /* BaseViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82D524239A7800696868 /* BaseViewConfigurator.swift */; };
 		4166B3C32438A68300CC8614 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2302428D019003EA70A /* TermsAndConditionsViewController.swift */; };
 		4166B3C42438A68300CC8614 /* AppFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E670242F529A00AC96B1 /* AppFlowManager.swift */; };
 		4166B3C52438A68300CC8614 /* String+IsNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277EA7A2426766F00941863 /* String+IsNumber.swift */; };
 		4166B3C62438A68300CC8614 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E66E242F527300AC96B1 /* StateMachine.swift */; };
 		4166B3C72438A68300CC8614 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
-		4166B3C82438A68300CC8614 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
-		4166B3C92438A68300CC8614 /* NSMutableDictionary+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */; };
 		4166B3CA2438A68300CC8614 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
-		4166B3CB2438A68300CC8614 /* CBUUID+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */; };
 		4166B3CC2438A68300CC8614 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		4166B3CE2438A68300CC8614 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		4166B3CF2438A68300CC8614 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
-		4166B3D22438A68300CC8614 /* BLE.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FEF62F2433625A006D30B2 /* BLE.storyboard */; };
 		4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
 		4166B3D52438A68300CC8614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
@@ -296,7 +213,6 @@
 		41D3E675242F7C7200AC96B1 /* TermsAndConditionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */; };
 		41D3E677242F8DC800AC96B1 /* AppLaunchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */; };
 		41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
-		41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62D24336230006D30B2 /* BLEViewController.swift */; };
 		41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
 		5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
 		B4205A550899F809912CC656 /* Pods_COVID_19_MKD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B37A1C8C8799886865DB8D /* Pods_COVID_19_MKD.framework */; };
@@ -338,61 +254,6 @@
 		02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusViewModel.swift; sourceTree = "<group>"; };
 		03015775D77A75337895FF96 /* Pods-COVID-19-GOV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-GOV.release.xcconfig"; path = "Target Support Files/Pods-COVID-19-GOV/Pods-COVID-19-GOV.release.xcconfig"; sourceTree = "<group>"; };
 		342AD023A3A82D0930F0B286 /* Pods-COVID-19.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release.xcconfig"; sourceTree = "<group>"; };
-		3803AFD72425498F0076EE00 /* COVID-19-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "COVID-19-Bridging-Header.h"; sourceTree = "<group>"; };
-		3803AFDA2425498F0076EE00 /* INWeightedAverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWeightedAverage.h; sourceTree = "<group>"; };
-		3803AFDB2425498F0076EE00 /* GCDSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSingleton.h; sourceTree = "<group>"; };
-		3803AFDC2425498F0076EE00 /* EasedValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasedValue.m; sourceTree = "<group>"; };
-		3803AFDD2425498F0076EE00 /* GCDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDUtilities.h; sourceTree = "<group>"; };
-		3803AFDE2425498F0076EE00 /* ReachabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityService.h; sourceTree = "<group>"; };
-		3803AFDF2425498F0076EE00 /* INWeightedAverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWeightedAverage.m; sourceTree = "<group>"; };
-		3803AFE02425498F0076EE00 /* EasedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasedValue.h; sourceTree = "<group>"; };
-		3803AFE12425498F0076EE00 /* GCDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDUtilities.m; sourceTree = "<group>"; };
-		3803AFE22425498F0076EE00 /* ReachabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityService.m; sourceTree = "<group>"; };
-		3803AFE42425498F0076EE00 /* UILabel+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Ext.h"; sourceTree = "<group>"; };
-		3803AFE52425498F0076EE00 /* UIScreen+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+Ext.h"; sourceTree = "<group>"; };
-		3803AFE62425498F0076EE00 /* NSSet+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+Ext.m"; sourceTree = "<group>"; };
-		3803AFE72425498F0076EE00 /* NSMutableDictionary+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Ext.h"; sourceTree = "<group>"; };
-		3803AFE82425498F0076EE00 /* NSObject+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Ext.m"; sourceTree = "<group>"; };
-		3803AFE92425498F0076EE00 /* CBCentralManager+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBCentralManager+Ext.h"; sourceTree = "<group>"; };
-		3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Ext.m"; sourceTree = "<group>"; };
-		3803AFEB2425498F0076EE00 /* NSArray+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Ext.h"; sourceTree = "<group>"; };
-		3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBUUID+Ext.m"; sourceTree = "<group>"; };
-		3803AFED2425498F0076EE00 /* NSString+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Ext.m"; sourceTree = "<group>"; };
-		3803AFEE2425498F0076EE00 /* UIView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Ext.m"; sourceTree = "<group>"; };
-		3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+Ext.m"; sourceTree = "<group>"; };
-		3803AFF02425498F0076EE00 /* CustomExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomExtensions.h; sourceTree = "<group>"; };
-		3803AFF12425498F0076EE00 /* CLBeacon+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLBeacon+Ext.h"; sourceTree = "<group>"; };
-		3803AFF22425498F0076EE00 /* NSRangeExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSRangeExt.m; sourceTree = "<group>"; };
-		3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Ext.m"; sourceTree = "<group>"; };
-		3803AFF42425498F0076EE00 /* UIImage+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Ext.h"; sourceTree = "<group>"; };
-		3803AFF52425498F0076EE00 /* CBPeripheralManager+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBPeripheralManager+Ext.h"; sourceTree = "<group>"; };
-		3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Ext.m"; sourceTree = "<group>"; };
-		3803AFF72425498F0076EE00 /* UIColor+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Ext.m"; sourceTree = "<group>"; };
-		3803AFF82425498F0076EE00 /* NSDate+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Ext.h"; sourceTree = "<group>"; };
-		3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Ext.m"; sourceTree = "<group>"; };
-		3803AFFA2425498F0076EE00 /* NSSet+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+Ext.h"; sourceTree = "<group>"; };
-		3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Ext.m"; sourceTree = "<group>"; };
-		3803AFFC2425498F0076EE00 /* UILabel+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Ext.m"; sourceTree = "<group>"; };
-		3803AFFD2425498F0076EE00 /* CBUUID+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBUUID+Ext.h"; sourceTree = "<group>"; };
-		3803AFFE2425498F0076EE00 /* NSArray+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Ext.m"; sourceTree = "<group>"; };
-		3803AFFF2425498F0076EE00 /* NSMutableArray+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Ext.h"; sourceTree = "<group>"; };
-		3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBCentralManager+Ext.m"; sourceTree = "<group>"; };
-		3803B0012425498F0076EE00 /* NSObject+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Ext.h"; sourceTree = "<group>"; };
-		3803B0022425498F0076EE00 /* NSDictionary+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Ext.h"; sourceTree = "<group>"; };
-		3803B0032425498F0076EE00 /* CLBeacon+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLBeacon+Ext.m"; sourceTree = "<group>"; };
-		3803B0042425498F0076EE00 /* NSRangeExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSRangeExt.h; sourceTree = "<group>"; };
-		3803B0052425498F0076EE00 /* NSMutableSet+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+Ext.h"; sourceTree = "<group>"; };
-		3803B0062425498F0076EE00 /* UIView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Ext.h"; sourceTree = "<group>"; };
-		3803B0072425498F0076EE00 /* NSString+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Ext.h"; sourceTree = "<group>"; };
-		3803B0082425498F0076EE00 /* NSDate+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Ext.m"; sourceTree = "<group>"; };
-		3803B0092425498F0076EE00 /* UIColor+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Ext.h"; sourceTree = "<group>"; };
-		3803B00A2425498F0076EE00 /* NSFileManager+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Ext.h"; sourceTree = "<group>"; };
-		3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheralManager+Ext.m"; sourceTree = "<group>"; };
-		3803B00C2425498F0076EE00 /* UIImage+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Ext.m"; sourceTree = "<group>"; };
-		3803B00E2425498F0076EE00 /* INBeaconService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INBeaconService.h; sourceTree = "<group>"; };
-		3803B00F2425498F0076EE00 /* INBeaconService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INBeaconService.m; sourceTree = "<group>"; };
-		3803B0112425498F0076EE00 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		3803B0122425498F0076EE00 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		38334499242D46240032F153 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		385BDD672432038800476F69 /* LanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
@@ -437,8 +298,6 @@
 		41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsRepository.swift; sourceTree = "<group>"; };
 		41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchRepository.swift; sourceTree = "<group>"; };
 		41FEF62A243360DD006D30B2 /* BLEService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
-		41FEF62D24336230006D30B2 /* BLEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEViewController.swift; sourceTree = "<group>"; };
-		41FEF62F2433625A006D30B2 /* BLE.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BLE.storyboard; sourceTree = "<group>"; };
 		41FEF633243518F4006D30B2 /* UCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCNHelper.swift; sourceTree = "<group>"; };
 		4333593BB3D37825B7EAA5D3 /* Pods-COVID-19-GOV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-GOV.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19-GOV/Pods-COVID-19-GOV.debug.xcconfig"; sourceTree = "<group>"; };
 		5C23C9F0243754AB00F9CEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -599,7 +458,6 @@
 		02B9A6AA242371F300B1A4C0 /* COVID-19 */ = {
 			isa = PBXGroup;
 			children = (
-				3803AFD52425498F0076EE00 /* 3rdPartyLibs */,
 				024D83082425331400696868 /* CustomViews */,
 				024D82FC2424EA6000696868 /* Repositories */,
 				02B9A6C324238DF200B1A4C0 /* Scenes */,
@@ -622,7 +480,6 @@
 			isa = PBXGroup;
 			children = (
 				385BDD662432034B00476F69 /* Languages */,
-				41FEF62C243361E8006D30B2 /* TestBLE */,
 				38650B6D242DFABF0013DF5E /* EGNScene */,
 				41482B24242B88180062D6E1 /* CovidInfoScene */,
 				024D8303242527B800696868 /* SplashScene */,
@@ -682,116 +539,6 @@
 				03015775D77A75337895FF96 /* Pods-COVID-19-GOV.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		3803AFD52425498F0076EE00 /* 3rdPartyLibs */ = {
-			isa = PBXGroup;
-			children = (
-				3803AFD62425498F0076EE00 /* Objective-C-Vicinity */,
-			);
-			path = 3rdPartyLibs;
-			sourceTree = "<group>";
-		};
-		3803AFD62425498F0076EE00 /* Objective-C-Vicinity */ = {
-			isa = PBXGroup;
-			children = (
-				3803AFD72425498F0076EE00 /* COVID-19-Bridging-Header.h */,
-				3803AFD82425498F0076EE00 /* Bluetooth */,
-				3803B0102425498F0076EE00 /* Reachability */,
-			);
-			path = "Objective-C-Vicinity";
-			sourceTree = "<group>";
-		};
-		3803AFD82425498F0076EE00 /* Bluetooth */ = {
-			isa = PBXGroup;
-			children = (
-				3803AFD92425498F0076EE00 /* Utils */,
-				3803AFE32425498F0076EE00 /* Extensions */,
-				3803B00D2425498F0076EE00 /* System */,
-			);
-			path = Bluetooth;
-			sourceTree = "<group>";
-		};
-		3803AFD92425498F0076EE00 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3803AFDA2425498F0076EE00 /* INWeightedAverage.h */,
-				3803AFDB2425498F0076EE00 /* GCDSingleton.h */,
-				3803AFDC2425498F0076EE00 /* EasedValue.m */,
-				3803AFDD2425498F0076EE00 /* GCDUtilities.h */,
-				3803AFDE2425498F0076EE00 /* ReachabilityService.h */,
-				3803AFDF2425498F0076EE00 /* INWeightedAverage.m */,
-				3803AFE02425498F0076EE00 /* EasedValue.h */,
-				3803AFE12425498F0076EE00 /* GCDUtilities.m */,
-				3803AFE22425498F0076EE00 /* ReachabilityService.m */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		3803AFE32425498F0076EE00 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3803AFE42425498F0076EE00 /* UILabel+Ext.h */,
-				3803AFE52425498F0076EE00 /* UIScreen+Ext.h */,
-				3803AFE62425498F0076EE00 /* NSSet+Ext.m */,
-				3803AFE72425498F0076EE00 /* NSMutableDictionary+Ext.h */,
-				3803AFE82425498F0076EE00 /* NSObject+Ext.m */,
-				3803AFE92425498F0076EE00 /* CBCentralManager+Ext.h */,
-				3803AFEA2425498F0076EE00 /* NSMutableArray+Ext.m */,
-				3803AFEB2425498F0076EE00 /* NSArray+Ext.h */,
-				3803AFEC2425498F0076EE00 /* CBUUID+Ext.m */,
-				3803AFED2425498F0076EE00 /* NSString+Ext.m */,
-				3803AFEE2425498F0076EE00 /* UIView+Ext.m */,
-				3803AFEF2425498F0076EE00 /* NSMutableSet+Ext.m */,
-				3803AFF02425498F0076EE00 /* CustomExtensions.h */,
-				3803AFF12425498F0076EE00 /* CLBeacon+Ext.h */,
-				3803AFF22425498F0076EE00 /* NSRangeExt.m */,
-				3803AFF32425498F0076EE00 /* NSDictionary+Ext.m */,
-				3803AFF42425498F0076EE00 /* UIImage+Ext.h */,
-				3803AFF52425498F0076EE00 /* CBPeripheralManager+Ext.h */,
-				3803AFF62425498F0076EE00 /* NSFileManager+Ext.m */,
-				3803AFF72425498F0076EE00 /* UIColor+Ext.m */,
-				3803AFF82425498F0076EE00 /* NSDate+Ext.h */,
-				3803AFF92425498F0076EE00 /* NSMutableDictionary+Ext.m */,
-				3803AFFA2425498F0076EE00 /* NSSet+Ext.h */,
-				3803AFFB2425498F0076EE00 /* UIScreen+Ext.m */,
-				3803AFFC2425498F0076EE00 /* UILabel+Ext.m */,
-				3803AFFD2425498F0076EE00 /* CBUUID+Ext.h */,
-				3803AFFE2425498F0076EE00 /* NSArray+Ext.m */,
-				3803AFFF2425498F0076EE00 /* NSMutableArray+Ext.h */,
-				3803B0002425498F0076EE00 /* CBCentralManager+Ext.m */,
-				3803B0012425498F0076EE00 /* NSObject+Ext.h */,
-				3803B0022425498F0076EE00 /* NSDictionary+Ext.h */,
-				3803B0032425498F0076EE00 /* CLBeacon+Ext.m */,
-				3803B0042425498F0076EE00 /* NSRangeExt.h */,
-				3803B0052425498F0076EE00 /* NSMutableSet+Ext.h */,
-				3803B0062425498F0076EE00 /* UIView+Ext.h */,
-				3803B0072425498F0076EE00 /* NSString+Ext.h */,
-				3803B0082425498F0076EE00 /* NSDate+Ext.m */,
-				3803B0092425498F0076EE00 /* UIColor+Ext.h */,
-				3803B00A2425498F0076EE00 /* NSFileManager+Ext.h */,
-				3803B00B2425498F0076EE00 /* CBPeripheralManager+Ext.m */,
-				3803B00C2425498F0076EE00 /* UIImage+Ext.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		3803B00D2425498F0076EE00 /* System */ = {
-			isa = PBXGroup;
-			children = (
-				3803B00E2425498F0076EE00 /* INBeaconService.h */,
-				3803B00F2425498F0076EE00 /* INBeaconService.m */,
-			);
-			path = System;
-			sourceTree = "<group>";
-		};
-		3803B0102425498F0076EE00 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				3803B0112425498F0076EE00 /* Reachability.m */,
-				3803B0122425498F0076EE00 /* Reachability.h */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		385BDD662432034B00476F69 /* Languages */ = {
@@ -890,15 +637,6 @@
 				41D3E670242F529A00AC96B1 /* AppFlowManager.swift */,
 			);
 			path = "Flow Manger";
-			sourceTree = "<group>";
-		};
-		41FEF62C243361E8006D30B2 /* TestBLE */ = {
-			isa = PBXGroup;
-			children = (
-				41FEF62D24336230006D30B2 /* BLEViewController.swift */,
-				41FEF62F2433625A006D30B2 /* BLE.storyboard */,
-			);
-			path = TestBLE;
 			sourceTree = "<group>";
 		};
 		9F4DA72F5F25B5412264AC67 /* Frameworks */ = {
@@ -1023,7 +761,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4166B37B243892F400CC8614 /* BLE.storyboard in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
 				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
@@ -1052,7 +789,6 @@
 				38AD4B6824375B4C00E57800 /* Main.storyboard in Resources */,
 				38AD4B9724375C6F00E57800 /* WebView.storyboard in Resources */,
 				38AD4B9E24375C8C00E57800 /* Home.storyboard in Resources */,
-				38AD4B9224375C5F00E57800 /* BLE.storyboard in Resources */,
 				38AD4BAC24375CAA00E57800 /* TnC.storyboard in Resources */,
 				4166B37A2438907B00CC8614 /* InfoPlist.strings in Resources */,
 				38AD4BA624375C9A00E57800 /* NoSymptomsTableViewCell.xib in Resources */,
@@ -1071,7 +807,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4166B3D22438A68300CC8614 /* BLE.storyboard in Resources */,
 				4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */,
 				4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */,
 				4166B3D52438A68300CC8614 /* Main.storyboard in Resources */,
@@ -1332,19 +1067,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3803B01E2425498F0076EE00 /* NSRangeExt.m in Sources */,
-				3803B0212425498F0076EE00 /* UIColor+Ext.m in Sources */,
 				024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */,
-				3803B0152425498F0076EE00 /* GCDUtilities.m in Sources */,
 				41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */,
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
 				41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */,
-				3803B0282425498F0076EE00 /* NSDate+Ext.m in Sources */,
 				4179866524309BBD006CC2D9 /* PersonalInformationRepository.swift in Sources */,
-				3803B01F2425498F0076EE00 /* NSDictionary+Ext.m in Sources */,
 				41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */,
 				417986692430B7BE006CC2D9 /* PushTokenStore.swift in Sources */,
-				3803B0182425498F0076EE00 /* NSObject+Ext.m in Sources */,
 				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,
 				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
 				417341D82436138800365FD6 /* TooManyRequestsResponseDataParser.swift in Sources */,
@@ -1352,7 +1081,6 @@
 				024D82DA24239AE100696868 /* QuestionTableViewCell.swift in Sources */,
 				38650B6F242DFB110013DF5E /* PersonalInformationViewController.swift in Sources */,
 				024D8307242532F500696868 /* UIColor+Hex.swift in Sources */,
-				3803B02B2425498F0076EE00 /* INBeaconService.m in Sources */,
 				02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */,
 				024D82F92424E9A900696868 /* RegistrationConfirmationViewModel.swift in Sources */,
 				41D3E673242F782700AC96B1 /* PersonalInformationViewModel.swift in Sources */,
@@ -1361,12 +1089,8 @@
 				41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
-				3803B0142425498F0076EE00 /* INWeightedAverage.m in Sources */,
 				4170C23D242A36A6003EA70A /* QuestionnaireRepository.swift in Sources */,
-				3803B0252425498F0076EE00 /* NSArray+Ext.m in Sources */,
 				02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */,
-				3803B0232425498F0076EE00 /* UIScreen+Ext.m in Sources */,
-				3803B0262425498F0076EE00 /* CBCentralManager+Ext.m in Sources */,
 				024D83022425130B00696868 /* SplashViewController.swift in Sources */,
 				024D82E82423A84200696868 /* HealthStatus.swift in Sources */,
 				024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */,
@@ -1374,41 +1098,25 @@
 				FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */,
 				4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */,
 				024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */,
-				3803B01D2425498F0076EE00 /* NSMutableSet+Ext.m in Sources */,
 				41482B28242B891A0062D6E1 /* WebViewController.swift in Sources */,
-				3803B0172425498F0076EE00 /* NSSet+Ext.m in Sources */,
 				41D3E677242F8DC800AC96B1 /* AppLaunchRepository.swift in Sources */,
 				024D82FE2424EA7800696868 /* RegistrationRepository.swift in Sources */,
 				02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */,
 				4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */,
 				024D83002424FB8300696868 /* UtilFunctions.swift in Sources */,
 				024D830A2425332800696868 /* RadialGradientView.swift in Sources */,
-				3803B0272425498F0076EE00 /* CLBeacon+Ext.m in Sources */,
-				3803B0162425498F0076EE00 /* ReachabilityService.m in Sources */,
 				4170C22A2428B4C0003EA70A /* ConfirmationViewController.swift in Sources */,
 				4170C237242A05F8003EA70A /* CheckBox.swift in Sources */,
 				41D3E675242F7C7200AC96B1 /* TermsAndConditionsRepository.swift in Sources */,
-				3803B0242425498F0076EE00 /* UILabel+Ext.m in Sources */,
 				024D82F72424E92200696868 /* LoadingIndicatorManager.swift in Sources */,
-				3803B0202425498F0076EE00 /* NSFileManager+Ext.m in Sources */,
-				3803B0192425498F0076EE00 /* NSMutableArray+Ext.m in Sources */,
-				3803B02A2425498F0076EE00 /* UIImage+Ext.m in Sources */,
-				3803B0132425498F0076EE00 /* EasedValue.m in Sources */,
-				3803B01C2425498F0076EE00 /* UIView+Ext.m in Sources */,
-				3803B01B2425498F0076EE00 /* NSString+Ext.m in Sources */,
 				385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */,
-				3803B0292425498F0076EE00 /* CBPeripheralManager+Ext.m in Sources */,
-				3803B02C2425498F0076EE00 /* Reachability.m in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
 				4170C2312428D019003EA70A /* TermsAndConditionsViewController.swift in Sources */,
 				41D3E671242F529A00AC96B1 /* AppFlowManager.swift in Sources */,
 				0277EA7B2426766F00941863 /* String+IsNumber.swift in Sources */,
 				41D3E66F242F527300AC96B1 /* StateMachine.swift in Sources */,
 				4170C239242A14D3003EA70A /* Toast.swift in Sources */,
-				41FEF62E24336230006D30B2 /* BLEViewController.swift in Sources */,
-				3803B0222425498F0076EE00 /* NSMutableDictionary+Ext.m in Sources */,
 				41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */,
-				3803B01A2425498F0076EE00 /* CBUUID+Ext.m in Sources */,
 				3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1420,23 +1128,15 @@
 				38AD4BB024375CD600E57800 /* Array+SafeAt.swift in Sources */,
 				38AD4B7024375B5800E57800 /* PersonalInformationRepository.swift in Sources */,
 				38AD4BA324375C9A00E57800 /* QuestionTableViewCell.swift in Sources */,
-				38AD4B8B24375C2D00E57800 /* INWeightedAverage.m in Sources */,
-				38AD4B8424375BF700E57800 /* NSArray+Ext.m in Sources */,
-				38AD4B8124375BE500E57800 /* NSMutableDictionary+Ext.m in Sources */,
-				38AD4B8D24375C3700E57800 /* ReachabilityService.m in Sources */,
 				38AD4BAF24375CD600E57800 /* UIViewExtension.swift in Sources */,
 				38AD4B7324375B6000E57800 /* Toast.swift in Sources */,
-				38AD4B8224375BEA00E57800 /* UIScreen+Ext.m in Sources */,
 				38AD4B7124375B6000E57800 /* RadialGradientView.swift in Sources */,
 				38AD4B6F24375B5800E57800 /* AppLaunchRepository.swift in Sources */,
-				38AD4B7424375B8000E57800 /* Reachability.m in Sources */,
-				38AD4B8824375C1300E57800 /* CBPeripheralManager+Ext.m in Sources */,
 				38AD4B6724375B4500E57800 /* AppFlowManager.swift in Sources */,
 				38AD4BB524375CD600E57800 /* String+IsNumber.swift in Sources */,
 				38AD4B6524375B3F00E57800 /* TooManyRequestsResponseDataParser.swift in Sources */,
 				38AD4B6B24375B5800E57800 /* RegistrationRepository.swift in Sources */,
 				38AD4BA824375CA300E57800 /* ConfirmationViewModel.swift in Sources */,
-				38AD4B7824375BB100E57800 /* NSMutableArray+Ext.m in Sources */,
 				38AD4B5B24375B3F00E57800 /* LocalizableStrings.swift in Sources */,
 				38AD4B5C24375B3F00E57800 /* HealthStatus.swift in Sources */,
 				38AD4B6924375B5000E57800 /* AppDelegate.swift in Sources */,
@@ -1444,7 +1144,6 @@
 				38AD4BA724375CA300E57800 /* ConfirmationViewController.swift in Sources */,
 				38AD4BB124375CD600E57800 /* TextField+SetImage.swift in Sources */,
 				38AD4B9A24375C7D00E57800 /* RegistrationConfirmationViewModel.swift in Sources */,
-				38AD4B7D24375BD200E57800 /* NSRangeExt.m in Sources */,
 				38AD4B6A24375B5000E57800 /* SceneDelegate.swift in Sources */,
 				38AD4B9C24375C8500E57800 /* RegistrationViewModel.swift in Sources */,
 				38AD4BAA24375CAA00E57800 /* TermsAndConditionsViewController.swift in Sources */,
@@ -1461,40 +1160,22 @@
 				38AD4B9424375C6500E57800 /* PersonalInformationViewModel.swift in Sources */,
 				38AD4BB224375CD600E57800 /* LoadingIndicatorManager.swift in Sources */,
 				38AD4B6D24375B5800E57800 /* LocationRepository.swift in Sources */,
-				38AD4B7924375BB600E57800 /* CBUUID+Ext.m in Sources */,
 				38AD4B9D24375C8C00E57800 /* HomeViewController.swift in Sources */,
-				38AD4B7524375B8F00E57800 /* INBeaconService.m in Sources */,
-				38AD4B7724375BA800E57800 /* NSSet+Ext.m in Sources */,
 				38AD4B8E24375C5A00E57800 /* LanguagesViewController.swift in Sources */,
 				38AD4B9824375C7600E57800 /* SplashViewController.swift in Sources */,
 				38AD4BB424375CD600E57800 /* UIColor+Hex.swift in Sources */,
-				38AD4B7A24375BBD00E57800 /* NSString+Ext.m in Sources */,
-				38AD4B9124375C5F00E57800 /* BLEViewController.swift in Sources */,
 				38AD4BAB24375CAA00E57800 /* TermsAndConditionsViewModel.swift in Sources */,
 				38AD4BAE24375CD600E57800 /* BaseViewConfigurator.swift in Sources */,
-				38AD4B8A24375C2400E57800 /* EasedValue.m in Sources */,
-				38AD4B8324375BEE00E57800 /* UILabel+Ext.m in Sources */,
-				38AD4B8924375C1800E57800 /* UIImage+Ext.m in Sources */,
-				38AD4B8024375BE000E57800 /* UIColor+Ext.m in Sources */,
 				38AD4B9624375C6F00E57800 /* WebViewController.swift in Sources */,
 				38AD4B5F24375B3F00E57800 /* ApiStatusCodeHandler.swift in Sources */,
 				38AD4B6C24375B5800E57800 /* QuestionnaireRepository.swift in Sources */,
-				38AD4B8C24375C3200E57800 /* GCDUtilities.m in Sources */,
 				38AD4B6E24375B5800E57800 /* TermsAndConditionsRepository.swift in Sources */,
 				38AD4B6224375B3F00E57800 /* PushTokenStore.swift in Sources */,
-				38AD4B7624375B9B00E57800 /* NSObject+Ext.m in Sources */,
-				38AD4B7B24375BC100E57800 /* UIView+Ext.m in Sources */,
-				38AD4B7F24375BDC00E57800 /* NSFileManager+Ext.m in Sources */,
-				38AD4B8524375BFC00E57800 /* CBCentralManager+Ext.m in Sources */,
 				38AD4B7224375B6000E57800 /* CheckBox.swift in Sources */,
-				38AD4B8724375C0800E57800 /* NSDate+Ext.m in Sources */,
 				38AD4B9B24375C8500E57800 /* RegistrationViewController.swift in Sources */,
 				38AD4BA524375C9A00E57800 /* NoSymptomsTableViewCell.swift in Sources */,
 				38AD4B5D24375B3F00E57800 /* TokenStore.swift in Sources */,
 				38AD4B6124375B3F00E57800 /* PersonalInformation.swift in Sources */,
-				38AD4B7E24375BD600E57800 /* NSDictionary+Ext.m in Sources */,
-				38AD4B8624375C0100E57800 /* CLBeacon+Ext.m in Sources */,
-				38AD4B7C24375BC500E57800 /* NSMutableSet+Ext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1502,19 +1183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4166B37F2438A68300CC8614 /* NSRangeExt.m in Sources */,
-				4166B3802438A68300CC8614 /* UIColor+Ext.m in Sources */,
 				4166B3812438A68300CC8614 /* RegistrationConfirmationViewController.swift in Sources */,
-				4166B3822438A68300CC8614 /* GCDUtilities.m in Sources */,
 				4166B3832438A68300CC8614 /* JWTDecoder.swift in Sources */,
 				4166B3842438A68300CC8614 /* RegistrationViewModel.swift in Sources */,
 				4166B3852438A68300CC8614 /* LocationRepository.swift in Sources */,
-				4166B3862438A68300CC8614 /* NSDate+Ext.m in Sources */,
 				4166B3872438A68300CC8614 /* PersonalInformationRepository.swift in Sources */,
-				4166B3882438A68300CC8614 /* NSDictionary+Ext.m in Sources */,
 				4166B3892438A68300CC8614 /* BLEService.swift in Sources */,
 				4166B38A2438A68300CC8614 /* PushTokenStore.swift in Sources */,
-				4166B38B2438A68300CC8614 /* NSObject+Ext.m in Sources */,
 				4166B38C2438A68300CC8614 /* TextField+SetImage.swift in Sources */,
 				4166B38D2438A68300CC8614 /* HealthStatusViewModel.swift in Sources */,
 				4166B38E2438A68300CC8614 /* TooManyRequestsResponseDataParser.swift in Sources */,
@@ -1522,7 +1197,6 @@
 				4166B3902438A68300CC8614 /* QuestionTableViewCell.swift in Sources */,
 				4166B3912438A68300CC8614 /* PersonalInformationViewController.swift in Sources */,
 				4166B3922438A68300CC8614 /* UIColor+Hex.swift in Sources */,
-				4166B3932438A68300CC8614 /* INBeaconService.m in Sources */,
 				4166B3942438A68300CC8614 /* RegistrationViewController.swift in Sources */,
 				4166B3952438A68300CC8614 /* RegistrationConfirmationViewModel.swift in Sources */,
 				4166B3962438A68300CC8614 /* PersonalInformationViewModel.swift in Sources */,
@@ -1531,12 +1205,8 @@
 				4166B3992438A68300CC8614 /* TokenStore.swift in Sources */,
 				4166B39A2438A68300CC8614 /* AppDelegate.swift in Sources */,
 				4166B39B2438A68300CC8614 /* SceneDelegate.swift in Sources */,
-				4166B39C2438A68300CC8614 /* INWeightedAverage.m in Sources */,
 				4166B39D2438A68300CC8614 /* QuestionnaireRepository.swift in Sources */,
-				4166B39E2438A68300CC8614 /* NSArray+Ext.m in Sources */,
 				4166B39F2438A68300CC8614 /* HomeViewController.swift in Sources */,
-				4166B3A02438A68300CC8614 /* UIScreen+Ext.m in Sources */,
-				4166B3A12438A68300CC8614 /* CBCentralManager+Ext.m in Sources */,
 				4166B3A22438A68300CC8614 /* SplashViewController.swift in Sources */,
 				4166B3A32438A68300CC8614 /* HealthStatus.swift in Sources */,
 				4166B3A42438A68300CC8614 /* NoSymptomsTableViewCell.swift in Sources */,
@@ -1544,41 +1214,25 @@
 				4166B3A62438A68300CC8614 /* PersonalInformation.swift in Sources */,
 				4166B3A72438A68300CC8614 /* ConfirmationViewModel.swift in Sources */,
 				4166B3A82438A68300CC8614 /* UIViewExtension.swift in Sources */,
-				4166B3A92438A68300CC8614 /* NSMutableSet+Ext.m in Sources */,
 				4166B3AA2438A68300CC8614 /* WebViewController.swift in Sources */,
-				4166B3AB2438A68300CC8614 /* NSSet+Ext.m in Sources */,
 				4166B3AC2438A68300CC8614 /* AppLaunchRepository.swift in Sources */,
 				4166B3AD2438A68300CC8614 /* RegistrationRepository.swift in Sources */,
 				4166B3AE2438A68300CC8614 /* HealthStatusViewController.swift in Sources */,
 				4166B3AF2438A68300CC8614 /* ApiResult.swift in Sources */,
 				4166B3B02438A68300CC8614 /* UtilFunctions.swift in Sources */,
 				4166B3B12438A68300CC8614 /* RadialGradientView.swift in Sources */,
-				4166B3B22438A68300CC8614 /* CLBeacon+Ext.m in Sources */,
-				4166B3B32438A68300CC8614 /* ReachabilityService.m in Sources */,
 				4166B3B42438A68300CC8614 /* ConfirmationViewController.swift in Sources */,
 				4166B3B52438A68300CC8614 /* CheckBox.swift in Sources */,
 				4166B3B62438A68300CC8614 /* TermsAndConditionsRepository.swift in Sources */,
-				4166B3B72438A68300CC8614 /* UILabel+Ext.m in Sources */,
 				4166B3B82438A68300CC8614 /* LoadingIndicatorManager.swift in Sources */,
-				4166B3B92438A68300CC8614 /* NSFileManager+Ext.m in Sources */,
-				4166B3BA2438A68300CC8614 /* NSMutableArray+Ext.m in Sources */,
-				4166B3BB2438A68300CC8614 /* UIImage+Ext.m in Sources */,
-				4166B3BC2438A68300CC8614 /* EasedValue.m in Sources */,
-				4166B3BD2438A68300CC8614 /* UIView+Ext.m in Sources */,
-				4166B3BE2438A68300CC8614 /* NSString+Ext.m in Sources */,
 				4166B3BF2438A68300CC8614 /* LanguagesViewModel.swift in Sources */,
-				4166B3C02438A68300CC8614 /* CBPeripheralManager+Ext.m in Sources */,
-				4166B3C12438A68300CC8614 /* Reachability.m in Sources */,
 				4166B3C22438A68300CC8614 /* BaseViewConfigurator.swift in Sources */,
 				4166B3C32438A68300CC8614 /* TermsAndConditionsViewController.swift in Sources */,
 				4166B3C42438A68300CC8614 /* AppFlowManager.swift in Sources */,
 				4166B3C52438A68300CC8614 /* String+IsNumber.swift in Sources */,
 				4166B3C62438A68300CC8614 /* StateMachine.swift in Sources */,
 				4166B3C72438A68300CC8614 /* Toast.swift in Sources */,
-				4166B3C82438A68300CC8614 /* BLEViewController.swift in Sources */,
-				4166B3C92438A68300CC8614 /* NSMutableDictionary+Ext.m in Sources */,
 				4166B3CA2438A68300CC8614 /* UCNHelper.swift in Sources */,
-				4166B3CB2438A68300CC8614 /* CBUUID+Ext.m in Sources */,
 				4166B3CC2438A68300CC8614 /* LocalizableStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1750,7 +1404,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.healthcare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1777,7 +1431,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "58e4f0a4-0997-4168-bb47-2a47f0a60543";
 				PROVISIONING_PROFILE_SPECIFIER = "covid19-healthcare-prod";
-				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1892,7 +1546,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = ViruSafeDevelopmentProvisioningProfile;
-				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1919,7 +1573,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "58e4f0a4-0997-4168-bb47-2a47f0a60543";
 				PROVISIONING_PROFILE_SPECIFIER = ViruSafeAppStoreProvisioningProfile;
-				SWIFT_OBJC_BRIDGING_HEADER = "COVID-19/3rdPartyLibs/Objective-C-Vicinity/COVID-19-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
