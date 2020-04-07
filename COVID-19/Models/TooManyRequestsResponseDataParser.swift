@@ -40,20 +40,20 @@ extension UIAlertController {
     static func rateLimitExceededAlert(repeatAfterSeconds: Int) -> UIAlertController {
         var message = "too_many_requests_msg".localized().replacingOccurrences(of: "%1$@", with: "") + " "
 
-        let hours = repeatAfterSeconds / 3600
-        if hours > 0 {
-            message += ("\(hours) " + "hours_label".localized())
+        let parsed = convertSecondsToHoursMinutesSeconds(repeatAfterSeconds)
+
+        if parsed.hours > 0 {
+            message += ("\(parsed.hours) " + "hours_label".localized())
         }
 
-        let minutes = repeatAfterSeconds / 60
-        if minutes > 0 {
-            if hours > 0 {
+        if parsed.minutes > 0 {
+            if parsed.hours > 0 {
                 message += " "
             }
-            message += ("\(minutes) " + "minutes_label".localized())
+            message += ("\(parsed.minutes) " + "minutes_label".localized())
         }
 
-        if hours == 0 && minutes == 0 {
+        if parsed.hours == 0 && parsed.minutes == 0 {
             message += "little_more_time".localized()
         }
 
@@ -64,5 +64,9 @@ extension UIAlertController {
                                       style: .default,
                                       handler: nil))
         return alert
+    }
+
+    private static func convertSecondsToHoursMinutesSeconds(_ seconds : Int) -> (hours: Int, minutes: Int, seconds: Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
 }
