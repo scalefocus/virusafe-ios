@@ -182,7 +182,9 @@ final class PersonalInformationViewModel {
                     }
                     self?.preexistingConditions.value = personalInformation.preExistingConditions
                     self?.identificationNumber.value = personalInformation.identificationNumber
-                    self?.validate()
+                    if personalInformation.identificationNumber != nil {
+                        self?.validate()
+                    }
                 case .failure(let error):
                     self?.requestError.value = error
             }
