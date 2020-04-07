@@ -26,10 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.distanceFilter = 8
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers // we want coarse location
+        locationManager.allowsBackgroundLocationUpdates = true // we want it in background aswell
+        locationManager.pausesLocationUpdatesAutomatically = false // no auto pause please
+        locationManager.distanceFilter = 50 // user should move at least n meters
+        locationManager.activityType = .fitness // we want to be gentle here
         return locationManager
     }()
 
@@ -204,10 +205,14 @@ extension AppDelegate: CLLocationManagerDelegate {
         }
 
         locationManager.startUpdatingLocation()
+        // Try to wake app if killed by the user
+        locationManager.startMonitoringSignificantLocationChanges()
     }
 
+    // we're here only because of error
     func stopListenForLocationChanges() {
         locationManager.stopUpdatingLocation()
+        locationManager.stopMonitoringSignificantLocationChanges()
     }
     
     func requestLocationServicesAutorization() {
