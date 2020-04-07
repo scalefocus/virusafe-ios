@@ -93,7 +93,9 @@ extension SplashViewController {
             "ios_static_content_page_url" : "https://virusafe.scalefocus.dev/information/about-covid.html",
             "ios_appstore_link" : "https://apps.apple.com/in/app/ViruSafe/id1504661908",
             "ios_location_interval_in_mins" : 2,
-            "ios_app_info_page_url": "https://virusafe.scalefocus.dev/information/virusafe-why.html"
+            "ios_app_info_page_url": "https://virusafe.scalefocus.dev/information/virusafe-why.html",
+            "statistics_url": "",
+            "is_statistics_btn_visible": false
         ]
         #elseif GOVERNMENT
         let appDefaults: [String: Any?] = [
@@ -103,7 +105,9 @@ extension SplashViewController {
             "ios_static_content_page_url" : "https://virusafe.io/information/about-covid.html",
             "ios_appstore_link" : "https://apps.apple.com/in/app/ViruSafe/id1504661908",
             "ios_location_interval_in_mins" : 2,
-            "ios_app_info_page_url": "https://virusafe.io/information/virusafe-why.html"
+            "ios_app_info_page_url": "https://virusafe.io/information/virusafe-why.html",
+            "statistics_url": "",
+            "is_statistics_btn_visible": false
         ]
         #else
         // MACEDONIA
@@ -221,3 +225,10 @@ final class AppInfoPage {
     private init() { }
     var url: String = "url_virusafe_why".localized()
 }
+
+final class StatisticsPage {
+    static var shared = StatisticsPage()
+    private init() { }
+    var url: String =  RemoteConfig.remoteConfig().configValue(forKey:"statistics_url").stringValue ?? ""
+}
+

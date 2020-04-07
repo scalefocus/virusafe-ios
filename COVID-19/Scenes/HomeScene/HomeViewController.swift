@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController, Navigateble {
 
@@ -36,7 +37,10 @@ class HomeViewController: UIViewController, Navigateble {
                                                selector: #selector(didChangeFCMToken(_:)),
                                                name: NSNotification.Name("FCMToken"),
                                                object: nil)
-
+        
+        let statisticsButtonVisible =  RemoteConfig.remoteConfig().configValue(forKey:"is_statistics_btn_visible").boolValue
+        statisticsButton.isHidden = !statisticsButtonVisible
+        
         sendPushToken()
     }
 
@@ -85,7 +89,7 @@ class HomeViewController: UIViewController, Navigateble {
     }
     
     @IBAction func didTapStatisticsButton(_ sender: Any) {
-    
+        navigationDelegate?.navigateTo(step: .web(source: .statistics))
     }
     
     @IBAction private func moreInfoDidTap() {
@@ -102,6 +106,7 @@ class HomeViewController: UIViewController, Navigateble {
         titleLabel.text = "my_contribution_title".localized().uppercased()
         titleDescriptionLabel.text = "my_contribution_title_description".localized()
         howItWorksButton.setTitle("how_it_works".localized().uppercased(), for: .normal)
+        statisticsButton.setTitle("statistics_label".localized(), for: .normal)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
                                                            style: .plain,
