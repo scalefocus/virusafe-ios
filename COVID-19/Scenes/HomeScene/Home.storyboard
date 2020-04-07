@@ -225,7 +225,6 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="295" id="67S-mh-KsT"/>
                                                     <constraint firstAttribute="trailing" secondItem="fzB-j9-wo8" secondAttribute="trailing" id="6QX-Ig-HUg"/>
                                                     <constraint firstAttribute="bottom" secondItem="fzB-j9-wo8" secondAttribute="bottom" constant="20" id="9CF-Dg-ilC"/>
                                                     <constraint firstItem="fzB-j9-wo8" firstAttribute="top" secondItem="wTM-ah-KF0" secondAttribute="top" constant="20" id="lY3-1b-EbQ"/>
