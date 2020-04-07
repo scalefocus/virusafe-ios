@@ -92,10 +92,6 @@ class HomeViewController: UIViewController, Navigateble {
         navigationDelegate?.navigateTo(step: .web(source: .content))
     }
 
-    @IBAction private func didTapHiddenButton(_ sender: Any) {
-        // Do something
-    }
-
     // MARK: Setup UI
 
     private func localize() {
