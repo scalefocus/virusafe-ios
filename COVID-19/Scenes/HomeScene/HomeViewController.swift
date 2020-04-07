@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, Navigateble {
     @IBOutlet private weak var personalInfoButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tncButton: UIButton!
+    @IBOutlet private weak var statisticsButton: UIButton!
     @IBOutlet private weak var moreInfoButton: UIButton!
     @IBOutlet private weak var languagesButton: UIButton!
     @IBOutlet private weak var titleDescriptionLabel: UILabel!
@@ -82,7 +83,11 @@ class HomeViewController: UIViewController, Navigateble {
     @IBAction private func languagesButtonTap() {
         navigationDelegate?.navigateTo(step: .languages(isInitial: false))
     }
-
+    
+    @IBAction func didTapStatisticsButton(_ sender: Any) {
+    
+    }
+    
     @IBAction private func moreInfoDidTap() {
         navigationDelegate?.navigateTo(step: .web(source: .content))
     }
