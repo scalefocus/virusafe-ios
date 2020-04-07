@@ -63,7 +63,35 @@ class TermsAndConditionsViewController: UIViewController {
 
     private func loadHtmlFormat() {
         let text = "tnc_part_one".localized() + "tnc_part_two".localized()
-        self.contentTextView.attributedText = text.htmlToAttributedString
+
+        guard let attributedHTMLString = text.htmlToAttributedString else {
+            return
+        }
+        // Try add Bigger font
+        let attributedText = NSMutableAttributedString(attributedString: attributedHTMLString)
+
+        attributedText.enumerateAttribute(
+            NSAttributedString.Key.font,
+            in: NSMakeRange(0, attributedText.length),
+            options:.longestEffectiveRangeNotRequired) { value, range, stop in
+                let f1 = value as! UIFont
+                let f2 = UIFont.systemFont(ofSize: 16)
+                if let f3 = applyTraitsFromFont(f1, to: f2) {
+                    attributedText.addAttribute(
+                        NSAttributedString.Key.font, value: f3, range: range
+                    )
+                }
+        }
+
+        self.contentTextView.attributedText = attributedText
+    }
+
+    private func applyTraitsFromFont(_ f1: UIFont, to f2: UIFont) -> UIFont? {
+        let t = f1.fontDescriptor.symbolicTraits
+        if let fd = f2.fontDescriptor.withSymbolicTraits(t) {
+            return UIFont.init(descriptor: fd, size: 0)
+        }
+        return nil
     }
 
 }
