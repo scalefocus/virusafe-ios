@@ -38,7 +38,6 @@
 		02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
 		13AE75B8F1970E91C0E33019 /* Pods_COVID_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA7D0084B974E6C8FEF0C98 /* Pods_COVID_19.framework */; };
 		34CC17724F21013CB52B856E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
 		385BDD6A243203A900476F69 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
@@ -323,7 +322,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				38AD4BBD243770F100E57800 /* CoreLocation.framework in Frameworks */,
-				3803B02E24254A5D0076EE00 /* CoreBluetooth.framework in Frameworks */,
 				34CC17724F21013CB52B856E /* (null) in Frameworks */,
 				13AE75B8F1970E91C0E33019 /* Pods_COVID_19.framework in Frameworks */,
 			);
