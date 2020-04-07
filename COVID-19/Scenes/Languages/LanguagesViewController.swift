@@ -137,7 +137,7 @@ extension LanguagesViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "languageCell", for: indexPath)
         let languageData = viewModel.laguanges.value![indexPath.row];
-        cell.textLabel?.text = languageData.1
+        cell.textLabel?.text = languageData.0.getFlag + " " + languageData.1
         
         if Localizer.shared.getCurrentLocale().identifier == languageData.0 {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
@@ -150,4 +150,22 @@ extension LanguagesViewController: UITableViewDataSource {
     }
     
     
+}
+
+extension String {
+    var getFlag: String {
+        let base : UInt32 = 127397
+        var unicodeString = ""
+        var current = self
+        
+        if self.count > 2 && self.contains("-") {
+            current = String(self.split(separator: "-")[safeAt: 1] ?? "")
+        }
+        
+        for scalar in current.uppercased().unicodeScalars {
+            guard let unicode = UnicodeScalar(base + scalar.value) else { return unicodeString }
+            unicodeString.unicodeScalars.append(unicode)
+        }
+        return unicodeString
+    }
 }
