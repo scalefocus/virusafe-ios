@@ -75,7 +75,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     // MARK: Setup UI
 
     private func setupUI() {
-        title = "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n")
+        title = "verify_sms_screen_title".localized().replacingOccurrences(of: "\\n", with: "\n")
         confirmButton.backgroundColor = .healthBlue
         setupIconImageViewTint()
         setupVerificationCodeTextField()
