@@ -108,7 +108,6 @@
 		38AD4BB324375CD600E57800 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FF2424FB8300696868 /* UtilFunctions.swift */; };
 		38AD4BB424375CD600E57800 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D8306242532F500696868 /* UIColor+Hex.swift */; };
 		38AD4BB524375CD600E57800 /* String+IsNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277EA7A2426766F00941863 /* String+IsNumber.swift */; };
-		38AD4BBA2437645C00E57800 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		38AD4BBB243768BF00E57800 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179866224309342006CC2D9 /* Registration.storyboard */; };
 		38AD4BBD243770F100E57800 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		38AD4BBE243770FE00E57800 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
@@ -171,7 +170,6 @@
 		4166B3CA2438A68300CC8614 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
 		4166B3CC2438A68300CC8614 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		4166B3CE2438A68300CC8614 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
-		4166B3CF2438A68300CC8614 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */; };
 		4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
 		4166B3D52438A68300CC8614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
@@ -332,7 +330,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				38AD4BBE243770FE00E57800 /* CoreLocation.framework in Frameworks */,
-				38AD4BBA2437645C00E57800 /* CoreBluetooth.framework in Frameworks */,
 				B4205A550899F809912CC656 /* Pods_COVID_19_MKD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,7 +339,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4166B3CE2438A68300CC8614 /* CoreLocation.framework in Frameworks */,
-				4166B3CF2438A68300CC8614 /* CoreBluetooth.framework in Frameworks */,
 				BF5125823B8AAE39257C112A /* Pods_COVID_19_GOV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1540,7 +1536,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.42100;
+				CURRENT_PROJECT_VERSION = 20.4.72125;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1548,6 +1544,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D GOVERNMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1566,7 +1563,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.42100;
+				CURRENT_PROJECT_VERSION = 20.4.72125;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1574,6 +1571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D GOVERNMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
