@@ -35,6 +35,7 @@ class TermsAndConditionsViewController: UIViewController {
         super.viewDidLoad()
         
         acceptButton.isHidden = viewModel.repository.isAgree
+        contentTextView.textContainerInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
         loadHtmlFormat()
     }
     
@@ -107,3 +108,10 @@ extension String {
     }
 }
 
+final class HairlineConstraint: NSLayoutConstraint {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.constant = 1.0 / UIScreen.main.scale
+    }
+}
