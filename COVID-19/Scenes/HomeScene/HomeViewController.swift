@@ -26,6 +26,8 @@ class HomeViewController: UIViewController, Navigateble {
     @IBOutlet private weak var moreInfoButton: UIButton!
     @IBOutlet private weak var languagesButton: UIButton!
     @IBOutlet private weak var titleDescriptionLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -114,6 +116,11 @@ class HomeViewController: UIViewController, Navigateble {
         tncButton.setTitle("terms_n_conditions_label".localized(), for: .normal)
         moreInfoButton.setTitle("learn_more".localized().uppercased(), for: .normal)
         languagesButton.setTitle("language".localized(), for: .normal)
+
+        let image = imageView.image
+        let newImage = image?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = startButton.tintColor
+        imageView.image = newImage
     }
 
     // MARK: Push Notifications

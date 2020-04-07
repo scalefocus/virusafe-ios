@@ -295,6 +295,7 @@
                     <navigationItem key="navigationItem" id="pxc-41-FLH"/>
                     <connections>
                         <outlet property="howItWorksButton" destination="8cI-5e-eld" id="dpx-R9-5ok"/>
+                        <outlet property="imageView" destination="n8t-ds-KMY" id="1gl-jG-gvG"/>
                         <outlet property="languagesButton" destination="Tw1-Cb-xIU" id="xJb-k8-6rG"/>
                         <outlet property="moreInfoButton" destination="vv4-26-AkM" id="4Fd-6t-bOb"/>
                         <outlet property="personalInfoButton" destination="p0u-TG-UQc" id="dqU-Ie-lqm"/>
