@@ -10,21 +10,15 @@ import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
-
-
-//
-
 class PersonalInformationViewController: UIViewController, Navigateble {
 
     // MARK: Navigateble
-
     weak var navigationDelegate: NavigationDelegate?
     
     // MARK: Outlets
-    
     @IBOutlet private weak var screenTitleLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
-    @IBOutlet private weak var identificationNumberTypeSegmentControl: UISegmentedControl!
+    @IBOutlet private weak var identificationNumberTypeSegmentControl: RoundedSegmentController!
     @IBOutlet private weak var identificationNumberTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var identificationNumberErrorLabel: UILabel!
     @IBOutlet private weak var ageTextField: SkyFloatingLabelTextField!
@@ -74,43 +68,6 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         }
 
         return super.canPerformAction(action, withSender: sender)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        customiseSegmentedControl()
-        
-    }
-
-    // MARK: Setup UI
-    
-    private func customiseSegmentedControl() {
-        let selectedColor = UIColor.healthBlue ?? UIColor.white
-        
-        identificationNumberTypeSegmentControl.layer.cornerRadius =
-            identificationNumberTypeSegmentControl.bounds.height / 2
-        identificationNumberTypeSegmentControl.layer.borderColor = selectedColor.cgColor
-        identificationNumberTypeSegmentControl.layer.borderWidth = 1
-        identificationNumberTypeSegmentControl.layer.masksToBounds = true
-        
-        //Rounding the Corners of the segmented Control selection
-        //Thre is no other way to get the segmented control selected element background view and round its corners
-        let segmentSubviews = identificationNumberTypeSegmentControl.subviews
-        
-        let subviews = segmentSubviews.filter { $0.isKind(of: UIImageView.self) }
-        for i in 0...subviews.count - 1{
-            if i == identificationNumberTypeSegmentControl.selectedSegmentIndex {
-                subviews[i].backgroundColor = selectedColor
-                subviews[i].cornerRadius = identificationNumberTypeSegmentControl.bounds.height / 2
-            } else{
-
-                subviews[i].backgroundColor = .clear
-            }
-        }
-        
-        identificationNumberTypeSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        identificationNumberTypeSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: selectedColor], for: .normal)
     }
     
     private func setupUI() {

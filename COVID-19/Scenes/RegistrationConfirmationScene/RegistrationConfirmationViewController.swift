@@ -48,6 +48,10 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
         textLabel.text = "verification_code_title".localized().replacingOccurrences(of: "\\n", with: "\n")
         confirmButton.setTitle("confirm_label".localized(), for: .normal)
         noCodeReceivedButton.setTitle("missing_verification_code".localized(), for: .normal)
+
+        if #available(iOS 12.0, *) {
+            verificationCodeTextField.textContentType = .oneTimeCode
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +75,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     // MARK: Setup UI
 
     private func setupUI() {
-        title = "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n")
+        title = "verify_sms_screen_title".localized().replacingOccurrences(of: "\\n", with: "\n")
         confirmButton.backgroundColor = .healthBlue
         setupIconImageViewTint()
         setupVerificationCodeTextField()
