@@ -13,6 +13,7 @@ enum Source {
     case content
     case about
     case notification(String)
+    case statistics
 
     var urlString: String {
         switch self {
@@ -22,6 +23,9 @@ enum Source {
             return AppInfoPage.shared.url
         case .notification(let string):
             return string
+        case .statistics:
+            return StatisticsPage.shared.url
+            
         }
     }
 
@@ -33,6 +37,8 @@ enum Source {
                 return "how_it_works".localized()
             case .notification:
                 return "news_label".localized()
+            case .statistics:
+                return "statistics_label".localized()
         }
     }
 }
