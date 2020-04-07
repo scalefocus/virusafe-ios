@@ -43,6 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.flowManager = AppFlowManager(window: window!)
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }

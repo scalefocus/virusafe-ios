@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return locationManager
     }()
 
-    private var flowManager: AppFlowManager?
+    var flowManager: AppFlowManager?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -89,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
+        flowManager = AppFlowManager(window: window!)
         Localizer.shared.willEnterForeground()
     }
     
