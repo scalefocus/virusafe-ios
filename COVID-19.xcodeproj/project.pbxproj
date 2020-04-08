@@ -13,7 +13,6 @@
 		024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DC24239F0D00696868 /* UIViewExtension.swift */; };
 		024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */; };
 		024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */; };
-		024D82E32423A80400696868 /* HealthStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = 024D82E22423A80400696868 /* HealthStatus.json */; };
 		024D82E82423A84200696868 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
 		024D82EE2423F70A00696868 /* Array+SafeAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82ED2423F70A00696868 /* Array+SafeAt.swift */; };
 		024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */; };
@@ -114,7 +113,6 @@
 		4166B3DE2438A68300CC8614 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
 		4166B3DF2438A68300CC8614 /* PersonalInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865A24309054006CC2D9 /* PersonalInformation.storyboard */; };
 		4166B3E02438A68300CC8614 /* HealthStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41798660243092FC006CC2D9 /* HealthStatus.storyboard */; };
-		4166B3E22438A68300CC8614 /* HealthStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = 024D82E22423A80400696868 /* HealthStatus.json */; };
 		4170C22A2428B4C0003EA70A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */; };
 		4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
 		4170C22F2428D00A003EA70A /* TermsAndConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */; };
@@ -162,7 +160,6 @@
 		024D82DC24239F0D00696868 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSymptomsTableViewCell.swift; sourceTree = "<group>"; };
 		024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoSymptomsTableViewCell.xib; sourceTree = "<group>"; };
-		024D82E22423A80400696868 /* HealthStatus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HealthStatus.json; sourceTree = "<group>"; };
 		024D82E72423A84200696868 /* HealthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatus.swift; sourceTree = "<group>"; };
 		024D82ED2423F70A00696868 /* Array+SafeAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAt.swift"; sourceTree = "<group>"; };
 		024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -456,7 +453,6 @@
 				024D82D724239A9D00696868 /* TableViewCells */,
 				02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */,
 				02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */,
-				024D82E22423A80400696868 /* HealthStatus.json */,
 				41798660243092FC006CC2D9 /* HealthStatus.storyboard */,
 			);
 			path = HealthStatusScene;
@@ -696,7 +692,6 @@
 				4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */,
 				41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */,
 				41D3E66C242E2F3E00AC96B1 /* GoogleService-Info.plist in Resources */,
-				024D82E32423A80400696868 /* HealthStatus.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,7 +715,6 @@
 				4166B3DE2438A68300CC8614 /* Languages.storyboard in Resources */,
 				4166B3DF2438A68300CC8614 /* PersonalInformation.storyboard in Resources */,
 				4166B3E02438A68300CC8614 /* HealthStatus.storyboard in Resources */,
-				4166B3E22438A68300CC8614 /* HealthStatus.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

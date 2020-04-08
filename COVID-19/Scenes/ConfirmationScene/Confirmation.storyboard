@@ -11,16 +11,16 @@
         <!--Confirmation View Controller-->
         <scene sceneID="5jM-O6-MC2">
             <objects>
-                <viewController storyboardIdentifier="ConfirmationViewController" id="YFl-c7-tUO" customClass="ConfirmationViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmationViewController" id="YFl-c7-tUO" customClass="ConfirmationViewController" customModule="ViruSafe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ymS-wZ-4PX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDv-iM-zIR">
-                                <rect key="frame" x="51.5" y="302" width="311" height="292"/>
+                                <rect key="frame" x="51.5" y="295" width="311" height="306"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-CJ-Z7l">
-                                        <rect key="frame" x="20" y="20" width="271" height="252"/>
+                                        <rect key="frame" x="20" y="20" width="271" height="266"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check-circle-light" translatesAutoresizingMaskIntoConstraints="NO" id="IqE-RS-4qR">
                                                 <rect key="frame" x="95" y="0.0" width="81" height="81"/>
@@ -30,16 +30,16 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NsF-7v-Zb5">
-                                                <rect key="frame" x="0.0" y="113" width="271" height="139"/>
+                                                <rect key="frame" x="0.0" y="113" width="271" height="153"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Готово!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdb-iL-yAj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="271" height="36"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdb-iL-yAj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="271" height="50"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Благодарим Ви, че сте отговорни!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcl-du-dOd">
-                                                        <rect key="frame" x="0.0" y="44" width="271" height="95"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcl-du-dOd">
+                                                        <rect key="frame" x="0.0" y="58" width="271" height="95"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

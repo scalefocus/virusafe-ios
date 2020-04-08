@@ -11,7 +11,7 @@
         <!--Home View Controller-->
         <scene sceneID="UJX-jn-Pm7">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Pm6-G1-6uV" customClass="HomeViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Pm6-G1-6uV" customClass="HomeViewController" customModule="ViruSafe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rza-Eu-OMJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,14 +25,14 @@
                                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-23-V39">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ТВОЯТ ЛИЧЕН ПРИНОС" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLf-RD-PT0">
-                                                        <rect key="frame" x="32" y="69.5" width="256" height="26.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLf-RD-PT0">
+                                                        <rect key="frame" x="32" y="96" width="256" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <color key="textColor" red="0.0" green="0.48627450980392156" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Включи се и помогни като отчиташ своето здравословно състояние всеки ден" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBi-WN-ONb">
-                                                        <rect key="frame" x="24" y="112" width="272" height="100.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBi-WN-ONb">
+                                                        <rect key="frame" x="24" y="112" width="272" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                <state key="normal" title="МОИТЕ СИМПТОМИ">
+                                                <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -100,7 +100,6 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                         <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                        <state key="normal" title="ТВОИТЕ ЛИЗНИ ДАННИ"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                 <real key="value" value="20"/>
@@ -135,7 +134,6 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                                <state key="normal" title="Статистика"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="20"/>
@@ -158,7 +156,6 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                                <state key="normal" title="НАУЧИ ПОВЕЧЕ ЗА КОРОНАВИРУСА"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="20"/>
@@ -184,7 +181,7 @@
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                                        <state key="normal" title="КАК РАБОТИ ViruSafe">
+                                                                        <state key="normal">
                                                                             <color key="titleColor" red="0.28627450980392155" green="0.62745098039215685" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <userDefinedRuntimeAttributes>
@@ -208,7 +205,7 @@
                                                                             <constraint firstAttribute="height" constant="25" id="FXS-0Q-2Qa"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <state key="normal" title="Условия за ползване">
+                                                                        <state key="normal">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                         <connections>
@@ -243,7 +240,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="tintColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Език" image="globe">
+                                                <state key="normal" image="globe">
                                                     <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                                 </state>

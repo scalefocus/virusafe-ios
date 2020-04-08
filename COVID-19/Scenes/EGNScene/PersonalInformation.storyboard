@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Personal Information View Controller-->
         <scene sceneID="Sth-KB-d97">
             <objects>
-                <viewController storyboardIdentifier="PersonalInformationViewController" id="BBf-ct-6Or" customClass="PersonalInformationViewController" customModule="COVID_19" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalInformationViewController" id="BBf-ct-6Or" customClass="PersonalInformationViewController" customModule="ViruSafe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="81I-LN-a0r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,8 +35,8 @@
                                                                     <constraint firstAttribute="width" secondItem="gQm-bl-JUH" secondAttribute="height" multiplier="1:1" id="hvq-NX-amM"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Въведете вашите лични данни" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irB-7C-9gS">
-                                                                <rect key="frame" x="47" y="66" width="233.5" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irB-7C-9gS">
+                                                                <rect key="frame" x="163.5" y="66" width="0.0" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="RHJ-5L-udF"/>
                                                                 </constraints>
@@ -49,7 +49,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="vda-KU-syW">
                                                         <rect key="frame" x="0.0" y="122" width="327" height="336"/>
                                                         <subviews>
-                                                            <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-g8-lAz" customClass="RoundedSegmentController" customModule="COVID_19" customModuleProvider="target">
+                                                            <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-g8-lAz" customClass="RoundedSegmentController" customModule="ViruSafe" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="33"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="YIO-r9-UEV"/>
@@ -73,7 +73,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iq2-eY-70F">
                                                                 <rect key="frame" x="0.0" y="56" width="327" height="44"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ЕГН/ЛНЧ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y30-vm-DKk" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y30-vm-DKk" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="44" id="vBd-Eh-4HF"/>
@@ -99,7 +99,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="90n-cK-kSS">
                                                                 <rect key="frame" x="0.0" y="124" width="327" height="44"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Години" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-8U-DfZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sk3-8U-DfZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="44" id="Uyw-lV-NSY"/>
@@ -143,7 +143,7 @@
                                                                                     <constraint firstAttribute="height" constant="44" id="wIy-g0-WjC"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                                <state key="normal" title="Мъж">
+                                                                                <state key="normal">
                                                                                     <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                                 </state>
                                                                                 <state key="disabled">
@@ -167,7 +167,7 @@
                                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1S-BH-BuZ">
                                                                                 <rect key="frame" x="167.5" y="0.0" width="159.5" height="44"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                                <state key="normal" title="Жена">
+                                                                                <state key="normal">
                                                                                     <color key="titleColor" red="0.23529411759999999" green="0.54901960780000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                                 </state>
                                                                                 <state key="disabled">
@@ -195,7 +195,7 @@
                                                                     </stackView>
                                                                 </subviews>
                                                             </stackView>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Хронични заболявания" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HuG-fG-Fcg" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HuG-fG-Fcg" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="292" width="327" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="44" id="hcC-op-gGD"/>
@@ -214,7 +214,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="Sa5-xq-vyC"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                        <state key="normal" title="Потвърди">
+                                                        <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
