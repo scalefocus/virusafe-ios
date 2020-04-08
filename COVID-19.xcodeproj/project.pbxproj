@@ -53,7 +53,6 @@
 		38AD4B6024375B3F00E57800 /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 		38AD4B6124375B3F00E57800 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 		38AD4B6224375B3F00E57800 /* PushTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417986682430B7BE006CC2D9 /* PushTokenStore.swift */; };
-		38AD4B6324375B3F00E57800 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
 		38AD4B6424375B3F00E57800 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
 		38AD4B6524375B3F00E57800 /* TooManyRequestsResponseDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */; };
 		38AD4B6624375B4500E57800 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E66E242F527300AC96B1 /* StateMachine.swift */; };
@@ -123,7 +122,6 @@
 		4166B3842438A68300CC8614 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FA2424EA2E00696868 /* RegistrationViewModel.swift */; };
 		4166B3852438A68300CC8614 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1E242B78B00062D6E1 /* LocationRepository.swift */; };
 		4166B3872438A68300CC8614 /* PersonalInformationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */; };
-		4166B3892438A68300CC8614 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
 		4166B38A2438A68300CC8614 /* PushTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417986682430B7BE006CC2D9 /* PushTokenStore.swift */; };
 		4166B38C2438A68300CC8614 /* TextField+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F22424AA3400696868 /* TextField+SetImage.swift */; };
 		4166B38D2438A68300CC8614 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
@@ -209,7 +207,6 @@
 		41D3E673242F782700AC96B1 /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E672242F782700AC96B1 /* PersonalInformationViewModel.swift */; };
 		41D3E675242F7C7200AC96B1 /* TermsAndConditionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */; };
 		41D3E677242F8DC800AC96B1 /* AppLaunchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */; };
-		41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF62A243360DD006D30B2 /* BLEService.swift */; };
 		41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
 		5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
 		5C8904A6243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
@@ -272,7 +269,6 @@
 		41482B25242B88380062D6E1 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
 		41482B27242B891A0062D6E1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4166B3E92438A68300CC8614 /* COVID-19-GOV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID-19-GOV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4166B3EA2438A68400CC8614 /* COVID-19 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "COVID-19 copy-Info.plist"; path = "/Users/aleksandar.spetrov/Desktop/Projects/Covid19/COVID-19 copy-Info.plist"; sourceTree = "<absolute>"; };
 		4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModel.swift; sourceTree = "<group>"; };
 		4170C22E2428D00A003EA70A /* TermsAndConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewModel.swift; sourceTree = "<group>"; };
@@ -297,7 +293,6 @@
 		41D3E672242F782700AC96B1 /* PersonalInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewModel.swift; sourceTree = "<group>"; };
 		41D3E674242F7C7200AC96B1 /* TermsAndConditionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsRepository.swift; sourceTree = "<group>"; };
 		41D3E676242F8DC800AC96B1 /* AppLaunchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchRepository.swift; sourceTree = "<group>"; };
-		41FEF62A243360DD006D30B2 /* BLEService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
 		41FEF633243518F4006D30B2 /* UCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCNHelper.swift; sourceTree = "<group>"; };
 		4333593BB3D37825B7EAA5D3 /* Pods-COVID-19-GOV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-GOV.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19-GOV/Pods-COVID-19-GOV.debug.xcconfig"; sourceTree = "<group>"; };
 		5C23C9F0243754AB00F9CEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -384,7 +379,6 @@
 				4181C713242CDD1400FFDF7C /* ApiResult.swift */,
 				FBC1C355242FF77F008C237B /* PersonalInformation.swift */,
 				417986682430B7BE006CC2D9 /* PushTokenStore.swift */,
-				41FEF62A243360DD006D30B2 /* BLEService.swift */,
 				41FEF633243518F4006D30B2 /* UCNHelper.swift */,
 				417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */,
 			);
@@ -440,7 +434,6 @@
 				098645F2A323399E8535CE20 /* Pods */,
 				9F4DA72F5F25B5412264AC67 /* Frameworks */,
 				4166B37924388E2E00CC8614 /* Recovered References */,
-				4166B3EA2438A68400CC8614 /* COVID-19 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1072,7 +1065,6 @@
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
 				41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */,
 				4179866524309BBD006CC2D9 /* PersonalInformationRepository.swift in Sources */,
-				41FEF62B243360DD006D30B2 /* BLEService.swift in Sources */,
 				417986692430B7BE006CC2D9 /* PushTokenStore.swift in Sources */,
 				024D82F32424AA3400696868 /* TextField+SetImage.swift in Sources */,
 				02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */,
@@ -1150,7 +1142,6 @@
 				38AD4BAA24375CAA00E57800 /* TermsAndConditionsViewController.swift in Sources */,
 				38AD4B6424375B3F00E57800 /* UCNHelper.swift in Sources */,
 				38AD4B9924375C7D00E57800 /* RegistrationConfirmationViewController.swift in Sources */,
-				38AD4B6324375B3F00E57800 /* BLEService.swift in Sources */,
 				38AD4BB324375CD600E57800 /* UtilFunctions.swift in Sources */,
 				38AD4B9324375C6500E57800 /* PersonalInformationViewController.swift in Sources */,
 				38AD4B5E24375B3F00E57800 /* JWTDecoder.swift in Sources */,
@@ -1190,7 +1181,6 @@
 				4166B3842438A68300CC8614 /* RegistrationViewModel.swift in Sources */,
 				4166B3852438A68300CC8614 /* LocationRepository.swift in Sources */,
 				4166B3872438A68300CC8614 /* PersonalInformationRepository.swift in Sources */,
-				4166B3892438A68300CC8614 /* BLEService.swift in Sources */,
 				4166B38A2438A68300CC8614 /* PushTokenStore.swift in Sources */,
 				4166B38C2438A68300CC8614 /* TextField+SetImage.swift in Sources */,
 				4166B38D2438A68300CC8614 /* HealthStatusViewModel.swift in Sources */,
