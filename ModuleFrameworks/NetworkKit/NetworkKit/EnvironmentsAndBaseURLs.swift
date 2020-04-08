@@ -62,7 +62,7 @@ struct DevEnvironment: EnvironmentInterface {
 }
 
 struct DevBaseURLs: BaseURLs {
-    var base: BaseURL = "https://virusafe.io"
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
     var port: Int? = nil
 }
 

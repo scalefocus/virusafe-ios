@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1004876525949-oqbj8akupvm21q7v6u2l730elajus4ki.apps.googleusercontent.com</string>
+	<string>403874579577-f7iicab84os1l6p5flgbdv9t1jbmj79c.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1004876525949-oqbj8akupvm21q7v6u2l730elajus4ki</string>
+	<string>com.googleusercontent.apps.403874579577-f7iicab84os1l6p5flgbdv9t1jbmj79c</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDFzktJeVdHyf8RLc5u6M8_1vXi1_D5HLg</string>
+	<string>AIzaSyCkN5IXUAjFWZORugtkZkqpHLj5nPpjsQU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1004876525949</string>
+	<string>403874579577</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.upnetix.healthcare</string>
+	<string>com.upnetix.virusafe</string>
 	<key>PROJECT_ID</key>
-	<string>healthcareapp-covid19</string>
+	<string>virusafe-dev</string>
 	<key>STORAGE_BUCKET</key>
-	<string>healthcareapp-covid19.appspot.com</string>
+	<string>virusafe-dev.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1004876525949:ios:938f908757b3b3b36b5c14</string>
+	<string>1:403874579577:ios:96d2214d496b097529c0a8</string>
 	<key>DATABASE_URL</key>
-	<string>https://healthcareapp-covid19.firebaseio.com</string>
+	<string>https://virusafe-dev.firebaseio.com</string>
 </dict>
 </plist>

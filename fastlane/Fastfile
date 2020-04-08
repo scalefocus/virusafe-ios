@@ -22,8 +22,8 @@ lane :deploy do |values|
   JENKINS_APPLEID_WITH_RIGHTS = "ci@upnetix.com"
   APP_ID_IN_DEVELOPER_PROFILES = "com.upnetix.healthcare" # change according to your app id, must match the app id in the InHouse Provisioning profile used
   TEAM_ID = "UWBDU93DZY" # do not change if using UPNETIX AD team (default)
-  SCHEME_TO_BUILD = "COVID-19"
-  TARGET_FILTER = "COVID-19" #name of target that needs signing
+  SCHEME_TO_BUILD = "Development"
+  TARGET_FILTER = "Development" #name of target that needs signing
   # if for some reason you need signing for multiple targets, for example if you build two targets at the same time(mainTarget and pushNotificationsTarget for example), find the proper way to do it
  
   if deploymentPlatform.nil?

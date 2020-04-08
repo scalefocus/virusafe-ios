@@ -25,15 +25,11 @@ def app_pods
   pod 'KeychainSwift'
 end
 
-target 'COVID-19' do
+target 'Development' do
   app_pods
 end
 
-target 'COVID-19-GOV' do
-  app_pods
-end
-
-target 'COVID-19-MKD' do
+target 'Production' do
   app_pods
 end
 
