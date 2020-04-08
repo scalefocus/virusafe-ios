@@ -57,7 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
         let locale = Locale(identifier: savedLocale)
         
-        Localizer.shared.initialize(locale: locale, enableLogging: true, defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty)
+        Localizer.shared.initialize(locale: locale,
+                                    enableLogging: true,
+                                    defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty)
         
         // App Center
         MSAppCenter.start("e78845ce-5af8-49bc-9cf4-35bcb984fdc5", withServices: [
@@ -89,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
+        // !!! This is not called on ios 13+, so handle it in scene delegate too
         flowManager = AppFlowManager(window: window!)
         Localizer.shared.willEnterForeground()
     }
@@ -98,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
+        // !!! This is not called on ios 13+, so handle it in scene delegate too
         Localizer.shared.didEnterBackground()
     }
 
