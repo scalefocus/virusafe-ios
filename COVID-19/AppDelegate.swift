@@ -70,6 +70,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Handle Keyboard
         IQKeyboardManager.shared().isEnabled = true
 
+        // Inject network Env
+        #if UPNETIX
+        let environment = "dev"
+        #else
+        let environment = "live"
+        #endif
+        UserDefaults.standard.set(environment, forKey: "upnetix.project.userdefaults.env")
         // Network Auth
         APIManager.shared.authToken = TokenStore.shared.token
 
