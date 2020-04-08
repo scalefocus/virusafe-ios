@@ -199,6 +199,18 @@
 		4179866324309342006CC2D9 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179866224309342006CC2D9 /* Registration.storyboard */; };
 		4179866524309BBD006CC2D9 /* PersonalInformationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */; };
 		417986692430B7BE006CC2D9 /* PushTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417986682430B7BE006CC2D9 /* PushTokenStore.swift */; };
+		4180203B243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */; };
+		4180203C243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */; };
+		4180203D243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */; };
+		4180203F243DB6BE007EE2AF /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */; };
+		41802041243DB6D5007EE2AF /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41802040243DB6D5007EE2AF /* RemoteConfigDefaults.plist */; };
+		41802045243DC475007EE2AF /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802044243DC475007EE2AF /* NetworkingHelpers.swift */; };
+		41802046243DC475007EE2AF /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802044243DC475007EE2AF /* NetworkingHelpers.swift */; };
+		41802047243DC475007EE2AF /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802044243DC475007EE2AF /* NetworkingHelpers.swift */; };
+		41802049243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
+		4180204A243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
+		4180204B243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
+		4180204C243DC65F007EE2AF /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E66C242E2F3E00AC96B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
@@ -285,6 +297,11 @@
 		4179866224309342006CC2D9 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		4179866424309BBD006CC2D9 /* PersonalInformationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationRepository.swift; sourceTree = "<group>"; };
 		417986682430B7BE006CC2D9 /* PushTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTokenStore.swift; sourceTree = "<group>"; };
+		4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigHelper.swift; sourceTree = "<group>"; };
+		4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		41802040243DB6D5007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		41802044243DC475007EE2AF /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
+		41802048243DC4E2007EE2AF /* WebPagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPagesHelper.swift; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -381,6 +398,9 @@
 				417986682430B7BE006CC2D9 /* PushTokenStore.swift */,
 				41FEF633243518F4006D30B2 /* UCNHelper.swift */,
 				417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */,
+				4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */,
+				41802044243DC475007EE2AF /* NetworkingHelpers.swift */,
+				41802048243DC4E2007EE2AF /* WebPagesHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -461,7 +481,7 @@
 				5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
 				02B9A6B9242371F500B1A4C0 /* Info.plist */,
-				412D722B2438BB450037C228 /* GoogleServices */,
+				412D722B2438BB450037C228 /* Firebase */,
 				38A8F40D2429574F00486007 /* COVID-19.entitlements */,
 				024D82D424239A6100696868 /* Extensions */,
 			);
@@ -553,20 +573,20 @@
 			path = EGNScene;
 			sourceTree = "<group>";
 		};
-		412D722B2438BB450037C228 /* GoogleServices */ = {
+		412D722B2438BB450037C228 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				412D722E2438BB690037C228 /* Macedonia */,
 				412D722D2438BB5A0037C228 /* Upnetix */,
 				412D722C2438BB550037C228 /* Gov */,
 			);
-			path = GoogleServices;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		412D722C2438BB550037C228 /* Gov */ = {
 			isa = PBXGroup;
 			children = (
 				412D722F2438BBA10037C228 /* GoogleService-Info.plist */,
+				41802040243DB6D5007EE2AF /* RemoteConfigDefaults.plist */,
 			);
 			path = Gov;
 			sourceTree = "<group>";
@@ -575,15 +595,9 @@
 			isa = PBXGroup;
 			children = (
 				41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */,
+				4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */,
 			);
 			path = Upnetix;
-			sourceTree = "<group>";
-		};
-		412D722E2438BB690037C228 /* Macedonia */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Macedonia;
 			sourceTree = "<group>";
 		};
 		41482B24242B88180062D6E1 /* CovidInfoScene */ = {
@@ -760,6 +774,7 @@
 				4179865D2430907A006CC2D9 /* Home.storyboard in Resources */,
 				4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */,
 				024D82E12423A0AE00696868 /* NoSymptomsTableViewCell.xib in Resources */,
+				4180203F243DB6BE007EE2AF /* RemoteConfigDefaults.plist in Resources */,
 				024D82DB24239AE100696868 /* QuestionTableViewCell.xib in Resources */,
 				5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */,
 				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
@@ -783,6 +798,7 @@
 				38AD4B9E24375C8C00E57800 /* Home.storyboard in Resources */,
 				38AD4BAC24375CAA00E57800 /* TnC.storyboard in Resources */,
 				4166B37A2438907B00CC8614 /* InfoPlist.strings in Resources */,
+				4180204C243DC65F007EE2AF /* RemoteConfigDefaults.plist in Resources */,
 				38AD4BA624375C9A00E57800 /* NoSymptomsTableViewCell.xib in Resources */,
 				38AD4BA424375C9A00E57800 /* QuestionTableViewCell.xib in Resources */,
 				38AD4BA924375CA300E57800 /* Confirmation.storyboard in Resources */,
@@ -806,6 +822,7 @@
 				4166B3D72438A68300CC8614 /* Home.storyboard in Resources */,
 				4166B3D82438A68300CC8614 /* TnC.storyboard in Resources */,
 				4166B3D92438A68300CC8614 /* NoSymptomsTableViewCell.xib in Resources */,
+				41802041243DB6D5007EE2AF /* RemoteConfigDefaults.plist in Resources */,
 				4166B3DA2438A68300CC8614 /* QuestionTableViewCell.xib in Resources */,
 				4166B3DB2438A68300CC8614 /* InfoPlist.strings in Resources */,
 				4166B3DC2438A68300CC8614 /* Registration.storyboard in Resources */,
@@ -1081,6 +1098,7 @@
 				41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */,
 				02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */,
 				02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */,
+				41802045243DC475007EE2AF /* NetworkingHelpers.swift in Sources */,
 				4170C23D242A36A6003EA70A /* QuestionnaireRepository.swift in Sources */,
 				02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */,
 				024D83022425130B00696868 /* SplashViewController.swift in Sources */,
@@ -1088,6 +1106,8 @@
 				024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */,
 				385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */,
 				FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */,
+				4180203B243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */,
+				41802049243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */,
 				4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */,
 				024D82DD24239F0D00696868 /* UIViewExtension.swift in Sources */,
 				41482B28242B891A0062D6E1 /* WebViewController.swift in Sources */,
@@ -1139,6 +1159,7 @@
 				38AD4B9A24375C7D00E57800 /* RegistrationConfirmationViewModel.swift in Sources */,
 				38AD4B6A24375B5000E57800 /* SceneDelegate.swift in Sources */,
 				38AD4B9C24375C8500E57800 /* RegistrationViewModel.swift in Sources */,
+				41802047243DC475007EE2AF /* NetworkingHelpers.swift in Sources */,
 				38AD4BAA24375CAA00E57800 /* TermsAndConditionsViewController.swift in Sources */,
 				38AD4B6424375B3F00E57800 /* UCNHelper.swift in Sources */,
 				38AD4B9924375C7D00E57800 /* RegistrationConfirmationViewController.swift in Sources */,
@@ -1146,6 +1167,8 @@
 				38AD4B9324375C6500E57800 /* PersonalInformationViewController.swift in Sources */,
 				38AD4B5E24375B3F00E57800 /* JWTDecoder.swift in Sources */,
 				38AD4BA024375C9500E57800 /* HealthStatusViewModel.swift in Sources */,
+				4180203D243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */,
+				4180204B243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */,
 				38AD4B9F24375C9500E57800 /* HealthStatusViewController.swift in Sources */,
 				38AD4B6024375B3F00E57800 /* ApiResult.swift in Sources */,
 				38AD4B6624375B4500E57800 /* StateMachine.swift in Sources */,
@@ -1197,6 +1220,7 @@
 				4166B3992438A68300CC8614 /* TokenStore.swift in Sources */,
 				4166B39A2438A68300CC8614 /* AppDelegate.swift in Sources */,
 				4166B39B2438A68300CC8614 /* SceneDelegate.swift in Sources */,
+				41802046243DC475007EE2AF /* NetworkingHelpers.swift in Sources */,
 				4166B39D2438A68300CC8614 /* QuestionnaireRepository.swift in Sources */,
 				4166B39F2438A68300CC8614 /* HomeViewController.swift in Sources */,
 				4166B3A22438A68300CC8614 /* SplashViewController.swift in Sources */,
@@ -1204,6 +1228,8 @@
 				4166B3A42438A68300CC8614 /* NoSymptomsTableViewCell.swift in Sources */,
 				4166B3A52438A68300CC8614 /* LanguagesViewController.swift in Sources */,
 				4166B3A62438A68300CC8614 /* PersonalInformation.swift in Sources */,
+				4180203C243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */,
+				4180204A243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */,
 				4166B3A72438A68300CC8614 /* ConfirmationViewModel.swift in Sources */,
 				4166B3A82438A68300CC8614 /* UIViewExtension.swift in Sources */,
 				4166B3AA2438A68300CC8614 /* WebViewController.swift in Sources */,
