@@ -30,7 +30,13 @@ final class LanguagesViewModel {
         Localizer.shared.getAvailableLocales { langauges, error in
             guard error == nil else {
                 self.shouldShowLoadingIndicator.value = false
+                
+                #if MACEDONIA
+                self.laguanges.value = [("mk", "Macedonian"), ("sq", "Albanian")]
+                #else
                 self.laguanges.value = [("bg", "Български"), ("en-GB", "English")]
+                #endif
+                
                 return
                 
             }

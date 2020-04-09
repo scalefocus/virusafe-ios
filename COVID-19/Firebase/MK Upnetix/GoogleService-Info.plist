@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>403874579577-ticj1qir1r089n722q31mia70k18sdqa.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.403874579577-ticj1qir1r089n722q31mia70k18sdqa</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCkN5IXUAjFWZORugtkZkqpHLj5nPpjsQU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>403874579577</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>mk.upnetix.virusafe</string>
+	<key>PROJECT_ID</key>
+	<string>virusafe-dev</string>
+	<key>STORAGE_BUCKET</key>
+	<string>virusafe-dev.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:403874579577:ios:13223542f4b0f39929c0a8</string>
+	<key>DATABASE_URL</key>
+	<string>https://virusafe-dev.firebaseio.com</string>
+</dict>
+</plist>

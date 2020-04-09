@@ -54,9 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Initialize Localizaer
-        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
-        let locale = Locale(identifier: savedLocale)
-        
+        let locale = Locale(identifier: LanguageHelper.shared.savedLocale)
         Localizer.shared.initialize(locale: locale,
                                     enableLogging: true,
                                     defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty)
@@ -73,10 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Inject network Env
         #if UPNETIX
         let environment = "dev"
+        #elseif MACEDONIA
+        let environment = "dev_mk"
         #else
         let environment = "live"
         #endif
         UserDefaults.standard.set(environment, forKey: "upnetix.project.userdefaults.env")
+
         // Network Auth
         APIManager.shared.authToken = TokenStore.shared.token
 

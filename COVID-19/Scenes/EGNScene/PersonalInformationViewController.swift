@@ -100,15 +100,27 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         // can be done on didSet or by setting image alwaysTemplate in asset catalog
         setupIconImageViewTint()
 
+        //Initialize Segment Control
+        setupIdentificationNumberTypeSegmentControl()
+    }
+
+    private func setupIdentificationNumberTypeSegmentControl() {
+        // Segment Titles
         identificationNumberTypeSegmentControl
             .setTitle("identification_number_ucn_segment".localized(),
                       forSegmentAt: IdentificationNumberType.bulgarianCitizenUCN.segmentIndex)
+        #if !MACEDONIA
         identificationNumberTypeSegmentControl
             .setTitle("identification_number_pin_segment".localized(),
                       forSegmentAt: IdentificationNumberType.foreignerPIN.segmentIndex)
+        #else
+        identificationNumberTypeSegmentControl.removeSegment(at: 2,
+                                                             animated: false)
+        #endif //!MACEDONIA
         identificationNumberTypeSegmentControl
             .setTitle("passport_hint".localized(),
                       forSegmentAt: IdentificationNumberType.identificationCard.segmentIndex)
+        // Segment tint
         identificationNumberTypeSegmentControl.tintColor = .healthBlue
     }
     
@@ -176,7 +188,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                 case .unknownIdentificationNumberType, .unknownGender:
                     // Do nothing (it is not possible to get here)
                     break
-                case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN, .invalidForeignerPIN, .invalidIdentificationCard:
+                case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN,
+                     .invalidForeignerPIN, .invalidIdentificationCard, .invalidМacedonianCitizenUCN:
                     identificationNumberErrorLabel.text = "field_invalid_format_msg".localized()
                 case .emptyAge, .overMaximumAge:
                     ageErrorLabel.text = "invalid_age_msg".localized()
@@ -231,10 +244,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         identificationNumberTypeSegmentControl.selectedSegmentIndex = identificationNumberType.segmentIndex
 
         viewModel.identificationNumber.value = nil
-//        viewModel.age.value = nil
         identificationNumberTextField.text = nil
-//        ageTextField.text = nil
-//
+
         let isFirstResponder = identificationNumberTextField.isFirstResponder
         identificationNumberTextField.resignFirstResponder()
 
@@ -244,16 +255,15 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         switch identificationNumberType {
             case .bulgarianCitizenUCN:
                 identificationNumberTextField.keyboardType = .numberPad
-                setGenderButtonsUserInteraction(false)
-                ageTextField.isEnabled = false
+                disableAgeAndGenderIfNeeded()
+            #if !MACEDONIA
             case .foreignerPIN:
                 identificationNumberTextField.keyboardType = .numberPad
-                setGenderButtonsUserInteraction(true)
-                ageTextField.isEnabled = true
+                setAgeAndGenderControlsEnabled(true)
+            #endif // !MACEDONIA
             case .identificationCard:
                 identificationNumberTextField.keyboardType = .default
-                setGenderButtonsUserInteraction(true)
-                ageTextField.isEnabled = true
+                setAgeAndGenderControlsEnabled(true)
             default:
                 break // Do nothing
         }
@@ -263,10 +273,23 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         }
     }
 
+    private func disableAgeAndGenderIfNeeded() {
+        #if MACEDONIA
+        setAgeAndGenderControlsEnabled(true)
+        #else // MACEDONIA
+        setAgeAndGenderControlsEnabled(false)
+        #endif // MACEDONIA
+    }
+
+    private func setAgeAndGenderControlsEnabled(_ isEnabled: Bool) {
+        setGenderButtonsUserInteraction(isEnabled)
+        genderLabel.isEnabled = isEnabled
+        ageTextField.isEnabled = isEnabled
+    }
+
     private func setGenderButtonsUserInteraction(_ isEnabled: Bool) {
         for button in genderButtons {
             button.isEnabled = isEnabled
-            genderLabel.isEnabled = isEnabled
             button.borderColor = isEnabled ? .healthBlue ?? .white : UIColor.lightGray.withAlphaComponent(0.3)
         }
     }
@@ -435,4 +458,13 @@ private extension DispatchQueue {
         return "\(Unmanaged.passUnretained(object).toOpaque())." + String(describing: object)
     }
 
+}
+
+extension UISegmentedControl {
+    func replaceSegments(segments: Array<String>) {
+        self.removeAllSegments()
+        for segment in segments {
+            self.insertSegment(withTitle: segment, at: self.numberOfSegments, animated: false)
+        }
+    }
 }

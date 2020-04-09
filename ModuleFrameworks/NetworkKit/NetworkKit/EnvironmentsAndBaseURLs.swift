@@ -10,10 +10,12 @@ import Foundation
 
 public enum Environment: String {
     case dev, stage, live
+    case devMK = "dev_mk"
     
     public var value: EnvironmentInterface {
         switch self {
         case .dev: return DevEnvironment()
+        case .devMK: return MKDevEnvironment()
         case .stage: return StageEnvironment()
         case .live: return LiveEnvironment()
         }
@@ -95,3 +97,28 @@ struct LiveBaseURLs: BaseURLs {
     var base: BaseURL = "https://virusafe.io"
     var port: Int? = nil
 }
+
+/*************************************/
+// - MARK: Dev Macedonia Environment
+/*************************************/
+
+struct MKDevEnvironment: EnvironmentInterface {
+    var name = "Development MK"
+    var baseURLs: BaseURLs = MKDevBaseURLs()
+    var serverTrustPolicies: APITrustPolicies = [:]
+
+    /*************************************/
+    //  Example public key pinning:
+    //
+    //    var serverTrustPolicies: APITrustPolicies = [
+    //        "tasks.upnetix.tech": .pinPublicKeys
+    //    ]
+    //
+    /*************************************/
+}
+
+struct MKDevBaseURLs: BaseURLs {
+    var base: BaseURL = "https://virusafe.scalefocus.dev"
+    var port: Int? = 8444
+}
+

@@ -113,7 +113,7 @@ extension LanguagesViewController:UITableViewDelegate {
             print(desiredLocale)
             if didChange {
                 self?.setupUI()
-                UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
+                LanguageHelper.shared.savedLocale = languageData.0
             } else {
                 // TODO: Handle error
             }
@@ -160,6 +160,11 @@ extension String {
         
         if self.count > 2 && self.contains("-") {
             current = String(self.split(separator: "-")[safeAt: 1] ?? "")
+        }
+        
+        // quick fix for albanian flag
+        if self == "sq" {
+            current = "al"
         }
         
         for scalar in current.uppercased().unicodeScalars {

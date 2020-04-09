@@ -20,6 +20,8 @@ class SplashViewController: UIViewController, Navigateble {
     @IBOutlet private weak var ministryOfHealthImageView: UIImageView!
     @IBOutlet private weak var operationsCenterImageView: UIImageView!
     
+    @IBOutlet var appNameLabel: UILabel!
+    
     // MARK: Properties
 
     weak var navigationDelegate: NavigationDelegate?
@@ -31,6 +33,14 @@ class SplashViewController: UIViewController, Navigateble {
         showSpinner()
         // Fetch remote config
         RemoteConfigHelper.shared.fetchRemoteConfigValues(fetchRemoteConfigCompletionHandler)
+
+        // ??? Use bundle name instead
+        #if MACEDONIA
+            appNameLabel.text = "SeZaCOVID19"
+        #else
+            appNameLabel.text = "ViruSafe"
+        #endif
+
         // setup images views depending on the locale
         setupImages()
     }
@@ -59,9 +69,11 @@ class SplashViewController: UIViewController, Navigateble {
     }
     
     private func setupImages() {
-        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
+        #if !MACEDONIA
+        let savedLocale = LanguageHelper.shared.savedLocale
         ministryOfHealthImageView.image = UIImage(named: "ic_min_zdrave-\(savedLocale)")
-        operationsCenterImageView.image =  UIImage(named: "ic_oper_shtab-\(savedLocale)")
+        operationsCenterImageView.image = UIImage(named: "ic_oper_shtab-\(savedLocale)")
+        #endif
     }
 
     // MARK: Navigation
