@@ -24,11 +24,6 @@
 	<string>$(GOOGLE_SERVICES_INFO_PLSIT_NAME)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на здравните институции за по-добро планиране, както и да получавате гео-базирана информация за COVID-19.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
