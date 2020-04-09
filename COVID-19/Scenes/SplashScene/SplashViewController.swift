@@ -33,15 +33,14 @@ class SplashViewController: UIViewController, Navigateble {
         showSpinner()
         // Fetch remote config
         RemoteConfigHelper.shared.fetchRemoteConfigValues(fetchRemoteConfigCompletionHandler)
-        
+
+        // TODO: Get it from bundle
         #if MACEDONIA
             appNameLabel.text = "SeZaCOVID19"
         #else
             appNameLabel.text = "ViruSafe"
         #endif
-        
-        
-        
+
         // setup images views depending on the locale
         setupImages()
     }
