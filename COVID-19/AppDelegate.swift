@@ -79,10 +79,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Inject network Env
         #if UPNETIX
         let environment = "dev"
+        #elseif MACEDONIA
+        let environment = "dev_mk"
         #else
         let environment = "live"
         #endif
         UserDefaults.standard.set(environment, forKey: "upnetix.project.userdefaults.env")
+
         // Network Auth
         APIManager.shared.authToken = TokenStore.shared.token
 
