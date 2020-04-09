@@ -37,7 +37,6 @@
 		02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
 		21A4155BCFCBE71B704E85BD /* Pods_Development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D022F864533E8D1E1A87D /* Pods_Development.framework */; };
 		2E6E969D4A056EC0527736BB /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
 		385BDD6A243203A900476F69 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
 		385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */; };
@@ -99,7 +98,6 @@
 		4166B3C62438A68300CC8614 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E66E242F527300AC96B1 /* StateMachine.swift */; };
 		4166B3C72438A68300CC8614 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
 		4166B3CA2438A68300CC8614 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
-		4166B3CC2438A68300CC8614 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		4166B3CE2438A68300CC8614 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
@@ -207,7 +205,6 @@
 		5C3C556C243EF509008B6B14 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E66E242F527300AC96B1 /* StateMachine.swift */; };
 		5C3C556D243EF509008B6B14 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C238242A14D3003EA70A /* Toast.swift */; };
 		5C3C556E243EF509008B6B14 /* UCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FEF633243518F4006D30B2 /* UCNHelper.swift */; };
-		5C3C556F243EF509008B6B14 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		5C3C5571243EF509008B6B14 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		5C3C5575243EF509008B6B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
 		5C3C5576243EF509008B6B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
@@ -266,7 +263,6 @@
 		260231BFE39F48539CE21468 /* Pods-Development.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Development.debug (production).xcconfig"; path = "Target Support Files/Pods-Development/Pods-Development.debug (production).xcconfig"; sourceTree = "<group>"; };
 		342AD023A3A82D0930F0B286 /* Pods-COVID-19.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.release.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.release.xcconfig"; sourceTree = "<group>"; };
 		3803B02D24254A5D0076EE00 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		38334499242D46240032F153 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		385BDD672432038800476F69 /* LanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
 		385BDD69243203A900476F69 /* Languages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Languages.storyboard; sourceTree = "<group>"; };
 		385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewModel.swift; sourceTree = "<group>"; };
@@ -406,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				41D3E66D242F524F00AC96B1 /* Flow Manger */,
-				38334499242D46240032F153 /* LocalizableStrings.swift */,
 				024D82E72423A84200696868 /* HealthStatus.swift */,
 				41482B18242B49F20062D6E1 /* TokenStore.swift */,
 				41482B1C242B60480062D6E1 /* JWTDecoder.swift */,
@@ -946,7 +941,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "chmod +x ./Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh\n././Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"dba49d8b-63b6-4b67-b8f4-a45f8cb7bdc0\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.scalefocus.dev:8443/api/localizations/v1.1\"\n";
+			shellScript = "chmod +x ./Pods/Flexx/localizer_download.sh\n././Pods/Flexx/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"dba49d8b-63b6-4b67-b8f4-a45f8cb7bdc0\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.scalefocus.dev:8443/api/localizations/v1.1\"\n";
 		};
 		4166B37D2438A68300CC8614 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1023,7 +1018,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "chmod +x ./Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh\n././Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"85472152-fdff-49da-9e88-ea3060a6f898\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.io/api/localizations/v1.1\"\n";
+			shellScript = "chmod +x ./Pods/Flexx/localizer_download.sh\n././Pods/Flexx/localizer_download.sh APP_ID=\"ViruSafe-BG\" SALT=\"85472152-fdff-49da-9e88-ea3060a6f898\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.io/api/localizations/v1.1\"\n";
 		};
 		4179866C2430FB97006CC2D9 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1137,7 +1132,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "chmod +x ./Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh\n././Pods/UpnetixLocalizer/UpnetixLocalizer/Classes/localizer_download.sh APP_ID=\"ViruSafe-MK\" SALT=\"dfdb1220-7299-405e-a780-2ad4d92bb728\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.scalefocus.dev:8443/api/localizations/v1.1\"\n";
+			shellScript = "chmod +x ./Pods/Flexx/localizer_download.sh\n././Pods/Flexx/localizer_download.sh APP_ID=\"ViruSafe-MK\" SALT=\"dfdb1220-7299-405e-a780-2ad4d92bb728\" DOMAINS=\"Common\" BASE_URL=\"https://virusafe.scalefocus.dev:8443/api/localizations/v1.1\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1200,7 +1195,6 @@
 				41D3E66F242F527300AC96B1 /* StateMachine.swift in Sources */,
 				4170C239242A14D3003EA70A /* Toast.swift in Sources */,
 				41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */,
-				3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1262,7 +1256,6 @@
 				4166B3C62438A68300CC8614 /* StateMachine.swift in Sources */,
 				4166B3C72438A68300CC8614 /* Toast.swift in Sources */,
 				4166B3CA2438A68300CC8614 /* UCNHelper.swift in Sources */,
-				4166B3CC2438A68300CC8614 /* LocalizableStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,7 +1317,6 @@
 				5C3C556C243EF509008B6B14 /* StateMachine.swift in Sources */,
 				5C3C556D243EF509008B6B14 /* Toast.swift in Sources */,
 				5C3C556E243EF509008B6B14 /* UCNHelper.swift in Sources */,
-				5C3C556F243EF509008B6B14 /* LocalizableStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

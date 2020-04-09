@@ -8,7 +8,7 @@
 
 import Foundation
 import TwoWayBondage
-import UpnetixLocalizer
+import Flex
 
 protocol HealthStatusViewModelDelegate: class {
     func sendHealtStatus(_ request: AnswersRequest,

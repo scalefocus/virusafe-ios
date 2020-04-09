@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import UpnetixLocalizer
+import Flex
 
 class LanguagesViewController: UIViewController, Navigateble {
     
@@ -109,7 +109,7 @@ extension LanguagesViewController:UITableViewDelegate {
         
         let languageData = viewModel.laguanges.value![indexPath.row]
         let locale = Locale(identifier: languageData.0)
-        Localizer.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
+        Flex.shared.changeLocale(desiredLocale: locale) { [weak self] didChange, desiredLocale in
             print(desiredLocale)
             if didChange {
                 self?.setupUI()
@@ -139,7 +139,7 @@ extension LanguagesViewController: UITableViewDataSource {
         let languageData = viewModel.laguanges.value![indexPath.row];
         cell.textLabel?.text = languageData.0.getFlag + " " + languageData.1
         
-        if Localizer.shared.getCurrentLocale().identifier == languageData.0 {
+        if Flex.shared.getCurrentLocale().identifier == languageData.0 {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             cell.accessoryType = .checkmark
         } else {
