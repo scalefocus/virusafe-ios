@@ -318,6 +318,8 @@
 		55E29C0BFF8A37F99687178E /* Pods-Production.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Production.debug (production).xcconfig"; path = "Target Support Files/Pods-Production/Pods-Production.debug (production).xcconfig"; sourceTree = "<group>"; };
 		5C23C9F0243754AB00F9CEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5C23C9F2243754BF00F9CEDB /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C308497243F70A400922CD1 /* mk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = mk; path = mk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C308498243F70B100922CD1 /* sq */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sq; path = sq.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5C3C558A243EF509008B6B14 /* ViruSafeMK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViruSafeMK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSegmentController.swift; sourceTree = "<group>"; };
 		5F0C84F32518287DF2322735 /* Pods-Development.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Development.release (production).xcconfig"; path = "Target Support Files/Pods-Development/Pods-Development.release (production).xcconfig"; sourceTree = "<group>"; };
@@ -817,6 +819,8 @@
 				en,
 				Base,
 				bg,
+				mk,
+				sq,
 			);
 			mainGroup = 02B9A69F242371F300B1A4C0;
 			productRefGroup = 02B9A6A9242371F300B1A4C0 /* Products */;
@@ -1344,6 +1348,8 @@
 			children = (
 				5C23C9F0243754AB00F9CEDB /* en */,
 				5C23C9F2243754BF00F9CEDB /* bg */,
+				5C308497243F70A400922CD1 /* mk */,
+				5C308498243F70B100922CD1 /* sq */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
