@@ -1535,7 +1535,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64F2247F2E8F7A850848604B /* Pods-NorthMacedonia.debug.xcconfig */;
 			buildSettings = {
-				APP_BUNDLE_NAME = ViruSafeDev;
+				APP_BUNDLE_NAME = ViruSafeMK;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1563,7 +1563,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 015947007D3AE1FB44E01B64 /* Pods-NorthMacedonia.release.xcconfig */;
 			buildSettings = {
-				APP_BUNDLE_NAME = ViruSafeDev;
+				APP_BUNDLE_NAME = ViruSafeMK;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
