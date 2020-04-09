@@ -162,6 +162,11 @@ extension String {
             current = String(self.split(separator: "-")[safeAt: 1] ?? "")
         }
         
+        // quick fix for albanian flag
+        if self == "sq" {
+            current = "al"
+        }
+        
         for scalar in current.uppercased().unicodeScalars {
             guard let unicode = UnicodeScalar(base + scalar.value) else { return unicodeString }
             unicodeString.unicodeScalars.append(unicode)
