@@ -24,6 +24,18 @@ struct EGNData {
     }
 }
 
+#if MACEDONIA
+
+final class UCNHelper {
+    static let maximumPersonalNumberLength = 13
+
+    func isValid(egn: String) -> Bool {
+        return egn.count == UCNHelper.maximumPersonalNumberLength
+    }
+}
+
+#else // MACEDONIA
+
 final class UCNHelper {
 
     private let weights: [Int]  = [2, 4, 8, 5, 10, 9, 7, 3, 6]
@@ -127,6 +139,8 @@ final class UCNHelper {
         return checksum == calculatedChecksum
     }
 }
+
+#endif // MACEDONIA
 
 extension String {
     func substring(_ range: Range<Int>) -> String {

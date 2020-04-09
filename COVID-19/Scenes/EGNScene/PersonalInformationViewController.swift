@@ -178,7 +178,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                 case .unknownIdentificationNumberType, .unknownGender:
                     // Do nothing (it is not possible to get here)
                     break
-                case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN, .invalidForeignerPIN, .invalidIdentificationCard:
+                case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN,
+                     .invalidForeignerPIN, .invalidIdentificationCard, .invalidМacedonianCitizenUCN:
                     identificationNumberErrorLabel.text = "field_invalid_format_msg".localized()
                 case .emptyAge, .overMaximumAge:
                     ageErrorLabel.text = "invalid_age_msg".localized()
@@ -233,10 +234,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         identificationNumberTypeSegmentControl.selectedSegmentIndex = identificationNumberType.segmentIndex
 
         viewModel.identificationNumber.value = nil
-//        viewModel.age.value = nil
         identificationNumberTextField.text = nil
-//        ageTextField.text = nil
-//
+
         let isFirstResponder = identificationNumberTextField.isFirstResponder
         identificationNumberTextField.resignFirstResponder()
 
@@ -246,16 +245,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         switch identificationNumberType {
             case .bulgarianCitizenUCN:
                 identificationNumberTextField.keyboardType = .numberPad
-                setGenderButtonsUserInteraction(false)
-                ageTextField.isEnabled = false
+                disableAgeAndGenderIfNeeded()
             case .foreignerPIN:
                 identificationNumberTextField.keyboardType = .numberPad
-                setGenderButtonsUserInteraction(true)
-                ageTextField.isEnabled = true
+                setAgeAndGenderControlsEnabled(true)
             case .identificationCard:
                 identificationNumberTextField.keyboardType = .default
-                setGenderButtonsUserInteraction(true)
-                ageTextField.isEnabled = true
+                setAgeAndGenderControlsEnabled(true)
             default:
                 break // Do nothing
         }
@@ -265,10 +261,23 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         }
     }
 
+    private func disableAgeAndGenderIfNeeded() {
+        #if MACEDONIA
+        setAgeAndGenderControlsEnabled(true)
+        #else // MACEDONIA
+        setAgeAndGenderControlsEnabled(false)
+        #endif // MACEDONIA
+    }
+
+    private func setAgeAndGenderControlsEnabled(_ isEnabled: Bool) {
+        setGenderButtonsUserInteraction(isEnabled)
+        genderLabel.isEnabled = isEnabled
+        ageTextField.isEnabled = isEnabled
+    }
+
     private func setGenderButtonsUserInteraction(_ isEnabled: Bool) {
         for button in genderButtons {
             button.isEnabled = isEnabled
-            genderLabel.isEnabled = isEnabled
             button.borderColor = isEnabled ? .healthBlue ?? .white : UIColor.lightGray.withAlphaComponent(0.3)
         }
     }

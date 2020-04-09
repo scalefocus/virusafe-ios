@@ -44,6 +44,7 @@ extension Gender: TagPresentable {
 //
 
 enum IdentificationNumberType: String, Codable {
+    // TODO: Rename to only citizenUCN
     case bulgarianCitizenUCN = "EGN" // uniform civil number (егн)
     case foreignerPIN = "LNCH" // personal identification number (лнч)
     case identificationCard = "PASSPORT" // id card (лк)
@@ -87,6 +88,8 @@ enum PersonalInformationValidationError: Error {
     case underMinimumAge
     case overMaximumAge
     case unknownGender
+
+    case invalidМacedonianCitizenUCN
 }
 
 //
@@ -255,11 +258,13 @@ final class PersonalInformationViewModel {
             return true
         }
 
+        #if !MACEDONIA
         // !!! Side effect
         // If lenght is exact try parse it, if valid egn auto populate disabled controls
         if let data = UCNHelper().parse(egn: newString as String) {
             setModelsFromParsedUCNData(data)
         }
+        #endif // !MACEDONIA
 
         return true
     }
@@ -355,7 +360,11 @@ final class PersonalInformationViewModel {
 
     private func validateUCN(_ identificationNumber: String) throws -> Void {
         if !UCNHelper().isValid(egn: identificationNumber) {
+            #if MACEDONIA
+            throw PersonalInformationValidationError.invalidМacedonianCitizenUCN
+            #else
             throw PersonalInformationValidationError.invalidBulgarianCitizenUCN
+            #endif
         }
     }
 
