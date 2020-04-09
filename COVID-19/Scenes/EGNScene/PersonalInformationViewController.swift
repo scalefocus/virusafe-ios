@@ -100,15 +100,17 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         // can be done on didSet or by setting image alwaysTemplate in asset catalog
         setupIconImageViewTint()
 
-        identificationNumberTypeSegmentControl
-            .setTitle("identification_number_ucn_segment".localized(),
-                      forSegmentAt: IdentificationNumberType.bulgarianCitizenUCN.segmentIndex)
-        identificationNumberTypeSegmentControl
-            .setTitle("identification_number_pin_segment".localized(),
-                      forSegmentAt: IdentificationNumberType.foreignerPIN.segmentIndex)
-        identificationNumberTypeSegmentControl
-            .setTitle("passport_hint".localized(),
-                      forSegmentAt: IdentificationNumberType.identificationCard.segmentIndex)
+        //Initialize Localizaer
+        #if MACEDONIA
+        let segmentsList = ["identification_number_ucn_segment".localized(),
+                            "passport_hint".localized()]
+        #else
+        let segmentsList = ["identification_number_ucn_segment".localized(),
+                            "identification_number_pin_segment".localized(),
+                            "passport_hint".localized()]
+        #endif
+        
+        identificationNumberTypeSegmentControl.replaceSegments(segments: segmentsList)
         identificationNumberTypeSegmentControl.tintColor = .healthBlue
     }
     
@@ -435,4 +437,13 @@ private extension DispatchQueue {
         return "\(Unmanaged.passUnretained(object).toOpaque())." + String(describing: object)
     }
 
+}
+
+extension UISegmentedControl {
+    func replaceSegments(segments: Array<String>) {
+        self.removeAllSegments()
+        for segment in segments {
+            self.insertSegment(withTitle: segment, at: self.numberOfSegments, animated: false)
+        }
+    }
 }
