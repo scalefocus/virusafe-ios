@@ -29,6 +29,7 @@
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
 		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
+		02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
 		02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */; };
@@ -42,9 +43,6 @@
 		385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */; };
 		38650B6F242DFB110013DF5E /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650B6E242DFB110013DF5E /* PersonalInformationViewController.swift */; };
 		3869F0A3243F0FFC008AB6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3869F0A2243F0FFC008AB6B8 /* Assets.xcassets */; };
-		3869F0A8243F1B0E008AB6B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
-		3869F0AB243F266D008AB6B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
-		3869F0AC243F266D008AB6B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		38AD4BBD243770F100E57800 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		412D72302438BBA10037C228 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 412D722F2438BBA10037C228 /* GoogleService-Info.plist */; };
 		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
@@ -105,6 +103,7 @@
 		4166B3CE2438A68300CC8614 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
+		4166B3D52438A68300CC8614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		4166B3D62438A68300CC8614 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41482B25242B88380062D6E1 /* WebView.storyboard */; };
 		4166B3D72438A68300CC8614 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865C2430907A006CC2D9 /* Home.storyboard */; };
 		4166B3D82438A68300CC8614 /* TnC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865824308FC3006CC2D9 /* TnC.storyboard */; };
@@ -140,6 +139,8 @@
 		41802046243DC475007EE2AF /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802044243DC475007EE2AF /* NetworkingHelpers.swift */; };
 		41802049243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
 		4180204A243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
+		418020B5243F1366007EE2AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418020B4243F1366007EE2AF /* GoogleService-Info.plist */; };
+		418020B7243F13DC007EE2AF /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E66C242E2F3E00AC96B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
@@ -206,11 +207,11 @@
 		5C3C556F243EF509008B6B14 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		5C3C5571243EF509008B6B14 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		5C3C5575243EF509008B6B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
+		5C3C5576243EF509008B6B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		5C3C5577243EF509008B6B14 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41482B25242B88380062D6E1 /* WebView.storyboard */; };
 		5C3C5578243EF509008B6B14 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865C2430907A006CC2D9 /* Home.storyboard */; };
 		5C3C5579243EF509008B6B14 /* TnC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865824308FC3006CC2D9 /* TnC.storyboard */; };
 		5C3C557A243EF509008B6B14 /* NoSymptomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */; };
-		5C3C557B243EF509008B6B14 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */; };
 		5C3C557C243EF509008B6B14 /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82D924239AE100696868 /* QuestionTableViewCell.xib */; };
 		5C3C557D243EF509008B6B14 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
 		5C3C557E243EF509008B6B14 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179866224309342006CC2D9 /* Registration.storyboard */; };
@@ -218,7 +219,6 @@
 		5C3C5580243EF509008B6B14 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
 		5C3C5581243EF509008B6B14 /* PersonalInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865A24309054006CC2D9 /* PersonalInformation.storyboard */; };
 		5C3C5582243EF509008B6B14 /* HealthStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41798660243092FC006CC2D9 /* HealthStatus.storyboard */; };
-		5C3C5583243EF509008B6B14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
 		5C8904A6243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
 		5C8904A7243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
 		8C84929697E3CE03761E2398 /* Pods_NorthMacedonia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F940EE795A7FCBD4212171 /* Pods_NorthMacedonia.framework */; };
@@ -301,6 +301,8 @@
 		41802040243DB6D5007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		41802044243DC475007EE2AF /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		41802048243DC4E2007EE2AF /* WebPagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPagesHelper.swift; sourceTree = "<group>"; };
+		418020B4243F1366007EE2AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -482,13 +484,13 @@
 		02B9A6AA242371F300B1A4C0 /* COVID-19 */ = {
 			isa = PBXGroup;
 			children = (
+				3869F0A1243F0E73008AB6B8 /* Resources */,
 				024D83082425331400696868 /* CustomViews */,
 				024D82FC2424EA6000696868 /* Repositories */,
 				02B9A6C324238DF200B1A4C0 /* Scenes */,
 				02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */,
 				02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */,
 				02B9A6B1242371F300B1A4C0 /* Main.storyboard */,
-				3869F0A1243F0E73008AB6B8 /* Resources */,
 				024D82E42423A81A00696868 /* Models */,
 				5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
@@ -626,28 +628,30 @@
 		412D722B2438BB450037C228 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				412D722D2438BB5A0037C228 /* Upnetix */,
-				412D722C2438BB550037C228 /* Gov */,
+				418020B3243F133D007EE2AF /* MK Upnetix */,
+				418020B2243F1313007EE2AF /* MK Gov */,
+				412D722D2438BB5A0037C228 /* BG Upnetix */,
+				412D722C2438BB550037C228 /* BG Gov */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
 		};
-		412D722C2438BB550037C228 /* Gov */ = {
+		412D722C2438BB550037C228 /* BG Gov */ = {
 			isa = PBXGroup;
 			children = (
 				412D722F2438BBA10037C228 /* GoogleService-Info.plist */,
 				41802040243DB6D5007EE2AF /* RemoteConfigDefaults.plist */,
 			);
-			path = Gov;
+			path = "BG Gov";
 			sourceTree = "<group>";
 		};
-		412D722D2438BB5A0037C228 /* Upnetix */ = {
+		412D722D2438BB5A0037C228 /* BG Upnetix */ = {
 			isa = PBXGroup;
 			children = (
 				41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */,
 				4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */,
 			);
-			path = Upnetix;
+			path = "BG Upnetix";
 			sourceTree = "<group>";
 		};
 		41482B24242B88180062D6E1 /* CovidInfoScene */ = {
@@ -684,6 +688,22 @@
 				4179865824308FC3006CC2D9 /* TnC.storyboard */,
 			);
 			path = TermsAndConditionsScene;
+			sourceTree = "<group>";
+		};
+		418020B2243F1313007EE2AF /* MK Gov */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "MK Gov";
+			sourceTree = "<group>";
+		};
+		418020B3243F133D007EE2AF /* MK Upnetix */ = {
+			isa = PBXGroup;
+			children = (
+				418020B4243F1366007EE2AF /* GoogleService-Info.plist */,
+				418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */,
+			);
+			path = "MK Upnetix";
 			sourceTree = "<group>";
 		};
 		41D3E66D242F524F00AC96B1 /* Flow Manger */ = {
@@ -817,6 +837,7 @@
 			files = (
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
+				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				4179865D2430907A006CC2D9 /* Home.storyboard in Resources */,
 				4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */,
@@ -826,7 +847,6 @@
 				5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */,
 				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
 				4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */,
-				3869F0AC243F266D008AB6B8 /* Main.storyboard in Resources */,
 				385BDD6A243203A900476F69 /* Languages.storyboard in Resources */,
 				4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */,
 				41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */,
@@ -840,6 +860,7 @@
 			files = (
 				4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */,
 				4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */,
+				4166B3D52438A68300CC8614 /* Main.storyboard in Resources */,
 				4166B3D62438A68300CC8614 /* WebView.storyboard in Resources */,
 				4166B3D72438A68300CC8614 /* Home.storyboard in Resources */,
 				4166B3D82438A68300CC8614 /* TnC.storyboard in Resources */,
@@ -849,7 +870,6 @@
 				4166B3DB2438A68300CC8614 /* InfoPlist.strings in Resources */,
 				4166B3DC2438A68300CC8614 /* Registration.storyboard in Resources */,
 				412D72302438BBA10037C228 /* GoogleService-Info.plist in Resources */,
-				3869F0AB243F266D008AB6B8 /* Main.storyboard in Resources */,
 				4166B3DD2438A68300CC8614 /* Confirmation.storyboard in Resources */,
 				4166B3DE2438A68300CC8614 /* Languages.storyboard in Resources */,
 				4166B3DF2438A68300CC8614 /* PersonalInformation.storyboard in Resources */,
@@ -862,21 +882,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C3C5575243EF509008B6B14 /* LaunchScreen.storyboard in Resources */,
+				5C3C5576243EF509008B6B14 /* Main.storyboard in Resources */,
 				3869F0A3243F0FFC008AB6B8 /* Assets.xcassets in Resources */,
 				5C3C5577243EF509008B6B14 /* WebView.storyboard in Resources */,
 				5C3C5578243EF509008B6B14 /* Home.storyboard in Resources */,
 				5C3C5579243EF509008B6B14 /* TnC.storyboard in Resources */,
 				5C3C557A243EF509008B6B14 /* NoSymptomsTableViewCell.xib in Resources */,
-				5C3C557B243EF509008B6B14 /* RemoteConfigDefaults.plist in Resources */,
+				418020B7243F13DC007EE2AF /* RemoteConfigDefaults.plist in Resources */,
 				5C3C557C243EF509008B6B14 /* QuestionTableViewCell.xib in Resources */,
 				5C3C557D243EF509008B6B14 /* InfoPlist.strings in Resources */,
 				5C3C557E243EF509008B6B14 /* Registration.storyboard in Resources */,
 				5C3C557F243EF509008B6B14 /* Confirmation.storyboard in Resources */,
-				3869F0A8243F1B0E008AB6B8 /* Main.storyboard in Resources */,
+				418020B5243F1366007EE2AF /* GoogleService-Info.plist in Resources */,
 				5C3C5580243EF509008B6B14 /* Languages.storyboard in Resources */,
 				5C3C5581243EF509008B6B14 /* PersonalInformation.storyboard in Resources */,
 				5C3C5582243EF509008B6B14 /* HealthStatus.storyboard in Resources */,
-				5C3C5583243EF509008B6B14 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1578,7 +1598,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
 				PRODUCT_BUNDLE_IDENTIFIER = mk.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
@@ -1606,7 +1626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
 				PRODUCT_BUNDLE_IDENTIFIER = mk.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;

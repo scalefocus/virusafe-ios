@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ios_is_mandatory</key>
+	<false/>
+	<key>ios_latest_app_version</key>
+	<string>1.0</string>
+	<key>ios_end_point</key>
+	<string>https://virusafe.scalefocus.dev:8444</string>
+	<key>ios_static_content_page_url</key>
+	<string>https://virusafe.scalefocus.dev:8444/information/about-covid.html</string>
+	<key>ios_appstore_link</key>
+	<string>https://apps.apple.com/in/app/ViruSafe/id1504661908</string>
+	<key>ios_location_interval_in_mins</key>
+	<integer>2</integer>
+	<key>ios_app_info_page_url</key>
+	<string>https://virusafe.scalefocus.dev:8444/information/virusafe-why.html</string>
+	<key>statistics_url</key>
+	<string>https://covid19esri.uslugi.io/arcgis/apps/opsdashboard/index.html#/dc93c0e402f24571b503e4515515de63</string>
+	<key>is_statistics_btn_visible</key>
+	<false/>
+</dict>
+</plist>
