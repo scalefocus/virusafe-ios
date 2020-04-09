@@ -156,7 +156,7 @@ private extension SplashViewController {
             return
         }
 
-       // navigateToNextViewController()
+        navigateToNextViewController()
     }
 
 }
