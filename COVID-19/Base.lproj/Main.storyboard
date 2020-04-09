@@ -19,11 +19,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-DJ-ry5" customClass="RadialGradientView" customModule="ViruSafe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Fgw-iu-EYK">
-                                        <rect key="frame" x="107" y="231.33333333333337" width="200" height="200"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Fgw-iu-EYK">
+                                        <rect key="frame" x="143" y="267.33333333333331" width="128" height="128"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Fgw-iu-EYK" secondAttribute="height" multiplier="1:1" id="oM4-Lh-1kn"/>
-                                            <constraint firstAttribute="height" constant="200" id="wqv-mW-7jL"/>
+                                            <constraint firstAttribute="height" constant="128" id="wqv-mW-7jL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vlada_logo" translatesAutoresizingMaskIntoConstraints="NO" id="osS-iG-lO3">
+                                        <rect key="frame" x="40" y="60" width="334" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="S2h-h8-UqB"/>
+                                            <constraint firstAttribute="width" secondItem="osS-iG-lO3" secondAttribute="height" multiplier="167:64" id="uVP-KT-778"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-VB-LSP">
@@ -39,18 +47,31 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_oper_shtab-bg" translatesAutoresizingMaskIntoConstraints="NO" id="pME-eF-7v6">
                                         <rect key="frame" x="305" y="63.666666666666657" width="89" height="43"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeZaCovid19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fff-HD-h9m">
+                                        <rect key="frame" x="119.33333333333333" y="403.33333333333331" width="175.33333333333337" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="pME-eF-7v6" firstAttribute="centerY" secondItem="I0e-LB-arA" secondAttribute="centerY" id="2rC-Rl-7He"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="osS-iG-lO3" secondAttribute="trailing" constant="40" id="4bV-4S-2qi"/>
                                     <constraint firstItem="I0e-LB-arA" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="63d-Ej-Ypy"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I0e-LB-arA" secondAttribute="bottom" constant="20" id="JsS-m4-dEg"/>
+                                    <constraint firstItem="fff-HD-h9m" firstAttribute="top" secondItem="Fgw-iu-EYK" secondAttribute="bottom" constant="8" id="LjO-uZ-PK5"/>
+                                    <constraint firstItem="fff-HD-h9m" firstAttribute="centerX" secondItem="Fgw-iu-EYK" secondAttribute="centerX" id="OUl-7Z-3CS"/>
                                     <constraint firstItem="I0e-LB-arA" firstAttribute="leading" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="20" id="Q8D-5K-B0b"/>
+                                    <constraint firstItem="osS-iG-lO3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="40" id="XzT-nR-C7M"/>
+                                    <constraint firstItem="osS-iG-lO3" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="ZBo-C4-hI3"/>
                                     <constraint firstItem="g1A-VB-LSP" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="1.6" id="cac-py-Pxb"/>
+                                    <constraint firstItem="osS-iG-lO3" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="dI2-Ck-oby"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="0.9" id="jQz-bU-rqw"/>
                                     <constraint firstAttribute="trailing" secondItem="pME-eF-7v6" secondAttribute="trailing" constant="20" id="kKM-zf-QKT"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="nae-Ol-Dz6"/>
                                     <constraint firstItem="g1A-VB-LSP" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="u1a-J9-vuX"/>
+                                    <constraint firstItem="fff-HD-h9m" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="u9E-1U-FIf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -64,6 +85,7 @@
                         <viewLayoutGuide key="safeArea" id="ryv-L3-85T"/>
                     </view>
                     <connections>
+                        <outlet property="appNameLabel" destination="fff-HD-h9m" id="Gml-dO-wqY"/>
                         <outlet property="loadingIndicatorView" destination="g1A-VB-LSP" id="12B-6w-usC"/>
                         <outlet property="logoImageView" destination="Fgw-iu-EYK" id="hh3-FB-ep3"/>
                         <outlet property="ministryOfHealthImageView" destination="I0e-LB-arA" id="d7o-Xa-zxF"/>
@@ -72,12 +94,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ue6-k4-UzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1996.875" y="138.38028169014083"/>
+            <point key="canvasLocation" x="-1997.1014492753625" y="136.95652173913044"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_app_logo" width="138" height="135"/>
         <image name="ic_min_zdrave-bg" width="163" height="50"/>
         <image name="ic_oper_shtab-bg" width="89" height="43"/>
-        <image name="logo" width="150" height="208"/>
+        <image name="vlada_logo" width="1701" height="501"/>
     </resources>
 </document>

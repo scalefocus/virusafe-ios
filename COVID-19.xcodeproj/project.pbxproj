@@ -29,7 +29,6 @@
 		02B9A6AC242371F300B1A4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */; };
 		02B9A6AE242371F300B1A4C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */; };
 		02B9A6B0242371F300B1A4C0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6AF242371F300B1A4C0 /* RegistrationViewController.swift */; };
-		02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
 		02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */; };
@@ -43,6 +42,9 @@
 		385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD6C2432218D00476F69 /* LanguagesViewModel.swift */; };
 		38650B6F242DFB110013DF5E /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38650B6E242DFB110013DF5E /* PersonalInformationViewController.swift */; };
 		3869F0A3243F0FFC008AB6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3869F0A2243F0FFC008AB6B8 /* Assets.xcassets */; };
+		3869F0A8243F1B0E008AB6B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
+		3869F0AB243F266D008AB6B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
+		3869F0AC243F266D008AB6B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		38AD4BBD243770F100E57800 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		412D72302438BBA10037C228 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 412D722F2438BBA10037C228 /* GoogleService-Info.plist */; };
 		41482B19242B49F20062D6E1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B18242B49F20062D6E1 /* TokenStore.swift */; };
@@ -103,7 +105,6 @@
 		4166B3CE2438A68300CC8614 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B4242371F500B1A4C0 /* Assets.xcassets */; };
 		4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
-		4166B3D52438A68300CC8614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		4166B3D62438A68300CC8614 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41482B25242B88380062D6E1 /* WebView.storyboard */; };
 		4166B3D72438A68300CC8614 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865C2430907A006CC2D9 /* Home.storyboard */; };
 		4166B3D82438A68300CC8614 /* TnC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865824308FC3006CC2D9 /* TnC.storyboard */; };
@@ -205,7 +206,6 @@
 		5C3C556F243EF509008B6B14 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		5C3C5571243EF509008B6B14 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AD4BBC243770F100E57800 /* CoreLocation.framework */; };
 		5C3C5575243EF509008B6B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */; };
-		5C3C5576243EF509008B6B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B9A6B1242371F300B1A4C0 /* Main.storyboard */; };
 		5C3C5577243EF509008B6B14 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41482B25242B88380062D6E1 /* WebView.storyboard */; };
 		5C3C5578243EF509008B6B14 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865C2430907A006CC2D9 /* Home.storyboard */; };
 		5C3C5579243EF509008B6B14 /* TnC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865824308FC3006CC2D9 /* TnC.storyboard */; };
@@ -482,13 +482,13 @@
 		02B9A6AA242371F300B1A4C0 /* COVID-19 */ = {
 			isa = PBXGroup;
 			children = (
-				3869F0A1243F0E73008AB6B8 /* Resources */,
 				024D83082425331400696868 /* CustomViews */,
 				024D82FC2424EA6000696868 /* Repositories */,
 				02B9A6C324238DF200B1A4C0 /* Scenes */,
 				02B9A6AB242371F300B1A4C0 /* AppDelegate.swift */,
 				02B9A6AD242371F300B1A4C0 /* SceneDelegate.swift */,
 				02B9A6B1242371F300B1A4C0 /* Main.storyboard */,
+				3869F0A1243F0E73008AB6B8 /* Resources */,
 				024D82E42423A81A00696868 /* Models */,
 				5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */,
 				02B9A6B6242371F500B1A4C0 /* LaunchScreen.storyboard */,
@@ -817,7 +817,6 @@
 			files = (
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
-				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
 				4179865D2430907A006CC2D9 /* Home.storyboard in Resources */,
 				4179865924308FC3006CC2D9 /* TnC.storyboard in Resources */,
@@ -827,6 +826,7 @@
 				5C23C9EF243754AB00F9CEDB /* InfoPlist.strings in Resources */,
 				4179866324309342006CC2D9 /* Registration.storyboard in Resources */,
 				4179865F243092D2006CC2D9 /* Confirmation.storyboard in Resources */,
+				3869F0AC243F266D008AB6B8 /* Main.storyboard in Resources */,
 				385BDD6A243203A900476F69 /* Languages.storyboard in Resources */,
 				4179865B24309054006CC2D9 /* PersonalInformation.storyboard in Resources */,
 				41798661243092FC006CC2D9 /* HealthStatus.storyboard in Resources */,
@@ -840,7 +840,6 @@
 			files = (
 				4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */,
 				4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */,
-				4166B3D52438A68300CC8614 /* Main.storyboard in Resources */,
 				4166B3D62438A68300CC8614 /* WebView.storyboard in Resources */,
 				4166B3D72438A68300CC8614 /* Home.storyboard in Resources */,
 				4166B3D82438A68300CC8614 /* TnC.storyboard in Resources */,
@@ -850,6 +849,7 @@
 				4166B3DB2438A68300CC8614 /* InfoPlist.strings in Resources */,
 				4166B3DC2438A68300CC8614 /* Registration.storyboard in Resources */,
 				412D72302438BBA10037C228 /* GoogleService-Info.plist in Resources */,
+				3869F0AB243F266D008AB6B8 /* Main.storyboard in Resources */,
 				4166B3DD2438A68300CC8614 /* Confirmation.storyboard in Resources */,
 				4166B3DE2438A68300CC8614 /* Languages.storyboard in Resources */,
 				4166B3DF2438A68300CC8614 /* PersonalInformation.storyboard in Resources */,
@@ -862,7 +862,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C3C5575243EF509008B6B14 /* LaunchScreen.storyboard in Resources */,
-				5C3C5576243EF509008B6B14 /* Main.storyboard in Resources */,
 				3869F0A3243F0FFC008AB6B8 /* Assets.xcassets in Resources */,
 				5C3C5577243EF509008B6B14 /* WebView.storyboard in Resources */,
 				5C3C5578243EF509008B6B14 /* Home.storyboard in Resources */,
@@ -873,6 +872,7 @@
 				5C3C557D243EF509008B6B14 /* InfoPlist.strings in Resources */,
 				5C3C557E243EF509008B6B14 /* Registration.storyboard in Resources */,
 				5C3C557F243EF509008B6B14 /* Confirmation.storyboard in Resources */,
+				3869F0A8243F1B0E008AB6B8 /* Main.storyboard in Resources */,
 				5C3C5580243EF509008B6B14 /* Languages.storyboard in Resources */,
 				5C3C5581243EF509008B6B14 /* PersonalInformation.storyboard in Resources */,
 				5C3C5582243EF509008B6B14 /* HealthStatus.storyboard in Resources */,
