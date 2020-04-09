@@ -1539,7 +1539,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64F2247F2E8F7A850848604B /* Pods-NorthMacedonia.debug.xcconfig */;
 			buildSettings = {
-				APP_BUNDLE_NAME = ViruSafeMK;
+				APP_BUNDLE_NAME = SeZaCovid19;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1554,7 +1554,7 @@
 				);
 				MARKETING_VERSION = 1.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
-				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
+				PRODUCT_BUNDLE_IDENTIFIER = mk.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1567,7 +1567,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 015947007D3AE1FB44E01B64 /* Pods-NorthMacedonia.release.xcconfig */;
 			buildSettings = {
-				APP_BUNDLE_NAME = ViruSafeMK;
+				APP_BUNDLE_NAME = SeZaCovid19;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
@@ -1582,7 +1582,7 @@
 				);
 				MARKETING_VERSION = 1.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
-				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
+				PRODUCT_BUNDLE_IDENTIFIER = mk.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = ViruSafeDevInHouseProvisioningProfile;
