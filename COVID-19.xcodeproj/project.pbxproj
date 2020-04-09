@@ -35,6 +35,7 @@
 		02B9A6C024237D6F00B1A4C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6BF24237D6F00B1A4C0 /* HomeViewController.swift */; };
 		02B9A6C22423860E00B1A4C0 /* HealthStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C12423860E00B1A4C0 /* HealthStatusViewController.swift */; };
 		02B9A6C82423989300B1A4C0 /* HealthStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B9A6C72423989300B1A4C0 /* HealthStatusViewModel.swift */; };
+		21A4155BCFCBE71B704E85BD /* Pods_Development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D022F864533E8D1E1A87D /* Pods_Development.framework */; };
 		2E6E969D4A056EC0527736BB /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		3833449A242D46240032F153 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38334499242D46240032F153 /* LocalizableStrings.swift */; };
 		385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
@@ -328,6 +329,7 @@
 		B772703121F2B498259B4A51 /* Pods-COVID-19-MKD.debug information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19-MKD.debug information services.xcconfig"; path = "Target Support Files/Pods-COVID-19-MKD/Pods-COVID-19-MKD.debug information services.xcconfig"; sourceTree = "<group>"; };
 		C1B37A1C8C8799886865DB8D /* Pods_COVID_19_MKD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19_MKD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5E5830F587CDACF7627BAD4 /* Pods_Production.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Production.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C73D022F864533E8D1E1A87D /* Pods_Development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8428FC855E76DBCA0DA2996 /* Pods-COVID-19.debug information services.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug information services.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug information services.xcconfig"; sourceTree = "<group>"; };
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
 		CD3586747AC2F2C8F9FE41AA /* Pods-Production.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Production.debug (development).xcconfig"; path = "Target Support Files/Pods-Production/Pods-Production.debug (development).xcconfig"; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			files = (
 				38AD4BBD243770F100E57800 /* CoreLocation.framework in Frameworks */,
 				2E6E969D4A056EC0527736BB /* (null) in Frameworks */,
+				21A4155BCFCBE71B704E85BD /* Pods_Development.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +677,7 @@
 				C1B37A1C8C8799886865DB8D /* Pods_COVID_19_MKD.framework */,
 				C5E5830F587CDACF7627BAD4 /* Pods_Production.framework */,
 				B0F940EE795A7FCBD4212171 /* Pods_NorthMacedonia.framework */,
+				C73D022F864533E8D1E1A87D /* Pods_Development.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1549,7 +1553,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.1;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1577,7 +1581,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.1;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
 				PROVISIONING_PROFILE = "";
