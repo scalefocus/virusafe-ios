@@ -142,6 +142,9 @@
 		418020B5243F1366007EE2AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418020B4243F1366007EE2AF /* GoogleService-Info.plist */; };
 		418020B7243F13DC007EE2AF /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
+		41A1BD2A243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
+		41A1BD2B243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
+		41A1BD2C243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E66C242E2F3E00AC96B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
 		41D3E66F242F527300AC96B1 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E66E242F527300AC96B1 /* StateMachine.swift */; };
@@ -304,6 +307,7 @@
 		418020B4243F1366007EE2AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
+		41A1BD29243F4D9400780C78 /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41D3E66E242F527300AC96B1 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 				4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */,
 				41802044243DC475007EE2AF /* NetworkingHelpers.swift */,
 				41802048243DC4E2007EE2AF /* WebPagesHelper.swift */,
+				41A1BD29243F4D9400780C78 /* LanguageHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1143,6 +1148,7 @@
 			files = (
 				024D82F12424A35B00696868 /* RegistrationConfirmationViewController.swift in Sources */,
 				5C8904A6243C91A400FB946B /* RoundedSegmentController.swift in Sources */,
+				41A1BD2A243F4D9400780C78 /* LanguageHelper.swift in Sources */,
 				41482B1D242B60480062D6E1 /* JWTDecoder.swift in Sources */,
 				024D82FB2424EA2E00696868 /* RegistrationViewModel.swift in Sources */,
 				41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */,
@@ -1204,6 +1210,7 @@
 			files = (
 				4166B3812438A68300CC8614 /* RegistrationConfirmationViewController.swift in Sources */,
 				5C8904A7243C91A400FB946B /* RoundedSegmentController.swift in Sources */,
+				41A1BD2B243F4D9400780C78 /* LanguageHelper.swift in Sources */,
 				4166B3832438A68300CC8614 /* JWTDecoder.swift in Sources */,
 				4166B3842438A68300CC8614 /* RegistrationViewModel.swift in Sources */,
 				4166B3852438A68300CC8614 /* LocationRepository.swift in Sources */,
@@ -1265,6 +1272,7 @@
 			files = (
 				5C3C553A243EF509008B6B14 /* RegistrationConfirmationViewController.swift in Sources */,
 				5C3C553B243EF509008B6B14 /* RoundedSegmentController.swift in Sources */,
+				41A1BD2C243F4D9400780C78 /* LanguageHelper.swift in Sources */,
 				5C3C553C243EF509008B6B14 /* JWTDecoder.swift in Sources */,
 				5C3C553D243EF509008B6B14 /* RegistrationViewModel.swift in Sources */,
 				5C3C553E243EF509008B6B14 /* LocationRepository.swift in Sources */,

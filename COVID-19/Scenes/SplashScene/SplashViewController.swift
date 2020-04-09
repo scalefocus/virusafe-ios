@@ -34,7 +34,7 @@ class SplashViewController: UIViewController, Navigateble {
         // Fetch remote config
         RemoteConfigHelper.shared.fetchRemoteConfigValues(fetchRemoteConfigCompletionHandler)
 
-        // TODO: Get it from bundle
+        // ??? Use bundle name instead
         #if MACEDONIA
             appNameLabel.text = "SeZaCOVID19"
         #else
@@ -69,9 +69,11 @@ class SplashViewController: UIViewController, Navigateble {
     }
     
     private func setupImages() {
-        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? "bg"
+        #if !MACEDONIA
+        let savedLocale = LanguageHelper.shared.savedLocale
         ministryOfHealthImageView.image = UIImage(named: "ic_min_zdrave-\(savedLocale)")
-        operationsCenterImageView.image =  UIImage(named: "ic_oper_shtab-\(savedLocale)")
+        operationsCenterImageView.image = UIImage(named: "ic_oper_shtab-\(savedLocale)")
+        #endif
     }
 
     // MARK: Navigation

@@ -113,7 +113,7 @@ extension LanguagesViewController:UITableViewDelegate {
             print(desiredLocale)
             if didChange {
                 self?.setupUI()
-                UserDefaults.standard.setValue(languageData.0, forKeyPath: "userLocale")
+                LanguageHelper.shared.savedLocale = languageData.0
             } else {
                 // TODO: Handle error
             }

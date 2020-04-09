@@ -54,15 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Initialize Localizaer
-        #if MACEDONIA
-        let defaultLocale = "mk"
-        #else
-        let defaultLocale = "bg"
-        #endif
-        
-        let savedLocale = UserDefaults.standard.string(forKey: "userLocale") ?? defaultLocale
-        let locale = Locale(identifier: savedLocale)
-        
+        let locale = Locale(identifier: LanguageHelper.shared.savedLocale)
         Localizer.shared.initialize(locale: locale,
                                     enableLogging: true,
                                     defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty)

@@ -111,12 +111,8 @@ class HealthStatusViewModel {
     func getHealthStatusData() {
         // show activity indicator
         shouldShowLoadingIndicator.value = true
-        
-        //TODO : better way to map languages
-        let currentLocale = Localizer.shared.getCurrentLocale()
-        let serverLocaleValue = currentLocale.identifier == "bg" ? "bg" : "en"
-        
-        questionnaireRepository.requestQuestions(with: serverLocaleValue) { [weak self] result in
+
+        questionnaireRepository.requestQuestions(with: LanguageHelper.shared.savedLocale) { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             defer {
