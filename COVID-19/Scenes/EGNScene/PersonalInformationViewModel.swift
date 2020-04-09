@@ -46,7 +46,9 @@ extension Gender: TagPresentable {
 enum IdentificationNumberType: String, Codable {
     // TODO: Rename to only citizenUCN
     case bulgarianCitizenUCN = "EGN" // uniform civil number (егн)
+    #if !MACEDONIA
     case foreignerPIN = "LNCH" // personal identification number (лнч)
+    #endif // !MACEDONIA
     case identificationCard = "PASSPORT" // id card (лк)
 
     case notSelected
@@ -60,8 +62,12 @@ protocol SegmentPresentable {
 extension IdentificationNumberType: SegmentPresentable {
     var segmentIndex: Int {
         switch self {
+            #if MACEDONIA
+            case .identificationCard: return 1
+            #else // MACEDONIA
             case .foreignerPIN: return 1
             case .identificationCard: return 2
+            #endif // MACEDONIA
             case .bulgarianCitizenUCN, .notSelected: return 0
         }
     }
@@ -69,8 +75,12 @@ extension IdentificationNumberType: SegmentPresentable {
     static func identificationNumberType(for segmentIndex: Int) -> IdentificationNumberType {
         switch segmentIndex {
             case 0: return .bulgarianCitizenUCN
+            #if MACEDONIA
+            case 1: return .identificationCard
+            #else // MACEDONIA
             case 1: return .foreignerPIN
             case 2: return .identificationCard
+            #endif // MACEDONIA
             default: return .notSelected
         }
     }
@@ -237,8 +247,10 @@ final class PersonalInformationViewModel {
         switch identificationNumberType.value {
             case .bulgarianCitizenUCN:
                 return identificationNumberTextFieldWillUpdateText(ucn: newString)
+            #if !MACEDONIA
             case .foreignerPIN:
                 return identificationNumberTextFieldWillUpdateText(pin: newString)
+            #endif // !MACEDONIA
             case .identificationCard:
                 return identificationNumberTextFieldWillUpdateText(cardId: newString)
             default:
@@ -264,6 +276,7 @@ final class PersonalInformationViewModel {
         if let data = UCNHelper().parse(egn: newString as String) {
             setModelsFromParsedUCNData(data)
         }
+        #else
         #endif // !MACEDONIA
 
         return true
@@ -349,8 +362,10 @@ final class PersonalInformationViewModel {
         switch identificationNumberType.value {
             case .bulgarianCitizenUCN:
                 try validateUCN(identificationNumber)
+            #if !MACEDONIA
             case .foreignerPIN:
                 try validatePIN(identificationNumber)
+            #endif //!MACEDONIA
             case .identificationCard:
                 try validateID(identificationNumber)
             default:

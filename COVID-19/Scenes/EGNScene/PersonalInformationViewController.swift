@@ -100,17 +100,27 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         // can be done on didSet or by setting image alwaysTemplate in asset catalog
         setupIconImageViewTint()
 
-        //Initialize Localizaer
-        #if MACEDONIA
-        let segmentsList = ["identification_number_ucn_segment".localized(),
-                            "passport_hint".localized()]
+        //Initialize Segment Control
+        setupIdentificationNumberTypeSegmentControl()
+    }
+
+    private func setupIdentificationNumberTypeSegmentControl() {
+        // Segment Titles
+        identificationNumberTypeSegmentControl
+            .setTitle("identification_number_ucn_segment".localized(),
+                      forSegmentAt: IdentificationNumberType.bulgarianCitizenUCN.segmentIndex)
+        #if !MACEDONIA
+        identificationNumberTypeSegmentControl
+            .setTitle("identification_number_pin_segment".localized(),
+                      forSegmentAt: IdentificationNumberType.foreignerPIN.segmentIndex)
         #else
-        let segmentsList = ["identification_number_ucn_segment".localized(),
-                            "identification_number_pin_segment".localized(),
-                            "passport_hint".localized()]
-        #endif
-        
-        identificationNumberTypeSegmentControl.replaceSegments(segments: segmentsList)
+        identificationNumberTypeSegmentControl.removeSegment(at: 2,
+                                                             animated: false)
+        #endif //!MACEDONIA
+        identificationNumberTypeSegmentControl
+            .setTitle("passport_hint".localized(),
+                      forSegmentAt: IdentificationNumberType.identificationCard.segmentIndex)
+        // Segment tint
         identificationNumberTypeSegmentControl.tintColor = .healthBlue
     }
     
@@ -246,9 +256,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             case .bulgarianCitizenUCN:
                 identificationNumberTextField.keyboardType = .numberPad
                 disableAgeAndGenderIfNeeded()
+            #if !MACEDONIA
             case .foreignerPIN:
                 identificationNumberTextField.keyboardType = .numberPad
                 setAgeAndGenderControlsEnabled(true)
+            #endif // !MACEDONIA
             case .identificationCard:
                 identificationNumberTextField.keyboardType = .default
                 setAgeAndGenderControlsEnabled(true)
