@@ -33,6 +33,10 @@ target 'Production' do
   app_pods
 end
 
+target 'NorthMacedonia' do
+  app_pods
+end
+
 post_install do |installer|
   installer.pods_project.targets.each do |target|
       if ['Alamofire', 'CryptoSwift', 'NetworkKit'].include? target.name
