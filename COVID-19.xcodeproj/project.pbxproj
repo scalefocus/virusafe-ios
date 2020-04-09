@@ -139,6 +139,8 @@
 		41802046243DC475007EE2AF /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802044243DC475007EE2AF /* NetworkingHelpers.swift */; };
 		41802049243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
 		4180204A243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
+		418020B5243F1366007EE2AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418020B4243F1366007EE2AF /* GoogleService-Info.plist */; };
+		418020B7243F13DC007EE2AF /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E66C242E2F3E00AC96B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
@@ -210,7 +212,6 @@
 		5C3C5578243EF509008B6B14 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865C2430907A006CC2D9 /* Home.storyboard */; };
 		5C3C5579243EF509008B6B14 /* TnC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865824308FC3006CC2D9 /* TnC.storyboard */; };
 		5C3C557A243EF509008B6B14 /* NoSymptomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82DF2423A0AE00696868 /* NoSymptomsTableViewCell.xib */; };
-		5C3C557B243EF509008B6B14 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */; };
 		5C3C557C243EF509008B6B14 /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024D82D924239AE100696868 /* QuestionTableViewCell.xib */; };
 		5C3C557D243EF509008B6B14 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C23C9F1243754AB00F9CEDB /* InfoPlist.strings */; };
 		5C3C557E243EF509008B6B14 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179866224309342006CC2D9 /* Registration.storyboard */; };
@@ -218,7 +219,6 @@
 		5C3C5580243EF509008B6B14 /* Languages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 385BDD69243203A900476F69 /* Languages.storyboard */; };
 		5C3C5581243EF509008B6B14 /* PersonalInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4179865A24309054006CC2D9 /* PersonalInformation.storyboard */; };
 		5C3C5582243EF509008B6B14 /* HealthStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41798660243092FC006CC2D9 /* HealthStatus.storyboard */; };
-		5C3C5583243EF509008B6B14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
 		5C8904A6243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
 		5C8904A7243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
 		8C84929697E3CE03761E2398 /* Pods_NorthMacedonia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F940EE795A7FCBD4212171 /* Pods_NorthMacedonia.framework */; };
@@ -301,6 +301,8 @@
 		41802040243DB6D5007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		41802044243DC475007EE2AF /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		41802048243DC4E2007EE2AF /* WebPagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPagesHelper.swift; sourceTree = "<group>"; };
+		418020B4243F1366007EE2AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -626,28 +628,30 @@
 		412D722B2438BB450037C228 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				412D722D2438BB5A0037C228 /* Upnetix */,
-				412D722C2438BB550037C228 /* Gov */,
+				418020B3243F133D007EE2AF /* MK Upnetix */,
+				418020B2243F1313007EE2AF /* MK Gov */,
+				412D722D2438BB5A0037C228 /* BG Upnetix */,
+				412D722C2438BB550037C228 /* BG Gov */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
 		};
-		412D722C2438BB550037C228 /* Gov */ = {
+		412D722C2438BB550037C228 /* BG Gov */ = {
 			isa = PBXGroup;
 			children = (
 				412D722F2438BBA10037C228 /* GoogleService-Info.plist */,
 				41802040243DB6D5007EE2AF /* RemoteConfigDefaults.plist */,
 			);
-			path = Gov;
+			path = "BG Gov";
 			sourceTree = "<group>";
 		};
-		412D722D2438BB5A0037C228 /* Upnetix */ = {
+		412D722D2438BB5A0037C228 /* BG Upnetix */ = {
 			isa = PBXGroup;
 			children = (
 				41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */,
 				4180203E243DB6BE007EE2AF /* RemoteConfigDefaults.plist */,
 			);
-			path = Upnetix;
+			path = "BG Upnetix";
 			sourceTree = "<group>";
 		};
 		41482B24242B88180062D6E1 /* CovidInfoScene */ = {
@@ -684,6 +688,22 @@
 				4179865824308FC3006CC2D9 /* TnC.storyboard */,
 			);
 			path = TermsAndConditionsScene;
+			sourceTree = "<group>";
+		};
+		418020B2243F1313007EE2AF /* MK Gov */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "MK Gov";
+			sourceTree = "<group>";
+		};
+		418020B3243F133D007EE2AF /* MK Upnetix */ = {
+			isa = PBXGroup;
+			children = (
+				418020B4243F1366007EE2AF /* GoogleService-Info.plist */,
+				418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */,
+			);
+			path = "MK Upnetix";
 			sourceTree = "<group>";
 		};
 		41D3E66D242F524F00AC96B1 /* Flow Manger */ = {
@@ -868,15 +888,15 @@
 				5C3C5578243EF509008B6B14 /* Home.storyboard in Resources */,
 				5C3C5579243EF509008B6B14 /* TnC.storyboard in Resources */,
 				5C3C557A243EF509008B6B14 /* NoSymptomsTableViewCell.xib in Resources */,
-				5C3C557B243EF509008B6B14 /* RemoteConfigDefaults.plist in Resources */,
+				418020B7243F13DC007EE2AF /* RemoteConfigDefaults.plist in Resources */,
 				5C3C557C243EF509008B6B14 /* QuestionTableViewCell.xib in Resources */,
 				5C3C557D243EF509008B6B14 /* InfoPlist.strings in Resources */,
 				5C3C557E243EF509008B6B14 /* Registration.storyboard in Resources */,
 				5C3C557F243EF509008B6B14 /* Confirmation.storyboard in Resources */,
+				418020B5243F1366007EE2AF /* GoogleService-Info.plist in Resources */,
 				5C3C5580243EF509008B6B14 /* Languages.storyboard in Resources */,
 				5C3C5581243EF509008B6B14 /* PersonalInformation.storyboard in Resources */,
 				5C3C5582243EF509008B6B14 /* HealthStatus.storyboard in Resources */,
-				5C3C5583243EF509008B6B14 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1578,7 +1598,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
 				PRODUCT_BUNDLE_IDENTIFIER = mk.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
@@ -1606,7 +1626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
 				PRODUCT_BUNDLE_IDENTIFIER = mk.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
