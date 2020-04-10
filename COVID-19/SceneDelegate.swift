@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Flex
+import UpnetixLocalizer
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -47,11 +47,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.flowManager = AppFlowManager(window: window!)
 
-        Flex.shared.willEnterForeground()
+        Localizer.shared.willEnterForeground()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        Flex.shared.didEnterBackground()
+        Localizer.shared.didEnterBackground()
     }
 
 }

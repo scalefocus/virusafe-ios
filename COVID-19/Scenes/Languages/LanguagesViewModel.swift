@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Flex
+import UpnetixLocalizer
 import TwoWayBondage
 
 final class LanguagesViewModel {
@@ -27,7 +27,7 @@ final class LanguagesViewModel {
     
     func getAvailableLanguages() {
         shouldShowLoadingIndicator.value = true
-        Flex.shared.getAvailableLocales { langauges, error in
+        Localizer.shared.getAvailableLocales { langauges, error in
             guard error == nil else {
                 self.shouldShowLoadingIndicator.value = false
                 

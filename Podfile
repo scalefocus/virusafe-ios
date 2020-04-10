@@ -11,7 +11,8 @@ def app_pods
   pod 'TwoWayBondage', '~> 1.0.2'
   pod 'AppCenter', '~> 3.0.0'
 
-  pod 'Flexx', '~> 2.4.0'
+#  pod 'Flexx', '~> 2.4.0'
+  pod 'UpnetixLocalizer', '~> 2.1.2'
   pod 'PopupUpdate'
 
   pod 'Firebase/Crashlytics'

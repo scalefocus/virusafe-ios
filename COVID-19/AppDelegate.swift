@@ -16,7 +16,7 @@ import Firebase
 import IQKeyboardManager
 import FirebaseMessaging
 import NetworkKit
-import Flex
+import UpnetixLocalizer
 
 
 @UIApplicationMain
@@ -55,9 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Initialize Localizaer
         let locale = Locale(identifier: LanguageHelper.shared.savedLocale)
-        Flex.shared.initialize(locale: locale,
+        Localizer.shared.initialize(locale: locale,
                                     enableLogging: true,
-                                    defaultLoggingReturn: Flex.DefaultReturnBehavior.empty)
+                                    defaultLoggingReturn: Localizer.DefaultReturnBehavior.empty)
         
         // App Center
         MSAppCenter.start("e78845ce-5af8-49bc-9cf4-35bcb984fdc5", withServices: [
@@ -101,16 +101,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // !!! This is not called on ios 13+, so handle it in scene delegate too
         flowManager = AppFlowManager(window: window!)
-        Flex.shared.willEnterForeground()
+        Localizer.shared.willEnterForeground()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        Flex.shared.willTerminate()
+        Localizer.shared.willTerminate()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         // !!! This is not called on ios 13+, so handle it in scene delegate too
-        Flex.shared.didEnterBackground()
+        Localizer.shared.didEnterBackground()
     }
 
     // MARK: UISceneSession Lifecycle
@@ -306,7 +306,7 @@ extension String {
     /// - Returns: The value in the localizations
     func localized() -> String {
 
-        return Flex.shared.getString(key: "Common.\(self)").replacingOccurrences(of: "$s", with: "$@")
+        return Localizer.shared.getString(key: "Common.\(self)").replacingOccurrences(of: "$s", with: "$@")
 
     }
 
