@@ -104,28 +104,24 @@ enum PersonalInformationValidationError: Error {
 
 //
 
-protocol PersonalInformationViewModelDelegate: class {
-    func sendPersonalInformation(_ request: PersonalInformation,
-                                 with completion: @escaping SendPersonalInfoCompletion)
-    func sendDelayedAnswers(with completion: @escaping SendAnswersCompletion)
-}
-
-//
-
 final class PersonalInformationViewModel {
-
-    // MARK: Delegate
-
-    private weak var delegate: PersonalInformationViewModelDelegate?
 
     // MARK: Injected dependencies
 
     private let firstLaunchCheckRepository: AppLaunchRepository
     private let personalInformationRepository: PersonalInformationRepository
 
-    // MARK: Helper
+    // MARK: Helpers
 
-    let isInitialFlow: Bool
+    // UI
+
+    var isInitialFlow: Bool {
+        return !firstLaunchCheckRepository.isAppLaunchedBefore
+    }
+
+    // Navigation
+
+    private (set) var shouldNavigateNextToHealthStatus: Bool
 
     // MARK: Binding
 
@@ -156,15 +152,14 @@ final class PersonalInformationViewModel {
 
     // MARK: Object Lifecycle
 
-    init(firstLaunchCheckRepository: AppLaunchRepository,
+    init(firstLaunchCheckRepository: AppLaunchRepository, // Used to change title
          personalInformationRepository: PersonalInformationRepository,
-         delegate: PersonalInformationViewModelDelegate) {
+         shouldNavigateNextToHealthStatus: Bool) {
         // dependencies
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
         self.personalInformationRepository = personalInformationRepository
-        self.delegate = delegate
-        // helper
-        isInitialFlow = !firstLaunchCheckRepository.isAppLaunchedBefore
+        // passed data
+        self.shouldNavigateNextToHealthStatus = shouldNavigateNextToHealthStatus
     }
 
     // МАРК: Public Methods
@@ -213,15 +208,12 @@ final class PersonalInformationViewModel {
                 ageOrNil = age
             }
         }
-        // prepare request
-        let request = PersonalInformation(identificationNumber: identificationNumber.value,
-                                          identificationType: identificationNumberType.value ?? .notSelected,
-                                          phoneNumber: "", // !!! It is not important in the request
-                                          age: ageOrNil,
-                                          gender: gender.value ?? .notSelected,
-                                          preExistingConditions: preexistingConditions.value ?? "")
         // send request
-        delegate?.sendPersonalInformation(request) { [weak self] result in
+        personalInformationRepository.sendPersonalInfo(identificationNumber: identificationNumber.value,
+                                                       identificationType: (identificationNumberType.value ?? .notSelected).rawValue,
+                                                       age: ageOrNil,
+                                                       gender: (gender.value ?? .notSelected).rawValue,
+                                                       preexistingConditions: preexistingConditions.value ?? "") { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             // hide activity indicator

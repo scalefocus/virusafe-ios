@@ -132,9 +132,12 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             case (.initialLanguages, .initialAbout):
                 previousStatesStack = [newState]
                 navigateToWebViewController(source: .about, isRoot: true)
-            case (.home, .personalInformation), (.registerConfirm, .personalInformation):
+            case (.home, .personalInformation):
                 previousStatesStack.append(newState)
-                navigateToPersonalInformationViewController()
+                navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: false)
+            case (.registerConfirm, .personalInformation):
+                previousStatesStack.append(newState)
+                navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: true)
             case (.home, .languages):
                 previousStatesStack.append(newState)
                 navigateToLanguagesViewController()
@@ -262,7 +265,7 @@ extension AppFlowManager: NavigationDelegate {
         languagesViewController.viewModel = LanguagesViewModel.init(firstLaunchCheckRepository: firstLaunchCheckRepository)
         languagesViewController.navigationDelegate = self
 
-        
+        // TODO: Use firstLaunchCheckRepository
         if !languagesViewController.viewModel.isInitialFlow {
             navigationController.push(viewController: languagesViewController)
             setupBackButton(viewController: languagesViewController)
@@ -298,7 +301,7 @@ extension AppFlowManager: NavigationDelegate {
         setupBackButton(viewController: registrationConfirmationVC)
     }
 
-    private func navigateToPersonalInformationViewController() {
+    private func navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: Bool) {
         guard let personalInformationViewController =
             UIStoryboard(name: "PersonalInformation", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(PersonalInformationViewController.self)")
@@ -308,7 +311,7 @@ extension AppFlowManager: NavigationDelegate {
         }
         let viewModel = PersonalInformationViewModel(firstLaunchCheckRepository: firstLaunchCheckRepository,
                                                      personalInformationRepository: personalInformationRepository,
-                                                     delegate: self)
+                                                     shouldNavigateNextToHealthStatus: shouldNavigateNextToHealthStatus)
         personalInformationViewController.navigationDelegate = self
         personalInformationViewController.viewModel = viewModel
         navigationController.push(viewController: personalInformationViewController)
@@ -414,29 +417,6 @@ extension AppFlowManager: HealthStatusViewModelDelegate {
                          at: request.latitude,
                          longitude: request.longitude,
                          with: completion)
-    }
-}
-
-// MARK: PersonalInformationViewModelDelegate
-
-extension AppFlowManager: PersonalInformationViewModelDelegate {
-    func sendDelayedAnswers(with completion: @escaping SendAnswersCompletion) {
-        guard let answersRequestStore = self.answersRequestStore else {
-            completion(.success(Void()))
-            return
-        }
-        firstLaunchCheckRepository.isAppLaunchedBefore = true
-        sendHealtStatus(answersRequestStore.request, with: completion)
-    }
-
-    func sendPersonalInformation(_ personalInformation: PersonalInformation,
-                                 with completion: @escaping SendPersonalInfoCompletion) {
-        personalInformationRepository.sendPersonalInfo(identificationNumber: personalInformation.identificationNumber,
-                                                       identificationType: personalInformation.identificationType?.rawValue,
-                                                       age: personalInformation.age,
-                                                       gender: personalInformation.gender?.rawValue,
-                                                       preexistingConditions: personalInformation.preExistingConditions,
-                                                       completion: completion)
     }
 }
 

@@ -16,10 +16,6 @@ final class RegistrationConfirmationViewModel {
     let shouldShowLoadingIndicator = Observable<Bool>()
     let isCodeAuthorizationRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
     let isResendCodeRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
-
-    var isInitialFlow: Bool {
-        return !firstLaunchCheckRepository.isAppLaunchedBefore
-    }
     
     init(registrationRepository: RegistrationRepository, firstLaunchCheckRepository: AppLaunchRepository) {
         self.registrationRepository = registrationRepository

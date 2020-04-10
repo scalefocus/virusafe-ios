@@ -141,7 +141,8 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     // MARK: Navigation
 
     private func navigateToNextViewController() {
-        navigationDelegate?.navigateTo(step: viewModel.isInitialFlow ? .personalInformation : .home)
+        // !!! Do it as it is done on Android - always do full initial flow
+        navigationDelegate?.navigateTo(step: .personalInformation)
     }
 
     // MARK: Actions

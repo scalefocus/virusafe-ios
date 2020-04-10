@@ -76,7 +76,6 @@
 		4166B3A32438A68300CC8614 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
 		4166B3A42438A68300CC8614 /* NoSymptomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */; };
 		4166B3A52438A68300CC8614 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
-		4166B3A62438A68300CC8614 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 		4166B3A72438A68300CC8614 /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
 		4166B3A82438A68300CC8614 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DC24239F0D00696868 /* UIViewExtension.swift */; };
 		4166B3AA2438A68300CC8614 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B27242B891A0062D6E1 /* WebViewController.swift */; };
@@ -143,6 +142,9 @@
 		41A1BD2A243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
 		41A1BD2B243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
 		41A1BD2C243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
+		41A1BD302440642200780C78 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD2F2440642200780C78 /* PersonalInformation.swift */; };
+		41A1BD312440642200780C78 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD2F2440642200780C78 /* PersonalInformation.swift */; };
+		41A1BD322440642200780C78 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD2F2440642200780C78 /* PersonalInformation.swift */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E66C242E2F3E00AC96B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */; };
 		41D3E66F242F527300AC96B1 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E66E242F527300AC96B1 /* StateMachine.swift */; };
@@ -181,7 +183,6 @@
 		5C3C5554243EF509008B6B14 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82E72423A84200696868 /* HealthStatus.swift */; };
 		5C3C5555243EF509008B6B14 /* NoSymptomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82DE2423A0AE00696868 /* NoSymptomsTableViewCell.swift */; };
 		5C3C5556243EF509008B6B14 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BDD672432038800476F69 /* LanguagesViewController.swift */; };
-		5C3C5557243EF509008B6B14 /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 		5C3C5558243EF509008B6B14 /* RemoteConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */; };
 		5C3C5559243EF509008B6B14 /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
 		5C3C555A243EF509008B6B14 /* ConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */; };
@@ -223,7 +224,6 @@
 		5C8904A7243C91A400FB946B /* RoundedSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8904A5243C91A400FB946B /* RoundedSegmentController.swift */; };
 		8C84929697E3CE03761E2398 /* Pods_NorthMacedonia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F940EE795A7FCBD4212171 /* Pods_NorthMacedonia.framework */; };
 		E2389B3A4866FD4BEF56FC78 /* Pods_Production.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5830F587CDACF7627BAD4 /* Pods_Production.framework */; };
-		FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1C355242FF77F008C237B /* PersonalInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -304,6 +304,7 @@
 		418020B6243F13DC007EE2AF /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		41A1BD29243F4D9400780C78 /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
+		41A1BD2F2440642200780C78 /* PersonalInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformation.swift; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E66B242E2F3E00AC96B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41D3E66E242F527300AC96B1 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
@@ -339,7 +340,6 @@
 		C92708A9BE1BB942C4F3631A /* Pods-COVID-19.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID-19.debug.xcconfig"; path = "Target Support Files/Pods-COVID-19/Pods-COVID-19.debug.xcconfig"; sourceTree = "<group>"; };
 		CD3586747AC2F2C8F9FE41AA /* Pods-Production.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Production.debug (development).xcconfig"; path = "Target Support Files/Pods-Production/Pods-Production.debug (development).xcconfig"; sourceTree = "<group>"; };
 		EE68D92DB39ED8818D61D281 /* Pods-Development.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Development.release (development).xcconfig"; path = "Target Support Files/Pods-Development/Pods-Development.release (development).xcconfig"; sourceTree = "<group>"; };
-		FBC1C355242FF77F008C237B /* PersonalInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,12 +409,12 @@
 				41482B1C242B60480062D6E1 /* JWTDecoder.swift */,
 				41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */,
 				4181C713242CDD1400FFDF7C /* ApiResult.swift */,
-				FBC1C355242FF77F008C237B /* PersonalInformation.swift */,
 				417986682430B7BE006CC2D9 /* PushTokenStore.swift */,
 				41FEF633243518F4006D30B2 /* UCNHelper.swift */,
 				417341D72436138800365FD6 /* TooManyRequestsResponseDataParser.swift */,
 				4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */,
 				41802044243DC475007EE2AF /* NetworkingHelpers.swift */,
+				41A1BD2F2440642200780C78 /* PersonalInformation.swift */,
 				41802048243DC4E2007EE2AF /* WebPagesHelper.swift */,
 				41A1BD29243F4D9400780C78 /* LanguageHelper.swift */,
 			);
@@ -1175,7 +1175,6 @@
 				024D82E82423A84200696868 /* HealthStatus.swift in Sources */,
 				024D82E02423A0AE00696868 /* NoSymptomsTableViewCell.swift in Sources */,
 				385BDD682432038800476F69 /* LanguagesViewController.swift in Sources */,
-				FBC1C356242FF77F008C237B /* PersonalInformation.swift in Sources */,
 				4180203B243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */,
 				41802049243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */,
 				4170C22C2428B764003EA70A /* ConfirmationViewModel.swift in Sources */,
@@ -1192,6 +1191,7 @@
 				41D3E675242F7C7200AC96B1 /* TermsAndConditionsRepository.swift in Sources */,
 				024D82F72424E92200696868 /* LoadingIndicatorManager.swift in Sources */,
 				385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */,
+				41A1BD302440642200780C78 /* PersonalInformation.swift in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
 				4170C2312428D019003EA70A /* TermsAndConditionsViewController.swift in Sources */,
 				41D3E671242F529A00AC96B1 /* AppFlowManager.swift in Sources */,
@@ -1236,7 +1236,6 @@
 				4166B3A32438A68300CC8614 /* HealthStatus.swift in Sources */,
 				4166B3A42438A68300CC8614 /* NoSymptomsTableViewCell.swift in Sources */,
 				4166B3A52438A68300CC8614 /* LanguagesViewController.swift in Sources */,
-				4166B3A62438A68300CC8614 /* PersonalInformation.swift in Sources */,
 				4180203C243DB271007EE2AF /* RemoteConfigHelper.swift in Sources */,
 				4180204A243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */,
 				4166B3A72438A68300CC8614 /* ConfirmationViewModel.swift in Sources */,
@@ -1253,6 +1252,7 @@
 				4166B3B62438A68300CC8614 /* TermsAndConditionsRepository.swift in Sources */,
 				4166B3B82438A68300CC8614 /* LoadingIndicatorManager.swift in Sources */,
 				4166B3BF2438A68300CC8614 /* LanguagesViewModel.swift in Sources */,
+				41A1BD312440642200780C78 /* PersonalInformation.swift in Sources */,
 				4166B3C22438A68300CC8614 /* BaseViewConfigurator.swift in Sources */,
 				4166B3C32438A68300CC8614 /* TermsAndConditionsViewController.swift in Sources */,
 				4166B3C42438A68300CC8614 /* AppFlowManager.swift in Sources */,
@@ -1297,7 +1297,6 @@
 				5C3C5554243EF509008B6B14 /* HealthStatus.swift in Sources */,
 				5C3C5555243EF509008B6B14 /* NoSymptomsTableViewCell.swift in Sources */,
 				5C3C5556243EF509008B6B14 /* LanguagesViewController.swift in Sources */,
-				5C3C5557243EF509008B6B14 /* PersonalInformation.swift in Sources */,
 				5C3C5558243EF509008B6B14 /* RemoteConfigHelper.swift in Sources */,
 				5C3C5559243EF509008B6B14 /* WebPagesHelper.swift in Sources */,
 				5C3C555A243EF509008B6B14 /* ConfirmationViewModel.swift in Sources */,
@@ -1314,6 +1313,7 @@
 				5C3C5565243EF509008B6B14 /* TermsAndConditionsRepository.swift in Sources */,
 				5C3C5566243EF509008B6B14 /* LoadingIndicatorManager.swift in Sources */,
 				5C3C5567243EF509008B6B14 /* LanguagesViewModel.swift in Sources */,
+				41A1BD322440642200780C78 /* PersonalInformation.swift in Sources */,
 				5C3C5568243EF509008B6B14 /* BaseViewConfigurator.swift in Sources */,
 				5C3C5569243EF509008B6B14 /* TermsAndConditionsViewController.swift in Sources */,
 				5C3C556A243EF509008B6B14 /* AppFlowManager.swift in Sources */,
@@ -1482,7 +1482,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20.4.100909;
+				CURRENT_PROJECT_VERSION = 20.4.101200;
 				DEVELOPMENT_TEAM = UWBDU93DZY;
 				INFOPLIST_FILE = "COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1490,7 +1490,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeDev;
@@ -1510,7 +1510,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.100909;
+				CURRENT_PROJECT_VERSION = 20.4.101200;
 				DEVELOPMENT_TEAM = UWBDU93DZY;
 				INFOPLIST_FILE = "COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1518,7 +1518,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeDev;
@@ -1539,7 +1539,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.72125;
+				CURRENT_PROJECT_VERSION = 20.4.101200;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1547,7 +1547,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D GOVERNMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = ViruSafe;
@@ -1567,7 +1567,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.72125;
+				CURRENT_PROJECT_VERSION = 20.4.101200;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1575,7 +1575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D GOVERNMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = ViruSafe;

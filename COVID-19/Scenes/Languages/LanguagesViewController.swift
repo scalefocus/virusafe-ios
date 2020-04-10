@@ -48,9 +48,9 @@ class LanguagesViewController: UIViewController, Navigateble {
     // MARK: Actions
     
     @IBAction func didTapConfirm(_ sender: Any) {
+        // !!! This button should be hidden if we're not here from the initail flow
         guard viewModel.isInitialFlow == true else { return }
         self.navigateToNextViewController()
-        
     }
     
     // MARK: Lifecycle

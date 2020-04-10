@@ -41,10 +41,6 @@ class HealthStatusViewModel {
 
     // Observables
 
-    var isInitialFlow: Bool {
-        return !firstLaunchCheckRepository.isAppLaunchedBefore
-    }
-
     let shouldReloadData = Observable<Bool>()
     let isLeavingScreenAvailable = Observable<Bool>()
     let reloadCellIndexPath = Observable<IndexPath>()
