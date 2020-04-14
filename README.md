@@ -93,7 +93,7 @@ Also, the ViruSafe Swagger API Docs are available for [download as JSON](https:/
 
 ### Using a Mock API
 
-To develop the mobile app against a Mock API, please check the guidelines on how to [Use a Mock API](USING-MOCK-API.md)
+To develop the mobile app against a Mock API, please check the guidelines on how to [Use a Mock API](Using-Mock-API.md)
 
 ## Contributing
 
