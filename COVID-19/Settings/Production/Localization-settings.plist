@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppId</key>
+	<string>ViruSafe-BG</string>
+	<key>BaseUrl</key>
+	<string></string>
+	<key>Domain</key>
+	<string>Common</string>
+	<key>Secret</key>
+	<string></string>
+</dict>
+</plist>

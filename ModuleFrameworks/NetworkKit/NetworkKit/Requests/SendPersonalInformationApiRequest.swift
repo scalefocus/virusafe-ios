@@ -47,12 +47,7 @@ public class SendPersonalInformationApiRequest: BaseAPIRequest {
     public override var baseUrl: BaseURL {
         return APIManager.shared.baseURLs.base
     }
-    
-    
-    public override var baseUrlPort: Int? {
-        return APIManager.shared.baseURLs.port
-    }
-    
+
     public override var authorizationRequirement: AuthorizationRequirement {
         return .none
     }

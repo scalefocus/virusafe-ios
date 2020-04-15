@@ -40,7 +40,6 @@ Overview:
 - iTunes Connect account (Optional)
 - Clone the repository
 - [Cocoapods dependency manager](https://cocoapods.org/)
-- [Cocoapods Keys environment and application key store](https://github.com/orta/cocoapods-keys)
 
 ### Pods
 
@@ -48,24 +47,24 @@ Overview:
 - Now install the pod (and any other necessary project dependencies) by executing the command: `pod install`.
 - Open *COVID-19.xcworkspace* and build.
 
-> **NB! After every change in `NetworkKit` you have to execute `pod install` and clean build your project.**
-
-> **NB!  Cocoapods Keys in the Podfile is commented out so that you are not forced to add keys.**
+> **NB!  `NetworkKit`  is a Development Pod. After every change in it you have to execute `pod install` and clean build your project.**
 
 ### Firebase
 
 In order to have working app you should add `GoogleService-Info.plist` to the project. You have to setup your own firebase project. You can have either one configuration for all targets or many (one per target). You can setup your own remote config. Check `RemoteConfigDefaults` for used keys.
 
+> **NB! We're using Firebase for Push notifications, Remote config and Crashlytics. Also Firbase collects some Analytics like installing and reinstalling of  the app by default .**
+
 ### Flex
 
-As you don't have Flex API key this build step will fail, but you're covered. We ship our code with default localization.
+As you don't have Flex API key this build step will fail, but you're covered. We ship our code with default localization for every target.
 
 ### Build Settings
 
-Base SDK:  13.2 (latest)
+Base SDK:  Latest
 Deployment Target:  10.0
 
-> **NB! You can build an application with Base SDK 13.2 that runs under iOS 10. But then you have to take care to not use any function or method that is not available on iOS 10. If you do, your application will crash on iOS 10 as soon as this function is used.**
+> **NB! You can build an application with latest Base SDK that runs under iOS 10. But then you have to take care to not use any function or method that is not available on iOS 10. If you do, your application will crash on iOS 10 as soon as this function is used.**
 
 ### Provisioning
 
@@ -74,11 +73,6 @@ Debug version is signed automatically. Release version uses manual signing. Both
 ### Debug
 
 Bluetooth functionality can not be tested in the Simulator. *(Don't worry BT is not added yet)*
-
-### Archive
-
-- Select Generic iOS Device for building.
-- Build the project using `Project -> Archive`.
 
 ## Code Styleguide
 
@@ -106,7 +100,7 @@ If you happen to find a security vulnerability, we would appreciate you letting 
 
 ## Contacts
 
-Feel free to checkout our [Slack Team](https://join.slack.com/t/virusafe/shared_invite/zt-dthph60w-KGyk_s6rjoGa6WjR7~tCAg) and join the discussion there ✌️
+Feel free to join our [Slack team](https://join.slack.com/t/virusafe/shared_invite/zt-dthph60w-KGyk_s6rjoGa6WjR7~tCAg) and join in the discussion there.
 
 ## License
 

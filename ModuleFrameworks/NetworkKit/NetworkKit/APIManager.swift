@@ -15,7 +15,6 @@ public protocol AuthenticationProtocol {
 public protocol ApiManagerProtocol {
     var authToken: String? { get set }
     var baseURLs: BaseURLs { get }
-    var environment: Environment { get set }
     
     func sendRequest(request: APIRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void)
     func configure(withCacher: CacheableProtocol?, reachabilityDelegate: ReachabilityProtocol?, authenticator: AuthenticationProtocol?)
@@ -27,51 +26,28 @@ public protocol ApiManagerProtocol {
 public final class APIManager: ApiManagerProtocol {
     
     public static let shared = APIManager()
+
+    private init() {
+        baseURLs = BaseURLs(base: Environment.shared.configuration(.serverUrl))
+    }
     
     /// The API configuration, such as authentication token, environment, base urls, etc.
-    private var config = APIConfig()
     private var cacher: CacheableProtocol?
     private var networker: NetworkingInterface = Networker()
     private var authenticator: AuthenticationProtocol?
     
     /// The currently used authentication token. Used for convenience and public accessibility, must always point to the APIConfig instance.
-    public final var authToken: String? {
-        set(newValue) {
-            config.authToken = newValue
-        }
-        get {
-            return config.authToken
-        }
-    }
-
-    public final var clientId: String?
+    public final var authToken: String?
     
     /// The current selected environments' base URLs. This should always return the values from the APIConfig instance.
     /// The APIConfig base URLs must NOT be publicly mutable, they're only set in
     /// EnvironmentsAndBaseURLs and held by the APIConfig instance.
     /// Used for convenience.
-    public final var baseURLs: BaseURLs {
-        return environmentValue.baseURLs
-    }
+    public final var baseURLs: BaseURLs
 
-    private var environmentValue: EnvironmentInterface {
-        if let remote = remoteEnvironment {
-            return remote
-        }
-        return config.environment.value
-    }
+    public final var serverTrustPolicies: APITrustPolicies = [:]
 
-    public final var remoteEnvironment: EnvironmentInterface?
-    
-    /// The current selected environment in the APIConfig instance. Just for convenience and accessibility, should always point to the APIConfig instance.
-    public final var environment: Environment {
-        set(newValue) {
-            config.environment = newValue
-        }
-        get {
-            return config.environment
-        }
-    }
+    public final var clientId: String?
     
     /// Handles caching request execution.
     ///
@@ -122,7 +98,7 @@ public final class APIManager: ApiManagerProtocol {
         self.authenticator = authenticator
         cacher = withCacher
         networker.delegate = reachabilityDelegate
-        networker.configureWith(serverTrustPolicies: environmentValue.serverTrustPolicies)
+        networker.configureWith(serverTrustPolicies: serverTrustPolicies)
     }
     
     public final func startReachabilityObserving() {

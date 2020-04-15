@@ -2,16 +2,6 @@
 platform :ios, '10.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
-#plugin 'cocoapods-keys', {
-#  :project => "ViruSafe",
-#  :keys => [
-#  "FlexProdApiKey",
-#  "FlexBGDevApiKey",
-#  "FlexMKDevApiKey",
-#  "ViruSafeApiKey"
-#  ]
-#}
-
 # Comment the next line if you don't want to use dynamic frameworks
 use_frameworks!
 
@@ -24,8 +14,8 @@ def app_pods
 
   # Upnetix/Scalefocus Libraries
   pod 'Flexx', '2.7.0'  # Localization
-  pod 'PopupUpdate'     # Force Update
-  pod 'TwoWayBondage'   # Observers
+  pod 'PopupUpdate', '~> 1.0.2'     # Force Update
+  pod 'TwoWayBondage', '~> 2.0.0'   # Observers
 
   # Firebase
   pod 'Firebase/Crashlytics'
@@ -34,7 +24,7 @@ def app_pods
   pod 'Firebase/Messaging'
 
   # Text input
-  pod 'IQKeyboardManager'
+  pod 'IQKeyboardManager', '~> 6.5.5'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   # Secure store

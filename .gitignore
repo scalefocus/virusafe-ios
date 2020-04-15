@@ -1,5 +1,6 @@
-# Xcode
-build/*
+## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+build/
+DerivedData/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -15,35 +16,72 @@ profile
 
 .vscode/*
 
+### OSX ###
 .DS_Store
-Builds/*
+.AppleDouble
+.LSOverride
+
+
 DTS*
-# OS X Finder
+
 # Xcode per-user config
 *.mode1
 *.perspective
+
+## User settings
 xcuserdata
 xcshareddata
 
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+*.xcscmblueprint
+*.xccheckout
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## Obj-C/Swift specific
+*.hmap
+
 # Build products
 build/
+Builds/*
 *.o
 *.LinkFileList
-*.hmap
+
 # Automatic backup files
 *~.nib/
 *.swp
 *~
 *.dat
 *.dep
+
 # Cocoapods
 Pods/
-Podfile.lock
+#Podfile.lock
+
+# Carthage
+#Carthage/Build/
+
+# Accio dependency management
+#Dependencies/
+#.accio/
+
+# git
 .gitmodules
+
 # AppCode specific files
 .idea/
 *.iml
-# localizations.zip
+localizations.zip
 *.xcbkptlist
 
 # Code Analysis
@@ -54,7 +92,7 @@ sonar-reports/
 Gemfile.lock
 
 # fastlane specific
-**/report.xml
-
-# do not share fastlane settup
-fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output

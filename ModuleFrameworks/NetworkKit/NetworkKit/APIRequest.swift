@@ -32,8 +32,6 @@ public protocol APIRequest {
     
     /// Base url(<host.com>). Must NOT end with "/"
     var baseUrl: BaseURL {get}
-
-    var baseUrlPort: Int? {get}
     
     /// Base path of the endpoint, without any possible parameters. Must begin with "/" and must NOT end with "/"
     var path: String {get}
@@ -140,23 +138,27 @@ extension APIRequest {
     }
     
     public var endpoint: URL? {
-        var urlComponents = URLComponents(string: baseUrl)
-//        urlComponents.scheme = baseUrl.components(separatedBy: "://").first
-//        urlComponents.host = baseUrl.components(separatedBy: "://").last
-//        if let port = baseUrlPort {
-//            urlComponents.port = port
-//        }
-        // NOTE: Mskr shure path starts with /
-        urlComponents?.path += path
-//        urlComponents.path = path
+        guard var url = URL(string: baseUrl) else {
+            // Bad base url
+            return nil
+        }
+
+        // Add endpoint path
+        // NOTE: This way we don't care if path starts with / or not
+        url.appendPathComponent(path)
+
+        // Safe append other path components
+        if let pathParameters = pathParameters {
+            url.appendPathComponents(pathParameters)
+        }
+
+        // Insert query items
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
         if let queryParameters = queryParameters {
             urlComponents?.queryItems = queryParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
         }
-        var endpointURL = urlComponents?.url
-        if let pathParameters = pathParameters {
-            endpointURL?.appendPathComponents(pathParameters)
-        }
-        return endpointURL
+
+        return urlComponents?.url
     }
 }
 
