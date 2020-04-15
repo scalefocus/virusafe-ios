@@ -1,0 +1,211 @@
+PODS:
+  - Alamofire (4.7.0)
+  - AppCenter (3.0.0):
+    - AppCenter/Analytics (= 3.0.0)
+    - AppCenter/Crashes (= 3.0.0)
+  - AppCenter/Analytics (3.0.0):
+    - AppCenter/Core
+  - AppCenter/Core (3.0.0)
+  - AppCenter/Crashes (3.0.0):
+    - AppCenter/Core
+  - Firebase/Analytics (6.22.0):
+    - Firebase/Core
+  - Firebase/Core (6.22.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.4.1)
+  - Firebase/CoreOnly (6.22.0):
+    - FirebaseCore (= 6.6.6)
+  - Firebase/Crashlytics (6.22.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.0.0-beta.7)
+  - Firebase/Messaging (6.22.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.3.0)
+  - Firebase/RemoteConfig (6.22.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 4.4.9)
+  - FirebaseABTesting (3.2.0):
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.1)
+    - Protobuf (>= 3.9.2, ~> 3.9)
+  - FirebaseAnalytics (6.4.1):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleAppMeasurement (= 6.4.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseCore (6.6.6):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.3):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 2.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseCrashlytics (4.0.0-beta.7):
+    - FirebaseAnalyticsInterop (~> 1.2)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleDataTransport (>= 5.1.1, ~> 5.1)
+    - GoogleDataTransportCCTSupport (>= 2.0.2, ~> 2.0)
+    - nanopb (~> 0.3.901)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstallations (1.1.1):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.3.3):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+  - FirebaseMessaging (4.3.0):
+    - FirebaseAnalyticsInterop (~> 1.5)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Reachability (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - Protobuf (>= 3.9.2, ~> 3.9)
+  - FirebaseRemoteConfig (4.4.9):
+    - FirebaseABTesting (~> 3.1)
+    - FirebaseAnalyticsInterop (~> 1.4)
+    - FirebaseCore (~> 6.2)
+    - FirebaseInstanceID (~> 4.2)
+    - GoogleUtilities/Environment (~> 6.2)
+    - "GoogleUtilities/NSData+zlib (~> 6.2)"
+    - Protobuf (>= 3.9.2, ~> 3.9)
+  - Flexx (2.7.0)
+  - GoogleAppMeasurement (6.4.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - GoogleDataTransport (5.1.1)
+  - GoogleDataTransportCCTSupport (2.0.2):
+    - GoogleDataTransport (~> 5.1)
+    - nanopb (~> 0.3.901)
+  - GoogleUtilities/AppDelegateSwizzler (6.5.2):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.5.2)
+  - GoogleUtilities/Logger (6.5.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.5.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.5.2):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.5.2)"
+  - GoogleUtilities/Reachability (6.5.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.5.2):
+    - GoogleUtilities/Logger
+  - IQKeyboardManager (6.5.5)
+  - KeychainSwift (19.0.0)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - NetworkKit (0.0.1):
+    - Alamofire (= 4.7)
+  - PopupUpdate (1.0.2)
+  - PromisesObjC (1.2.8)
+  - Protobuf (3.11.4)
+  - SkyFloatingLabelTextField (3.8.0)
+  - TwoWayBondage (2.0.0)
+
+DEPENDENCIES:
+  - AppCenter (~> 3.0.0)
+  - Firebase/Analytics
+  - Firebase/Crashlytics
+  - Firebase/Messaging
+  - Firebase/RemoteConfig
+  - Flexx (= 2.7.0)
+  - IQKeyboardManager (~> 6.5.5)
+  - KeychainSwift
+  - NetworkKit (from `ModuleFrameworks/NetworkKit`)
+  - PopupUpdate (~> 1.0.2)
+  - SkyFloatingLabelTextField (~> 3.0)
+  - TwoWayBondage (~> 2.0.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AppCenter
+    - Firebase
+    - FirebaseABTesting
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
+    - FirebaseCrashlytics
+    - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FirebaseRemoteConfig
+    - Flexx
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
+    - GoogleUtilities
+    - IQKeyboardManager
+    - KeychainSwift
+    - nanopb
+    - PopupUpdate
+    - PromisesObjC
+    - Protobuf
+    - SkyFloatingLabelTextField
+    - TwoWayBondage
+
+EXTERNAL SOURCES:
+  NetworkKit:
+    :path: ModuleFrameworks/NetworkKit
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  AppCenter: 7a0bbe928d07467ac8b2d7f6f2a675872a6471d8
+  Firebase: 32f9520684e87c7af3f0704f7f88042626d6b536
+  FirebaseABTesting: 821a3a3e4a145987e80fee3657c4de1cb9adf693
+  FirebaseAnalytics: 83f822fd0d33a46f49f89b8c3ab16ab4d89df08a
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseCore: 9aca0f1fffb405176ba15311a5621fcde4106fcf
+  FirebaseCoreDiagnostics: 13a6564cd6d5375066bbc8940cc1753af24497f3
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseCrashlytics: ad2e8527a7efd9a7e708d5abe57318ced2e1dbd1
+  FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
+  FirebaseInstanceID: 4b87a9a75ef628a53bb5de46e4d4cecfcce88c02
+  FirebaseMessaging: 4ec33842d36b3319e062e51fb8b35a74f726950d
+  FirebaseRemoteConfig: 47abf7a04a9082091955ea555aa79cfdd249b19c
+  Flexx: 68043aa39f20d7e5842be37122407d9db6492c6b
+  GoogleAppMeasurement: e49be3954045b17d046f271b9cc1ec052bad9702
+  GoogleDataTransport: 6ffa4dd0b6d547f8d27b91bd92fa9e197a3f5f1f
+  GoogleDataTransportCCTSupport: 12f02e5c8f09c055615de90bcd5ba2c375546051
+  GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
+  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  NetworkKit: cdc8f032f4d0f54fce0e1d589234cbd4bd395470
+  PopupUpdate: ce366889c1ddfd16b72cacc937f26df6cf46c324
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  TwoWayBondage: 722389db5cccfaab572caf4b3e326e12b1cdc984
+
+PODFILE CHECKSUM: a1c8a9f33264d30b29c1795c973f2cd1c621900a
+
+COCOAPODS: 1.9.0

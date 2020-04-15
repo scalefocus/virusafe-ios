@@ -27,10 +27,6 @@ public class AnswersApiRequest: BaseAPIRequest {
         return APIManager.shared.baseURLs.base
     }
 
-    public override var baseUrlPort: Int? {
-        return APIManager.shared.baseURLs.port
-    }
-
     public override var headers: [String: String] {
         var defaultHeaders = super.headers
         defaultHeaders["Accept"] = "*/*"

@@ -1,0 +1,9 @@
+ # Ignore everything
+/*
+
+# Not these directories
+!Default/
+!Default/*
+
+# or gitignore
+!.gitignore
