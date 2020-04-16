@@ -104,6 +104,7 @@ final class BGUCNHelper: UCNHelper {
         return sex != 0 ? .female : .male
     }
 
+        //swiftlint:disable:next large_tuple
     private func normalize(day: Int, month: Int, year: Int) -> (day: Int, month: Int, year: Int) {
         if month > 40 {
             return (day: day, month: month - 40, year: year + 2000)
@@ -125,7 +126,8 @@ final class BGUCNHelper: UCNHelper {
     }
 
     private func validateChecksum(ucn: String) -> Bool {
-        let checksum = Int(String(ucn.last!))
+        guard let lastChart = ucn.last else { return false }
+        let checksum = Int(String(lastChart))
         var sum: Int = 0
         for offset in 0..<9 {
             let index = ucn.index(ucn.startIndex, offsetBy: offset)
@@ -225,9 +227,10 @@ final class MKUCNHelper: UCNHelper {
         return sex > 499 ? .female : .male
     }
 
+    //swiftlint:disable:next large_tuple
     private func normalize(day: Int, month: Int, year: Int) -> (day: Int, month: Int, year: Int) {
         // Handle years after 2000.
-        if (year <= 1800) {
+        if year <= 1800 {
             return (day: day, month: month, year: year + 1000)
         }
 

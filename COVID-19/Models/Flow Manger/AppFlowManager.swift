@@ -10,13 +10,14 @@ import UIKit
 //import NetworkKit
 
 // TODO: Refactor
-
+//swiftlint:disable cyclomatic_complexity
+//swiftlint:disable file_length
 enum NavigationStep {
     case register
     case registerConfirm
     case home
     case healthStatus
-    case termsAndConditions
+    case termsAndConditions(type: TermsScreenType)
     case web(source: Source)
     case completed
     case about(isInitial: Bool)
@@ -65,11 +66,10 @@ final class AppFlowManager: StateMachineDelegateProtocol {
     init(window: UIWindow) {
         // !!! Only Splash Screen is in Main
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard
-            .instantiateInitialViewController()! // !!! Force unwrap
-            as!  SplashViewController
+        guard let initialViewController = storyboard.instantiateInitialViewController() as? SplashViewController else {
+            fatalError("Can not instantiate SplashViewController")
+        }
         navigationController = UINavigationController(rootViewController: initialViewController)
-//        navigationController.delegate = self
         initialViewController.navigationDelegate = self
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
@@ -87,65 +87,65 @@ final class AppFlowManager: StateMachineDelegateProtocol {
 
     func shouldTransition(from oldState: StateType, to newState: StateType) -> Bool {
         switch (oldState, newState) {
-            case (_, .pop), (.pop, _):
-                return true
-            case (_, .register):
-                return true
-            case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
-                return true
-            case (.home, .healthStatus), (.personalInformation, .healthStatus):
-                return true
-            case (.healthStatus, .success), (.personalInformation, .success):
-                return true
-            case (.register, .registerConfirm):
-                return true
-            case (.initialLanguages, .initialAbout):
-                return true
-            case (.ready, .initialLanguages):
-                return true
-            case (.home, .personalInformation), (.registerConfirm, .personalInformation):
-                return true
-            case (.home, .languages):
-                return true
-            default:
-                return false
+        case (_, .pop), (.pop, _):
+            return true
+        case (_, .register):
+            return true
+        case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
+            return true
+        case (.home, .healthStatus), (.personalInformation, .healthStatus):
+            return true
+        case (.healthStatus, .success), (.personalInformation, .success):
+            return true
+        case (.register, .registerConfirm):
+            return true
+        case (.initialLanguages, .initialAbout):
+            return true
+        case (.ready, .initialLanguages):
+            return true
+        case (.home, .personalInformation), (.registerConfirm, .personalInformation):
+            return true
+        case (.home, .languages):
+            return true
+        default:
+            return false
         }
     }
 
     func didTransition(from oldState: StateType, to newState: StateType) {
         switch (oldState, newState) {
-            case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
-                previousStatesStack = [newState]
-                setHomeAsRootViewController()
-            case (_, .register):
-                previousStatesStack = [newState]
-                setRegisterAsRootViewController()
-            case (.home, .healthStatus), (.personalInformation, .healthStatus):
-                previousStatesStack.append(newState)
-                navigateToHealthStatusViewController()
-            case (.healthStatus, .success), (.personalInformation, .success):
-                previousStatesStack.append(newState)
-                navigateToConfirmationViewController()
-            case (.register, .registerConfirm):
-                previousStatesStack.append(newState)
-                navigateToRegistrationConfirmation()
-            case (.initialLanguages, .initialAbout):
-                previousStatesStack = [newState]
-                navigateToWebViewController(source: .about, isRoot: true)
-            case (.home, .personalInformation):
-                previousStatesStack.append(newState)
-                navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: false)
-            case (.registerConfirm, .personalInformation):
-                previousStatesStack.append(newState)
-                navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: true)
-            case (.home, .languages):
-                previousStatesStack.append(newState)
-                navigateToLanguagesViewController()
-            case (.ready, .initialLanguages):
-                previousStatesStack.append(newState)
-                navigateToLanguagesViewController()
-            default:
-                break
+        case (.ready, .home), (.healthStatus, .home), (.success, .home), (.registerConfirm, .home), (.personalInformation, .home):
+            previousStatesStack = [newState]
+            setHomeAsRootViewController()
+        case (_, .register):
+            previousStatesStack = [newState]
+            setRegisterAsRootViewController()
+        case (.home, .healthStatus), (.personalInformation, .healthStatus):
+            previousStatesStack.append(newState)
+            navigateToHealthStatusViewController()
+        case (.healthStatus, .success), (.personalInformation, .success):
+            previousStatesStack.append(newState)
+            navigateToConfirmationViewController()
+        case (.register, .registerConfirm):
+            previousStatesStack.append(newState)
+            navigateToRegistrationConfirmation()
+        case (.initialLanguages, .initialAbout):
+            previousStatesStack = [newState]
+            navigateToWebViewController(source: .about, isRoot: true)
+        case (.home, .personalInformation):
+            previousStatesStack.append(newState)
+            navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: false)
+        case (.registerConfirm, .personalInformation):
+            previousStatesStack.append(newState)
+            navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: true)
+        case (.home, .languages):
+            previousStatesStack.append(newState)
+            navigateToLanguagesViewController()
+        case (.ready, .initialLanguages):
+            previousStatesStack.append(newState)
+            navigateToLanguagesViewController()
+        default:
+            break
         }
     }
 }
@@ -156,39 +156,37 @@ final class AppFlowManager: StateMachineDelegateProtocol {
 extension AppFlowManager: NavigationDelegate {
     func navigateTo(step: NavigationStep) {
         switch step {
-            case .home:
-                stateMachine.state = .home
-            case .register:
-                stateMachine.state = .register
-            case .registerConfirm:
-                stateMachine.state = .registerConfirm
-            case .termsAndConditions:
+        case .home:
+            stateMachine.state = .home
+        case .register:
+            stateMachine.state = .register
+        case .registerConfirm:
+            stateMachine.state = .registerConfirm
+        case .termsAndConditions(let type):
+            // !!! This doesn't affect machine's state
+            navigateToTermsAndConditions(screenType: type)
+        case .web(let source):
+            // !!! This doesn't affect machine's state
+            navigateToWebViewController(source: source, isRoot: false)
+        case .healthStatus:
+            stateMachine.state = .healthStatus
+        case .completed:
+            stateMachine.state = .success
+        case .about(let isInitial):
+            if isInitial {
+                stateMachine.state = .initialAbout
+            } else {
                 // !!! This doesn't affect machine's state
-                navigateToTermsAndConditions()
-            case .web(let source):
-                // !!! This doesn't affect machine's state
-                navigateToWebViewController(source: source, isRoot: false)
-            case .healthStatus:
-                stateMachine.state = .healthStatus
-            case .completed:
-                stateMachine.state = .success
-            case .about(let isInitial):
-                if isInitial {
-                    stateMachine.state = .initialAbout
-                } else {
-                    // !!! This doesn't affect machine's state
-                    navigateToWebViewController(source: .about, isRoot: false)
-                }
-            case .personalInformation:
-                stateMachine.state = .personalInformation
-            case .languages(let isInitial):
-                if isInitial {
-                    stateMachine.state = .initialLanguages
-                } else {
-                    stateMachine.state = .languages
-                }
-            @unknown default:
-                assertionFailure("Unhandled navigation step: \(step)")
+                navigateToWebViewController(source: .about, isRoot: false)
+            }
+        case .personalInformation:
+            stateMachine.state = .personalInformation
+        case .languages(let isInitial):
+            if isInitial {
+                stateMachine.state = .initialLanguages
+            } else {
+                stateMachine.state = .languages
+            }
         }
     }
 
@@ -201,8 +199,9 @@ extension AppFlowManager: NavigationDelegate {
         }
 
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "\(HomeViewController.self)")
-            as! HomeViewController // !!! Force unwrap
+        guard let homeViewController = storyboard.instantiateViewController(withIdentifier: "\(HomeViewController.self)") as? HomeViewController  else {
+            fatalError("Could not instantiate HomeViewController")
+        }
         homeViewController.navigationDelegate = self
         navigationController.setRoot(viewController: homeViewController)
     }
@@ -214,8 +213,10 @@ extension AppFlowManager: NavigationDelegate {
         }
 
         let storyboard = UIStoryboard(name: "Registration", bundle: nil)
-        let registerViewController = storyboard.instantiateViewController(withIdentifier: "\(RegistrationViewController.self)")
-            as! RegistrationViewController // !!! Force unwrap
+        guard let registerViewController = storyboard.instantiateViewController(withIdentifier: "\(RegistrationViewController.self)")
+            as? RegistrationViewController else {
+                fatalError("Could not instantiate RegistrationViewController")
+        }
         let registrationViewModel = RegistrationViewModel(registrationRepository: registrationRepository,
                                                           termsAndConditionsRepository: termsAndConditionsRepository)
         registerViewController.viewModel = registrationViewModel
@@ -223,14 +224,14 @@ extension AppFlowManager: NavigationDelegate {
         navigationController.setRoot(viewController: registerViewController)
     }
 
-    private func navigateToTermsAndConditions() {
+    private func navigateToTermsAndConditions(screenType: TermsScreenType) {
         let storyboard = UIStoryboard(name: "TnC", bundle: nil)
         guard let tncViewController = storyboard
             .instantiateViewController(withIdentifier: "\(TermsAndConditionsViewController.self)")
             as? TermsAndConditionsViewController else {
-                assertionFailure("TermsAndConditionsViewController is not found")
-                return
+                fatalError("Could not instantiate TermsAndConditionsViewController")
         }
+        tncViewController.termsScreenType = screenType
         tncViewController.viewModel = TermsAndConditionsViewModel(repository: termsAndConditionsRepository)
         tncViewController.userResponseHandler = { [weak self] in
             self?.navigationController.pop()
@@ -241,9 +242,11 @@ extension AppFlowManager: NavigationDelegate {
 
     private func navigateToHealthStatusViewController() {
         let storyboard = UIStoryboard(name: "HealthStatus", bundle: nil)
-        let healthStatusViewController = storyboard
+        guard let healthStatusViewController = storyboard
             .instantiateViewController(withIdentifier: "\(HealthStatusViewController.self)")
-            as! HealthStatusViewController // !!! Force unwrap
+            as? HealthStatusViewController else {
+                fatalError("Could not instantiate HealthStatusViewController")
+        }
         let viewModel = HealthStatusViewModel(questionnaireRepository: questionnaireRepository,
                                               firstLaunchCheckRepository: firstLaunchCheckRepository,
                                               delegate: self)
@@ -254,13 +257,15 @@ extension AppFlowManager: NavigationDelegate {
         navigationController.push(viewController: healthStatusViewController)
         setupBackButton(viewController: healthStatusViewController)
     }
-    
+
     private func navigateToLanguagesViewController() {
         let storyboard = UIStoryboard(name: "Languages", bundle: nil)
-        let languagesViewController = storyboard
+        guard let languagesViewController = storyboard
             .instantiateViewController(withIdentifier: "\(LanguagesViewController.self)")
-            as! LanguagesViewController // !!! Force unwrap
-        
+            as? LanguagesViewController else {
+                fatalError("Could not instantiate LanguagesViewController")
+        }
+
         languagesViewController.title = "select_language".localized()
         languagesViewController.viewModel = LanguagesViewModel.init(firstLaunchCheckRepository: firstLaunchCheckRepository)
         languagesViewController.navigationDelegate = self
@@ -274,12 +279,14 @@ extension AppFlowManager: NavigationDelegate {
             navigationController.setRoot(viewController: languagesViewController)
         }
     }
-    
+
     private func navigateToConfirmationViewController() {
-        let confirmationViewController =
+        guard let confirmationViewController =
             UIStoryboard(name: "Confirmation", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(ConfirmationViewController.self)")
-        as! ConfirmationViewController // !!! Force unwrap
+                as? ConfirmationViewController else {
+                    fatalError("Could not instantiate ConfirmationViewController")
+        }
         confirmationViewController.navigationDelegate = self
         navigationController.push(viewController: confirmationViewController)
     }
@@ -289,8 +296,7 @@ extension AppFlowManager: NavigationDelegate {
             UIStoryboard(name: "Registration", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(RegistrationConfirmationViewController.self)")
                 as? RegistrationConfirmationViewController else {
-                    assertionFailure("RegistrationConfirmationViewController is not found")
-                    return
+                    fatalError("Could not instantiate RegistrationConfirmationViewController")
         }
         registrationConfirmationVC.navigationDelegate = self
         registrationConfirmationVC.viewModel =
@@ -306,8 +312,7 @@ extension AppFlowManager: NavigationDelegate {
             UIStoryboard(name: "PersonalInformation", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(PersonalInformationViewController.self)")
                 as? PersonalInformationViewController else {
-                    assertionFailure("PersonalInformationViewController is not found")
-                    return
+                    fatalError("Could not instantiate PersonalInformationViewController")
         }
         let viewModel = PersonalInformationViewModel(firstLaunchCheckRepository: firstLaunchCheckRepository,
                                                      personalInformationRepository: personalInformationRepository,
@@ -320,9 +325,11 @@ extension AppFlowManager: NavigationDelegate {
 
     private func navigateToWebViewController(source: Source, isRoot: Bool) {
         let storyboard = UIStoryboard(name: "WebView", bundle: nil)
-        let webViewController = storyboard
+        guard let webViewController = storyboard
             .instantiateViewController(withIdentifier: "\(WebViewController.self)")
-            as! WebViewController // !!! Force unwrap
+            as? WebViewController else {
+                fatalError("Could not instantiate WebViewController")
+        }
         if isRoot {
             navigationController.setRoot(viewController: webViewController)
             setupAboutNextButton(viewController: webViewController)
@@ -358,7 +365,7 @@ extension AppFlowManager: NavigationDelegate {
                                                                           target: self,
                                                                           action: #selector(AppFlowManager.back(sender:)))
     }
-    
+
     private func setupBackButtonNoStateMachine(viewController: UIViewController) {
         navigationController.navigationBar.tintColor = UIColor.healthBlue
         viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back_text".localized(),
@@ -443,37 +450,6 @@ private extension UINavigationController {
         self.pushViewController(vc, animated: true)
     }
 
-//    func popToRoot(transitionType type: CATransitionType = .fade,
-//                   duration: CFTimeInterval = 0.3) {
-//        self.addTransition(transitionType: type, duration: duration)
-//        self.popToRootViewController(animated: false)
-//    }
-//    /**
-//     Pop current view controller to previous view controller.
-//
-//     - parameter type:     transition animation type.
-//     - parameter duration: transition animation duration.
-//     */
-//    func pop(transitionType type: CATransitionType = .fade,
-//             duration: CFTimeInterval = 0.3) {
-//        self.addTransition(transitionType: type, duration: duration)
-//        self.popViewController(animated: false)
-//    }
-
-//    /**
-//     Push a new view controller on the view controllers's stack.
-//
-//     - parameter vc:       view controller to push.
-//     - parameter type:     transition animation type.
-//     - parameter duration: transition animation duration.
-//     */
-//    func push(viewController vc: UIViewController,
-//              transitionType type: CATransitionType = .fade,
-//              duration: CFTimeInterval = 0.3) {
-//        self.addTransition(transitionType: type, duration: duration)
-//        self.pushViewController(vc, animated: false)
-//    }
-
     private func addTransition(transitionType type: CATransitionType = .fade,
                                duration: CFTimeInterval = 0.3) {
         let transition = CATransition()
@@ -484,3 +460,5 @@ private extension UINavigationController {
     }
 
 }
+//swiftlint:enable cyclomatic_complexity
+//swiftlint:enable file_length

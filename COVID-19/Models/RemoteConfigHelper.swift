@@ -14,9 +14,6 @@ enum RemoteConfigValueKey: String {
     case latestAppVersion = "ios_latest_app_version"
     case appstoreLink = "ios_appstore_link"
     case endpointURL = "ios_end_point"
-    // not used
-//    case contentPageURL = "ios_static_content_page_url"
-//    case appInfoPageURL = "ios_app_info_page_url"
     case statisticsPageURL = "statistics_url"
     case locationIntervalMinutes = "ios_location_interval_in_mins"
     case statisticsButtonVisible = "is_statistics_btn_visible"
@@ -67,12 +64,12 @@ final class RemoteConfigHelper {
     func fetchRemoteConfigValues(_ complete: (() -> Void)?) {
         remoteConfig.fetch(withExpirationDuration: expirationDuration) { [weak self] (status, error) in
             switch status {
-                case .success:
-                    print("Remote config fetched")
-                    self?.remoteConfig.activate()
-                default:
-                    print("Remote config not fetched")
-                    print("Error: \(error?.localizedDescription ?? "No error available.")")
+            case .success:
+                print("Remote config fetched")
+                self?.remoteConfig.activate()
+            default:
+                print("Remote config not fetched")
+                print("Error: \(error?.localizedDescription ?? "No error available.")")
             }
             complete?()
         }

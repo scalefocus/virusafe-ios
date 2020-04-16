@@ -27,7 +27,8 @@ final class PINForeignerHelper {
     }
 
     private func validateChecksum(pin: String) -> Bool {
-        let checksum = Int(String(pin.last!))
+        guard let char = pin.last else { return false }
+        let checksum = Int(String(char))
         var sum: Int = 0
         for offset in 0..<9 {
             let index = pin.index(pin.startIndex, offsetBy: offset)

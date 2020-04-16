@@ -144,9 +144,6 @@
 		41802049243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
 		4180204A243DC4E2007EE2AF /* WebPagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802048243DC4E2007EE2AF /* WebPagesHelper.swift */; };
 		4181C714242CDD1400FFDF7C /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4181C713242CDD1400FFDF7C /* ApiResult.swift */; };
-		4191E1D724460E66009EF74D /* NorthMacedonia in Resources */ = {isa = PBXBuildFile; fileRef = 4191E1D224460E66009EF74D /* NorthMacedonia */; };
-		4191E1D924460E66009EF74D /* Production in Resources */ = {isa = PBXBuildFile; fileRef = 4191E1D324460E66009EF74D /* Production */; };
-		4191E1DB24460E66009EF74D /* Development in Resources */ = {isa = PBXBuildFile; fileRef = 4191E1D424460E66009EF74D /* Development */; };
 		41A1BD2A243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
 		41A1BD2B243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
 		41A1BD2C243F4D9400780C78 /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD29243F4D9400780C78 /* LanguageHelper.swift */; };
@@ -317,9 +314,15 @@
 		4180203A243DB271007EE2AF /* RemoteConfigHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigHelper.swift; sourceTree = "<group>"; };
 		41802048243DC4E2007EE2AF /* WebPagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPagesHelper.swift; sourceTree = "<group>"; };
 		4181C713242CDD1400FFDF7C /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
-		4191E1D224460E66009EF74D /* NorthMacedonia */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NorthMacedonia; sourceTree = "<group>"; };
-		4191E1D324460E66009EF74D /* Production */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Production; sourceTree = "<group>"; };
-		4191E1D424460E66009EF74D /* Development */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Development; sourceTree = "<group>"; };
+		41915FB724484986007F67AD /* Font Awesome 5 Pro-Light-300.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Pro-Light-300.otf"; path = "COVID-19/Settings/Fonts/Font Awesome 5 Pro-Light-300.otf"; sourceTree = SOURCE_ROOT; };
+		41915FB824484986007F67AD /* Font Awesome 5 Pro-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Pro-Regular-400.otf"; path = "COVID-19/Settings/Fonts/Font Awesome 5 Pro-Regular-400.otf"; sourceTree = SOURCE_ROOT; };
+		41915FB924484986007F67AD /* Font Awesome 5 Pro-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Pro-Solid-900.otf"; path = "COVID-19/Settings/Fonts/Font Awesome 5 Pro-Solid-900.otf"; sourceTree = SOURCE_ROOT; };
+		419A670C244733CE00000BE7 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		419A670D244733CE00000BE7 /* Localization-settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Localization-settings.plist"; sourceTree = "<group>"; };
+		419A6710244733CE00000BE7 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		419A6711244733CE00000BE7 /* Localization-settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Localization-settings.plist"; sourceTree = "<group>"; };
+		419A6716244733CE00000BE7 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		419A6717244733CE00000BE7 /* Localization-settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Localization-settings.plist"; sourceTree = "<group>"; };
 		41A1BD29243F4D9400780C78 /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
 		41A1BD2F2440642200780C78 /* PersonalInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformation.swift; sourceTree = "<group>"; };
 		41A1BD4E2440DA5200780C78 /* PINForeignerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINForeignerHelper.swift; sourceTree = "<group>"; };
@@ -635,6 +638,7 @@
 		3869F0A1243F0E73008AB6B8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				41915F9E2448471B007F67AD /* Fonts */,
 				3869F0A5243F114C008AB6B8 /* MKD */,
 				3869F0A4243F113D008AB6B8 /* BGN */,
 			);
@@ -710,6 +714,43 @@
 			path = Default;
 			sourceTree = "<group>";
 		};
+		41915F9E2448471B007F67AD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				41915FB724484986007F67AD /* Font Awesome 5 Pro-Light-300.otf */,
+				41915FB824484986007F67AD /* Font Awesome 5 Pro-Regular-400.otf */,
+				41915FB924484986007F67AD /* Font Awesome 5 Pro-Solid-900.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		419A670B244733CE00000BE7 /* Development */ = {
+			isa = PBXGroup;
+			children = (
+				419A670C244733CE00000BE7 /* Secrets.plist */,
+				419A670D244733CE00000BE7 /* Localization-settings.plist */,
+			);
+			path = Development;
+			sourceTree = "<group>";
+		};
+		419A670F244733CE00000BE7 /* NorthMacedonia */ = {
+			isa = PBXGroup;
+			children = (
+				419A6710244733CE00000BE7 /* Secrets.plist */,
+				419A6711244733CE00000BE7 /* Localization-settings.plist */,
+			);
+			path = NorthMacedonia;
+			sourceTree = "<group>";
+		};
+		419A6715244733CE00000BE7 /* Production */ = {
+			isa = PBXGroup;
+			children = (
+				419A6716244733CE00000BE7 /* Secrets.plist */,
+				419A6717244733CE00000BE7 /* Localization-settings.plist */,
+			);
+			path = Production;
+			sourceTree = "<group>";
+		};
 		41D3E66D242F524F00AC96B1 /* Flow Manger */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,9 +763,9 @@
 		5C34F69B24446BBD00DD9902 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				4191E1D424460E66009EF74D /* Development */,
-				4191E1D224460E66009EF74D /* NorthMacedonia */,
-				4191E1D324460E66009EF74D /* Production */,
+				419A670B244733CE00000BE7 /* Development */,
+				419A670F244733CE00000BE7 /* NorthMacedonia */,
+				419A6715244733CE00000BE7 /* Production */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -755,6 +796,7 @@
 				02B9A6A4242371F300B1A4C0 /* Sources */,
 				02B9A6A5242371F300B1A4C0 /* Frameworks */,
 				02B9A6A6242371F300B1A4C0 /* Resources */,
+				5CAF946D24436A0A00FF56E9 /* Swiftlint */,
 				5463F928ED335AA42F535C73 /* [CP] Embed Pods Frameworks */,
 				4179866C2430FB97006CC2D9 /* Crashlytics */,
 				385BDD652431E44F00476F69 /* UpnetixLocalizer */,
@@ -779,6 +821,7 @@
 				4166B37E2438A68300CC8614 /* Sources */,
 				4166B3CD2438A68300CC8614 /* Frameworks */,
 				4166B3D12438A68300CC8614 /* Resources */,
+				5CAF946E24436C7300FF56E9 /* Swiftlint */,
 				4166B3E32438A68300CC8614 /* [CP] Embed Pods Frameworks */,
 				4166B3E42438A68300CC8614 /* Crashlytics */,
 				4166B3E52438A68300CC8614 /* UpnetixLocalizer */,
@@ -803,6 +846,7 @@
 				5C3C5539243EF509008B6B14 /* Sources */,
 				5C3C5570243EF509008B6B14 /* Frameworks */,
 				5C3C5573243EF509008B6B14 /* Resources */,
+				5CAF946F24436C8500FF56E9 /* ShellScript */,
 				5C3C5584243EF509008B6B14 /* [CP] Embed Pods Frameworks */,
 				5C3C5585243EF509008B6B14 /* Crashlytics */,
 				5C3C5586243EF509008B6B14 /* UpnetixLocalizer */,
@@ -863,7 +907,6 @@
 			files = (
 				41760DD7244592D30037F97E /* Settings.bundle in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
-				4191E1DB24460E66009EF74D /* Development in Resources */,
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
 				02B9A6B3242371F300B1A4C0 /* Main.storyboard in Resources */,
 				41482B26242B88380062D6E1 /* WebView.storyboard in Resources */,
@@ -892,7 +935,6 @@
 				4166B3D52438A68300CC8614 /* Main.storyboard in Resources */,
 				4166B3D62438A68300CC8614 /* WebView.storyboard in Resources */,
 				4166B3D72438A68300CC8614 /* Home.storyboard in Resources */,
-				4191E1D924460E66009EF74D /* Production in Resources */,
 				4166B3D82438A68300CC8614 /* TnC.storyboard in Resources */,
 				41760DB42444B5790037F97E /* RemoteConfigDefaults.plist in Resources */,
 				4166B3D92438A68300CC8614 /* NoSymptomsTableViewCell.xib in Resources */,
@@ -917,7 +959,6 @@
 				3869F0A3243F0FFC008AB6B8 /* Assets.xcassets in Resources */,
 				5C3C5577243EF509008B6B14 /* WebView.storyboard in Resources */,
 				5C3C5578243EF509008B6B14 /* Home.storyboard in Resources */,
-				4191E1D724460E66009EF74D /* NorthMacedonia in Resources */,
 				5C3C5579243EF509008B6B14 /* TnC.storyboard in Resources */,
 				41760DB52444B5790037F97E /* RemoteConfigDefaults.plist in Resources */,
 				5C3C557A243EF509008B6B14 /* NoSymptomsTableViewCell.xib in Resources */,
@@ -1327,6 +1368,59 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "chmod +x ./Pods/Flexx/localizer_download.sh\n././Pods/Flexx/localizer_download.sh APP_ID=\"$(/usr/libexec/PlistBuddy -c \"Print :AppId\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\" SALT=\"$(/usr/libexec/PlistBuddy -c \"Print :Secret\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\" DOMAINS=\"$(/usr/libexec/PlistBuddy -c \"Print :Domain\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\" BASE_URL=\"$(/usr/libexec/PlistBuddy -c \"Print :BaseUrl\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\"\n";
+		};
+		5CAF946D24436A0A00FF56E9 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		5CAF946E24436C7300FF56E9 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		5CAF946F24436C8500FF56E9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

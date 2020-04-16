@@ -24,14 +24,14 @@ class HealthStatusViewController: UIViewController, Navigateble {
 
     @IBAction func submitButtonDidTap() {
         //Request Location Permissions
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         switch CLLocationManager.authorizationStatus() {
-            case .restricted, .denied, .authorizedAlways, .authorizedWhenInUse: // authorized is deprecated
-                viewModel.didTapSubmitButton()
-            case .notDetermined:
-                appDelegate.requestLocationServicesAutorization()
-            @unknown default:
-                viewModel.didTapSubmitButton()
+        case .restricted, .denied, .authorizedAlways, .authorizedWhenInUse: // authorized is deprecated
+            viewModel.didTapSubmitButton()
+        case .notDetermined:
+            appDelegate?.requestLocationServicesAutorization()
+        @unknown default:
+            viewModel.didTapSubmitButton()
         }
     }
 
@@ -40,14 +40,14 @@ class HealthStatusViewController: UIViewController, Navigateble {
     var viewModel: HealthStatusViewModel!
 
     // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupBindigs()
         // get data
         viewModel.getHealthStatusData()
-        
+
         // TODO: Show it on button tap
         // TODO: Add auth completion handler
         // ??? Message title to be in Bulgarian (in Info.plist)
@@ -56,10 +56,10 @@ class HealthStatusViewController: UIViewController, Navigateble {
                                                name: NSNotification.Name(rawValue: "didChooseLocationAccess"),
                                                object: nil)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         // setup
         setupVC()
     }
@@ -69,7 +69,7 @@ class HealthStatusViewController: UIViewController, Navigateble {
     }
 
     // MARK: Notifications
-    
+
     @objc
     private func didChangeLocationState() {
         viewModel.didTapSubmitButton()
@@ -128,30 +128,30 @@ class HealthStatusViewController: UIViewController, Navigateble {
     private func bindRequestQuestionsResult() {
         viewModel.requestError.bind { [weak self] error in
             switch error {
-                case .invalidToken:
-                    // TODO: Refactor - duplicated code
-                    let alert = UIAlertController.invalidTokenAlert() { [weak self] in
-                        self?.navigationDelegate?.navigateTo(step: .register)
-                    }
-                    self?.present(alert, animated: true, completion: nil)
-                case .tooManyRequests(let reapeatAfter):
-                    let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
-                    self?.present(alert, animated: true, completion: nil)
-                case .server, .general, .invalidEgnOrIdNumber:
-                    self?.showToast(message: "generic_error_msg".localized())
+            case .invalidToken:
+                // TODO: Refactor - duplicated code
+                let alert = UIAlertController.invalidTokenAlert { [weak self] in
+                    self?.navigationDelegate?.navigateTo(step: .register)
+                }
+                self?.present(alert, animated: true, completion: nil)
+            case .tooManyRequests(let reapeatAfter):
+                let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
+                self?.present(alert, animated: true, completion: nil)
+            case .server, .general, .invalidEgnOrIdNumber:
+                self?.showToast(message: "generic_error_msg".localized())
             }
         }
     }
 
     private func bindSendAnswersResult() {
         // fired only on success
-        viewModel.isSendAnswersCompleted.bind { [weak self] result in
+        viewModel.isSendAnswersCompleted.bind { [weak self] _ in
             self?.navigateToNextViewController()
         }
     }
 
     // MARK: Setup UI
-    
+
     private func setupVC() {
         title = "health_status".localized()
 
@@ -161,7 +161,7 @@ class HealthStatusViewController: UIViewController, Navigateble {
 
         submitButton.backgroundColor = .healthBlue
         submitButton.layer.borderColor = UIColor.healthBlue?.cgColor
-        
+
         submitButton.setTitle("save_changes_label".localized(), for: .normal)
     }
 
@@ -176,23 +176,23 @@ class HealthStatusViewController: UIViewController, Navigateble {
 // MARK: UITableViewDelegate
 
 extension HealthStatusViewController: UITableViewDelegate {
-    
+
 }
 
 // MARK: UITableViewDataSource
 
 extension HealthStatusViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfCells
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let configurator = viewModel.viewConfigurator(at: indexPath.item, in: indexPath.section) else { return UITableViewCell() }
-        
+
         return tableView.configureCell(for: configurator, at: indexPath)
     }
-    
+
 }
 
 // MARK: ToastViewPresentable

@@ -18,7 +18,7 @@ final class PersonalInformationViewModel {
     init(repository: RegistrationRepository) {
         self.repository = repositoryr
     }
-    
+
     func didTapPersonalNumberAuthorization(with personalNumber: String) {
 
         shouldShowLoadingIndicator.value = true

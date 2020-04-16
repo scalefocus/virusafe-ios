@@ -21,4 +21,13 @@ final class TermsAndConditionsRepository {
         }
     }
 
+    var isAgreeDataProtection: Bool {
+        get {
+            return userDefaults.bool(forKey: "user_accepted_data_protection")
+        }
+        set {
+            userDefaults.set(newValue, forKey: "user_accepted_data_protection")
+        }
+    }
+
 }

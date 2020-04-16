@@ -10,9 +10,15 @@ import UIKit
 
 typealias TNCUserResponseHandler = () -> Void
 
+enum TermsScreenType {
+    case termsAndConditions
+    case processPersonalData
+}
+
 class TermsAndConditionsViewController: UIViewController {
 
     var userResponseHandler: TNCUserResponseHandler?
+    var termsScreenType: TermsScreenType = .termsAndConditions
 
     // MARK: Outlets
     @IBOutlet private weak var contentTextView: UITextView!
@@ -21,8 +27,14 @@ class TermsAndConditionsViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func acceptButtonTap() {
-        viewModel.repository.isAgree = true
-        userResponseHandler?()
+        switch termsScreenType {
+        case .termsAndConditions:
+            viewModel.repository.isAgree = true
+            userResponseHandler?()
+        case .processPersonalData:
+            viewModel.repository.isAgreeDataProtection = true
+            userResponseHandler?()
+        }
     }
 
     // MARK: ViewModel
@@ -33,18 +45,22 @@ class TermsAndConditionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        acceptButton.isHidden = viewModel.repository.isAgree
+        switch termsScreenType {
+        case .termsAndConditions:
+            acceptButton.isHidden = viewModel.repository.isAgree
+        case .processPersonalData:
+            acceptButton.isHidden = viewModel.repository.isAgreeDataProtection
+        }
         contentTextView.textContainerInset = UIEdgeInsets(top: 24,
                                                           left: 24,
                                                           bottom: 24,
                                                           right: 24)
         loadHtmlFormat()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         setupUI()
+        setupUI()
     }
 
     // MARK: Setup UI
@@ -56,13 +72,25 @@ class TermsAndConditionsViewController: UIViewController {
     }
 
     private func localize() {
-        title = "terms_n_conditions_label".localized()
+        switch termsScreenType {
+        case .termsAndConditions:
+            title = "terms_n_conditions_label".localized()
+        case .processPersonalData:
+            title = "dpn_title_short".localized()
+        }
+
         acceptButton.setTitle("i_agree_label".localized(), for: .normal)
     }
 
     private func loadHtmlFormat() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let text = "tnc_part_one".localized() + "tnc_part_two".localized()
+            var text = ""
+            switch self.termsScreenType {
+            case .termsAndConditions:
+                text = "tnc_part_one".localized() + "tnc_part_two".localized()
+            case .processPersonalData:
+                text = "dpn_description".localized()
+            }
 
             guard let attributedHTMLString = text.htmlToAttributedString else {
                 return
@@ -72,9 +100,9 @@ class TermsAndConditionsViewController: UIViewController {
 
             attributedText.enumerateAttribute(
                 NSAttributedString.Key.font,
-                in: NSMakeRange(0, attributedText.length),
-                options:.longestEffectiveRangeNotRequired) { value, range, stop in
-                    let f1 = value as! UIFont
+                in: NSRange(location: 0, length: attributedText.length),
+                options: .longestEffectiveRangeNotRequired) { value, range, _ in
+                    guard let f1 = value as? UIFont else { return }
                     let f2 = UIFont.systemFont(ofSize: 16)
                     if let f3 = self.applyTraitsFromFont(f1, to: f2) {
                         attributedText.addAttribute(
@@ -90,10 +118,10 @@ class TermsAndConditionsViewController: UIViewController {
         }
     }
 
-    private func applyTraitsFromFont(_ f1: UIFont, to f2: UIFont) -> UIFont? {
-        let t = f1.fontDescriptor.symbolicTraits
-        if let fd = f2.fontDescriptor.withSymbolicTraits(t) {
-            return UIFont.init(descriptor: fd, size: 0)
+    private func applyTraitsFromFont(_ firstFont: UIFont, to secondFont: UIFont) -> UIFont? {
+        let traits = firstFont.fontDescriptor.symbolicTraits
+        if let fontDescriptor = secondFont.fontDescriptor.withSymbolicTraits(traits) {
+            return UIFont.init(descriptor: fontDescriptor, size: 0)
         }
         return nil
     }
@@ -104,7 +132,10 @@ extension String {
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return NSAttributedString() }
         do {
-            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+            return try NSAttributedString(data: data,
+                                          options: [.documentType: NSAttributedString.DocumentType.html,
+                                                    .characterEncoding: String.Encoding.utf8.rawValue],
+                                          documentAttributes: nil)
         } catch {
             return NSAttributedString()
         }

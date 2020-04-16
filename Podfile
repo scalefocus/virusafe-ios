@@ -5,6 +5,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 # Comment the next line if you don't want to use dynamic frameworks
 use_frameworks!
 
+# Disable warnings for all pods
+inhibit_all_warnings!
+
 def app_pods
   # Development Pods
   pod 'NetworkKit', :path => 'ModuleFrameworks/NetworkKit'
@@ -29,6 +32,12 @@ def app_pods
 
   # Secure store
   pod 'KeychainSwift'
+  
+  # Swiftlint
+  pod 'SwiftLint', '~> 0.27.0'
+
+  # Better quality icons
+  pod 'FontAwesome.swift'
 end
 
 target 'Development' do

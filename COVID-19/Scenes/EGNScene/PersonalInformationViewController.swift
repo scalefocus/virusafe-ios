@@ -10,11 +10,12 @@ import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
+//swiftlint:disable file_length
 class PersonalInformationViewController: UIViewController, Navigateble {
 
     // MARK: Navigateble
     weak var navigationDelegate: NavigationDelegate?
-    
+
     // MARK: Outlets
     @IBOutlet private weak var screenTitleLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
@@ -29,11 +30,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     @IBOutlet private weak var submitButton: UIButton!
 
     // MARK: View Model
-    
+
     var viewModel: PersonalInformationViewModel!
 
     // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // style and localize
@@ -69,15 +70,15 @@ class PersonalInformationViewController: UIViewController, Navigateble {
 
         return super.canPerformAction(action, withSender: sender)
     }
-    
+
     private func setupUI() {
         title = viewModel.isInitialFlow == true ? "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n") :
-                                                  "my_personal_data".localized()
+            "my_personal_data".localized()
 
         identificationNumberTextField.placeholder = "identification_number_ucn_segment".localized() + " "
         // By default title will be same as placeholder
         identificationNumberTextField.errorColor = .red
-        
+
         submitButton.backgroundColor = .healthBlue
         submitButton.setTitle("confirm_label".localized(), for: .normal)
         submitButton.setTitleColor(.white, for: .normal)
@@ -123,11 +124,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         // Segment tint
         identificationNumberTypeSegmentControl.tintColor = .healthBlue
     }
-    
+
     private func setupIconImageViewTint() {
-        let userShieldIcon = #imageLiteral(resourceName: "user-shield").withRenderingMode(.alwaysTemplate)
-        iconImageView.image = userShieldIcon
-        iconImageView.tintColor = .healthBlue
+        let image =  UIImage.fontAwesomeIcon(name: .userShield,
+                                             style: .light,
+                                             textColor: .healthBlue ?? .blue,
+                                             size: iconImageView.frame.size)
+        iconImageView.image = image
     }
 
     // MARK: Bind
@@ -185,16 +188,16 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         identificationNumberErrorLabel.text = nil
         for error in errors {
             switch error {
-                case .unknownIdentificationNumberType, .unknownGender:
-                    // Do nothing (it is not possible to get here)
-                    break
-                case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN,
-                     .invalidForeignerPIN, .invalidIdentificationCard, .invalidМacedonianCitizenUCN:
-                    identificationNumberErrorLabel.text = "field_invalid_format_msg".localized()
-                case .emptyAge, .overMaximumAge:
-                    ageErrorLabel.text = "invalid_age_msg".localized()
-                case .underMinimumAge:
-                    ageErrorLabel.text = "invalid_min_age_msg".localized()
+            case .unknownIdentificationNumberType, .unknownGender:
+                // Do nothing (it is not possible to get here)
+                break
+            case .emptyIdentificationNumber, .invalidBulgarianCitizenUCN,
+                 .invalidForeignerPIN, .invalidIdentificationCard, .invalidМacedonianCitizenUCN:
+                identificationNumberErrorLabel.text = "field_invalid_format_msg".localized()
+            case .emptyAge, .overMaximumAge:
+                ageErrorLabel.text = "invalid_age_msg".localized()
+            case .underMinimumAge:
+                ageErrorLabel.text = "invalid_min_age_msg".localized()
             }
         }
     }
@@ -202,21 +205,22 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // TODO: Refactor - duplicated code
     private func handleNetworkRequestError(_ error: ApiError) {
         switch error {
-            case .invalidEgnOrIdNumber:
-                let alert = UIAlertController.invalidIdentificationNumberAlert() { [weak self] in
-                    self?.identificationNumberTextField.becomeFirstResponder()
-                }
-                present(alert, animated: true, completion: nil)
-            case .invalidToken:
-                let alert = UIAlertController.invalidTokenAlert() { [weak self] in
-                    self?.navigationDelegate?.navigateTo(step: .register)
-                }
-                present(alert, animated: true, completion: nil)
-            case .tooManyRequests(let reapeatAfter):
-                let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
-                present(alert, animated: true, completion: nil)
-            case .server, .general:
-                showToast(message: "generic_error_msg".localized())
+        case .invalidEgnOrIdNumber:
+            let alert = UIAlertController.invalidIdentificationNumberAlert { [weak self] in
+                self?.identificationNumberTextField.becomeFirstResponder()
+            }
+            present(alert, animated: true, completion: nil)
+        case .invalidToken:
+            // TODO: Here and in Health Status Screen add logic for refresh token
+            let alert = UIAlertController.invalidTokenAlert { [weak self] in
+                self?.navigationDelegate?.navigateTo(step: .register)
+            }
+            present(alert, animated: true, completion: nil)
+        case .tooManyRequests(let reapeatAfter):
+            let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
+            present(alert, animated: true, completion: nil)
+        case .server, .general:
+            showToast(message: "generic_error_msg".localized())
         }
     }
 
@@ -253,19 +257,19 @@ class PersonalInformationViewController: UIViewController, Navigateble {
             identificationNumberTypeSegmentControl.titleForSegment(at: identificationNumberType.segmentIndex)
 
         switch identificationNumberType {
-            case .citizenUCN:
-                identificationNumberTextField.keyboardType = .numberPad
-                setAgeAndGenderControlsEnabled(false)
+        case .citizenUCN:
+            identificationNumberTextField.keyboardType = .numberPad
+            setAgeAndGenderControlsEnabled(false)
             #if !MACEDONIA
-            case .foreignerPIN:
-                identificationNumberTextField.keyboardType = .numberPad
-                setAgeAndGenderControlsEnabled(true)
-            #endif // !MACEDONIA
-            case .identificationCard:
-                identificationNumberTextField.keyboardType = .default
-                setAgeAndGenderControlsEnabled(true)
-            default:
-                break // Do nothing
+        case .foreignerPIN:
+            identificationNumberTextField.keyboardType = .numberPad
+            setAgeAndGenderControlsEnabled(true)
+        #endif // !MACEDONIA
+        case .identificationCard:
+            identificationNumberTextField.keyboardType = .default
+            setAgeAndGenderControlsEnabled(true)
+        default:
+            break // Do nothing
         }
 
         if isFirstResponder {
@@ -291,13 +295,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     private func navigateToNextViewController() {
         navigationDelegate?.navigateTo(step: viewModel.shouldNavigateNextToHealthStatus ? .healthStatus : .home)
     }
-    
+
     // MARK: Actions
-    
+
     @IBAction private func didTapSubmitButton(_ sender: Any) {
         viewModel.sendPersonalInformation()
     }
-    
+
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
         viewModel.gender.value = Gender.gender(for: sender.tag)
         viewModel.validate()
@@ -310,10 +314,10 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     }
 
     @IBAction private func textFieldDidChange(_ textField: UITextField) {
-//        // !!! Wait for binding
-//        DispatchQueue.main.async {
-//            self.viewModel.validate()
-//        }
+        //        // !!! Wait for binding
+        //        DispatchQueue.main.async {
+        //            self.viewModel.validate()
+        //        }
     }
 
 }
@@ -335,20 +339,20 @@ extension PersonalInformationViewController: UITextFieldDelegate {
         guard let textFieldText = textField.text as NSString? else {
             return false
         }
-        
+
         let newString = textFieldText.replacingCharacters(in: range, with: string)
-        
+
         if textField == identificationNumberTextField {
             let result = viewModel.identificationNumberTextFieldWillUpdateText(newString)
             return result
         } else if textField == ageTextField {
             let result = viewModel.ageTextFieldWillUpdateText(newString)
             return result
-        } else if textField ==  preexistingConditionsTextField{
+        } else if textField ==  preexistingConditionsTextField {
             let result = viewModel.preexistingConditionsTextFieldWillUpdateText(newString)
             return result
         }
-        
+
         return true
     }
 }
@@ -443,7 +447,7 @@ extension DispatchQueue {
 // MARK: - Static Properties for De-Duping
 private extension DispatchQueue {
 
-    static var workItems = [AnyHashable : DispatchWorkItem]()
+    static var workItems = [AnyHashable: DispatchWorkItem]()
 
     static var weakTargets = NSPointerArray.weakObjects()
 
@@ -454,10 +458,11 @@ private extension DispatchQueue {
 }
 
 extension UISegmentedControl {
-    func replaceSegments(segments: Array<String>) {
+    func replaceSegments(segments: [String]) {
         self.removeAllSegments()
         for segment in segments {
             self.insertSegment(withTitle: segment, at: self.numberOfSegments, animated: false)
         }
     }
 }
+//swiftlint:enable file_length

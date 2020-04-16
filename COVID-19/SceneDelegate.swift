@@ -14,15 +14,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        window = appDelegate.window
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        window = appDelegate?.window
         window?.windowScene = windowScene
     }
 
@@ -44,8 +43,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.flowManager = AppFlowManager(window: window!)
+        guard let window = window else { return }
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.flowManager = AppFlowManager(window: window)
 
         Flex.shared.willEnterForeground()
     }

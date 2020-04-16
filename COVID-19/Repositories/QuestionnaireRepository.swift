@@ -38,18 +38,18 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
             let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
 
             switch statusCodeResult {
-                case .success:
-                    let healthStatus = HealthStatus(questions:
-                        questions?.map { HealthStatusQuestion(questionId: $0.identifier, questionTitle: $0.title, isActive: nil) }
-                    )
-                    completion(.success(healthStatus))
-                case .failure(let reason):
-                    switch reason {
-                        case .invalidToken:
-                            completion(.failure(.invalidToken))
-                        default:
-                            completion(.failure(.server))
-                    }
+            case .success:
+                let healthStatus = HealthStatus(questions:
+                    questions?.map { HealthStatusQuestion(questionId: $0.identifier, questionTitle: $0.title, isActive: nil) }
+                )
+                completion(.success(healthStatus))
+            case .failure(let reason):
+                switch reason {
+                case .invalidToken:
+                    completion(.failure(.invalidToken))
+                default:
+                    completion(.failure(.server))
+                }
             }
         }
     }
@@ -76,21 +76,20 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
             let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
 
             switch statusCodeResult {
-                case .success:
-                    completion(.success(Void()))
-                case .failure(let reason):
-                    switch reason {
-                        case .invalidToken:
-                            completion(.failure(.invalidToken))
-                        case .tooManyRequests:
-                            let reapeatAfter = TooManyRequestestHandler().handle(data: data)
-                            completion(.failure(.tooManyRequests(reapeatAfter: reapeatAfter)))
-                        default:
-                            // No special handling
-                            completion(.failure(.server))
-                    }
+            case .success:
+                completion(.success(Void()))
+            case .failure(let reason):
+                switch reason {
+                case .invalidToken:
+                    completion(.failure(.invalidToken))
+                case .tooManyRequests:
+                    let reapeatAfter = TooManyRequestestHandler().handle(data: data)
+                    completion(.failure(.tooManyRequests(reapeatAfter: reapeatAfter)))
+                default:
+                    // No special handling
+                    completion(.failure(.server))
+                }
             }
         }
     }
 }
-

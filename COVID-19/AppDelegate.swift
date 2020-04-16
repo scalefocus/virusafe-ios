@@ -17,7 +17,7 @@ import IQKeyboardManager
 import FirebaseMessaging
 import NetworkKit
 import Flex
-
+import FontAwesome_swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,30 +35,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     var flowManager: AppFlowManager?
-    
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
+
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+
         // Firebase
         FirebaseApp.configure()
-        
+
         //Firebase Push Notifications
         Messaging.messaging().delegate = self
-        
+
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
         }
-        
+
         return true
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         //Initialize Localizaer
         let locale = Locale(identifier: LanguageHelper.shared.savedLocale)
         Flex.shared.initialize(locale: locale,
-                                    enableLogging: true,
-                                    defaultLoggingReturn: Flex.DefaultReturnBehavior.empty)
-        
+                               enableLogging: true,
+                               defaultLoggingReturn: Flex.DefaultReturnBehavior.empty)
+
         // App Center
         MSAppCenter.start(AppSecrets.appCenterSecret, withServices: [
             MSAnalytics.self,
@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
 
         // Network Auth
+        // TODO: set refresh token from store
         APIManager.shared.authToken = TokenStore.shared.token
         // Network client id
         APIManager.shared.clientId = AppSecrets.apiSecret
@@ -82,24 +83,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                name: NSNotification.Name("PresentWebViewControllerWithPushNotification"),
                                                object: nil)
 
+        // Allow Pro fons
+//        FontAwesomeConfig.usesProFonts = true
+
         // Init App Window
-        window = UIWindow(frame: UIScreen.main.bounds)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
         // init app flow
-        flowManager = AppFlowManager(window: window!) // !!! Force unwrap
-        
+        flowManager = AppFlowManager(window: window) // !!! Force unwrap
+
         return true
     }
-    
+
     func applicationWillEnterForeground(_ application: UIApplication) {
         // !!! This is not called on ios 13+, so handle it in scene delegate too
-        flowManager = AppFlowManager(window: window!)
+        guard let window = window else { return }
+        flowManager = AppFlowManager(window: window)
         Flex.shared.willEnterForeground()
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
         Flex.shared.willTerminate()
     }
-    
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         // !!! This is not called on ios 13+, so handle it in scene delegate too
         Flex.shared.didEnterBackground()
@@ -108,7 +114,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
@@ -140,23 +148,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: MessagingDelegate
 
 extension AppDelegate: MessagingDelegate {
-    
+
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         // Note: This callback is fired at each app startup and whenever a new token is generated.
         print("Firebase registration token: \(fcmToken)")
         PushTokenStore.shared.fcmToken = fcmToken
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
         completionHandler([.alert, .badge, .sound])
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+
         let applicationState = UIApplication.shared.applicationState
         let userInfo = response.notification.request.content.userInfo
-        if let urlString = userInfo["url"] as? String  {
+        if let urlString = userInfo["url"] as? String {
             if applicationState == .active {
                 // we're in the app just open it
                 flowManager?.navigateTo(step: .web(source: .notification(urlString)))
@@ -168,12 +180,12 @@ extension AppDelegate: MessagingDelegate {
             }
         }
 
-
-
         completionHandler()
     }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
         completionHandler(.newData)
     }
@@ -189,12 +201,12 @@ extension AppDelegate: CLLocationManagerDelegate {
 
     var isLocationServicesAuthorized: Bool {
         switch CLLocationManager.authorizationStatus() {
-            case .notDetermined, .restricted, .denied:
-                return false
-            case .authorizedAlways, .authorizedWhenInUse: // authorized is deprecated
-                return true
-            @unknown default:
-                break
+        case .notDetermined, .restricted, .denied:
+            return false
+        case .authorizedAlways, .authorizedWhenInUse: // authorized is deprecated
+            return true
+        @unknown default:
+            break
         }
 
         return false
@@ -219,7 +231,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         locationManager.stopMonitoringSignificantLocationChanges()
     }
-    
+
     func requestLocationServicesAutorization() {
         locationManager.requestAlwaysAuthorization()
         // Autostart if possible
@@ -232,12 +244,12 @@ extension AppDelegate: CLLocationManagerDelegate {
         }
         return (latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .denied ||
-           status == .authorizedWhenInUse ||
-           status == .restricted ||
-           status == .authorizedAlways {
+            status == .authorizedWhenInUse ||
+            status == .restricted ||
+            status == .authorizedAlways {
             NotificationCenter.default.post(name: Notification.Name("didChooseLocationAccess"), object: nil)
         } else {
             // Do something
@@ -252,7 +264,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         let updateInterval = RemoteConfig.remoteConfig().configValue(forKey: "ios_location_interval_in_mins").numberValue?.intValue
         let nextLocationUpdateTimestamp: Date =
             UserDefaults.standard.object(forKey: "nextLocationUpdateTimestamp") as? Date ?? dateNow
-        
+
         if dateNow >= nextLocationUpdateTimestamp {
             guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
 
@@ -263,7 +275,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             // Not registered yet
             if let token = TokenStore.shared.token {
                 let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
-                let phoneNumber = jwtBody["phoneNumber"] as! String
+                guard let phoneNumber = jwtBody["phoneNumber"] as? String else { return }
 
                 LocationRepository().sendGPSLocation(latitude: locValue.latitude,
                                                      longitude: locValue.longitude,
@@ -280,7 +292,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             let date: Date = Date()
             let newDate = Calendar.current.date(byAdding: components, to: date)
 
-            UserDefaults.standard.set(newDate, forKey:"nextLocationUpdateTimestamp")
+            UserDefaults.standard.set(newDate, forKey: "nextLocationUpdateTimestamp")
             UserDefaults.standard.synchronize()
         }
     }

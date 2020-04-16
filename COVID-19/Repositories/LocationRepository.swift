@@ -38,7 +38,7 @@ class LocationRepository: LocationRepositoryProtocol {
                       phoneNumber: phoneNumber,
                       timestamp: timestamp,
                       bluetoothId: bluetoothId)
-            .execute { (data, response, error) in
+            .execute { (_, response, error) in
                 guard let statusCode = response?.statusCode, error == nil else {
                     completion(.failure(.general))
                     return
@@ -47,11 +47,11 @@ class LocationRepository: LocationRepositoryProtocol {
                 let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
 
                 switch statusCodeResult {
-                    case .success:
-                        completion(.success(Void()))
-                    case .failure:
-                        // This is background communication we don't care about specific errors
-                        completion(.failure(.server))
+                case .success:
+                    completion(.success(Void()))
+                case .failure:
+                    // This is background communication we don't care about specific errors
+                    completion(.failure(.server))
                 }
             }
     }

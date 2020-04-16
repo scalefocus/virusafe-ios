@@ -51,4 +51,6 @@ final class TokenStore {
         }
     }
 
+    // TODO: Store refresh token
+
 }

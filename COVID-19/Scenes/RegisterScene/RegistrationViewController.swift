@@ -9,13 +9,14 @@
 import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
+import FontAwesome_swift
 
 class RegistrationViewController: UIViewController, Navigateble {
 
     // MARK: Navigateble
 
     weak var navigationDelegate: NavigationDelegate?
-    
+
     // MARK: Outlets
 
     @IBOutlet private weak var iconImageView: UIImageView!
@@ -25,8 +26,9 @@ class RegistrationViewController: UIViewController, Navigateble {
     @IBOutlet private weak var checkBox: CheckBox!
     @IBOutlet private weak var tncButton: UIButton!
     @IBOutlet private weak var registrationLabel: UILabel!
-    @IBOutlet private weak var iAgreeWithLabel: UILabel!
-    
+    @IBOutlet private weak var personalDataProtectionButton: UIButton!
+    @IBOutlet private weak var personalDataCheckbox: CheckBox!
+
     // MARK: Settings
 
     private let phoneNumberMaxLength = 15
@@ -45,13 +47,15 @@ class RegistrationViewController: UIViewController, Navigateble {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         setupUI()
-        
+
         navigationController?.setNavigationBarHidden(true, animated: animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 120
         IQKeyboardManager.shared().isEnableAutoToolbar = false
+        // TODO: Bind it
         checkBox.isSelected = viewModel.termsAndConditionsRepository.isAgree
+        personalDataCheckbox.isSelected = viewModel.termsAndConditionsRepository.isAgreeDataProtection
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,16 +75,23 @@ class RegistrationViewController: UIViewController, Navigateble {
         confirmButton.backgroundColor = .healthBlue
         confirmButton.setTitle("confirm_label".localized(), for: .normal)
         registrationLabel.text = "registration_title".localized()
-        iAgreeWithLabel.text = "i_agree_with_label".localized() + " "
-        tncButton.setTitle("terms_n_conditions_small_caps_label".localized(), for: .normal)
+        setupButton(tncButton,
+                    text: "i_agree_with_label".localized(),
+                    link: "terms_n_conditions_small_caps_label".localized(),
+                    for: .normal)
+        setupButton(personalDataProtectionButton,
+                    text: "i_consent_to_label".localized(),
+                    link: "data_protection_notice_small_caps_label".localized(),
+                    for: .normal)
         setupIconImageViewTint()
         setupPhoneNumberTextField()
     }
 
     private func setupIconImageViewTint() {
-        let userIcon = #imageLiteral(resourceName: "user").withRenderingMode(.alwaysTemplate)
-        iconImageView.image = userIcon
-        iconImageView.tintColor = .healthBlue
+        iconImageView.image = UIImage.fontAwesomeIcon(name: .user,
+                                                      style: .light,
+                                                      textColor: .healthBlue ?? .blue,
+                                                      size: iconImageView.frame.size)
     }
 
     private func setupPhoneNumberTextField() {
@@ -90,6 +101,33 @@ class RegistrationViewController: UIViewController, Navigateble {
         phoneNumberTextField.errorColor = .red
         // !!! other styles are in stotyboard
     }
+
+    private func setupButton(_ button: UIButton, text: String, link: String, for state: UIControl.State) {
+        let font = UIFont.systemFont(ofSize: 12)
+        let textColor = UIColor.darkText
+        let linkColor = (UIColor.healthBlue ?? UIColor.blue).withAlphaComponent(0.79)
+        let attributesText: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: textColor
+        ]
+        let attributesLink: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: linkColor
+        ]
+        let attributedTitle = NSMutableAttributedString()
+        attributedTitle.append(
+            NSAttributedString(string: "\(text) ", attributes: attributesText)
+        )
+        attributedTitle.append(
+            NSAttributedString(string: "\(link)", attributes: attributesLink)
+        )
+        button.setAttributedTitle(attributedTitle, for: .normal)
+
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.lineBreakMode = .byWordWrapping
+    }
+
+    // MARK: Setup bindings
 
     private func setupBindings() {
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
@@ -106,21 +144,21 @@ class RegistrationViewController: UIViewController, Navigateble {
         viewModel.isRequestSuccessful.bind { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
-                case .success:
-                    strongSelf.navigationDelegate?.navigateTo(step: .registerConfirm)
-                case .invalidPhoneNumber:
-                    strongSelf.showToast(message: "invalid_phone_msg".localized())
-                case .tooManyRequests(let reapeatAfter):
-                    let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
-                    self?.present(alert, animated: true, completion: nil)
-                default:
-                    strongSelf.showToast(message: "no_internet_msg".localized())
+            case .success:
+                strongSelf.navigationDelegate?.navigateTo(step: .registerConfirm)
+            case .invalidPhoneNumber:
+                strongSelf.showToast(message: "invalid_phone_msg".localized())
+            case .tooManyRequests(let reapeatAfter):
+                let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
+                self?.present(alert, animated: true, completion: nil)
+            default:
+                strongSelf.showToast(message: "no_internet_msg".localized())
             }
         }
     }
 
     // MARK: Actions
-    
+
     @IBAction private func didTapRegisterButton(_ sender: Any) {
         guard let phoneNumber = phoneNumberTextField.text, phoneNumber.count >= 5 else {
             errorLabel.isHidden = false
@@ -145,18 +183,36 @@ class RegistrationViewController: UIViewController, Navigateble {
             return
         }
 
+        guard personalDataCheckbox.isSelected else {
+            let alert = UIAlertController(title: "warning_label".localized(),
+                                          message: "error_accept_personal_data_access".localized(),
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok_label".localized(), style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
         viewModel.didTapRegistration(with: phoneNumber)
     }
 
     @IBAction private func checkBoxDidTap() {
-        viewModel.termsAndConditionsRepository.isAgree = !viewModel.termsAndConditionsRepository.isAgree
+        viewModel.termsAndConditionsRepository.isAgree.toggle()// = !viewModel.termsAndConditionsRepository.isAgree
         checkBox.isSelected = viewModel.termsAndConditionsRepository.isAgree
     }
 
     @IBAction private func tncButtonDidTap() {
-        navigationDelegate?.navigateTo(step: .termsAndConditions)
+        navigationDelegate?.navigateTo(step: .termsAndConditions(type: .termsAndConditions))
     }
-    
+
+    @IBAction private func didTapPrivacyPolicyCheckbox(_ sender: Any) {
+        viewModel.termsAndConditionsRepository.isAgreeDataProtection.toggle()
+        personalDataCheckbox.isSelected = viewModel.termsAndConditionsRepository.isAgreeDataProtection
+    }
+
+    @IBAction private func didTapPrivacyPolicyInfoButton(_ sender: Any) {
+        navigationDelegate?.navigateTo(step: .termsAndConditions(type: .processPersonalData))
+    }
+
 }
 
 // MARK: UITextFieldDelegate
@@ -165,7 +221,7 @@ extension RegistrationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
-        
+
         return newString.length <= phoneNumberMaxLength
     }
 }

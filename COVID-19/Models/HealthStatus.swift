@@ -19,4 +19,3 @@ struct HealthStatusQuestion: Codable {
     // currently supports only boolean
     var isActive: Bool? // if value is set - it is answered
 }
-

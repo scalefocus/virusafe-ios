@@ -12,7 +12,7 @@ import TwoWayBondage
 final class TermsAndConditionsViewModel {
 
     private (set) var repository: TermsAndConditionsRepository
-    
+
     init(repository: TermsAndConditionsRepository) {
         self.repository = repository
     }

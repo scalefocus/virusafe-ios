@@ -19,30 +19,32 @@ class SplashViewController: UIViewController, Navigateble {
     @IBOutlet private weak var logoImageView: UIImageView!
     @IBOutlet private weak var ministryOfHealthImageView: UIImageView!
     @IBOutlet private weak var operationsCenterImageView: UIImageView!
-    
+
     @IBOutlet var appNameLabel: UILabel!
-    
+
     // MARK: Properties
 
     weak var navigationDelegate: NavigationDelegate?
-    
+
     // MARK: Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
         showSpinner()
-        // Fetch remote config
-        RemoteConfigHelper.shared.fetchRemoteConfigValues(fetchRemoteConfigCompletionHandler)
 
         // ??? Use bundle name instead
         #if MACEDONIA
-            appNameLabel.text = "SeZaCOVID19"
+        appNameLabel.text = "SeZaCOVID19"
         #else
-            appNameLabel.text = "ViruSafe"
+        appNameLabel.text = "ViruSafe"
         #endif
 
         // setup images views depending on the locale
         setupImages()
+
+        // Fetch remote config
+        RemoteConfigHelper.shared.fetchRemoteConfigValues(fetchRemoteConfigCompletionHandler)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,13 +63,9 @@ class SplashViewController: UIViewController, Navigateble {
         let indicator = UIActivityIndicatorView(frame: loadingIndicatorView.bounds)
         indicator.style = .whiteLarge
         indicator.startAnimating()
-
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.loadingIndicatorView.addSubview(indicator)
-        }
+        loadingIndicatorView.addSubview(indicator)
     }
-    
+
     private func setupImages() {
         #if !MACEDONIA
         let savedLocale = LanguageHelper.shared.savedLocale
@@ -82,15 +80,15 @@ class SplashViewController: UIViewController, Navigateble {
         let isUserRegistered: Bool = (TokenStore.shared.token != nil)
         let isAppLaunchedBefore = AppLaunchRepository().isAppLaunchedBefore
         switch (isUserRegistered, isAppLaunchedBefore) {
-            case (true, true):
-                // Initial flow completed at some point user returns to app
-                navigationDelegate?.navigateTo(step: .home)
-            case (false, true):
-                // App was killed after expired session and now user returns
-                navigationDelegate?.navigateTo(step: .register)
-            default:
-                // First run or killed after confirm pin
-                navigationDelegate?.navigateTo(step: .languages(isInitial: true))
+        case (true, true):
+            // Initial flow completed at some point user returns to app
+            navigationDelegate?.navigateTo(step: .home)
+        case (false, true):
+            // App was killed after expired session and now user returns
+            navigationDelegate?.navigateTo(step: .register)
+        default:
+            // First run or killed after confirm pin
+            navigationDelegate?.navigateTo(step: .languages(isInitial: true))
         }
     }
 
@@ -101,14 +99,12 @@ class SplashViewController: UIViewController, Navigateble {
 private extension SplashViewController {
 
     func fetchRemoteConfigCompletionHandler() {
-        // TODO: Refactor to use info dictionary wrapper
-        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
         // Check for forced update version
         PUUpdateApplicationManager.shared.checkForUpdate(
             shouldForceUpdate: RemoteConfigHelper.shared.isLatestAppVersionMandatory,
             minimumVersionNeeded: RemoteConfigHelper.shared.latestAppVersion,
             urlToOpen: RemoteConfigHelper.shared.appstoreLink,
-            currentVersion: appVersion,
+            currentVersion: Bundle.main.releaseVersionNumber,
             window: UIApplication.shared.keyWindow,
             alertTitle: "new_version_label".localized(),
             alertDescription: "new_version_msg".localized(),
@@ -116,6 +112,7 @@ private extension SplashViewController {
             okButtonTitle: "continue_label".localized(),
             urlOpenedClosure: self.handleForceUpdate // !!! safe we don't have reference to RemoteConfig.remoteConfig()
         )
+
         // set remote config url as base for the communication
         APIManager.shared.baseURLs = BaseURLs(base: RemoteConfigHelper.shared.endpointURL)
     }
@@ -126,7 +123,7 @@ private extension SplashViewController {
 
 private extension SplashViewController {
 
-    func handleForceUpdate(error: PUUpdateApplicationError?) -> Void {
+    func handleForceUpdate(error: PUUpdateApplicationError?) {
         if let error = error, error != .noUpdateNeeded {
             print("Error Supported version: \(error)")
             return
@@ -146,3 +143,20 @@ private extension SplashViewController {
 // MARK: ToastViewPresentable
 
 extension SplashViewController: ToastViewPresentable { }
+
+// MARK: Helper
+
+extension Bundle {
+    var releaseVersionNumber: String {
+        guard let versionNumber = infoDictionary?["CFBundleShortVersionString"] as? String else {
+            fatalError("Can't find CFBundleShortVersionString")
+        }
+        return versionNumber
+    }
+    var buildVersionNumber: String {
+        guard let versionNumber = infoDictionary?["CFBundleVersion"] as? String else {
+            fatalError("Can't find CFBundleShortVersionString")
+        }
+        return versionNumber
+    }
+}

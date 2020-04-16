@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 public class Networker: NetworkingInterface {
-    
+
     let networkReachabilityManager = NetworkReachabilityManager()
     private var sessionManager: SessionManager?
     private lazy var backgroundSessionManager: SessionManager = {
@@ -17,9 +17,9 @@ public class Networker: NetworkingInterface {
     }()
     private let backgroundSessionConfiguration =
         URLSessionConfiguration.background(withIdentifier: "com.upnetix.networker.background")
-    
+
     weak public var delegate: ReachabilityProtocol?
-    
+
     public func send(request: APIRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void) {
         if request.shouldWorkInBackground {
             backgroundSessionManager.request(request.asUrlRequest()).response { (response) in
@@ -35,37 +35,37 @@ public class Networker: NetworkingInterface {
             }
         }
     }
-    
+
     public func isConnectedToInternet() -> Bool {
         // swiftlint:disable:next force_unwrapping
         return (networkReachabilityManager?.isReachable)!
     }
-    
+
     public func startNetworkReachabilityObserver() {
         networkReachabilityManager?.startListening()
         delegate?.didChangeReachabilityStatus(isReachable: isConnectedToInternet())
         networkReachabilityManager?.listener = { [weak self] status in
             guard let strongSelf = self else { return }
             switch status {
-                
+
             case .notReachable:
                 strongSelf.delegate?.didChangeReachabilityStatus(isReachable: false)
-                
+
             case .unknown :
                 strongSelf.delegate?.didChangeReachabilityStatus(isReachable: false)
-                
+
             case .reachable(.ethernetOrWiFi):
                 strongSelf.delegate?.didChangeReachabilityStatus(isReachable: true)
-                
+
             case .reachable(.wwan):
                 strongSelf.delegate?.didChangeReachabilityStatus(isReachable: true)
             }
         }
     }
-    
+
     public func configureWith(serverTrustPolicies: APITrustPolicies) {
         guard !serverTrustPolicies.isEmpty else { return }
-        
+
         var serverTrustPolicy: [String: ServerTrustPolicy] = [:]
         serverTrustPolicies.forEach { (domain, policy) in
             switch policy {

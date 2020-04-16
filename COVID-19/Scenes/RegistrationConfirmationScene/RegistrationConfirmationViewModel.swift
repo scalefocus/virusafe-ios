@@ -10,18 +10,18 @@ import Foundation
 import TwoWayBondage
 
 final class RegistrationConfirmationViewModel {
-    
+
     private let registrationRepository: RegistrationRepository
     private let firstLaunchCheckRepository: AppLaunchRepository
     let shouldShowLoadingIndicator = Observable<Bool>()
     let isCodeAuthorizationRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
     let isResendCodeRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
-    
+
     init(registrationRepository: RegistrationRepository, firstLaunchCheckRepository: AppLaunchRepository) {
         self.registrationRepository = registrationRepository
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
     }
-    
+
     func didTapCodeAuthorization(with authorisationCode: String) {
         shouldShowLoadingIndicator.value = true
         registrationRepository.authoriseVerificationCode(verificationCode: authorisationCode) { [weak self] result in
@@ -48,5 +48,5 @@ final class RegistrationConfirmationViewModel {
         // TODO: Format phone if needed
         return registrationRepository.authorisedMobileNumber ?? "(+359) XXX-XXX"
     }
-    
+
 }

@@ -66,7 +66,8 @@ extension UIAlertController {
         return alert
     }
 
-    private static func convertSecondsToHoursMinutesSeconds(_ seconds : Int) -> (hours: Int, minutes: Int, seconds: Int) {
+    //swiftlint:disable:next large_tuple
+    private static func convertSecondsToHoursMinutesSeconds(_ seconds: Int) -> (hours: Int, minutes: Int, seconds: Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
 }
