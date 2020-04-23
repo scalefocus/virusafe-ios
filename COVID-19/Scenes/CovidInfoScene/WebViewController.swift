@@ -25,28 +25,28 @@ enum Source {
             return string
         case .statistics:
             return StatisticsPage.shared.url
-            
+
         }
     }
 
     var description: String {
         switch self {
-            case .content:
-                return "learn_more_web_view_title".localized()
-            case .about:
-                return "how_it_works".localized()
-            case .notification:
-                return "news_label".localized()
-            case .statistics:
-                return "statistics_label".localized()
+        case .content:
+            return "learn_more_web_view_title".localized()
+        case .about:
+            return "how_it_works".localized()
+        case .notification:
+            return "news_label".localized()
+        case .statistics:
+            return "statistics_label".localized()
         }
     }
 }
 
 class WebViewController: UIViewController {
 
-    private var webView: WKWebView {
-        return view as! WKWebView
+    private var webView: WKWebView? {
+        return view as? WKWebView
     }
 
     // MARK: Lifecycle
@@ -67,9 +67,9 @@ class WebViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         setupUI()
-        
+
         isNavigationBarHiddenInitially = navigationController?.isNavigationBarHidden ?? false
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
@@ -87,7 +87,7 @@ class WebViewController: UIViewController {
             return
         }
         let request = URLRequest(url: url)
-        webView.load(request)
+        webView?.load(request)
         title = source.description
     }
 

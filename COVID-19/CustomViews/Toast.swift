@@ -53,11 +53,11 @@ final class ToastView: UIView {
 }
 
 protocol ToastViewPresentable {
-    func showToast(message : String)
+    func showToast(message: String)
 }
 
 extension ToastViewPresentable where Self: UIViewController {
-    func showToast(message : String) {
+    func showToast(message: String) {
         let toastView = ToastView(frame: .zero)
         toastView.toastLabel.text = message
         toastView.alpha = 0.0

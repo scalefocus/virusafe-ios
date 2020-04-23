@@ -21,7 +21,7 @@ final class Environment {
             fatalError("Environment config plist file not found")
         }
 
-        guard let configuration = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> else {
+        guard let configuration = NSDictionary(contentsOfFile: path) as? [String: AnyObject] else {
             // Nothing to return
             return [:]
         }
@@ -48,15 +48,15 @@ enum PlistKey {
     /// API Base URL
     case serverUrl
 
-//    /// API Trust Policies
-//    case trustPolicies
+    //    /// API Trust Policies
+    //    case trustPolicies
 
     var value: String {
         switch self {
-            case .serverUrl:
-                return "ios_end_point"
-//            case .trustPolicies:
-//                return "ios_trust_policies"
+        case .serverUrl:
+            return "ios_end_point"
+            //            case .trustPolicies:
+            //                return "ios_trust_policies"
         }
     }
 

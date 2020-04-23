@@ -6,6 +6,7 @@
 //  Copyright © 2020 Upnetix AD. All rights reserved.
 //
 
+//swiftlint:disable file_length
 import Foundation
 import TwoWayBondage
 import NetworkKit
@@ -15,7 +16,7 @@ enum Gender: String, Codable {
     case female = "FEMALE"
     case notSelected = ""
     case other = "OTHER"
-    
+
     var genderType: String {
         return self.rawValue
     }
@@ -29,22 +30,21 @@ protocol TagPresentable {
 extension Gender: TagPresentable {
     var tag: Int {
         switch self {
-            case .male: return 0
-            case .female: return 1
-            case .notSelected, .other: return 2
+        case .male: return 0
+        case .female: return 1
+        case .notSelected, .other: return 2
         }
     }
 
     static func gender(for tag: Int) -> Gender {
         switch tag {
-            case 0: return .male
-            case 1: return .female
-            case 2: return .other
-            default: return .notSelected
+        case 0: return .male
+        case 1: return .female
+        case 2: return .other
+        default: return .notSelected
         }
     }
 }
-
 
 enum IdentificationNumberType: String, Codable {
     #if !MACEDONIA
@@ -55,7 +55,7 @@ enum IdentificationNumberType: String, Codable {
     #endif // !MACEDONIA
     case identificationCard = "PASSPORT" // id card (лк)
     case notSelected
-    
+
     var identificationType: String {
         return self.rawValue
     }
@@ -70,25 +70,25 @@ extension IdentificationNumberType: SegmentPresentable {
     var segmentIndex: Int {
         switch self {
             #if MACEDONIA
-            case .identificationCard: return 1
+        case .identificationCard: return 1
             #else // MACEDONIA
-            case .foreignerPIN: return 1
-            case .identificationCard: return 2
-            #endif // MACEDONIA
-            case .citizenUCN, .notSelected: return 0
+        case .foreignerPIN: return 1
+        case .identificationCard: return 2
+        #endif // MACEDONIA
+        case .citizenUCN, .notSelected: return 0
         }
     }
 
     static func identificationNumberType(for segmentIndex: Int) -> IdentificationNumberType {
         switch segmentIndex {
-            case 0: return .citizenUCN
+        case 0: return .citizenUCN
             #if MACEDONIA
-            case 1: return .identificationCard
+        case 1: return .identificationCard
             #else // MACEDONIA
-            case 1: return .foreignerPIN
-            case 2: return .identificationCard
-            #endif // MACEDONIA
-            default: return .notSelected
+        case 1: return .foreignerPIN
+        case 2: return .identificationCard
+        #endif // MACEDONIA
+        default: return .notSelected
         }
     }
 }
@@ -105,7 +105,6 @@ enum PersonalInformationValidationError: Error {
     case unknownGender
 }
 
-
 final class PersonalInformationViewModel {
 
     // MARK: Injected dependencies
@@ -117,11 +116,13 @@ final class PersonalInformationViewModel {
 
     private lazy var ucnHelper: UCNHelper = {
         #if MACEDONIA
-            return MKUCNHelper()
+        return MKUCNHelper()
         #else
-            return BGUCNHelper()
+        return BGUCNHelper()
         #endif
     }()
+
+    // UI
 
     var isInitialFlow: Bool {
         return !firstLaunchCheckRepository.isAppLaunchedBefore
@@ -161,8 +162,8 @@ final class PersonalInformationViewModel {
     // MARK: Object Lifecycle
 
     init(firstLaunchCheckRepository: AppLaunchRepository, // Used to change title
-         personalInformationRepository: PersonalInformationRepository,
-         shouldNavigateNextToHealthStatus: Bool) {
+        personalInformationRepository: PersonalInformationRepository,
+        shouldNavigateNextToHealthStatus: Bool) {
         // dependencies
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
         self.personalInformationRepository = personalInformationRepository
@@ -171,7 +172,7 @@ final class PersonalInformationViewModel {
     }
 
     // МАРК: Public Methods
-    
+
     func requestPersonalInformation() {
         // show activity indicator
         isLoading.value = true
@@ -181,36 +182,36 @@ final class PersonalInformationViewModel {
             self?.isLoading.value = false
             // Handle result
             switch result {
-                case .success(let personalInformation):
-                    // just in case
-                    guard let personalInformation = personalInformation else {
-                        // Can not parse response
-                        self?.requestError.value = .general
-                        return
-                    }
-                    // !!! It is important to be set before age and identificationNumber, because it has some side effects in controller
-                    self?.identificationNumberType.value = personalInformation.identificationType ?? .citizenUCN
-                    self?.gender.value = personalInformation.gender ?? .male
-                    if let age = personalInformation.age {
-                        self?.age.value = "\(age)"
-                    } else {
-                        self?.age.value = nil
-                    }
-                    self?.preexistingConditions.value = personalInformation.preExistingConditions
-                    self?.identificationNumber.value = personalInformation.identificationNumber
-                    if personalInformation.identificationNumber != nil {
-                        self?.validate()
-                    }
-                case .failure(let error):
-                    self?.requestError.value = error
+            case .success(let personalInformation):
+                // just in case
+                guard let personalInformation = personalInformation else {
+                    // Can not parse response
+                    self?.requestError.value = .general
+                    return
+                }
+                // !!! It is important to be set before age and identificationNumber, because it has some side effects in controller
+                self?.identificationNumberType.value = personalInformation.identificationType ?? .citizenUCN
+                self?.gender.value = personalInformation.gender ?? .male
+                if let age = personalInformation.age {
+                    self?.age.value = "\(age)"
+                } else {
+                    self?.age.value = nil
+                }
+                self?.preexistingConditions.value = personalInformation.preExistingConditions
+                self?.identificationNumber.value = personalInformation.identificationNumber
+                if personalInformation.identificationNumber != nil {
+                    self?.validate()
+                }
+            case .failure(let error):
+                self?.requestError.value = error
             }
         }
     }
-    
+
     func sendPersonalInformation() {
         // show activity indicator
         isLoading.value = true
-        var ageOrNil: Int? = nil
+        var ageOrNil: Int?
         if let value = age.value, !value.isEmpty {
             if let age = Int(value), age > 0 {
                 ageOrNil = age
@@ -222,38 +223,37 @@ final class PersonalInformationViewModel {
                                                        age: ageOrNil,
                                                        gender: gender.value?.genderType,
                                                        preexistingConditions: preexistingConditions.value ?? "") { [weak self] result in
-            // if we're gone do nothing
-            guard let strongSelf = self else { return }
-            // hide activity indicator
-            strongSelf.isLoading.value = false
-            // handle result
-            switch result {
-                case .success:
-                    // Notify we're ready
-                    strongSelf.isSubmitCompleted.value = true
-                    // !!! If first launch of the app, mark registration as completed
-                    strongSelf.firstLaunchCheckRepository.isAppLaunchedBefore = true
-                case .failure(let reason):
-                    strongSelf.requestError.value = reason
-            }
+                                                        // if we're gone do nothing
+                                                        guard let strongSelf = self else { return }
+                                                        // hide activity indicator
+                                                        strongSelf.isLoading.value = false
+                                                        // handle result
+                                                        switch result {
+                                                        case .success:
+                                                            // Notify we're ready
+                                                            strongSelf.isSubmitCompleted.value = true
+                                                            // !!! If first launch of the app, mark registration as completed
+                                                            strongSelf.firstLaunchCheckRepository.isAppLaunchedBefore = true
+                                                        case .failure(let reason):
+                                                            strongSelf.requestError.value = reason
+                                                        }
         }
     }
 
     func identificationNumberTextFieldWillUpdateText(_ newString: String) -> Bool {
         guard !newString.isEmpty else { return true }
-
         switch identificationNumberType.value {
-            case .citizenUCN:
-                return identificationNumberTextFieldWillUpdateText(ucn: newString)
+        case .citizenUCN:
+            return identificationNumberTextFieldWillUpdateText(ucn: newString)
             #if !MACEDONIA
-            case .foreignerPIN:
-                return identificationNumberTextFieldWillUpdateText(pin: newString)
-            #endif // !MACEDONIA
-            case .identificationCard:
-                return identificationNumberTextFieldWillUpdateText(cardId: newString)
-            default:
-                // in case
-                return true
+        case .foreignerPIN:
+            return identificationNumberTextFieldWillUpdateText(pin: newString)
+        #endif // !MACEDONIA
+        case .identificationCard:
+            return identificationNumberTextFieldWillUpdateText(cardId: newString)
+        default:
+            // in case
+            return true
         }
     }
 
@@ -282,17 +282,17 @@ final class PersonalInformationViewModel {
     private func identificationNumberTextFieldWillUpdateText(cardId newString: String) -> Bool {
         return !newString.isEmpty && newString.count <= IDCardHelper.maximumPersonalNumberLength
     }
-    
+
     func ageTextFieldWillUpdateText(_ newString: String) -> Bool {
         guard !newString.isEmpty else { return true }
-        
+
         let newAge: Int = Int(newString) ?? 0
         return newAge > 0 && newAge <= maximumAge
     }
-    
+
     func preexistingConditionsTextFieldWillUpdateText(_ newString: String) -> Bool {
         guard !newString.isEmpty else { return true }
-        
+
         return newString.count <= preexistingConditionsTextLength
     }
 
@@ -316,7 +316,7 @@ final class PersonalInformationViewModel {
     private func validateAndCatchError(from validationFunc: () throws -> Void, errors: inout [PersonalInformationValidationError]) {
         do {
             try validationFunc()
-        } catch (let error) {
+        } catch let error {
             // Only catch the errors if they are PersonalInformationValidationError
             if let error = error as? PersonalInformationValidationError {
                 errors.append(error)
@@ -324,13 +324,13 @@ final class PersonalInformationViewModel {
         }
     }
 
-    private func validateGender() throws -> Void {
+    private func validateGender() throws {
         guard let gender = gender.value, gender != .notSelected else {
             throw PersonalInformationValidationError.unknownGender
         }
     }
 
-    private func validateAge() throws -> Void {
+    private func validateAge() throws {
         guard let text = age.value, let age = Int(text), age > 0 else {
             throw PersonalInformationValidationError.emptyAge
         }
@@ -344,43 +344,43 @@ final class PersonalInformationViewModel {
         }
     }
 
-    private func validateIdentificationNumber() throws -> Void {
+    private func validateIdentificationNumber() throws {
         guard let identificationNumber = identificationNumber.value, !identificationNumber.isEmpty else {
             throw PersonalInformationValidationError.emptyIdentificationNumber
         }
 
         switch identificationNumberType.value {
-            case .citizenUCN:
-                try validateUCN(identificationNumber)
+        case .citizenUCN:
+            try validateUCN(identificationNumber)
             #if !MACEDONIA
-            case .foreignerPIN:
-                try validatePIN(identificationNumber)
-            #endif //!MACEDONIA
-            case .identificationCard:
-                try validateID(identificationNumber)
-            default:
-                throw PersonalInformationValidationError.unknownIdentificationNumberType
+        case .foreignerPIN:
+            try validatePIN(identificationNumber)
+        #endif //!MACEDONIA
+        case .identificationCard:
+            try validateID(identificationNumber)
+        default:
+            throw PersonalInformationValidationError.unknownIdentificationNumberType
         }
     }
 
-    private func validateUCN(_ identificationNumber: String) throws -> Void {
+    private func validateUCN(_ identificationNumber: String) throws {
         if !ucnHelper.isValid(ucn: identificationNumber) {
             switch ucnHelper.ucnType {
-                case .bulgarian:
-                    throw PersonalInformationValidationError.invalidМacedonianCitizenUCN
-                case .macedonian:
-                    throw PersonalInformationValidationError.invalidBulgarianCitizenUCN
+            case .bulgarian:
+                throw PersonalInformationValidationError.invalidМacedonianCitizenUCN
+            case .macedonian:
+                throw PersonalInformationValidationError.invalidBulgarianCitizenUCN
             }
         }
     }
 
-    private func validatePIN(_ identificationNumber: String) throws -> Void  {
+    private func validatePIN(_ identificationNumber: String) throws {
         if !PINForeignerHelper().isValid(pin: identificationNumber) {
             throw PersonalInformationValidationError.invalidForeignerPIN
         }
     }
 
-    private func validateID(_ identificationNumber: String) throws -> Void  {
+    private func validateID(_ identificationNumber: String) throws {
         if !IDCardHelper().isValid(id: identificationNumber) {
             throw PersonalInformationValidationError.invalidIdentificationCard
         }
@@ -398,3 +398,4 @@ final class PersonalInformationViewModel {
     }
 
 }
+//swiftlint:enable file_length

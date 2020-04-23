@@ -15,30 +15,30 @@ public protocol AuthenticationProtocol {
 public protocol ApiManagerProtocol {
     var authToken: String? { get set }
     var baseURLs: BaseURLs { get }
-    
+
     func sendRequest(request: APIRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void)
     func configure(withCacher: CacheableProtocol?, reachabilityDelegate: ReachabilityProtocol?, authenticator: AuthenticationProtocol?)
-    
+
     func startReachabilityObserving()
     func isConnectedToInternet() -> Bool
 }
 
 public final class APIManager: ApiManagerProtocol {
-    
+
     public static let shared = APIManager()
 
     private init() {
         baseURLs = BaseURLs(base: Environment.shared.configuration(.serverUrl))
     }
-    
+
     /// The API configuration, such as authentication token, environment, base urls, etc.
     private var cacher: CacheableProtocol?
     private var networker: NetworkingInterface = Networker()
     private var authenticator: AuthenticationProtocol?
-    
+
     /// The currently used authentication token. Used for convenience and public accessibility, must always point to the APIConfig instance.
     public final var authToken: String?
-    
+
     /// The current selected environments' base URLs. This should always return the values from the APIConfig instance.
     /// The APIConfig base URLs must NOT be publicly mutable, they're only set in
     /// EnvironmentsAndBaseURLs and held by the APIConfig instance.
@@ -48,7 +48,7 @@ public final class APIManager: ApiManagerProtocol {
     public final var serverTrustPolicies: APITrustPolicies = [:]
 
     public final var clientId: String?
-    
+
     /// Handles caching request execution.
     ///
     /// - Parameters:
@@ -90,7 +90,7 @@ public final class APIManager: ApiManagerProtocol {
             }
         }
     }
-    
+
     /// Configure the APIManager cacher.
     ///
     /// - Parameter cacher: Class conforming to CacheableInterface.
@@ -100,11 +100,11 @@ public final class APIManager: ApiManagerProtocol {
         networker.delegate = reachabilityDelegate
         networker.configureWith(serverTrustPolicies: serverTrustPolicies)
     }
-    
+
     public final func startReachabilityObserving() {
         networker.startNetworkReachabilityObserver()
     }
-    
+
     public final func isConnectedToInternet() -> Bool {
         return networker.isConnectedToInternet()
     }

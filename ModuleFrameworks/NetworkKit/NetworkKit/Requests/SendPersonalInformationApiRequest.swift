@@ -8,7 +8,7 @@
 import Foundation
 
 public class SendPersonalInformationApiRequest: BaseAPIRequest {
-    
+
     public convenience init(identificationNumber: String?,
                             identificationType: String?,
                             age: Int?,
@@ -35,15 +35,15 @@ public class SendPersonalInformationApiRequest: BaseAPIRequest {
         }
         self.init(bodyJSONObject: jsonObject)
     }
-    
+
     public override var httpMethod: HTTPMethod {
         return .post
     }
-    
+
     public override var path: String {
         return "/personalinfo"
     }
-    
+
     public override var baseUrl: BaseURL {
         return APIManager.shared.baseURLs.base
     }
@@ -52,4 +52,3 @@ public class SendPersonalInformationApiRequest: BaseAPIRequest {
         return .none
     }
 }
-

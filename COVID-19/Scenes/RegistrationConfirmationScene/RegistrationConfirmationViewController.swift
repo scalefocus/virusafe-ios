@@ -9,6 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
+import FontAwesome_swift
 
 class RegistrationConfirmationViewController: UIViewController, Navigateble {
 
@@ -17,7 +18,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     weak var navigationDelegate: NavigationDelegate?
 
     // MARK: Outlets
-    
+
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private weak var mobileNumberLabel: UILabel!
@@ -25,8 +26,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var noCodeReceivedButton: UIButton!
-    
-    
+
     // MARK: Settings
 
     private let maximumValidationCodeLength = 6
@@ -37,14 +37,14 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     var viewModel: RegistrationConfirmationViewModel!
 
     // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupBindings()
-        
+
         mobileNumberLabel.text = "phone_text".localized() +
-        ": " + viewModel.mobileNumber()
+            ": " + viewModel.mobileNumber()
         textLabel.text = "verification_code_title".localized().replacingOccurrences(of: "\\n", with: "\n")
         confirmButton.setTitle("confirm_label".localized(), for: .normal)
         noCodeReceivedButton.setTitle("missing_verification_code".localized(), for: .normal)
@@ -53,11 +53,11 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
             verificationCodeTextField.textContentType = .oneTimeCode
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
-        
+
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 80
         IQKeyboardManager.shared().isEnableAutoToolbar = false
     }
@@ -82,9 +82,11 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     }
 
     private func setupIconImageViewTint() {
-        let userShieldIcon = #imageLiteral(resourceName: "user-shield").withRenderingMode(.alwaysTemplate)
-        iconImageView.image = userShieldIcon
-        iconImageView.tintColor = .healthBlue
+        let image =  UIImage.fontAwesomeIcon(name: .userShield,
+                                             style: .light,
+                                             textColor: .healthBlue ?? .blue,
+                                             size: iconImageView.frame.size)
+        iconImageView.image = image
     }
 
     private func setupVerificationCodeTextField() {
@@ -95,6 +97,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
         // !!! other styles are in stotyboard
     }
 
+    //swiftlint:disable:next cyclomatic_complexity
     private func setupBindings() {
         viewModel.shouldShowLoadingIndicator.bind { [weak self] shouldShowLoadingIndicator in
             guard let strongSelf = self else { return }
@@ -110,29 +113,29 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
         viewModel.isCodeAuthorizationRequestSuccessful.bind { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
-                case .success:
-                    strongSelf.navigateToNextViewController()
-                case .invalidPhoneNumber:
-                    strongSelf.showToast(message: "invalid_phone_msg".localized())
-                case .invalidPin:
-                    strongSelf.showToast(message: "invalid_pin_msg".localized())
-                default:
-                    strongSelf.showToast(message: "no_internet_msg".localized())
+            case .success:
+                strongSelf.navigateToNextViewController()
+            case .invalidPhoneNumber:
+                strongSelf.showToast(message: "invalid_phone_msg".localized())
+            case .invalidPin:
+                strongSelf.showToast(message: "invalid_pin_msg".localized())
+            default:
+                strongSelf.showToast(message: "no_internet_msg".localized())
             }
         }
 
         viewModel.isResendCodeRequestSuccessful.bind { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
-                case .success:
-                    strongSelf.showToast(message: "verification_code_send_again".localized())
-                case .invalidPhoneNumber:
-                    strongSelf.showToast(message: "invalid_phone_msg".localized())
-                case .tooManyRequests(let reapeatAfter):
-                    let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
-                    self?.present(alert, animated: true, completion: nil)
-                default:
-                    strongSelf.showToast(message: "no_internet_msg".localized())
+            case .success:
+                strongSelf.showToast(message: "verification_code_send_again".localized())
+            case .invalidPhoneNumber:
+                strongSelf.showToast(message: "invalid_phone_msg".localized())
+            case .tooManyRequests(let reapeatAfter):
+                let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
+                self?.present(alert, animated: true, completion: nil)
+            default:
+                strongSelf.showToast(message: "no_internet_msg".localized())
             }
         }
 
@@ -150,7 +153,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
     @IBAction private func resetCodeButtonDidTap (_ sender: Any) {
         viewModel.didTapResetCodeButton()
     }
-    
+
     @IBAction private func didTapConfirmButton(_ sender: Any) {
         guard let authorizationCode = verificationCodeTextField.text else { return }
 
@@ -167,7 +170,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
             viewModel.didTapCodeAuthorization(with: authorizationCode)
         }
     }
-    
+
 }
 
 // MARK: UITextFieldDelegate
@@ -176,7 +179,7 @@ extension RegistrationConfirmationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text as NSString? else { return false }
         let newString = textFieldText.replacingCharacters(in: range, with: string) as NSString
-        
+
         return newString.length <= maximumValidationCodeLength
     }
 }
@@ -184,4 +187,3 @@ extension RegistrationConfirmationViewController: UITextFieldDelegate {
 // MARK: ToastViewPresentable
 
 extension RegistrationConfirmationViewController: ToastViewPresentable {}
-

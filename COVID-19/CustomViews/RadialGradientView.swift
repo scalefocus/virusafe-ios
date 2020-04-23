@@ -31,7 +31,6 @@ class RadialGradientView: UIView {
 
 }
 
-
 class RadialGradientLayer: CALayer {
 
     var center: CGPoint {
@@ -42,11 +41,13 @@ class RadialGradientLayer: CALayer {
         return (bounds.width + bounds.height) / 2.5
     }
 
+    //swiftlint:disable force_unwrapping
     var colors: [UIColor] = [UIColor(hexString: "#00EAFF")!, UIColor(hexString: "#3C8CE7")!] { //3C8CE7
         didSet {
             setNeedsDisplay()
         }
     }
+    //swiftlint:enable force_unwrapping
 
     var cgColors: [CGColor] {
         return colors.map({ (color) -> CGColor in

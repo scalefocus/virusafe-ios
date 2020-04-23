@@ -85,6 +85,7 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 6.2)"
     - Protobuf (>= 3.9.2, ~> 3.9)
   - Flexx (2.7.0)
+  - FontAwesome.swift (1.9.0)
   - GoogleAppMeasurement (6.4.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -126,6 +127,7 @@ PODS:
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
   - SkyFloatingLabelTextField (3.8.0)
+  - SwiftLint (0.27.0)
   - TwoWayBondage (2.0.0)
 
 DEPENDENCIES:
@@ -135,11 +137,13 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/RemoteConfig
   - Flexx (= 2.7.0)
+  - FontAwesome.swift
   - IQKeyboardManager (~> 6.5.5)
   - KeychainSwift
   - NetworkKit (from `ModuleFrameworks/NetworkKit`)
   - PopupUpdate (~> 1.0.2)
   - SkyFloatingLabelTextField (~> 3.0)
+  - SwiftLint (~> 0.27.0)
   - TwoWayBondage (~> 2.0.0)
 
 SPEC REPOS:
@@ -159,6 +163,7 @@ SPEC REPOS:
     - FirebaseMessaging
     - FirebaseRemoteConfig
     - Flexx
+    - FontAwesome.swift
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -170,6 +175,7 @@ SPEC REPOS:
     - PromisesObjC
     - Protobuf
     - SkyFloatingLabelTextField
+    - SwiftLint
     - TwoWayBondage
 
 EXTERNAL SOURCES:
@@ -192,6 +198,7 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 4ec33842d36b3319e062e51fb8b35a74f726950d
   FirebaseRemoteConfig: 47abf7a04a9082091955ea555aa79cfdd249b19c
   Flexx: 68043aa39f20d7e5842be37122407d9db6492c6b
+  FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
   GoogleAppMeasurement: e49be3954045b17d046f271b9cc1ec052bad9702
   GoogleDataTransport: 6ffa4dd0b6d547f8d27b91bd92fa9e197a3f5f1f
   GoogleDataTransportCCTSupport: 12f02e5c8f09c055615de90bcd5ba2c375546051
@@ -204,8 +211,9 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   TwoWayBondage: 722389db5cccfaab572caf4b3e326e12b1cdc984
 
-PODFILE CHECKSUM: a1c8a9f33264d30b29c1795c973f2cd1c621900a
+PODFILE CHECKSUM: 0c121c6e0783102977c991b514a856e71b8bdcf1
 
 COCOAPODS: 1.9.0

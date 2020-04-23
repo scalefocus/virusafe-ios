@@ -35,13 +35,12 @@ final class ConfirmationViewController: UIViewController, Navigateble {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        setupUI()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,9 +64,14 @@ final class ConfirmationViewController: UIViewController, Navigateble {
     }
 
     private func tintCheckIcon() {
-        let checkIcon = #imageLiteral(resourceName: "check-circle-light").withRenderingMode(.alwaysTemplate)
-        iconImageView.image = checkIcon
-        iconImageView.tintColor = #colorLiteral(red: 60 / 255, green: 140 / 255, blue: 231 / 255, alpha: 1.0) // Editor representation does't look correct, however it works on device
+//        let checkIcon = #imageLiteral(resourceName: "check-circle-light").withRenderingMode(.alwaysTemplate)
+//        iconImageView.image = checkIcon
+//        iconImageView.tintColor = #colorLiteral(red: 60 / 255, green: 140 / 255, blue: 231 / 255, alpha: 1.0) // Editor representation does't look correct, however it works on device
+        let image =  UIImage.fontAwesomeIcon(name: .checkCircle,
+                                             style: .light,
+                                             textColor: .healthBlue ?? .blue,
+                                             size: iconImageView.frame.size)
+        iconImageView.image = image
     }
 
 }

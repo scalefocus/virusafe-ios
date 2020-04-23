@@ -14,7 +14,7 @@ public class AnswersApiRequest: BaseAPIRequest {
         self.init(bodyJSONObject: questionnaire.asDictionary())
         self.phoneNumber = phoneNumber
     }
-    
+
     public override var httpMethod: HTTPMethod {
         return .post
     }
@@ -90,4 +90,3 @@ public struct UserLocation: Codable {
         case longitude = "lng"
     }
 }
-

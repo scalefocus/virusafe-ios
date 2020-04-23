@@ -28,19 +28,12 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vlada_logo" translatesAutoresizingMaskIntoConstraints="NO" id="osS-iG-lO3">
-                                        <rect key="frame" x="40" y="60" width="334" height="128"/>
+                                        <rect key="frame" x="93.333333333333329" y="60" width="227.33333333333337" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="S2h-h8-UqB"/>
-                                            <constraint firstAttribute="width" secondItem="osS-iG-lO3" secondAttribute="height" multiplier="167:64" id="uVP-KT-778"/>
+                                            <constraint firstAttribute="width" secondItem="osS-iG-lO3" secondAttribute="height" multiplier="16:9" id="uVP-KT-778"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-VB-LSP">
-                                        <rect key="frame" x="182" y="563.66666666666663" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="g1A-VB-LSP" secondAttribute="height" multiplier="1:1" id="O8p-aB-kOl"/>
-                                            <constraint firstAttribute="height" constant="50" id="aYm-Ys-goa"/>
-                                        </constraints>
-                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_min_zdrave-bg" translatesAutoresizingMaskIntoConstraints="NO" id="I0e-LB-arA">
                                         <rect key="frame" x="20" y="60" width="163" height="50"/>
                                     </imageView>
@@ -53,25 +46,42 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfm-zC-Ss9">
+                                        <rect key="frame" x="0.0" y="403.33333333333326" width="414" height="332.66666666666674"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-VB-LSP">
+                                                <rect key="frame" x="183" y="142.33333333333331" width="48" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="g1A-VB-LSP" secondAttribute="height" multiplier="1:1" id="O8p-aB-kOl"/>
+                                                    <constraint firstAttribute="height" constant="48" id="aYm-Ys-goa"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="g1A-VB-LSP" firstAttribute="centerY" secondItem="Mfm-zC-Ss9" secondAttribute="centerY" id="5WF-ob-qa6"/>
+                                            <constraint firstItem="g1A-VB-LSP" firstAttribute="centerX" secondItem="Mfm-zC-Ss9" secondAttribute="centerX" id="uip-Rb-NdF"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="pME-eF-7v6" firstAttribute="centerY" secondItem="I0e-LB-arA" secondAttribute="centerY" id="2rC-Rl-7He"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="osS-iG-lO3" secondAttribute="trailing" constant="40" id="4bV-4S-2qi"/>
+                                    <constraint firstItem="fff-HD-h9m" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="24" id="5Sa-yI-aIp"/>
                                     <constraint firstItem="I0e-LB-arA" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="63d-Ej-Ypy"/>
-                                    <constraint firstItem="Fgw-iu-EYK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I0e-LB-arA" secondAttribute="bottom" constant="20" id="JsS-m4-dEg"/>
                                     <constraint firstItem="fff-HD-h9m" firstAttribute="top" secondItem="Fgw-iu-EYK" secondAttribute="bottom" constant="8" id="LjO-uZ-PK5"/>
+                                    <constraint firstItem="Mfm-zC-Ss9" firstAttribute="top" secondItem="fff-HD-h9m" secondAttribute="bottom" id="O50-Cn-OwE"/>
                                     <constraint firstItem="fff-HD-h9m" firstAttribute="centerX" secondItem="Fgw-iu-EYK" secondAttribute="centerX" id="OUl-7Z-3CS"/>
                                     <constraint firstItem="I0e-LB-arA" firstAttribute="leading" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="20" id="Q8D-5K-B0b"/>
-                                    <constraint firstItem="osS-iG-lO3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dH6-DJ-ry5" secondAttribute="leading" constant="40" id="XzT-nR-C7M"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fff-HD-h9m" secondAttribute="trailing" constant="24" id="U2a-2F-daW"/>
                                     <constraint firstItem="osS-iG-lO3" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="ZBo-C4-hI3"/>
-                                    <constraint firstItem="g1A-VB-LSP" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="1.6" id="cac-py-Pxb"/>
                                     <constraint firstItem="osS-iG-lO3" firstAttribute="top" secondItem="dH6-DJ-ry5" secondAttribute="top" constant="60" id="dI2-Ck-oby"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mfm-zC-Ss9" secondAttribute="trailing" id="gu9-yJ-dnk"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerY" secondItem="dH6-DJ-ry5" secondAttribute="centerY" multiplier="0.9" id="jQz-bU-rqw"/>
                                     <constraint firstAttribute="trailing" secondItem="pME-eF-7v6" secondAttribute="trailing" constant="20" id="kKM-zf-QKT"/>
                                     <constraint firstItem="Fgw-iu-EYK" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="nae-Ol-Dz6"/>
-                                    <constraint firstItem="g1A-VB-LSP" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="u1a-J9-vuX"/>
-                                    <constraint firstItem="fff-HD-h9m" firstAttribute="centerX" secondItem="dH6-DJ-ry5" secondAttribute="centerX" id="u9E-1U-FIf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mfm-zC-Ss9" secondAttribute="bottom" id="ov6-DX-jQa"/>
+                                    <constraint firstItem="Mfm-zC-Ss9" firstAttribute="leading" secondItem="dH6-DJ-ry5" secondAttribute="leading" id="ta3-kS-yoe"/>
                                 </constraints>
                             </view>
                         </subviews>

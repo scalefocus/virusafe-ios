@@ -9,13 +9,13 @@
 import UIKit
 
 extension UITextField {
-    
+
     /// Defines the possible places where image could be set
     enum Direction {
         case left
         case right
     }
-    
+
     /// Sets left / right image to the TextField
     /// - Parameters:
     ///   - image: Optional. The image which is going to be set on the left or right.
@@ -28,20 +28,20 @@ extension UITextField {
                    rect: CGRect,
                    tintColor: UIColor? = nil,
                    viewMode: UITextField.ViewMode = .always) {
-        
+
         let additionalImagePadding: CGFloat = 10
         let containerView = UIView(frame: CGRect(x: 0,
                                                  y: 0,
                                                  width: rect.width + additionalImagePadding,
                                                  height: bounds.height))
         containerView.clipsToBounds = true
-        
+
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = tintColor
         imageView.frame = rect
         containerView.addSubview(imageView)
-        
+
         switch direction {
         case .left:
             leftViewMode = viewMode
@@ -53,4 +53,3 @@ extension UITextField {
     }
 
 }
-

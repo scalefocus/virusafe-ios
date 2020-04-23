@@ -14,6 +14,7 @@ typealias SendPersonalInfoCompletion = ((ApiResult<Void>) -> Void)
 
 protocol PersonalInformationRepositoryProtocol {
     func requestPersonalInfo(completion: @escaping RequestPersonalInformationCompletion)
+    //swiftlint:disable:next function_parameter_count
     func sendPersonalInfo(identificationNumber: String?,
                           identificationType: String?,
                           age: Int?,
@@ -24,6 +25,7 @@ protocol PersonalInformationRepositoryProtocol {
 
 final class PersonalInformationRepository: PersonalInformationRepositoryProtocol {
     // !!! Fields are not required
+    //swiftlint:disable:next function_parameter_count
     func sendPersonalInfo(identificationNumber: String?,
                           identificationType: String?,
                           age: Int?,
@@ -46,20 +48,20 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
             let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
 
             switch statusCodeResult {
-                case .success:
-                    completion(.success(Void()))
-                case .failure(let reason):
-                    switch reason {
-                        case .invalidEgnOrIdNumber:
-                            completion(.failure(.invalidEgnOrIdNumber))
-                        case .invalidToken:
-                            completion(.failure(.invalidToken))
-                        case .tooManyRequests:
-                            let reapeatAfter = TooManyRequestestHandler().handle(data: data)
-                            completion(.failure(.tooManyRequests(reapeatAfter: reapeatAfter)))
-                        default:
-                            // No special handling
-                            completion(.failure(.server))
+            case .success:
+                completion(.success(Void()))
+            case .failure(let reason):
+                switch reason {
+                case .invalidEgnOrIdNumber:
+                    completion(.failure(.invalidEgnOrIdNumber))
+                case .invalidToken:
+                    completion(.failure(.invalidToken))
+                case .tooManyRequests:
+                    let reapeatAfter = TooManyRequestestHandler().handle(data: data)
+                    completion(.failure(.tooManyRequests(reapeatAfter: reapeatAfter)))
+                default:
+                    // No special handling
+                    completion(.failure(.server))
                 }
             }
         }
@@ -75,14 +77,14 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
             let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
 
             switch statusCodeResult {
-                case .success:
-                    completion(.success(personalInformation))
-                case .failure(let reason):
-                    switch reason {
-                        case .invalidToken:
-                            completion(.failure(.invalidToken))
-                        default:
-                            completion(.failure(.server))
+            case .success:
+                completion(.success(personalInformation))
+            case .failure(let reason):
+                switch reason {
+                case .invalidToken:
+                    completion(.failure(.invalidToken))
+                default:
+                    completion(.failure(.server))
                 }
             }
         }

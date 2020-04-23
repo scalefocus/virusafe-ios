@@ -32,6 +32,15 @@
 	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на здравните институции за по-добро планиране, както и да получавате гео-базирана информация за COVID-19.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Приложението има нужда да използва вашето местоположение с цел да помогне на здравните институции за по-добро планиране, както и да получавате гео-базирана информация за COVID-19.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Font Awesome 5 Pro-Light-300.otf</string>
+		<string>Font Awesome 5 Pro-Regular-400.otf</string>
+		<string>Font Awesome 5 Pro-Solid-900.otf</string>
+		<string>Font Awesome 5 Brands-Regular-400.otf</string>
+		<string>Font Awesome 5 Free-Regular-400.otf</string>
+		<string>Font Awesome 5 Free-Solid-900.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

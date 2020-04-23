@@ -27,7 +27,7 @@ protocol RegistrationRepositoryProtocol {
 class RegistrationRepository: RegistrationRepositoryProtocol {
 
     private (set) var authorisedMobileNumber: String?
-    
+
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
         PinApiRequest(phoneNumber: mobileNumber).execute { [weak self] (data, response, error) in
             // Request argument validation has failed
@@ -60,10 +60,10 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             completion(.success)
         }
     }
-    
+
     func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
         guard let mobileNumber = authorisedMobileNumber else {
-//            assertionFailure("Authorised mobile number not found")
+            //            assertionFailure("Authorised mobile number not found")
             completion(.invalidPhoneNumber)
             return
         }
@@ -103,8 +103,10 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
 
             // Store retunerd toke (jwt)
             TokenStore.shared.token = parsedData.accessToken
+            // TODO: Save refresh token in Store
             // Update manager to auth requests
             APIManager.shared.authToken = parsedData.accessToken
+            // TODO: Save refresh token
 
             completion(.success)
         }
@@ -119,6 +121,8 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             completion(.success(Void()))
         }
     }
+
+    // TODO: Get new token with refresh
 
 }
 

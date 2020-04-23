@@ -16,13 +16,13 @@ final class RegistrationViewModel {
 
     let shouldShowLoadingIndicator = Observable<Bool>()
     let isRequestSuccessful = Observable<AuthoriseMobileNumberResult>()
-    
+
     init(registrationRepository: RegistrationRepository,
          termsAndConditionsRepository: TermsAndConditionsRepository) {
         self.registrationRepository = registrationRepository
         self.termsAndConditionsRepository = termsAndConditionsRepository
     }
-    
+
     func didTapRegistration(with phoneNumber: String) {
         shouldShowLoadingIndicator.value = true
         registrationRepository.authoriseMobileNumber(mobileNumber: phoneNumber) { [weak self] result in
@@ -31,5 +31,5 @@ final class RegistrationViewModel {
             strongSelf.shouldShowLoadingIndicator.value = false
         }
     }
-    
+
 }

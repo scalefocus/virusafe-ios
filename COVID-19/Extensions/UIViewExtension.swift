@@ -8,6 +8,8 @@
 
 import UIKit
 
+//swiftlint:disable valid_ibinspectable
+//swiftlint:disable implicit_getter
 extension UIView {
     @IBInspectable var cornerRadius: CGFloat {
         get {
@@ -17,7 +19,7 @@ extension UIView {
             layer.cornerRadius = newValue
         }
     }
-    
+
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -26,7 +28,7 @@ extension UIView {
             layer.borderWidth = newValue
         }
     }
-    
+
     @IBInspectable var borderColor: UIColor {
         get {
             return UIColor.init(cgColor: layer.borderColor ?? UIColor.clear.cgColor)
@@ -37,9 +39,8 @@ extension UIView {
     }
 }
 
-
 extension UIViewController {
-    
+
     /// Hides the keyboard when tapped anywhere on the screen
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -51,15 +52,17 @@ extension UIViewController {
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
-    
+
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-           if touch.view is UIButton {
-               return false
-           }
-           return true
-       }
+        if touch.view is UIButton {
+            return false
+        }
+        return true
+    }
 }
+//swiftlint:enable valid_ibinspectable
+//swiftlint:enable implicit_getter
