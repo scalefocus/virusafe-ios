@@ -71,7 +71,7 @@ them. ("What do you think about using a custom validator here?")
 Style Comments
 --------------
 
-Reviewers should comment on missed [style](../style)
+Reviewers should comment on missed [style](https://github.com/raywenderlich/swift-style-guide)
 guidelines. Example comment:
 
 > Order resourceful routes alphabetically by name.
