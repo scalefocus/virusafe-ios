@@ -80,6 +80,10 @@ We decided to refer to [The Official raywenderlich.com Swift Style Guide](https:
 
 Contributors are expected to read through and familiarize themselves with the style guide as we're going to enforce it adding `swiftlint`.
 
+## Branching guide
+
+Contributors must work directly with their private forks on GitHub. It is expected that all contributions will be submitted via a feature branch originating from the appropriate up-to-date `develop` branch. Please check our [branching strategy](GIT-BRANCHING-STRATEGY.md)
+
 ## Using the REST API
 
 Swagger Documentation for the ViruSafe REST API is available at the [ViruSafe SwaggerHub](https://app.swaggerhub.com/apis-docs/ViruSafe/viru-safe_backend_rest_api/1.0.0).
