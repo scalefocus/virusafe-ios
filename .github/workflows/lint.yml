@@ -1,0 +1,43 @@
+name: Lint All
+
+on:
+  pull_request:
+    # lint only changes
+    paths:
+      - '.github/workflows/swiftlint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
+
+jobs:
+  lint:
+    runs-on: macos-latest
+
+    steps:
+        # Get the whole repo - no optimizations
+      - name: Checkout
+        uses: actions/checkout@v1
+
+        # NOTE: Reduces Action Time with more than 10 min
+      - name: Cache Pods
+        uses: actions/cache@v1
+        id: pods-cache
+        with:
+          path: Pods
+          key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cocoapods-
+            ${{ runner.os }}-
+
+        # SwiftLint is installed as Pod
+      - name: Install Pods
+        if: steps.pods-cache.outputs.cache-hit != 'true'
+        run: pod install
+
+      - name: Run code validation
+        run: |
+          sh ./.github/scripts/validate-code-style.sh
+        env:
+          BASE_BRANCH_NAME: ${{ github.base_ref }}
+          BRANCH_NAME: ${{ github.head_ref }}
+          EXECUTABLE: "./Pods/SwiftLint/swiftlint"
+

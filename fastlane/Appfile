@@ -1,0 +1,20 @@
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
+app_identifier "bg.government.virusafe"
+apple_id ENV["APPLE_ACCOUNT"] # Get Apple ID email address from environment variable
+team_id ENV["TEAM_ID"] # Get Developer Portal Team ID from environment variable
+
+# for_platform :ios do
+#     for_lane :test do
+#         app_identifier "com.nicolasbichon.exampleapp.test"
+#     end
+#     for_lane :deploy_develop_bulgaria do
+#         app_identifier "com.nicolasbichon.exampleapp.beta"
+#     end
+#     for_lane :deploy_production_north_macedonia do
+#         # NOTE: Do nothing, we don't have production for North Macedonia yet
+#     end
+#     for_lane :deploy_production_bulgaria do
+#         app_identifier "com.nicolasbichon.exampleapp"
+#     end
+# end

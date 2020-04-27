@@ -1,0 +1,200 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# Required Env Vars
+
+# MATCH_KEYCHAIN_NAME - Name for the keychain generated from GitHub Action
+# MATCH_KEYCHAIN_PASSWORD  - Password for the keychain generated from GitHub Action
+
+# MATCH_REPO - URL to the repository with the app certificates
+# MATCH_PASSWORD - encryption password
+
+# APP_CENTER_API_TOKEN - API Token for App Center
+
+# APPLE_ID - # Apple ID Username
+
+# PROVISIONING_SIGNING_ID - Code sign identity for build configuration
+
+default_platform(:ios)
+
+platform :ios do
+	before_all do |lane, options|
+		# Owner name, as found in the App's URL in App Center
+		APP_CENTER_OWNER_NAME="Upnetix-1" # using Upnetix account
+
+		# Build App Settings
+		XCODE_WORKSPACE="COVID-19.xcworkspace"
+	end
+ 
+	desc "`setup` lane is used to configure fastlane from GitHub actions"
+	lane :setup do
+		setup_project
+	end
+
+	desc "`compile` is used to configure fastlane from GitHub actions"
+	lane :compile do
+		 # TODO: Match to get certs
+		build
+	 end
+
+	desc "`deploy_develop_all` lane is used to deploy all develop builds to App Center"
+	lane :deploy_develop_all do
+		deploy_develop_north_macedonia
+		deploy_develop_bulgaria
+	end
+
+	desc "`deploy_develop_north_macedonia` lane is used to deploy North Macedonia develop build to App Center"
+	lane :deploy_develop_north_macedonia do
+		# App name as found in the App's URL in App Center. If there is no app with such name, you will be prompted to create one
+		app_name="SeZaCovid19"
+		# Comma separated list of distribution group names. Default is 'Collaborators', use '*' for all distribution groups
+		# NOTE: have the same for name for Bulgaria and North Macedonia distributions
+		destinations="covid-19-internal"
+		# Upload build and distribute it for internal tests
+		# NOTE: Public distribution is done manually after approve
+		deploy_app_center(
+			app_name:options[:app_name],
+			destinations:options[:destinations]
+		)
+	end
+
+	desc "`deploy_develop_bulgaria` lane is used to deploy Bulgaria develop build to App Center"
+	lane :deploy_develop_bulgaria do
+		# App name as found in the App's URL in App Center. If there is no app with such name, you will be prompted to create one
+		app_name="ViruSafeDev"
+		# Comma separated list of distribution group names. Default is 'Collaborators', use '*' for all distribution groups
+		# NOTE: have the same for name for Bulgaria and North Macedonia distributions
+		destinations="covid-19-internal"
+		# Upload build and distribute it for internal tests
+		# NOTE: Public distribution is done manually after approve
+		deploy_app_center(
+			app_name:options[:app_name],
+			destinations:options[:destinations]
+		)
+	end
+
+	desc "`deploy_production_all` lane is used to deploy all production builds to App Store"
+	lane :deploy_production_all do
+		deploy_production_north_macedonia
+		deploy_production_bulgaria
+	end
+
+	desc "`deploy_production_north_macedonia` lane is used to deploy North Macedonia production build to App Store"
+	lane :deploy_production_north_macedonia do
+		# NOTE: Do nothing, we don't have production for North Macedonia yet
+		# NOTE: Public distribution is done manually after approve
+	end
+
+	desc "`deploy_production_north_macedonia` lane is used to deploy Bulgaria production build to App Store"
+	lane :deploy_production_bulgaria do
+		# NOTE: Public distribution is done manually after approve
+		deploy_testflight
+	end
+
+	desc "`build` lane is used to make clean signed build of the app"
+	private_lane :build do |options|
+		# Delete the local dSYM files
+	    clean_build_artifacts
+		# Deletes the Xcode Derived Data
+	    clear_derived_data
+
+	    # sync certs
+	    certificates(
+	    	app_identifier:options[:app_identifier],
+	    	type:options[:profile_type]
+	    ) 
+
+	    # Since we’re not using automatic code signing, we must run the update_project_provisioning fastlane action with 
+	    # our profile, target, config, and signing identity. 
+	    update_project_provisioning(
+			xcodeproj: XCODE_PROJECT,
+			profile: "./com.upnetix.actionstest_appstore_profile-path",
+			target_filter: options[:target],
+			build_configuration: "Release",
+			code_signing_identity: ENV["PROVISIONING_SIGNING_ID"]
+		)
+
+	    # Build and signs the app (only iOS options)
+	    # NOTE: `gym`, `build_ios_app` and `build_mac_app` are aliases for the `build_app` action
+	    build_ios_app(
+	    	scheme: options[:scheme],
+	    	clean: true,
+	      	workspace: XCODE_WORKSPACE,
+	      	export_options: {
+	      		method: options[:export_method],
+		    	provisioningProfiles: { 
+		    		options[:app_identifier] => options[:provisioning_profile_name]
+		    	},
+            	"signingStyle": "manual"
+		  	}
+
+	    )
+  	end
+
+	desc "`certificates` lane is used to sync app certificates"
+  	private_lane :certificates do |options|
+  		# NOTE: The `force_for_new_devices` parameter is ignored for App Store provisioning profiles since they don't contain any device information.
+  		match(
+  		 	app_identifier: options[:app_identifier],
+  		 	type: options[:profile_type] , # Define the profile type, can be appstore, adhoc, development, enterprise, developer_id
+  		 	git_url: ENV["MATCH_REPO"],
+  		 	username: ENV["APPLE_ID"],
+  		 	shallow_clone: true,
+  		 	force_for_new_devices: !is_ci, # provisioning profile update is only forced on non-CI systems, and only if there is a new device
+  		 	readonly: true, # readonly mode - to be sure it won't create any new certificates or profiles.
+		    keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+		    keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"]
+    	)
+  	end
+
+  	
+	desc "`setup_keychain` is a private lane used to enable keychain access for GitHub actions "
+	private_lane :setup_keychain do
+	  create_keychain(
+		    name: ENV["MATCH_KEYCHAIN_NAME"],
+		    password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+		    default_keychain: true,
+		    unlock: true,
+		    timeout: 3600,
+		    lock_when_sleeps: false
+	  )
+	end
+
+	desc "`deploy_app_center` lane is used to deply develop build to App Center"
+	desc ":app_name - name of the app (can be found in the url for the project in appcenter.ms)"
+	desc ":destinations - distribution groups (default is Collaborators, can have wild cards)"
+	private_lane :deploy_app_center do |options|
+		# TODO: Automate release notes using CHANGELOG
+		appcenter_upload(
+	        api_token: ENV["APP_CENTER_API_TOKEN"],
+	        owner_name: APP_CENTER_OWNER_NAME,
+	        app_name: options[:app_name],
+	        notify_testers: true,
+	        destinations: options[:destinations],
+	        #release_notes: releaseNotes, # use default for now
+	        app_os: "IOS"
+      )
+	end
+
+	desc "`deploy_testflight` lane is used to deply production build to Test Flight"
+	private_lane :deploy_testflight do |options|
+		# TODO: Automate release notes using CHANGELOG
+		# NOTE: `testflight` and `pilot` are aliases for the `upload_to_testflight` action
+		upload_to_testflight(
+			skip_submission: false # change it to true to only upload the build
+		)
+  	end
+
+end

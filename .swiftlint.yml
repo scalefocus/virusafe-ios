@@ -17,7 +17,5 @@ line_length: 175
 #  warning: 175
 #  error: 200
 
-variable_name:
+identifier_name:
   min_length: 2
-
-reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

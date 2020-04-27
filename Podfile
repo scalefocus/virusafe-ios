@@ -34,7 +34,7 @@ def app_pods
   pod 'KeychainSwift'
   
   # Swiftlint
-  pod 'SwiftLint', '~> 0.27.0'
+  pod 'SwiftLint', '~> 0.39.0'
 
   # Better quality icons
   pod 'FontAwesome.swift'
