@@ -31,7 +31,7 @@ We consider `origin/master` to be the main branch where the source code of HEAD 
 
 We consider `origin/develop` to be the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release. Some would call this the “integration branch”. This is also where any automatic nightly builds are built from.
 
-> **NB! When code in the `develop` branch is stable and ready to release, all of the changes should be merged back into master somehow and then tagged with a release number (See [Release branches](#release-branches)).**
+> **NB! When code in the `develop` branch is stable and ready to release, all of the changes should be merged back into master and then tagged with a release number (See [Release branches](#release-branches)).**
 
 ### Feature branches
 
@@ -91,7 +91,7 @@ In order to improve the readability of the history, before submitting your work 
 
 ## Merging
 
-All merges into `develop`, `release/*`, and `hotfix/*` should happen via pull requests. This ensures that all code gets reviewed at some point before it's shipped. This ensures that all code gets reviewed at some point before it's shipped. For more information, see [Code Review Standards](CODE-REVIEW.md).
+All merges into `develop`, `release/*`, and `hotfix/*` should happen via pull requests. This ensures that all code gets reviewed at some point before it's shipped. This ensures that all code gets reviewed at some point before it's shipped. For more information, see [Code Review Standards](https://github.com/thoughtbot/guides/tree/master/code-review).
 
 ## Deleting Branches
 
