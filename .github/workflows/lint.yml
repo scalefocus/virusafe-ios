@@ -1,4 +1,4 @@
-name: Lint All
+name: Lint Changed Sources
 
 on:
   pull_request:

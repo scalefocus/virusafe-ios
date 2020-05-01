@@ -1,0 +1,18 @@
+name: Enforce branching strategy
+
+on: pull_request
+   
+jobs:
+  branch:
+    runs-on: macos-latest
+
+    steps:
+      # Get the whole repo - no optimizations
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run branch name validation
+        run: |
+          sh ./.github/scripts/validate-branch-name.sh
+        env:
+          BRANCH_NAME: ${{ github.head_ref }}
