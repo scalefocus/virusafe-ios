@@ -8,4 +8,9 @@ then
 	exit
 fi
 
-set -o pipefail && $EXECUTABLE --strict --reporter github-actions-logging -- $files
+if [ ! -x "${EXECUTABLE}" ]; then
+    echo "SwiftLint was not found"
+	exit 2
+fi
+
+$EXECUTABLE --strict --config '.swiftlint.yml' --reporter github-actions-logging -- $files

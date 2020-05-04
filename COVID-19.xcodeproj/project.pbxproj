@@ -811,7 +811,7 @@
 				02B9A6A4242371F300B1A4C0 /* Sources */,
 				02B9A6A5242371F300B1A4C0 /* Frameworks */,
 				02B9A6A6242371F300B1A4C0 /* Resources */,
-				5CAF946D24436A0A00FF56E9 /* Swiftlint */,
+				5CAF946D24436A0A00FF56E9 /* SwiftLint */,
 				5463F928ED335AA42F535C73 /* [CP] Embed Pods Frameworks */,
 				4179866C2430FB97006CC2D9 /* Crashlytics */,
 				385BDD652431E44F00476F69 /* UpnetixLocalizer */,
@@ -836,7 +836,7 @@
 				4166B37E2438A68300CC8614 /* Sources */,
 				4166B3CD2438A68300CC8614 /* Frameworks */,
 				4166B3D12438A68300CC8614 /* Resources */,
-				5CAF946E24436C7300FF56E9 /* Swiftlint */,
+				5CAF946E24436C7300FF56E9 /* SwiftLint */,
 				4166B3E32438A68300CC8614 /* [CP] Embed Pods Frameworks */,
 				4166B3E42438A68300CC8614 /* Crashlytics */,
 				4166B3E52438A68300CC8614 /* UpnetixLocalizer */,
@@ -861,7 +861,7 @@
 				5C3C5539243EF509008B6B14 /* Sources */,
 				5C3C5570243EF509008B6B14 /* Frameworks */,
 				5C3C5573243EF509008B6B14 /* Resources */,
-				5CAF946F24436C8500FF56E9 /* ShellScript */,
+				5CAF946F24436C8500FF56E9 /* SwiftLint */,
 				5C3C5584243EF509008B6B14 /* [CP] Embed Pods Frameworks */,
 				5C3C5585243EF509008B6B14 /* Crashlytics */,
 				5C3C5586243EF509008B6B14 /* UpnetixLocalizer */,
@@ -1384,7 +1384,7 @@
 			shellPath = /bin/sh;
 			shellScript = "chmod +x ./Pods/Flexx/localizer_download.sh\n././Pods/Flexx/localizer_download.sh APP_ID=\"$(/usr/libexec/PlistBuddy -c \"Print :AppId\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\" SALT=\"$(/usr/libexec/PlistBuddy -c \"Print :Secret\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\" DOMAINS=\"$(/usr/libexec/PlistBuddy -c \"Print :Domain\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\" BASE_URL=\"$(/usr/libexec/PlistBuddy -c \"Print :BaseUrl\" \"${SRCROOT}/COVID-19/Settings/${TARGET_NAME}/Localization-settings.plist\")\"\n";
 		};
-		5CAF946D24436A0A00FF56E9 /* Swiftlint */ = {
+		5CAF946D24436A0A00FF56E9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1393,16 +1393,16 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "if [ -z \"$CI\" ]; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nfi\n";
 		};
-		5CAF946E24436C7300FF56E9 /* Swiftlint */ = {
+		5CAF946E24436C7300FF56E9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1411,16 +1411,16 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "if [ -z \"$CI\" ]; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nfi\n";
 		};
-		5CAF946F24436C8500FF56E9 /* ShellScript */ = {
+		5CAF946F24436C8500FF56E9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1429,13 +1429,14 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "if [ -z \"$CI\" ]; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1841,7 +1842,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeDev;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d3cc60c1-5a09-414b-8d2c-613b19cb9097";
 				PROVISIONING_PROFILE_SPECIFIER = ViruSafeDevInHouseProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -1898,7 +1899,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D GOVERNMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = ViruSafe;
-				PROVISIONING_PROFILE = "58e4f0a4-0997-4168-bb47-2a47f0a60543";
+				PROVISIONING_PROFILE = "34aef6c4-6450-42a7-a342-01f0ee5f447f";
 				PROVISIONING_PROFILE_SPECIFIER = ViruSafeAppStoreProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -1941,7 +1942,7 @@
 				APP_BUNDLE_NAME = SeZaCovid19;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 20.4.91600;
 				DEVELOPMENT_TEAM = UWBDU93DZY;
@@ -1955,7 +1956,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D MACEDONIA";
 				PRODUCT_BUNDLE_IDENTIFIER = mk.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeMK;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "12aaa5d1-a60a-43b6-8988-7e4bb6eea1f7";
 				PROVISIONING_PROFILE_SPECIFIER = SeZaCovid19DevInHouseProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;

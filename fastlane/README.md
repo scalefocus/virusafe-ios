@@ -16,53 +16,51 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios lint
-```
-fastlane ios lint
-```
-`lint` lane is used to enforce Swift style and conventions
-
-:files - List of files to process (optional)
 ### ios setup
 ```
 fastlane ios setup
 ```
-`setup` lane is used to configure fastlane from GitHub actions
-### ios compile
+**`setup`** lane is used to configure fastlane from GitHub actions
+### ios compile_prod_bulgaria
 ```
-fastlane ios compile
+fastlane ios compile_prod_bulgaria
 ```
-`compile` is used to configure fastlane from GitHub actions
-### ios deploy_develop_all
+**`compile_prod_bulgaria`** lane is used to build Bulgaria production target
+### ios compile_prod_north_macedonia
 ```
-fastlane ios deploy_develop_all
+fastlane ios compile_prod_north_macedonia
 ```
-`deploy_develop_all` lane is used to deploy all develop builds to App Center
+**`compile_prod_north_macedonia`** lane is used to build North Macedonia production target
+### ios compile_develop_bulgaria
+```
+fastlane ios compile_develop_bulgaria
+```
+**`compile_develop_bulgaria`** lane is used to build Bulgaria develop target
+### ios compile_develop_north_macedonia
+```
+fastlane ios compile_develop_north_macedonia
+```
+**`compile_develop_north_macedonia`** lane is used to build North Macedonia develop target
 ### ios deploy_develop_north_macedonia
 ```
 fastlane ios deploy_develop_north_macedonia
 ```
-`deploy_develop_north_macedonia` lane is used to deploy North Macedonia develop build to App Center
+**`deploy_develop_north_macedonia`** lane is used to deploy North Macedonia develop build to App Center
 ### ios deploy_develop_bulgaria
 ```
 fastlane ios deploy_develop_bulgaria
 ```
-`deploy_develop_bulgaria` lane is used to deploy Bulgaria develop build to App Center
-### ios deploy_production_all
-```
-fastlane ios deploy_production_all
-```
-`deploy_production_all` lane is used to deploy all production builds to App Store
+**`deploy_develop_bulgaria`** lane is used to deploy Bulgaria develop build to App Center
 ### ios deploy_production_north_macedonia
 ```
 fastlane ios deploy_production_north_macedonia
 ```
-`deploy_production_north_macedonia` lane is used to deploy North Macedonia production build to App Store
+**`deploy_production_north_macedonia`** lane is used to deploy North Macedonia production build to App Store
 ### ios deploy_production_bulgaria
 ```
 fastlane ios deploy_production_bulgaria
 ```
-`deploy_production_north_macedonia` lane is used to deploy Bulgaria production build to App Store
+**`deploy_production_north_macedonia`** lane is used to deploy Bulgaria production build to App Store
 
 ----
 

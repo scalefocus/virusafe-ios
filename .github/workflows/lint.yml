@@ -23,10 +23,7 @@ jobs:
         id: pods-cache
         with:
           path: Pods
-          key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cocoapods-
-            ${{ runner.os }}-
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
 
         # SwiftLint is installed as Pod
       - name: Install Pods
