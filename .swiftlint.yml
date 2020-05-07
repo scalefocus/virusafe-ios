@@ -12,6 +12,11 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Source/ExcludedFolder
   - Source/ExcludedFile.swift
   - mobile/ThirdPartyLibs
+  - vendor
+  - fastlane
+  - Development
+  - NorthMacedonia
+  - Production
 
 line_length: 175
 #  warning: 175
