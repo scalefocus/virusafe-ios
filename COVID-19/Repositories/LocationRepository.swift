@@ -15,7 +15,6 @@ typealias SendNearbyDevicesCompletion = ((ApiResult<Void>) -> Void)
 protocol LocationRepositoryProtocol {
     func sendGPSLocation(latitude: Double,
                          longitude: Double,
-                         for phoneNumber: String,
                          completion: @escaping SendLocationCompletion)
 //    func sendNearbyDevices(_ devices: [BLEDevice],
 //                           latitude: Double,
@@ -26,7 +25,6 @@ protocol LocationRepositoryProtocol {
 class LocationRepository: LocationRepositoryProtocol {
     func sendGPSLocation(latitude: Double,
                          longitude: Double,
-                         for phoneNumber: String,
                          completion: @escaping SendLocationCompletion) {
         let location = UserLocation(latitude: latitude, longitude: longitude)
         let timestamp = "\(Int64(Date().timeIntervalSince1970 * 1000))"
@@ -35,10 +33,9 @@ class LocationRepository: LocationRepositoryProtocol {
         let bluetoothId = "0"
         // ??? Pass BT id
         GpsApiRequest(location: location,
-                      phoneNumber: phoneNumber,
                       timestamp: timestamp,
                       bluetoothId: bluetoothId)
-            .execute { (_, response, error) in
+            .executeWithHandling { (_, response, error) in
                 guard let statusCode = response?.statusCode, error == nil else {
                     completion(.failure(.general))
                     return

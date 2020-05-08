@@ -69,8 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
 
         // Network Auth
-        // TODO: set refresh token from store
         APIManager.shared.authToken = TokenStore.shared.token
+        APIManager.shared.refreshToken = TokenStore.shared.refreshToken
         // Network client id
         APIManager.shared.clientId = AppSecrets.apiSecret
 
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                object: nil)
 
         // Allow Pro fons
-//        FontAwesomeConfig.usesProFonts = true
+        FontAwesomeConfig.usesProFonts = true
 
         // Init App Window
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -261,30 +261,19 @@ extension AppDelegate: CLLocationManagerDelegate {
         let dateNow = Date()
         print(locations)
 
-        let updateInterval = RemoteConfig.remoteConfig().configValue(forKey: "ios_location_interval_in_mins").numberValue?.intValue
+        let updateInterval = RemoteConfigHelper.shared.locationIntervalMinutes
         let nextLocationUpdateTimestamp: Date =
             UserDefaults.standard.object(forKey: "nextLocationUpdateTimestamp") as? Date ?? dateNow
 
         if dateNow >= nextLocationUpdateTimestamp {
             guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
 
-            // TODO: Remove when it is no longer required
-            // !!! Phone is still required in the API, though it can be obtained from the JWT
-            // instead of storing the phone and passing it around, just decode it from JWT
-            let decoder = JWTDecoder()
-            // Not registered yet
-            if let token = TokenStore.shared.token {
-                let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
-                guard let phoneNumber = jwtBody["phoneNumber"] as? String else { return }
-
-                LocationRepository().sendGPSLocation(latitude: locValue.latitude,
-                                                     longitude: locValue.longitude,
-                                                     for: phoneNumber,
-                                                     completion: { result in
-                                                        print("\(result)")
-                                                        // Do something
-                })
-            }
+            LocationRepository().sendGPSLocation(latitude: locValue.latitude,
+                                                 longitude: locValue.longitude,
+                                                 completion: { result in
+                                                    print("\(result)")
+                                                    // Do something
+            })
 
             var components = DateComponents()
             components.setValue(updateInterval, for: .minute)

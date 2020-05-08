@@ -45,7 +45,7 @@ final class RegistrationConfirmationViewModel {
     }
 
     func mobileNumber() -> String {
-        // TODO: Format phone if needed
+        // NOTE: Format phone if needed
         return registrationRepository.authorisedMobileNumber ?? "(+359) XXX-XXX"
     }
 

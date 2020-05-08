@@ -80,9 +80,6 @@ class LanguagesViewController: UIViewController, Navigateble {
         confirmButton.backgroundColor = .healthBlue
         confirmButton.setTitle("confirm_label".localized(), for: .normal)
 
-        // TODO: Change back button if exists
-
-        // TODO: Refactor to move this side effect
         StaticContentPage.shared.url = "url_about_covid".localized()
         AppInfoPage.shared.url = "url_virusafe_why".localized()
 

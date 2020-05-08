@@ -14,6 +14,7 @@ public protocol AuthenticationProtocol {
 
 public protocol ApiManagerProtocol {
     var authToken: String? { get set }
+    var refreshToken: String? { get set }
     var baseURLs: BaseURLs { get }
 
     func sendRequest(request: APIRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void)
@@ -39,6 +40,8 @@ public final class APIManager: ApiManagerProtocol {
     /// The currently used authentication token. Used for convenience and public accessibility, must always point to the APIConfig instance.
     public final var authToken: String?
 
+    ///  Refresh token. Used for refreshing the authentication token
+    public final var refreshToken: String?
     /// The current selected environments' base URLs. This should always return the values from the APIConfig instance.
     /// The APIConfig base URLs must NOT be publicly mutable, they're only set in
     /// EnvironmentsAndBaseURLs and held by the APIConfig instance.
@@ -59,15 +62,11 @@ public final class APIManager: ApiManagerProtocol {
             guard let strongSelf = self else { return }
             // Check if the authorization for the request fails and try to authenticate and re-send
             // the request again
+
             if let response = urlResponse, response.statusCode == 401, (request.tokenRefreshCount ?? 0) > 0 {
-                strongSelf.authenticator?.getApiToken { (token) in
-                    strongSelf.authToken = token
-                    var updatedRequest = request
-                    updatedRequest.tokenRefreshCount = (updatedRequest.tokenRefreshCount ?? 0) - 1
-                    strongSelf.sendRequest(request: updatedRequest, completion: completion)
-                    print("DEBUG: UNAUTHORIZED, RETRY AUTHORIZATION.")
-                    return
-                }
+                var updatedRequest = request
+                completion(data, urlResponse, error)
+                updatedRequest.tokenRefreshCount = (updatedRequest.tokenRefreshCount ?? 0) - 1
                 // HANDLE Cache logic
             } else if request.shouldCache {
                 if !strongSelf.networker.isConnectedToInternet() {

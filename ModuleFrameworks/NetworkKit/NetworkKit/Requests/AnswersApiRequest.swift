@@ -8,11 +8,8 @@
 import Foundation
 
 public class AnswersApiRequest: BaseAPIRequest {
-    private var phoneNumber: String = ""
-
-    public convenience init(with questionnaire: Questionnaire, phoneNumber: String) {
+    public convenience init(with questionnaire: Questionnaire) {
         self.init(bodyJSONObject: questionnaire.asDictionary())
-        self.phoneNumber = phoneNumber
     }
 
     public override var httpMethod: HTTPMethod {
@@ -30,7 +27,6 @@ public class AnswersApiRequest: BaseAPIRequest {
     public override var headers: [String: String] {
         var defaultHeaders = super.headers
         defaultHeaders["Accept"] = "*/*"
-        defaultHeaders["PhoneNumber"] = phoneNumber
         return defaultHeaders
     }
 

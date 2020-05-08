@@ -101,8 +101,8 @@ final class RemoteConfigHelper {
         return int(forKey: .locationIntervalMinutes)
     }
 
-    var isStatisticsButtonVisible: Int {
-        return int(forKey: .statisticsButtonVisible)
+    var isStatisticsButtonVisible: Bool {
+        return bool(forKey: .statisticsButtonVisible)
     }
 
     // MARK: Helpers

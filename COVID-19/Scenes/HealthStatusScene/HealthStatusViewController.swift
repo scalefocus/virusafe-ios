@@ -48,8 +48,6 @@ class HealthStatusViewController: UIViewController, Navigateble {
         // get data
         viewModel.getHealthStatusData()
 
-        // TODO: Show it on button tap
-        // TODO: Add auth completion handler
         // ??? Message title to be in Bulgarian (in Info.plist)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didChangeLocationState),
@@ -128,12 +126,6 @@ class HealthStatusViewController: UIViewController, Navigateble {
     private func bindRequestQuestionsResult() {
         viewModel.requestError.bind { [weak self] error in
             switch error {
-            case .invalidToken:
-                // TODO: Refactor - duplicated code
-                let alert = UIAlertController.invalidTokenAlert { [weak self] in
-                    self?.navigationDelegate?.navigateTo(step: .register)
-                }
-                self?.present(alert, animated: true, completion: nil)
             case .tooManyRequests(let reapeatAfter):
                 let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
                 self?.present(alert, animated: true, completion: nil)

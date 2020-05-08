@@ -159,6 +159,15 @@
 		41A1BD572440DA9A00780C78 /* UCNData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD552440DA9A00780C78 /* UCNData.swift */; };
 		41A1BD582440DA9A00780C78 /* UCNData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD552440DA9A00780C78 /* UCNData.swift */; };
 		41A1BD592440DBA700780C78 /* PINForeignerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A1BD4E2440DA5200780C78 /* PINForeignerHelper.swift */; };
+		41CFAE1524657D56005FC637 /* Bundle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1224657D55005FC637 /* Bundle+Helpers.swift */; };
+		41CFAE1624657D56005FC637 /* Bundle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1224657D55005FC637 /* Bundle+Helpers.swift */; };
+		41CFAE1724657D56005FC637 /* Bundle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1224657D55005FC637 /* Bundle+Helpers.swift */; };
+		41CFAE1824657D56005FC637 /* NetworkKit+Handling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1324657D56005FC637 /* NetworkKit+Handling.swift */; };
+		41CFAE1924657D56005FC637 /* NetworkKit+Handling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1324657D56005FC637 /* NetworkKit+Handling.swift */; };
+		41CFAE1A24657D56005FC637 /* NetworkKit+Handling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1324657D56005FC637 /* NetworkKit+Handling.swift */; };
+		41CFAE1B24657D56005FC637 /* UIDevice+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1424657D56005FC637 /* UIDevice+Helpers.swift */; };
+		41CFAE1C24657D56005FC637 /* UIDevice+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1424657D56005FC637 /* UIDevice+Helpers.swift */; };
+		41CFAE1D24657D56005FC637 /* UIDevice+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CFAE1424657D56005FC637 /* UIDevice+Helpers.swift */; };
 		41D3E663242D09AD00AC96B1 /* ApiStatusCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */; };
 		41D3E66F242F527300AC96B1 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E66E242F527300AC96B1 /* StateMachine.swift */; };
 		41D3E671242F529A00AC96B1 /* AppFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3E670242F529A00AC96B1 /* AppFlowManager.swift */; };
@@ -328,6 +337,9 @@
 		41A1BD4E2440DA5200780C78 /* PINForeignerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINForeignerHelper.swift; sourceTree = "<group>"; };
 		41A1BD512440DA6F00780C78 /* IDCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardHelper.swift; sourceTree = "<group>"; };
 		41A1BD552440DA9A00780C78 /* UCNData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCNData.swift; sourceTree = "<group>"; };
+		41CFAE1224657D55005FC637 /* Bundle+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Helpers.swift"; sourceTree = "<group>"; };
+		41CFAE1324657D56005FC637 /* NetworkKit+Handling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkKit+Handling.swift"; sourceTree = "<group>"; };
+		41CFAE1424657D56005FC637 /* UIDevice+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Helpers.swift"; sourceTree = "<group>"; };
 		41D3E662242D09AD00AC96B1 /* ApiStatusCodeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiStatusCodeHandler.swift; sourceTree = "<group>"; };
 		41D3E66E242F527300AC96B1 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		41D3E670242F529A00AC96B1 /* AppFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowManager.swift; sourceTree = "<group>"; };
@@ -403,6 +415,9 @@
 		024D82D424239A6100696868 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				41CFAE1224657D55005FC637 /* Bundle+Helpers.swift */,
+				41CFAE1324657D56005FC637 /* NetworkKit+Handling.swift */,
+				41CFAE1424657D56005FC637 /* UIDevice+Helpers.swift */,
 				024D82D524239A7800696868 /* BaseViewConfigurator.swift */,
 				024D82DC24239F0D00696868 /* UIViewExtension.swift */,
 				024D82ED2423F70A00696868 /* Array+SafeAt.swift */,
@@ -1474,8 +1489,10 @@
 				4170C237242A05F8003EA70A /* CheckBox.swift in Sources */,
 				41D3E675242F7C7200AC96B1 /* TermsAndConditionsRepository.swift in Sources */,
 				41A1BD4F2440DA5200780C78 /* PINForeignerHelper.swift in Sources */,
+				41CFAE1B24657D56005FC637 /* UIDevice+Helpers.swift in Sources */,
 				024D82F72424E92200696868 /* LoadingIndicatorManager.swift in Sources */,
 				385BDD6D2432218D00476F69 /* LanguagesViewModel.swift in Sources */,
+				41CFAE1524657D56005FC637 /* Bundle+Helpers.swift in Sources */,
 				41A1BD302440642200780C78 /* PersonalInformation.swift in Sources */,
 				024D82D624239A7800696868 /* BaseViewConfigurator.swift in Sources */,
 				4170C2312428D019003EA70A /* TermsAndConditionsViewController.swift in Sources */,
@@ -1486,6 +1503,7 @@
 				4170C239242A14D3003EA70A /* Toast.swift in Sources */,
 				41FEF634243518F4006D30B2 /* UCNHelper.swift in Sources */,
 				41A1BD562440DA9A00780C78 /* UCNData.swift in Sources */,
+				41CFAE1824657D56005FC637 /* NetworkKit+Handling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1538,8 +1556,10 @@
 				4166B3B52438A68300CC8614 /* CheckBox.swift in Sources */,
 				4166B3B62438A68300CC8614 /* TermsAndConditionsRepository.swift in Sources */,
 				41A1BD502440DA5200780C78 /* PINForeignerHelper.swift in Sources */,
+				41CFAE1C24657D56005FC637 /* UIDevice+Helpers.swift in Sources */,
 				4166B3B82438A68300CC8614 /* LoadingIndicatorManager.swift in Sources */,
 				4166B3BF2438A68300CC8614 /* LanguagesViewModel.swift in Sources */,
+				41CFAE1624657D56005FC637 /* Bundle+Helpers.swift in Sources */,
 				41A1BD312440642200780C78 /* PersonalInformation.swift in Sources */,
 				4166B3C22438A68300CC8614 /* BaseViewConfigurator.swift in Sources */,
 				4166B3C32438A68300CC8614 /* TermsAndConditionsViewController.swift in Sources */,
@@ -1550,6 +1570,7 @@
 				4166B3C72438A68300CC8614 /* Toast.swift in Sources */,
 				4166B3CA2438A68300CC8614 /* UCNHelper.swift in Sources */,
 				41A1BD572440DA9A00780C78 /* UCNData.swift in Sources */,
+				41CFAE1924657D56005FC637 /* NetworkKit+Handling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1602,8 +1623,10 @@
 				5C3C5563243EF509008B6B14 /* ConfirmationViewController.swift in Sources */,
 				41A1BD542440DA6F00780C78 /* IDCardHelper.swift in Sources */,
 				5C3C5564243EF509008B6B14 /* CheckBox.swift in Sources */,
+				41CFAE1D24657D56005FC637 /* UIDevice+Helpers.swift in Sources */,
 				5C3C5565243EF509008B6B14 /* TermsAndConditionsRepository.swift in Sources */,
 				5C3C5566243EF509008B6B14 /* LoadingIndicatorManager.swift in Sources */,
+				41CFAE1724657D56005FC637 /* Bundle+Helpers.swift in Sources */,
 				5C3C5567243EF509008B6B14 /* LanguagesViewModel.swift in Sources */,
 				41A1BD322440642200780C78 /* PersonalInformation.swift in Sources */,
 				5C3C5568243EF509008B6B14 /* BaseViewConfigurator.swift in Sources */,
@@ -1614,6 +1637,7 @@
 				5C3C556D243EF509008B6B14 /* Toast.swift in Sources */,
 				5C3C556E243EF509008B6B14 /* UCNHelper.swift in Sources */,
 				41A1BD592440DBA700780C78 /* PINForeignerHelper.swift in Sources */,
+				41CFAE1A24657D56005FC637 /* NetworkKit+Handling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1777,7 +1801,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20.4.101200;
+				CURRENT_PROJECT_VERSION = 20.4.221030;
 				DEVELOPMENT_TEAM = UWBDU93DZY;
 				INFOPLIST_FILE = "COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1785,7 +1809,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeDev;
@@ -1805,7 +1829,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.101200;
+				CURRENT_PROJECT_VERSION = 20.4.221030;
 				DEVELOPMENT_TEAM = UWBDU93DZY;
 				INFOPLIST_FILE = "COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1813,7 +1837,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D UPNETIX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.upnetix.virusafe;
 				PRODUCT_NAME = ViruSafeDev;
@@ -1834,7 +1858,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.101200;
+				CURRENT_PROJECT_VERSION = 20.4.271200;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1842,7 +1866,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D GOVERNMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = ViruSafe;
@@ -1862,7 +1886,7 @@
 				CODE_SIGN_ENTITLEMENTS = "COVID-19/COVID-19.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20.4.101200;
+				CURRENT_PROJECT_VERSION = 20.4.271200;
 				DEVELOPMENT_TEAM = HRLWLL69NT;
 				INFOPLIST_FILE = "$(SRCROOT)/COVID-19/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1870,7 +1894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D GOVERNMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.government.virusafe;
 				PRODUCT_NAME = ViruSafe;
