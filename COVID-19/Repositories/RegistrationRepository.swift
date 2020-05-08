@@ -22,6 +22,8 @@ protocol RegistrationRepositoryProtocol {
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func authoriseVerificationCode(verificationCode: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void))
     func registerPushToken(_ pushToken: String, completion: @escaping ((ApiResult<Void>) -> Void))
+    func refreshAuthToken(refreshToken: String, completion: @escaping (Bool) -> Void)
+    func clearAllTokens()
 }
 
 class RegistrationRepository: RegistrationRepositoryProtocol {
@@ -29,7 +31,7 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
     private (set) var authorisedMobileNumber: String?
 
     func authoriseMobileNumber(mobileNumber: String, completion: @escaping ((AuthoriseMobileNumberResult) -> Void)) {
-        PinApiRequest(phoneNumber: mobileNumber).execute { [weak self] (data, response, error) in
+        PinApiRequest(phoneNumber: mobileNumber).executeWithHandling { [weak self] (data, response, error) in
             // Request argument validation has failed
             if response?.statusCode == 412 {
                 // No other argument so no special handling
@@ -68,7 +70,7 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
             return
         }
 
-        TokenApiRequest(phoneNumber: mobileNumber, pin: verificationCode).executeParsed(of: ApiToken.self) { (parsedData, response, error) in
+        TokenApiRequest(phoneNumber: mobileNumber, pin: verificationCode).executeParsedWithHandling(of: ApiToken.self) { (parsedData, response, error) in
             // Request argument validation has failed
             // TODO: Parse result
             if response?.statusCode == 412 {
@@ -101,19 +103,19 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
                 return
             }
 
-            // Store retunerd toke (jwt)
+            // Store retunerd tokens (jwt)
             TokenStore.shared.token = parsedData.accessToken
-            // TODO: Save refresh token in Store
+            TokenStore.shared.refreshToken = parsedData.refreshToken
             // Update manager to auth requests
             APIManager.shared.authToken = parsedData.accessToken
-            // TODO: Save refresh token
+            APIManager.shared.refreshToken = parsedData.refreshToken
 
             completion(.success)
         }
     }
 
     func registerPushToken(_ pushToken: String, completion: @escaping ((ApiResult<Void>) -> Void)) {
-        SendPushTokenRequest(pushToken: pushToken).execute { (_, _, error) in
+        SendPushTokenRequest(pushToken: pushToken).executeWithHandling { (_, _, error) in
             guard error == nil else {
                 completion(.failure(.general))
                 return
@@ -122,7 +124,31 @@ class RegistrationRepository: RegistrationRepositoryProtocol {
         }
     }
 
-    // TODO: Get new token with refresh
+    func refreshAuthToken(refreshToken: String, completion: @escaping (Bool) -> Void) {
+        RefreshTokenRequest(refreshToken: refreshToken).executeParsedWithHandling(of: ApiToken.self) { (parsedData, response, error) in
+            guard response?.statusCode.isSuccess == true,
+                let parsedData = parsedData,
+                error == nil else {
+                    completion(false)
+                    return
+            }
+
+            // Store retunerd tokens (jwt)
+            TokenStore.shared.token = parsedData.accessToken
+            TokenStore.shared.refreshToken = parsedData.refreshToken
+            // Update manager to auth requests
+            APIManager.shared.authToken = parsedData.accessToken
+            APIManager.shared.refreshToken = parsedData.refreshToken
+            completion(true)
+        }
+    }
+
+    func clearAllTokens() {
+        APIManager.shared.authToken = nil
+        APIManager.shared.refreshToken = nil
+        TokenStore.shared.token = nil
+        TokenStore.shared.refreshToken = nil
+    }
 
 }
 

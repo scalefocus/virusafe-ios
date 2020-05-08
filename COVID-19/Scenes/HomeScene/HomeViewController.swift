@@ -41,7 +41,7 @@ class HomeViewController: UIViewController, Navigateble {
                                                name: NSNotification.Name("FCMToken"),
                                                object: nil)
 
-        let statisticsButtonVisible =  RemoteConfig.remoteConfig().configValue(forKey: "is_statistics_btn_visible").boolValue
+        let statisticsButtonVisible = RemoteConfigHelper.shared.isStatisticsButtonVisible
         statisticsButton.isHidden = !statisticsButtonVisible
 
         sendPushToken()

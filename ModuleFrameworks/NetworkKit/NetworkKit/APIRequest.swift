@@ -60,6 +60,8 @@ public protocol APIRequest {
     var timeout: TimeInterval {get}
     var tokenRefreshCount: Int? {get set}
 
+    var userAgent: String? {get set}
+
     var customCachingIdentifier: String? {get}
     var customCachingIdentifierParams: [String: String]? {get set}
 
@@ -80,6 +82,9 @@ extension APIRequest {
         // swiftlint:disable:next force_unwrapping
         var urlRequest = URLRequest(url: endpoint!)
         urlRequest.allHTTPHeaderFields = headers
+        if let userAgent = self.userAgent {
+            urlRequest.setValue(userAgent, forHTTPHeaderField: "User-Agent")
+        }
         urlRequest.httpMethod = httpMethod.rawValue
 
         // Set the http body, if a bodyJsonObject has been provided.

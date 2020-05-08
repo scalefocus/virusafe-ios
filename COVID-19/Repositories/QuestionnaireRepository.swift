@@ -15,7 +15,6 @@ typealias SendAnswersCompletion = ((ApiResult<Void>) -> Void)
 protocol QuestionnaireRepositoryProtocol {
     func requestQuestions(with locale: String, and completion: @escaping RequestQuestionCompletion)
     func sendAnswers(_ answers: [HealthStatusQuestion],
-                     for phoneNumber: String,
                      at latitude: Double,
                      longitude: Double,
                      with completion: @escaping SendAnswersCompletion)
@@ -29,7 +28,7 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
     // P.S -> In many cases you should use the extension executeParsedWithHandling() and executeWithHandling()
     // which adds error handling/showing alerts/etc
     func requestQuestions(with locale: String, and completion: @escaping RequestQuestionCompletion) {
-        QuestionsApiRequest(language: locale).executeParsed(of: [Question].self) { (questions, response, error) in
+        QuestionsApiRequest(language: locale).executeParsedWithHandling(of: [Question].self) { (questions, response, error) in
             guard let statusCode = response?.statusCode, error == nil else {
                 completion(.failure(.general))
                 return
@@ -43,19 +42,13 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
                     questions?.map { HealthStatusQuestion(questionId: $0.identifier, questionTitle: $0.title, isActive: nil) }
                 )
                 completion(.success(healthStatus))
-            case .failure(let reason):
-                switch reason {
-                case .invalidToken:
-                    completion(.failure(.invalidToken))
-                default:
-                    completion(.failure(.server))
-                }
+            case .failure:
+                completion(.failure(.server))
             }
         }
     }
 
     func sendAnswers(_ answers: [HealthStatusQuestion],
-                     for phoneNumber: String,
                      at latitude: Double,
                      longitude: Double,
                      with completion: @escaping SendAnswersCompletion) {
@@ -67,7 +60,7 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
         let location = UserLocation(latitude: latitude, longitude: longitude)
         let questionnaire = Questionnaire(answers: results, location: location, timestamp: timestamp)
 
-        AnswersApiRequest(with: questionnaire, phoneNumber: phoneNumber).execute { (data, response, error) in
+        AnswersApiRequest(with: questionnaire).executeWithHandling { (data, response, error) in
             guard let statusCode = response?.statusCode, error == nil else {
                 completion(.failure(.general))
                 return
@@ -80,8 +73,6 @@ class QuestionnaireRepository: QuestionnaireRepositoryProtocol {
                 completion(.success(Void()))
             case .failure(let reason):
                 switch reason {
-                case .invalidToken:
-                    completion(.failure(.invalidToken))
                 case .tooManyRequests:
                     let reapeatAfter = TooManyRequestestHandler().handle(data: data)
                     completion(.failure(.tooManyRequests(reapeatAfter: reapeatAfter)))

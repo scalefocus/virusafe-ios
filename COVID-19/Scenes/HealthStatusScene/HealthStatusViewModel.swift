@@ -153,21 +153,12 @@ class HealthStatusViewModel {
         // !!! Not expected to be nil
         let answeredQuestions: [HealthStatusQuestion] = healthStatusData?.questions ?? []
 
-        // TODO: Remove when it is no longer required
-        // !!! Phone is still required in the API, though it can be obtained from the JWT
-        // instead of storing the phone and passing it around, just decode it from JWT
-        let decoder = JWTDecoder()
-        guard let token = TokenStore.shared.token else {  return }
-        let jwtBody: [String: Any] = decoder.decode(jwtToken: token)
-        guard let phoneNumber = jwtBody["phoneNumber"] as? String else { return }
-
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let location = appDelegate?.currentLocation()
 
         // Make BE happy if location could not be obtained
         let request = AnswersRequest(
             answers: answeredQuestions,
-            phoneNumber: phoneNumber,
             latitude: location?.latitude ?? 0,
             longitude: location?.longitude ?? 0)
 

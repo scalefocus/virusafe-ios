@@ -39,7 +39,7 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
                                                         gender: gender,
                                                         preExistingConditions: preexistingConditions)
 
-        request.execute { (data, response, error) in
+        request.executeWithHandling { (data, response, error) in
             guard let statusCode = response?.statusCode, error == nil else {
                 completion(.failure(.general))
                 return
@@ -54,8 +54,6 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
                 switch reason {
                 case .invalidEgnOrIdNumber:
                     completion(.failure(.invalidEgnOrIdNumber))
-                case .invalidToken:
-                    completion(.failure(.invalidToken))
                 case .tooManyRequests:
                     let reapeatAfter = TooManyRequestestHandler().handle(data: data)
                     completion(.failure(.tooManyRequests(reapeatAfter: reapeatAfter)))
@@ -68,7 +66,7 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
     }
 
     func requestPersonalInfo(completion: @escaping RequestPersonalInformationCompletion) {
-        GetPersonalInfoRequest().executeParsed(of: PersonalInformation.self) { (personalInformation, response, error) in
+        GetPersonalInfoRequest().executeParsedWithHandling(of: PersonalInformation.self) { (personalInformation, response, error) in
             guard let statusCode = response?.statusCode, error == nil else {
                 completion(.failure(.general))
                 return
@@ -79,13 +77,8 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
             switch statusCodeResult {
             case .success:
                 completion(.success(personalInformation))
-            case .failure(let reason):
-                switch reason {
-                case .invalidToken:
-                    completion(.failure(.invalidToken))
-                default:
-                    completion(.failure(.server))
-                }
+            case .failure:
+                completion(.failure(.server))
             }
         }
     }

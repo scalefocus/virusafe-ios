@@ -39,6 +39,8 @@ public class BaseAPIRequest: APIRequest {
         return dict
     }
 
+    public var userAgent: String?
+
     public var shouldHandleCookies: Bool? {
         return nil
     }

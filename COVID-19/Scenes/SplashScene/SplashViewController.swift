@@ -113,8 +113,13 @@ private extension SplashViewController {
             urlOpenedClosure: self.handleForceUpdate // !!! safe we don't have reference to RemoteConfig.remoteConfig()
         )
 
+        // NOTE: Info Web Pages URLs are in localizations
+
         // set remote config url as base for the communication
         APIManager.shared.baseURLs = BaseURLs(base: RemoteConfigHelper.shared.endpointURL)
+
+        // Update statistics Page URL
+        StatisticsPage.shared.url = RemoteConfigHelper.shared.statisticsPageURL
     }
 
 }
@@ -143,20 +148,3 @@ private extension SplashViewController {
 // MARK: ToastViewPresentable
 
 extension SplashViewController: ToastViewPresentable { }
-
-// MARK: Helper
-
-extension Bundle {
-    var releaseVersionNumber: String {
-        guard let versionNumber = infoDictionary?["CFBundleShortVersionString"] as? String else {
-            fatalError("Can't find CFBundleShortVersionString")
-        }
-        return versionNumber
-    }
-    var buildVersionNumber: String {
-        guard let versionNumber = infoDictionary?["CFBundleVersion"] as? String else {
-            fatalError("Can't find CFBundleShortVersionString")
-        }
-        return versionNumber
-    }
-}

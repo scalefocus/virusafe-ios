@@ -148,6 +148,15 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             break
         }
     }
+
+    /// Use this function only when we receive status code 403
+    func redirectToRegistration() {
+        let topVC = navigationController.topViewController
+        let alert = UIAlertController.invalidTokenAlert {
+            self.navigateTo(step: .register)
+        }
+        topVC?.present(alert, animated: true, completion: nil)
+    }
 }
 
 // MARK: NavigationDelegate
@@ -397,7 +406,6 @@ struct DelayedAnswersRequestStore {
 
 struct AnswersRequest {
     var answers: [HealthStatusQuestion]
-    var phoneNumber: String
     var latitude: Double
     var longitude: Double
 }
@@ -420,7 +428,6 @@ extension AppFlowManager: HealthStatusViewModelDelegate {
                                  with completion: @escaping SendAnswersCompletion) {
         questionnaireRepository
             .sendAnswers(request.answers,
-                         for: request.phoneNumber,
                          at: request.latitude,
                          longitude: request.longitude,
                          with: completion)

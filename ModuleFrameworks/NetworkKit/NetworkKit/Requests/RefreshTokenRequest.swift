@@ -1,18 +1,13 @@
 //
-//  TokenApiRequest.swift
+//  RefreshTokenRequest.swift
 //  NetworkKit
 //
-//  Created by Aleksandar Sergeev Petrov on 25.03.20.
+//  Created by Nadezhda on 16.04.20.
 //
 
-import Foundation
-
-public class TokenApiRequest: BaseAPIRequest {
-    public convenience init(phoneNumber: String, pin: String) {
-        let jsonDict: [String: Any] = [
-            "phoneNumber": phoneNumber,
-            "pin": pin
-        ]
+public class RefreshTokenRequest: BaseAPIRequest {
+    public convenience init(refreshToken: String) {
+        let jsonDict: [String: Any] = ["refreshToken": refreshToken]
         self.init(bodyJSONObject: jsonDict, tokenRefreshCount: 0)
     }
 
@@ -21,7 +16,7 @@ public class TokenApiRequest: BaseAPIRequest {
     }
 
     public override var path: String {
-        return "/token"
+        return "/token/refresh"
     }
 
     public override var baseUrl: BaseURL {
@@ -37,14 +32,4 @@ public class TokenApiRequest: BaseAPIRequest {
     public override var authorizationRequirement: AuthorizationRequirement {
         return .none
     }
-}
-
-public struct ApiToken: Codable {
-    public let accessToken: String
-    public let refreshToken: String
-}
-
-public struct ApiError: Codable {
-    public let timestamp: String
-    public let message: String
 }

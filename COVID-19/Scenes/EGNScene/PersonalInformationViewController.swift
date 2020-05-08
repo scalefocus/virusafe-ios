@@ -210,12 +210,6 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                 self?.identificationNumberTextField.becomeFirstResponder()
             }
             present(alert, animated: true, completion: nil)
-        case .invalidToken:
-            // TODO: Here and in Health Status Screen add logic for refresh token
-            let alert = UIAlertController.invalidTokenAlert { [weak self] in
-                self?.navigationDelegate?.navigateTo(step: .register)
-            }
-            present(alert, animated: true, completion: nil)
         case .tooManyRequests(let reapeatAfter):
             let alert = UIAlertController.rateLimitExceededAlert(repeatAfterSeconds: reapeatAfter)
             present(alert, animated: true, completion: nil)

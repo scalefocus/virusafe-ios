@@ -51,6 +51,19 @@ final class TokenStore {
         }
     }
 
-    // TODO: Store refresh token
+    // MARK: RefreshToken
+
+    var refreshToken: String? {
+        get {
+            return keychain.get("refreshToken")
+        }
+        set {
+            if let token = newValue {
+                keychain.set(token, forKey: "refreshToken", withAccess: .accessibleAfterFirstUnlock)
+            } else {
+                keychain.delete("refreshToken")
+            }
+        }
+    }
 
 }
