@@ -11,6 +11,7 @@ import NetworkKit
 
 typealias RequestPersonalInformationCompletion = ((ApiResult<PersonalInformation>) -> Void)
 typealias SendPersonalInfoCompletion = ((ApiResult<Void>) -> Void)
+typealias DeletePersonalInfoCompletion = ((ApiResult<Void>) -> Void)
 
 protocol PersonalInformationRepositoryProtocol {
     func requestPersonalInfo(completion: @escaping RequestPersonalInformationCompletion)
@@ -21,6 +22,7 @@ protocol PersonalInformationRepositoryProtocol {
                           gender: String?,
                           preexistingConditions: String?,
                           completion: @escaping SendPersonalInfoCompletion)
+    func deletePersonalInfo(completion: @escaping DeletePersonalInfoCompletion)
 }
 
 final class PersonalInformationRepository: PersonalInformationRepositoryProtocol {
@@ -77,6 +79,24 @@ final class PersonalInformationRepository: PersonalInformationRepositoryProtocol
             switch statusCodeResult {
             case .success:
                 completion(.success(personalInformation))
+            case .failure:
+                completion(.failure(.server))
+            }
+        }
+    }
+
+    func deletePersonalInfo(completion: @escaping DeletePersonalInfoCompletion) {
+        DeletePersonalInformationRequest().executeWithHandling { (_, response, error) in
+            guard let statusCode = response?.statusCode, error == nil else {
+                completion(.failure(.general))
+                return
+            }
+
+            let statusCodeResult = ApiStatusCodeHandler.handle(statusCode: statusCode)
+
+            switch statusCodeResult {
+            case .success:
+                completion(.success(Void()))
             case .failure:
                 completion(.failure(.server))
             }

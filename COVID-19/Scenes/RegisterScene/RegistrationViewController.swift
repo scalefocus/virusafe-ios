@@ -103,26 +103,8 @@ class RegistrationViewController: UIViewController, Navigateble {
     }
 
     private func setupButton(_ button: UIButton, text: String, link: String, for state: UIControl.State) {
-        let font = UIFont.systemFont(ofSize: 12)
-        let textColor = UIColor.darkText
-        let linkColor = (UIColor.healthBlue ?? UIColor.blue).withAlphaComponent(0.79)
-        let attributesText: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: textColor
-        ]
-        let attributesLink: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: linkColor
-        ]
-        let attributedTitle = NSMutableAttributedString()
-        attributedTitle.append(
-            NSAttributedString(string: "\(text) ", attributes: attributesText)
-        )
-        attributedTitle.append(
-            NSAttributedString(string: "\(link)", attributes: attributesLink)
-        )
-        button.setAttributedTitle(attributedTitle, for: .normal)
-
+        let title = "\(text) \(link)"
+        button.setTitle(title, link, for: state)
         button.titleLabel?.numberOfLines = 0
         button.titleLabel?.lineBreakMode = .byWordWrapping
     }
@@ -160,6 +142,7 @@ class RegistrationViewController: UIViewController, Navigateble {
     // MARK: Actions
 
     @IBAction private func didTapRegisterButton(_ sender: Any) {
+        // TODO: Move validation to model
         guard let phoneNumber = phoneNumberTextField.text, phoneNumber.count >= 5 else {
             errorLabel.isHidden = false
             errorLabel.text = "field_length_error_msg".localized()
@@ -229,3 +212,43 @@ extension RegistrationViewController: UITextFieldDelegate {
 // MARK: ToastViewPresentable
 
 extension RegistrationViewController: ToastViewPresentable {}
+
+// MARK: Style Helepers
+
+extension UIColor {
+    open class var hyperlinkColor: UIColor {
+        // NOTE: link color is available from iOS 13
+        let color: UIColor = .healthBlue ?? .blue
+        return color.withAlphaComponent(0.79)
+    }
+}
+
+extension UIButton {
+    func setTitle(_ title: String?, _ hyperlink: String?, for state: UIControl.State) {
+        guard let hyperlink = hyperlink else {
+            setTitle(title, for: state)
+            return
+        }
+
+        guard let title = title else {
+            setTitle(hyperlink, for: state)
+            setTitleColor(UIColor.hyperlinkColor, for: state)
+            return
+        }
+
+        let font = titleLabel?.font ?? .systemFont(ofSize: 12)
+        let textColor = titleColor(for: state) ?? .darkText
+        let attributesTitle: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: textColor
+        ]
+        let attributesLink: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: UIColor.hyperlinkColor
+        ]
+        let attributedTitle = NSMutableAttributedString(string: title, attributes: attributesTitle)
+        attributedTitle.addAttributes(attributesLink,
+                                      range: (title as NSString).range(of: hyperlink))
+        setAttributedTitle(attributedTitle, for: .normal)
+    }
+}

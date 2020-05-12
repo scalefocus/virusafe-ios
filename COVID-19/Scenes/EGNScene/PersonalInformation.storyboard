@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,10 +20,10 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dic-2e-gGU">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="664"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="0fq-ju-bQB">
-                                                <rect key="frame" x="24" y="24" width="327" height="534"/>
+                                                <rect key="frame" x="24" y="24" width="327" height="616"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-k6-aD7">
                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="90"/>
@@ -208,8 +208,37 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yn9-e5-iFV">
+                                                        <rect key="frame" x="0.0" y="490" width="327" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fU-Gq-R9K" customClass="CheckBox" customModule="ViruSafe" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="15" width="20" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="5R7-Cn-hDe"/>
+                                                                    <constraint firstAttribute="width" secondItem="6fU-Gq-R9K" secondAttribute="height" multiplier="1:1" id="ObF-kf-n4y"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <action selector="didTapPrivacyPolicyCheckbox:" destination="BBf-ct-6Or" eventType="touchUpInside" id="AqB-F0-9qV"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJ6-e0-e6I">
+                                                                <rect key="frame" x="28" y="11.5" width="136" height="27"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="условията за ползване">
+                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="didTapPrivacyPolicyInfoButton:" destination="BBf-ct-6Or" eventType="touchUpInside" id="M2F-7u-4kM"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="gQE-Oj-hUz">
+                                                                <rect key="frame" x="172" y="0.0" width="155" height="50"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zw-6Y-eaH">
-                                                        <rect key="frame" x="0.0" y="490" width="327" height="44"/>
+                                                        <rect key="frame" x="0.0" y="572" width="327" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Sa5-xq-vyC"/>
                                                         </constraints>
@@ -272,6 +301,9 @@
                         <outlet property="identificationNumberTextField" destination="Y30-vm-DKk" id="ncC-en-dhO"/>
                         <outlet property="identificationNumberTypeSegmentControl" destination="BB6-g8-lAz" id="fvS-7n-7Yi"/>
                         <outlet property="preexistingConditionsTextField" destination="HuG-fG-Fcg" id="Twc-V9-FwQ"/>
+                        <outlet property="privacyPolicyCheckbox" destination="6fU-Gq-R9K" id="eJl-R7-BFK"/>
+                        <outlet property="privacyPolicyInfoButton" destination="LJ6-e0-e6I" id="wZO-an-9fl"/>
+                        <outlet property="privacyPolicyStackView" destination="yn9-e5-iFV" id="a6L-ig-OPr"/>
                         <outlet property="screenTitleLabel" destination="irB-7C-9gS" id="5lq-tI-2AL"/>
                         <outlet property="submitButton" destination="5Zw-6Y-eaH" id="DR9-sE-BR2"/>
                         <outletCollection property="genderButtons" destination="K1S-BH-BuZ" collectionClass="NSMutableArray" id="Eog-27-c92"/>
