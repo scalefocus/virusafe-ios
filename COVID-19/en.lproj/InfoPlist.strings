@@ -9,3 +9,5 @@ NSLocationAlwaysAndWhenInUseUsageDescription = "The application needs to use you
 NSLocationAlwaysUsageDescription = "The application needs to use your location to help healthcare institutions plan better, and to get geo-based information on COVID-19.";
 NSLocationUsageDescription = "The application needs to use your location to help healthcare institutions plan better, and to get geo-based information on COVID-19.";
 NSLocationWhenInUseUsageDescription = "The application needs to use your location to help healthcare institutions plan better, and to get geo-based information on COVID-19.";
+NSBluetoothAlwaysUsageDescription = "The application needs to use your location to help healthcare institutions plan better, and to get geo-based information on COVID-19.";
+NSBluetoothPeripheralUsageDescription = "The application needs to use your location to help healthcare institutions plan better, and to get geo-based information on COVID-19.";

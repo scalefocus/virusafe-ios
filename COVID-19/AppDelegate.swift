@@ -77,6 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Autostart if possible
         tryStartListenForLocationChanges()
 
+        // Bluetooth
+        // NOTE: Maybe we need to call it after some action in the app
+        BluetoothManager.shared.bluetoothEnabledAllTime()
+
         // register for notifications
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(onDidReceivePushNotification(_:)),
@@ -100,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let window = window else { return }
         flowManager = AppFlowManager(window: window)
         Flex.shared.willEnterForeground()
+        BluetoothManager.shared.bluetoothEnabledAllTime()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -109,6 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // !!! This is not called on ios 13+, so handle it in scene delegate too
         Flex.shared.didEnterBackground()
+        BluetoothManager.shared.bluetoothEnabledPartTime()
     }
 
     // MARK: UISceneSession Lifecycle

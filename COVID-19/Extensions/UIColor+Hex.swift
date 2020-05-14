@@ -27,7 +27,7 @@ extension UIColor {
             }
 
             if hexColor.count == 8 {
-                let scanner = Scanner(string: String(hexColor))
+                let scanner = Foundation.Scanner(string: String(hexColor))
                 var hexNumber: UInt64 = 0
 
                 if scanner.scanHexInt64(&hexNumber) {

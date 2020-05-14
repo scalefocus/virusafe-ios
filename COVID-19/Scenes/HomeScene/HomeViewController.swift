@@ -108,6 +108,14 @@ class HomeViewController: UIViewController, Navigateble {
         navigationDelegate?.navigateTo(step: .web(source: .content))
     }
 
+    @IBAction func didTapHiddenButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "BLEViewController", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "\(BLEViewController.self)") as? BLEViewController else {
+            return
+        }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
     // MARK: Setup UI
 
     private func localize() {

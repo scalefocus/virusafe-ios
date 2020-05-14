@@ -48,10 +48,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appDelegate?.flowManager = AppFlowManager(window: window)
 
         Flex.shared.willEnterForeground()
+        BluetoothManager.shared.bluetoothEnabledAllTime()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         Flex.shared.didEnterBackground()
+        BluetoothManager.shared.bluetoothEnabledPartTime()
     }
 
 }
