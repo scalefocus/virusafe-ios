@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class TermsAndConditionsRepository {
+final class TermsAndConditionsRepository: NSObject {
 
     private var userDefaults = UserDefaults.standard
 
-    var isAgree: Bool {
+    @objc dynamic var isAgree: Bool {
         get {
             return userDefaults.bool(forKey: "user_accepted_app_terms")
         }
@@ -21,7 +21,7 @@ final class TermsAndConditionsRepository {
         }
     }
 
-    var isAgreeDataProtection: Bool {
+    @objc dynamic var isAgreeDataProtection: Bool {
         get {
             return userDefaults.bool(forKey: "user_accepted_data_protection")
         }

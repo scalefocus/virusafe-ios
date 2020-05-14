@@ -103,16 +103,26 @@ enum PersonalInformationValidationError: Error {
     case underMinimumAge
     case overMaximumAge
     case unknownGender
+    case privacyPolicyDeclined
 }
 
+indirect enum PersonalInformationAgreementStatus {
+    case accepted
+    case pending(newStatus: PersonalInformationAgreementStatus)
+    case update
+    case declined
+}
+
+//swiftlint:disable type_body_length
 final class PersonalInformationViewModel {
 
     // MARK: Injected dependencies
 
     private let firstLaunchCheckRepository: AppLaunchRepository
     private let personalInformationRepository: PersonalInformationRepository
+    private let termsAndConditionsRepository: TermsAndConditionsRepository
 
-    // MARK: Helpers
+    // MARK: UCN Helpers
 
     private lazy var ucnHelper: UCNHelper = {
         #if MACEDONIA
@@ -122,15 +132,15 @@ final class PersonalInformationViewModel {
         #endif
     }()
 
-    // UI
+    // MARK: Flow Helpers
 
     var isInitialFlow: Bool {
         return !firstLaunchCheckRepository.isAppLaunchedBefore
     }
 
-    // Navigation
+    // MARK: Navigation Helpers
 
-    private (set) var shouldNavigateNextToHealthStatus: Bool
+    private (set) var nextNavigationStep: NavigationStep
 
     // MARK: Binding
 
@@ -148,7 +158,13 @@ final class PersonalInformationViewModel {
     var identificationNumber = Observable<String>()
     var identificationNumberType = Observable<IdentificationNumberType>(.citizenUCN)
 
-    // Validation
+    // Privacy Policy
+
+    var agreementStatus = Observable<PersonalInformationAgreementStatus>(.declined)
+    var cachedAgreementStatus: PersonalInformationAgreementStatus
+    private var kvoToken: NSKeyValueObservation?
+
+    // Input Validation
 
     var validationErrors = Observable<[PersonalInformationValidationError]>()
     var isInputValid = Observable<Bool>(false)
@@ -161,14 +177,34 @@ final class PersonalInformationViewModel {
 
     // MARK: Object Lifecycle
 
-    init(firstLaunchCheckRepository: AppLaunchRepository, // Used to change title
+    init(firstLaunchCheckRepository: AppLaunchRepository,
         personalInformationRepository: PersonalInformationRepository,
-        shouldNavigateNextToHealthStatus: Bool) {
+        termsAndConditionsRepository: TermsAndConditionsRepository,
+        nextNavigationStep: NavigationStep) {
         // dependencies
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
         self.personalInformationRepository = personalInformationRepository
+        self.termsAndConditionsRepository = termsAndConditionsRepository
         // passed data
-        self.shouldNavigateNextToHealthStatus = shouldNavigateNextToHealthStatus
+        self.nextNavigationStep = nextNavigationStep
+        // Agreements
+        cachedAgreementStatus = termsAndConditionsRepository.isAgreeDataProtection ? .accepted : .declined
+        agreementStatus.value = cachedAgreementStatus
+        observe(termsAndConditionsRepository: termsAndConditionsRepository)
+    }
+
+    deinit {
+        kvoToken?.invalidate()
+    }
+
+    // MARK: KVO
+
+    private func observe(termsAndConditionsRepository: TermsAndConditionsRepository) {
+        // we should know if user accepts PP from TnC Screen
+        kvoToken = termsAndConditionsRepository.observe(\.isAgreeDataProtection, options: .new) { [weak self] (_, change) in
+            guard let isAgree = change.newValue else { return }
+            self?.agreementStatus.value = isAgree ? .accepted : .declined
+        }
     }
 
     // МАРК: Public Methods
@@ -208,35 +244,27 @@ final class PersonalInformationViewModel {
         }
     }
 
-    func sendPersonalInformation() {
-        // show activity indicator
-        isLoading.value = true
-        var ageOrNil: Int?
-        if let value = age.value, !value.isEmpty {
-            if let age = Int(value), age > 0 {
-                ageOrNil = age
-            }
+    func submitPersonalInformation() {
+        // check is agree with PP
+        var errors: [PersonalInformationValidationError] = []
+        validateAndCatchError(from: validateIsAgreeWithPrivacyPolicy, errors: &errors)
+        guard errors.count == 0 else {
+            validationErrors.value = errors
+            return
         }
-        // send request
-        personalInformationRepository.sendPersonalInfo(identificationNumber: identificationNumber.value,
-                                                       identificationType: identificationNumberType.value?.identificationType,
-                                                       age: ageOrNil,
-                                                       gender: gender.value?.genderType,
-                                                       preexistingConditions: preexistingConditions.value ?? "") { [weak self] result in
-                                                        // if we're gone do nothing
-                                                        guard let strongSelf = self else { return }
-                                                        // hide activity indicator
-                                                        strongSelf.isLoading.value = false
-                                                        // handle result
-                                                        switch result {
-                                                        case .success:
-                                                            // Notify we're ready
-                                                            strongSelf.isSubmitCompleted.value = true
-                                                            // !!! If first launch of the app, mark registration as completed
-                                                            strongSelf.firstLaunchCheckRepository.isAppLaunchedBefore = true
-                                                        case .failure(let reason):
-                                                            strongSelf.requestError.value = reason
-                                                        }
+
+        // TODO: Ask if update
+        switch cachedAgreementStatus {
+        case .declined:
+            // new entry after data was deleted - show confirm popup
+            agreementStatus.value = .pending(newStatus: .accepted)
+        default:
+            if isInitialFlow {
+                sendPersonalInformation()
+            } else {
+                // Update
+                agreementStatus.value = .update
+            }
         }
     }
 
@@ -257,32 +285,6 @@ final class PersonalInformationViewModel {
         }
     }
 
-    private func identificationNumberTextFieldWillUpdateText(ucn newString: String) -> Bool {
-        if newString.count > ucnHelper.maximumPersonalNumberLength {
-            return false
-        }
-
-        if !newString.isEmpty && newString.count < ucnHelper.maximumPersonalNumberLength {
-            return true
-        }
-
-        // !!! Side effect
-        // If lenght is exact try parse it, if valid egn auto populate disabled controls
-        if let data = ucnHelper.parse(ucn: newString) {
-            setModelsFromParsedUCNData(data)
-        }
-
-        return true
-    }
-
-    private func identificationNumberTextFieldWillUpdateText(pin newString: String) -> Bool {
-        return !newString.isEmpty && newString.count <= PINForeignerHelper.maximumPersonalNumberLength
-    }
-
-    private func identificationNumberTextFieldWillUpdateText(cardId newString: String) -> Bool {
-        return !newString.isEmpty && newString.count <= IDCardHelper.maximumPersonalNumberLength
-    }
-
     func ageTextFieldWillUpdateText(_ newString: String) -> Bool {
         guard !newString.isEmpty else { return true }
 
@@ -301,6 +303,88 @@ final class PersonalInformationViewModel {
         validationErrors.value = validateInput()
         let importantErrors = errors.filter { $0 != .emptyAge }
         isInputValid.value = importantErrors.isEmpty
+    }
+
+    func toggleIsAgreeWithPrivacyPolicy() {
+        let isAgree = !termsAndConditionsRepository.isAgreeDataProtection
+        if isAgree {
+            // Update Agreement Status
+            termsAndConditionsRepository.isAgreeDataProtection = true
+        } else {
+            // Show confirm message
+            agreementStatus.value = .pending(newStatus: .declined)
+        }
+    }
+
+    func acceptPrivacyPolicy() {
+        // try to restart location observing
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.requestLocationServicesAutorization()
+        // ??? Stop notifications - no server support
+        sendPersonalInformation()
+    }
+
+    func declinePrivacyPolicy() {
+        // show activity indicator
+        isLoading.value = true
+        // delete personal information
+        personalInformationRepository.deletePersonalInfo { [weak self] result in
+            // hide activity indicator
+            self?.isLoading.value = false
+            // Handle result
+            switch result {
+            case .success:
+                // Update Agreement Status
+                self?.termsAndConditionsRepository.isAgreeDataProtection = false
+                // Try to avoid some side effects
+                self?.identificationNumberType.value = .citizenUCN
+                self?.gender.value = .male
+                // stop observing location
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.stopListenForLocationChanges()
+                // ??? Stop notifications - no server support
+            case .failure(let error):
+                // show error
+                self?.requestError.value = error
+            }
+        }
+    }
+
+    func sendPersonalInformation() {
+        // show activity indicator
+        isLoading.value = true
+
+        // Preparet data
+        var ageOrNil: Int?
+        if let value = age.value, !value.isEmpty {
+            if let age = Int(value), age > 0 {
+                ageOrNil = age
+            }
+        }
+
+        // send request
+        personalInformationRepository.sendPersonalInfo(identificationNumber: identificationNumber.value,
+                                                       identificationType: identificationNumberType.value?.identificationType,
+                                                       age: ageOrNil,
+                                                       gender: gender.value?.genderType,
+                                                       preexistingConditions: preexistingConditions.value ?? "") { [weak self] result in
+            // if we're gone do nothing
+            guard let strongSelf = self else { return }
+            // hide activity indicator
+            strongSelf.isLoading.value = false
+            // handle result
+            switch result {
+            case .success:
+                // just in case
+                strongSelf.cachedAgreementStatus = .accepted
+                // Notify we're ready
+                strongSelf.isSubmitCompleted.value = true
+                // !!! If first launch of the app, mark registration as completed
+                strongSelf.firstLaunchCheckRepository.isAppLaunchedBefore = true
+            case .failure(let reason):
+                strongSelf.requestError.value = reason
+            }
+        }
     }
 
     // MARK: Validations
@@ -385,6 +469,11 @@ final class PersonalInformationViewModel {
             throw PersonalInformationValidationError.invalidIdentificationCard
         }
     }
+    private func validateIsAgreeWithPrivacyPolicy() throws {
+        if !termsAndConditionsRepository.isAgreeDataProtection {
+            throw PersonalInformationValidationError.privacyPolicyDeclined
+        }
+    }
 
     // MARK: Helpers
 
@@ -397,5 +486,32 @@ final class PersonalInformationViewModel {
         gender.value = data.sex
     }
 
+    private func identificationNumberTextFieldWillUpdateText(ucn newString: String) -> Bool {
+        if newString.count > ucnHelper.maximumPersonalNumberLength {
+            return false
+        }
+
+        if !newString.isEmpty && newString.count < ucnHelper.maximumPersonalNumberLength {
+            return true
+        }
+
+        // !!! Side effect
+        // If lenght is exact try parse it, if valid egn auto populate disabled controls
+        if let data = ucnHelper.parse(ucn: newString) {
+            setModelsFromParsedUCNData(data)
+        }
+
+        return true
+    }
+
+    private func identificationNumberTextFieldWillUpdateText(pin newString: String) -> Bool {
+        return !newString.isEmpty && newString.count <= PINForeignerHelper.maximumPersonalNumberLength
+    }
+
+    private func identificationNumberTextFieldWillUpdateText(cardId newString: String) -> Bool {
+        return !newString.isEmpty && newString.count <= IDCardHelper.maximumPersonalNumberLength
+    }
+
 }
+//swiftlint:enable type_body_length
 //swiftlint:enable file_length
