@@ -110,7 +110,7 @@ private extension SplashViewController {
             alertDescription: "new_version_msg".localized(),
             updateButtonTitle: "update_label".localized(),
             okButtonTitle: "continue_label".localized(),
-            urlOpenedClosure: self.handleForceUpdate // !!! safe we don't have reference to RemoteConfig.remoteConfig()
+            urlOpenedClosure: handleForceUpdate
         )
 
         // NOTE: Info Web Pages URLs are in localizations
