@@ -56,8 +56,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
-        // In case checkbox has been selected, but data is not submitted to the server
-        viewModel.resetIsAgreeWithPrivacyPolicy()
+        // NOTE: Side effect - didMoveToParentViewController(nil
+        if isMovingFromParent {
+            // In case checkbox has been selected, but data is not submitted to the server
+            viewModel.resetIsAgreeWithPrivacyPolicy()
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
