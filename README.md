@@ -15,7 +15,10 @@ Overview:
 - [ViruSafe for iOS](#virusafe-for-ios)
   - [Build Instructions](#build-instructions)
     - [Prerequisites](#prerequisites)
+    - [Bundler](#bundler)
     - [Pods](#pods)
+    - [SwiftLint](#swiftlint)
+    - [Fastlane](#fastlane)
     - [Firebase](#firebase)
     - [Flex](#flex)
     - [Build Settings](#build-settings)
@@ -39,25 +42,83 @@ Overview:
 - Developer account
 - iTunes Connect account (Optional)
 - Clone the repository
-- [Cocoapods dependency manager](https://cocoapods.org/)
+
+### Bundler
+
+We use [Bundler](https://bundler.io) to help us with the installation of gems that we use in the project (Fastlane and Cocoapods).
+
+#### If you don't have bundler installed
+
+```
+gem install bundler
+```
+
+#### Install all gems from specified sources
+
+- Navigate to the folder containing the `Gemfile` in your Terminal app
+- Now install all gems by executing the command: 
+
+```
+bundle install
+```
+
+#### Install gems without using bundle
+
+- Navigate to the folder containing the `Gemfile` in your Terminal app
+- Install the necessary gems 
+
+_As we use cocoapods for dependencies you need to have at least [cocoapods](https://cocoapods.org/) installed on your computer. If not:_
+
+```
+gem install cocoapods
+```
+
+_optionally:_
+
+```
+gem install fastlane
+```
 
 ### Pods
 
-- Navigate to the folder containing the Podfile in your Terminal app.
-- Now install the pod (and any other necessary project dependencies) by executing the command: `pod install`.
+- Navigate to the folder containing the `Podfile` in your Terminal app.
+- Now install the necessary project dependencies by executing the command: 
+
+```
+bundle exec pod install
+```
+
+_or without using bundle_
+
+```
+pod install
+```
+
 - Open *COVID-19.xcworkspace* and build.
 
-> **NB!  `NetworkKit`  is a Development Pod. After every change in it you have to execute `pod install` and clean build your project.**
+> **NB!  `NetworkKit`  is a Development Pod. After every change in it you have to reinstall pods and clean build your project.**
+
+### SwiftLint
+
+This project is using [SwiftLint](https://github.com/realm/SwiftLint), it's installed throught cocoapods so that you don't need to install it on your computer. 
+
+### Fastlane
+
+This project is using [Fastlane](https://github.com/fastlane/fastlane) as middleware for GitHub Actions (or any other automation tool). 
 
 ### Firebase
 
-In order to have working app you should add `GoogleService-Info.plist` to the project. You have to setup your own firebase project. You can have either one configuration for all targets or many (one per target). You can setup your own remote config. Check `RemoteConfigDefaults` for used keys.
+In order to have working app you should add `GoogleService-Info.plist` to the project. If you're member of the internal team get a copy of `GoogleService-Info.plist` from one of the other developers. Otherwise you have to setup your own Firebase project. You should have one configuration per target.  `GoogleService-Info.plist`  files are located in `./COVID-19/Firebase/<Target Folder>`.
 
-> **NB! We're using Firebase for Push notifications, Remote config and Crashlytics. Also Firbase collects some Analytics like installing and reinstalling of  the app by default .**
+Repeat above for the remote config. Check `RemoteConfigDefaults` for used keys.
+
+> **NB! We're using Firebase for Push notifications, Remote config and Crashlytics. Also, by default, Firbase collects some Analytics like installing and reinstalling of  the app.**
 
 ### Flex
 
-As you don't have Flex API key this build step will fail, but you're covered. We ship our code with default localization for every target.
+If you're member of the internal team get a copy of `Localization-settings.plist` files from one of the other developers and place it  `./COVID-19/Firebase/<Target Folder>`
+
+If you don't have Flex API key this build step will fail, but you're covered. We ship our code with default localization for every target, so you're still able to run the project.
 
 ### Build Settings
 
@@ -68,17 +129,18 @@ Deployment Target:  10.0
 
 ### Provisioning
 
-Debug version is signed automatically. Release version uses manual signing. Both however are not opened, so you have to use your own signing, while testing.
+Debug version is signed automatically. Release version uses manual signing. Both however are not opened, so if you're not member of the internal team you have to use your own signing, while testing.
 
 ### Debug
 
-Bluetooth functionality can not be tested in the Simulator. *(Don't worry BT is not added yet)*
+- Bluetooth functionality can not be tested in the Simulator. *(Don't worry BT is not added yet)*
+- Location can be simulated (Google it)
 
 ## Code Styleguide
 
 We decided to refer to [The Official raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
 
-Contributors are expected to read through and familiarize themselves with the style guide as we're going to enforce it adding `swiftlint`.
+Contributors are expected to read through and familiarize themselves with the style guide as we're going to enforce it with `swiftlint`.
 
 ## Branching guide
 

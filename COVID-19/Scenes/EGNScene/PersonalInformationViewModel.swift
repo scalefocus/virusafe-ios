@@ -46,6 +46,7 @@ extension Gender: TagPresentable {
     }
 }
 
+//swiftlint:disable duplicate_enum_cases
 enum IdentificationNumberType: String, Codable {
     #if !MACEDONIA
     case citizenUCN = "EGN" // uniform civil number (егн)
@@ -60,6 +61,7 @@ enum IdentificationNumberType: String, Codable {
         return self.rawValue
     }
 }
+//swiftlint:enable duplicate_enum_cases
 
 protocol SegmentPresentable {
     var segmentIndex: Int { get }
@@ -69,9 +71,9 @@ protocol SegmentPresentable {
 extension IdentificationNumberType: SegmentPresentable {
     var segmentIndex: Int {
         switch self {
-            #if MACEDONIA
+        #if MACEDONIA
         case .identificationCard: return 1
-            #else // MACEDONIA
+        #else // MACEDONIA
         case .foreignerPIN: return 1
         case .identificationCard: return 2
         #endif // MACEDONIA
@@ -82,9 +84,9 @@ extension IdentificationNumberType: SegmentPresentable {
     static func identificationNumberType(for segmentIndex: Int) -> IdentificationNumberType {
         switch segmentIndex {
         case 0: return .citizenUCN
-            #if MACEDONIA
+        #if MACEDONIA
         case 1: return .identificationCard
-            #else // MACEDONIA
+        #else // MACEDONIA
         case 1: return .foreignerPIN
         case 2: return .identificationCard
         #endif // MACEDONIA
