@@ -56,6 +56,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
+        // NOTE: Side effect - didMoveToParentViewController(nil
+        if isMovingFromParent {
+            // In case checkbox has been selected, but data is not submitted to the server
+            viewModel.resetIsAgreeWithPrivacyPolicy()
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,7 +82,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     private func setupUI() {
         title = viewModel.isInitialFlow == true ? "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n") :
             "my_personal_data".localized()
-        privacyPolicyStackView.isHidden = viewModel.isInitialFlow
+        privacyPolicyStackView.isHidden = viewModel.isRegistration
 
         identificationNumberTextField.placeholder = "identification_number_ucn_segment".localized() + " "
         // By default title will be same as placeholder
@@ -204,7 +209,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         case .pending(let newStatus):
             presentPendingChangeAgreementAlertMessage(forNewStatus: newStatus)
         case .update:
-            presentUpdatePersonalInformationAlertMessage()
+            if viewModel.isRegistration {
+                viewModel.sendPersonalInformation()
+            } else {
+                presentUpdatePersonalInformationAlertMessage()
+            }
         case .declined:
             privacyPolicyCheckbox.isSelected = false
             clearAll()
@@ -373,7 +382,9 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         let confirm = UIAlertAction(title: "yes_label".localized(), style: .default) { [weak self] _ in
             self?.viewModel.sendPersonalInformation()
         }
-        let cancel = UIAlertAction(title: "no_label".localized(), style: .cancel)
+        let cancel = UIAlertAction(title: "no_label".localized(), style: .cancel) { [weak self] _ in
+            self?.viewModel.resetIsAgreeWithPrivacyPolicy()
+        }
         alert.addAction(confirm)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
@@ -411,7 +422,9 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         let confirm = UIAlertAction(title: "yes_label".localized(), style: .default) { [weak self] _ in
             self?.viewModel.acceptPrivacyPolicy()
         }
-        let cancel = UIAlertAction(title: "no_label".localized(), style: .cancel)
+        let cancel = UIAlertAction(title: "no_label".localized(), style: .cancel) { [weak self] _ in
+            self?.viewModel.resetIsAgreeWithPrivacyPolicy()
+        }
         alert.addAction(confirm)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)

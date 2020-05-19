@@ -135,10 +135,10 @@ final class AppFlowManager: StateMachineDelegateProtocol {
         case (.home, .personalInformation(let shouldNavigateToHealthStatus)):
             previousStatesStack.append(newState)
             let nextNavigationStep: NavigationStep = shouldNavigateToHealthStatus ? .healthStatus : .home
-            navigateToPersonalInformationViewController(nextNavigationStep: nextNavigationStep)
-        case (.registerConfirm, .personalInformation):
+            navigateToPersonalInformationViewController(nextNavigationStep: nextNavigationStep, isRegistration: false)
+        case (.registerConfirm, .personalInformation(_)):
             previousStatesStack.append(newState)
-            navigateToPersonalInformationViewController(nextNavigationStep: .healthStatus)
+            navigateToPersonalInformationViewController(nextNavigationStep: .healthStatus, isRegistration: true)
         case (.home, .languages):
             previousStatesStack.append(newState)
             navigateToLanguagesViewController()
@@ -317,7 +317,7 @@ extension AppFlowManager: NavigationDelegate {
         setupBackButton(viewController: registrationConfirmationVC)
     }
 
-    private func navigateToPersonalInformationViewController(nextNavigationStep: NavigationStep) {
+    private func navigateToPersonalInformationViewController(nextNavigationStep: NavigationStep, isRegistration: Bool) {
         guard let personalInformationViewController =
             UIStoryboard(name: "PersonalInformation", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(PersonalInformationViewController.self)")
@@ -327,7 +327,8 @@ extension AppFlowManager: NavigationDelegate {
         let viewModel = PersonalInformationViewModel(firstLaunchCheckRepository: firstLaunchCheckRepository,
                                                      personalInformationRepository: personalInformationRepository,
                                                      termsAndConditionsRepository: termsAndConditionsRepository,
-                                                     nextNavigationStep: nextNavigationStep)
+                                                     nextNavigationStep: nextNavigationStep,
+                                                     isRegistration: isRegistration)
         personalInformationViewController.navigationDelegate = self
         personalInformationViewController.viewModel = viewModel
         navigationController.push(viewController: personalInformationViewController)

@@ -134,11 +134,14 @@ final class PersonalInformationViewModel {
         #endif
     }()
 
-    // MARK: Flow Helpers
+    // MARK: Update UI Helpers
 
     var isInitialFlow: Bool {
         return !firstLaunchCheckRepository.isAppLaunchedBefore
     }
+
+
+    private (set) var isRegistration: Bool
 
     // MARK: Navigation Helpers
 
@@ -162,8 +165,8 @@ final class PersonalInformationViewModel {
 
     // Privacy Policy
 
-    var agreementStatus = Observable<PersonalInformationAgreementStatus>(.declined)
-    var cachedAgreementStatus: PersonalInformationAgreementStatus
+    private (set) var agreementStatus = Observable<PersonalInformationAgreementStatus>(.declined)
+    private (set) var cachedAgreementStatus: PersonalInformationAgreementStatus
     private var kvoToken: NSKeyValueObservation?
 
     // Input Validation
@@ -182,13 +185,15 @@ final class PersonalInformationViewModel {
     init(firstLaunchCheckRepository: AppLaunchRepository,
         personalInformationRepository: PersonalInformationRepository,
         termsAndConditionsRepository: TermsAndConditionsRepository,
-        nextNavigationStep: NavigationStep) {
+        nextNavigationStep: NavigationStep,
+        isRegistration: Bool) {
         // dependencies
         self.firstLaunchCheckRepository = firstLaunchCheckRepository
         self.personalInformationRepository = personalInformationRepository
         self.termsAndConditionsRepository = termsAndConditionsRepository
         // passed data
         self.nextNavigationStep = nextNavigationStep
+        self.isRegistration = isRegistration
         // Agreements
         cachedAgreementStatus = termsAndConditionsRepository.isAgreeDataProtection ? .accepted : .declined
         agreementStatus.value = cachedAgreementStatus
@@ -255,7 +260,6 @@ final class PersonalInformationViewModel {
             return
         }
 
-        // TODO: Ask if update
         switch cachedAgreementStatus {
         case .declined:
             // new entry after data was deleted - show confirm popup
@@ -318,6 +322,17 @@ final class PersonalInformationViewModel {
         }
     }
 
+    func resetIsAgreeWithPrivacyPolicy() {
+        switch cachedAgreementStatus {
+        case .accepted:
+            termsAndConditionsRepository.isAgreeDataProtection = true
+        case .declined:
+            termsAndConditionsRepository.isAgreeDataProtection = false
+        default:
+            break
+        }
+    }
+
     func acceptPrivacyPolicy() {
         // try to restart location observing
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -336,6 +351,8 @@ final class PersonalInformationViewModel {
             // Handle result
             switch result {
             case .success:
+                // just in case
+                self?.cachedAgreementStatus = .declined
                 // Update Agreement Status
                 self?.termsAndConditionsRepository.isAgreeDataProtection = false
                 // Try to avoid some side effects
