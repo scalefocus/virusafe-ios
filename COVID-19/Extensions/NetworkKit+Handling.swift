@@ -18,9 +18,9 @@ extension APIRequest {
         execute { (data, response, error) in
             if let response = response,
                 response.statusCode == 401 {
-                /// Status code 401 is received when access token has expired
+                // Status code 401 is received when access token has expired
                 if (self.tokenRefreshCount ?? 0) > 0 {
-                    /// Check if this request is called for the first time
+                    // Check if this request is called for the first time
                     APIManager.shared.authToken = nil
                     TokenStore.shared.token = nil
                     print("DEBUG: Access token expired. Refreshing..")
@@ -28,9 +28,9 @@ extension APIRequest {
                     let dataCopy = data
                     let responseCopy = response
                     let errorCopy = error
-                    /// Try to refresh access token.
+                    // Try to refresh access token.
                     RegistrationRepository().refreshAuthToken(refreshToken: APIManager.shared.refreshToken ?? "") { isSuccessful in
-                         /// If access token refresh is successful refresh the failed request
+                         // If access token refresh is successful refresh the failed request
                         if isSuccessful {
                             self.executeWithHandling(handlesNoNetwork: handlesNoNetwork,
                                                      handlesServerError: handlesServerError,
@@ -42,14 +42,14 @@ extension APIRequest {
                         }
                     }
                 } else {
-                    /// Multiple calls on the same request redirect to registration
+                    // Multiple calls on the same request redirect to registration
                     RegistrationRepository().clearAllTokens()
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
                     appDelegate?.flowManager?.redirectToRegistration()
                     completion(data, response, error)
                 }
             } else if let response = response, response.statusCode == 403 {
-                /// Status code 403 is received when refresh token has expired. Redirect to registration
+                // Status code 403 is received when refresh token has expired. Redirect to registration
                 RegistrationRepository().clearAllTokens()
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
                 appDelegate?.flowManager?.redirectToRegistration()
@@ -71,9 +71,9 @@ extension APIRequest {
             // expire access token
             if let response = response,
                 response.statusCode == 401 {
-                /// Status code 401 is received when access token has expired
+                // Status code 401 is received when access token has expired
                 if (self.tokenRefreshCount ?? 0) > 0 {
-                    /// Check if this request is called for the first time
+                    // Check if this request is called for the first time
                     APIManager.shared.authToken = nil
                     TokenStore.shared.token = nil
                     print("DEBUG: Access token expired. Refreshing..")
@@ -81,9 +81,9 @@ extension APIRequest {
                     let dataCopy = data
                     let responseCopy = response
                     let errorCopy = error
-                    /// Try to refresh access token.
+                    // Try to refresh access token.
                     RegistrationRepository().refreshAuthToken(refreshToken: APIManager.shared.refreshToken ?? "") { isSuccessful in
-                        /// If access token refresh is successful refresh the failed request
+                        // If access token refresh is successful refresh the failed request
                         if isSuccessful {
                             self.executeParsedWithHandling(of: type,
                                                            handlesNoNetwork: handlesNoNetwork,
@@ -96,14 +96,14 @@ extension APIRequest {
                         }
                     }
                 } else {
-                    /// Multiple calls on the same request redirect to registration
+                    // Multiple calls on the same request redirect to registration
                     RegistrationRepository().clearAllTokens()
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
                     appDelegate?.flowManager?.redirectToRegistration()
                     completion(data, response, error)
                 }
             } else if let response = response, response.statusCode == 403 {
-                /// Status code 403 is received when refresh token has expired. Redirect to registration
+                // Status code 403 is received when refresh token has expired. Redirect to registration
                 RegistrationRepository().clearAllTokens()
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
                 appDelegate?.flowManager?.redirectToRegistration()

@@ -136,7 +136,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
             previousStatesStack.append(newState)
             let nextNavigationStep: NavigationStep = shouldNavigateToHealthStatus ? .healthStatus : .home
             navigateToPersonalInformationViewController(nextNavigationStep: nextNavigationStep, isRegistration: false)
-        case (.registerConfirm, .personalInformation(_)):
+        case (.registerConfirm, .personalInformation):
             previousStatesStack.append(newState)
             navigateToPersonalInformationViewController(nextNavigationStep: .healthStatus, isRegistration: true)
         case (.home, .languages):

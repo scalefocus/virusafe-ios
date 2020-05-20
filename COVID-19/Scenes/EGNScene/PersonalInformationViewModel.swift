@@ -140,7 +140,6 @@ final class PersonalInformationViewModel {
         return !firstLaunchCheckRepository.isAppLaunchedBefore
     }
 
-
     private (set) var isRegistration: Bool
 
     // MARK: Navigation Helpers
