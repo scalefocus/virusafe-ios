@@ -134,13 +134,17 @@ private extension SplashViewController {
             return
         }
 
-        // !!! Prevent navigation - solves issue when user gets back from app store and app is not updated
-        if RemoteConfigHelper.shared.isLatestAppVersionMandatory {
-            print("Update is mandatory")
-            return
+        // NOTE: Prevent navigation - solves issue when user gets back from app store and app is not updated
+        DispatchQueue.main.asyncDeduped(target: self, after: 0.3) { [weak self] in
+            let state = UIApplication.shared.applicationState
+            switch state {
+            case .active:
+                self?.navigateToNextViewController()
+            default:
+                // Do nothing
+                break
+            }
         }
-
-        navigateToNextViewController()
     }
 
 }
