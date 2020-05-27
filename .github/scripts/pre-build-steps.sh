@@ -11,6 +11,9 @@ gpg --quiet --batch --yes --decrypt --passphrase="$FONTS_PASSPHRASE" .fonts/font
 base64 -D -o 'COUNCIL_OF_MINISTERS_Distribution_Certificate.p12' <<< $PROD_BG_CERT
 base64 -D -o 'Upnetix_Distribution_Certificate.p12' <<< $UPNETIX_CERT
 
+mkdir "$project_dir/COVID-19/Settings/Certs"
+base64 -D -o '$project_dir/COVID-19/Settings/Certs/virusafe.io.der' <<< $PINNED_CERT
+
 # NOTE: Consider saving all files in base64
 # pros: escaping, e.g. chars as ',",\, etc.
 # cons: more bytes,secrets can keep up to 64kb
