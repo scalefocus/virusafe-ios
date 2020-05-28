@@ -108,7 +108,7 @@ class HealthStatusViewModel {
         // show activity indicator
         shouldShowLoadingIndicator.value = true
 
-        questionnaireRepository.requestQuestions(with: LanguageHelper.shared.savedLocale) { [weak self] result in
+        questionnaireRepository.requestQuestions(with: LanguageHelper.shared.languageCode) { [weak self] result in
             // if we're gone do nothing
             guard let strongSelf = self else { return }
             defer {
