@@ -1,0 +1,95 @@
+name: CI - Build & Deploy Release
+
+on:
+  push:
+    branches:
+      - release/*
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache Gems
+      uses: actions/cache@v1
+      id: gems-cache
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+
+    - name: Config Gems
+      run: |
+        bundle config path ./vendor/bundle
+
+      # Fastlane & Cocoapods are installed as Gems
+    - name: Install Gems
+      if: steps.gems-cache.outputs.cache-hit != 'true'
+      run: |
+        bundle install --jobs 4 --retry 3
+
+    - name: Cache Pods
+      uses: actions/cache@v1
+      id: pods-cache
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+
+      # Project Dependecies
+    - name: Install Pods
+      if: steps.pods-cache.outputs.cache-hit != 'true'
+      run: |
+        bundle exec pod install
+
+      # Pre build steps
+    - name: Run Other Setup Steps
+      run: |
+        sh ./.github/scripts/pre-build-steps.sh
+      env:
+        FONTS_PASSPHRASE: ${{ secrets.FONTS_PASSPHRASE }}
+        LOCALIZATION_SERVICES_DEVELOPMENT_BG: ${{ secrets.LOCALIZATION_SERVICES_DEVELOPMENT_BG }}
+        LOCALIZATION_SERVICES_DEVELOPMENT_MK: ${{ secrets.LOCALIZATION_SERVICES_DEVELOPMENT_MK }}
+        LOCALIZATION_SERVICES_PRODUCTION_BG: ${{ secrets.LOCALIZATION_SERVICES_PRODUCTION_BG }}
+        OTHER_SERVICES_DEVELOPMENT_BG: ${{ secrets.OTHER_SERVICES_DEVELOPMENT_BG }}
+        OTHER_SERVICES_DEVELOPMENT_MK: ${{ secrets.OTHER_SERVICES_DEVELOPMENT_MK }}
+        OTHER_SERVICES_PRODUCTION_BG: ${{ secrets.OTHER_SERVICES_PRODUCTION_BG }}
+        FIREBASE_CONFIG_DEVELOPMENT_BG: ${{ secrets.FIREBASE_CONFIG_DEVELOPMENT_BG }}
+        FIREBASE_CONFIG_DEVELOPMENT_MK: ${{ secrets.FIREBASE_CONFIG_DEVELOPMENT_MK }}
+        FIREBASE_CONFIG_PRODUCTION_BG: ${{ secrets.FIREBASE_CONFIG_PRODUCTION_BG }}
+        FIREBASE_REMOTE_CONFIG_DEFAULTS_DEVELOPMENT_BG: ${{ secrets.FIREBASE_REMOTE_CONFIG_DEFAULTS_DEVELOPMENT_BG }}
+        FIREBASE_REMOTE_CONFIG_DEFAULTS_DEVELOPMENT_MK: ${{ secrets.FIREBASE_REMOTE_CONFIG_DEFAULTS_DEVELOPMENT_MK }}
+        FIREBASE_REMOTE_CONFIG_DEFAULTS_PRODUCTION_BG: ${{ secrets.FIREBASE_REMOTE_CONFIG_DEFAULTS_PRODUCTION_BG }}
+        PROD_BG_CERT: ${{ secrets.PROD_BG_CERT }}
+        UPNETIX_CERT: ${{ secrets.UPNETIX_CERT }}
+
+      # CI Keychain
+    - name: Run fastlane setup
+      run: |
+        bundle exec fastlane setup
+      env:
+        FASTLANE_APPLE_ID: ${{ secrets.CI_APPLE_ID }}
+        FASTLANE_PASSWORD: ${{ secrets.CI_APPLE_PASSWORD }}
+        FASTLANE_KEYCHAIN_NAME: ${{ secrets.CI_KEYCHAIN_NAME }}
+        FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.CI_KEYCHAIN_PASSWORD }}
+
+    - name: Build Production Bulgaria
+      run: |
+        bundle exec fastlane compile_prod_bulgaria
+      env:
+        FASTLANE_APPLE_ID: ${{ secrets.CI_APPLE_ID }}
+        FASTLANE_PASSWORD: ${{ secrets.CI_APPLE_PASSWORD }}
+        FASTLANE_TEAM_ID: ${{ secrets.PROD_BG_TEAM_ID }}
+        FASTLANE_APP_ID: "bg.government.virusafe"
+        FASTLANE_KEYCHAIN_NAME: ${{ secrets.CI_KEYCHAIN_NAME }}
+        FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.CI_KEYCHAIN_PASSWORD }}
+    
+    - name: Deploy Bulgaria Production Build To App Center
+      run: |
+        bundle exec fastlane deploy_production_bulgaria
+      env:
+        FASTLANE_APPLE_ID: ${{ secrets.CI_APPLE_ID }}
+        FASTLANE_PASSWORD: ${{ secrets.CI_APPLE_PASSWORD }}
+        FASTLANE_TEAM_ID: ${{ secrets.PROD_BG_TEAM_ID }}
+        FASTLANE_ITC_TEAM_ID: ${{ secrets.ITC_BG_TEAM_ID }}
+        FASTLANE_APP_ID: "bg.government.virusafe"

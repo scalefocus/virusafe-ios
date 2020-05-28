@@ -127,7 +127,7 @@ PODS:
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
   - SkyFloatingLabelTextField (3.8.0)
-  - SwiftLint (0.27.0)
+  - SwiftLint (0.39.2)
   - TwoWayBondage (2.0.0)
 
 DEPENDENCIES:
@@ -143,7 +143,7 @@ DEPENDENCIES:
   - NetworkKit (from `ModuleFrameworks/NetworkKit`)
   - PopupUpdate (~> 1.0.2)
   - SkyFloatingLabelTextField (~> 3.0)
-  - SwiftLint (~> 0.27.0)
+  - SwiftLint (~> 0.39.0)
   - TwoWayBondage (~> 2.0.0)
 
 SPEC REPOS:
@@ -211,9 +211,9 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
-  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   TwoWayBondage: 722389db5cccfaab572caf4b3e326e12b1cdc984
 
-PODFILE CHECKSUM: 0c121c6e0783102977c991b514a856e71b8bdcf1
+PODFILE CHECKSUM: a0c5662fe0519912920d00d2f13221424d80383d
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.0

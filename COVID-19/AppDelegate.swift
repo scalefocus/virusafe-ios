@@ -221,6 +221,10 @@ extension AppDelegate: CLLocationManagerDelegate {
             return
         }
 
+        guard TermsAndConditionsRepository().isAgreeDataProtection else {
+            return
+        }
+
         locationManager.startUpdatingLocation()
         // Try to wake app if killed by the user
         locationManager.startMonitoringSignificantLocationChanges()

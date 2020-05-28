@@ -5,12 +5,12 @@
 //  Created by Gandi Pirkov on 27.03.20.
 //  Copyright © 2020 Upnetix AD. All rights reserved.
 //
-
+//swiftlint:disable file_length
 import UIKit
 import SkyFloatingLabelTextField
 import IQKeyboardManager
 
-//swiftlint:disable file_length
+//swiftlint:disable type_body_length
 class PersonalInformationViewController: UIViewController, Navigateble {
 
     // MARK: Navigateble
@@ -28,6 +28,9 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     @IBOutlet private var genderButtons: [UIButton]!
     @IBOutlet private weak var preexistingConditionsTextField: SkyFloatingLabelTextField!
     @IBOutlet private weak var submitButton: UIButton!
+    @IBOutlet private weak var privacyPolicyCheckbox: CheckBox!
+    @IBOutlet private weak var privacyPolicyInfoButton: UIButton!
+    @IBOutlet private weak var privacyPolicyStackView: UIStackView!
 
     // MARK: View Model
 
@@ -53,6 +56,11 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
+        // NOTE: Side effect - didMoveToParentViewController(nil
+        if isMovingFromParent {
+            // In case checkbox has been selected, but data is not submitted to the server
+            viewModel.resetIsAgreeWithPrivacyPolicy()
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,6 +82,7 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     private func setupUI() {
         title = viewModel.isInitialFlow == true ? "personal_data_title".localized().replacingOccurrences(of: "\\n", with: "\n") :
             "my_personal_data".localized()
+        privacyPolicyStackView.isHidden = viewModel.isRegistration
 
         identificationNumberTextField.placeholder = "identification_number_ucn_segment".localized() + " "
         // By default title will be same as placeholder
@@ -97,6 +106,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                 button.setTitle("gender_male".localized(), for: .normal)
             }
         }
+
+        let text = "i_consent_to_label".localized()
+        let link = "data_protection_notice_small_caps_label".localized()
+        let title = "\(text) \(link)"
+        privacyPolicyInfoButton.setTitle(title, link, for: .normal)
+        privacyPolicyInfoButton.titleLabel?.numberOfLines = 0
+        privacyPolicyInfoButton.titleLabel?.lineBreakMode = .byWordWrapping
 
         // can be done on didSet or by setting image alwaysTemplate in asset catalog
         setupIconImageViewTint()
@@ -181,6 +197,37 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         viewModel.validationErrors.bind { [weak self] value in
             self?.handleValidationErrors(value)
         }
+        viewModel.agreementStatus.bindAndFire { [weak self] value in
+            self?.handleAgreementStatus(value)
+        }
+    }
+
+    private func handleAgreementStatus(_ status: PersonalInformationAgreementStatus) {
+        switch status {
+        case .accepted:
+            privacyPolicyCheckbox.isSelected = true
+        case .pending(let newStatus):
+            presentPendingChangeAgreementAlertMessage(forNewStatus: newStatus)
+        case .update:
+            if viewModel.isRegistration {
+                viewModel.sendPersonalInformation()
+            } else {
+                presentUpdatePersonalInformationAlertMessage()
+            }
+        case .declined:
+            privacyPolicyCheckbox.isSelected = false
+            clearAll()
+        }
+    }
+
+    private func clearAll() {
+        identificationNumberTextField.text = nil
+        ageTextField.text = nil
+        preexistingConditionsTextField.text = nil
+        identificationNumberErrorLabel.text = nil
+        submitButton.isEnabled = false
+        submitButton.backgroundColor =
+            UIColor.lightGray.withAlphaComponent(0.3)
     }
 
     private func handleValidationErrors(_ errors: [PersonalInformationValidationError]) {
@@ -198,6 +245,8 @@ class PersonalInformationViewController: UIViewController, Navigateble {
                 ageErrorLabel.text = "invalid_age_msg".localized()
             case .underMinimumAge:
                 ageErrorLabel.text = "invalid_min_age_msg".localized()
+            case .privacyPolicyDeclined:
+                presentPrivacyPolicyNotAcceptedErrorAlert()
             }
         }
     }
@@ -287,13 +336,13 @@ class PersonalInformationViewController: UIViewController, Navigateble {
     // MARK: Navigation
 
     private func navigateToNextViewController() {
-        navigationDelegate?.navigateTo(step: viewModel.shouldNavigateNextToHealthStatus ? .healthStatus : .home)
+        navigationDelegate?.navigateTo(step: viewModel.nextNavigationStep)
     }
 
     // MARK: Actions
 
     @IBAction private func didTapSubmitButton(_ sender: Any) {
-        viewModel.sendPersonalInformation()
+        viewModel.submitPersonalInformation()
     }
 
     @IBAction private func didTapGenderButton(_ sender: UIButton) {
@@ -314,7 +363,83 @@ class PersonalInformationViewController: UIViewController, Navigateble {
         //        }
     }
 
+    @IBAction private func didTapPrivacyPolicyCheckbox(_ sender: Any) {
+        viewModel.toggleIsAgreeWithPrivacyPolicy()
+    }
+
+    @IBAction private func didTapPrivacyPolicyInfoButton(_ sender: Any) {
+        navigationDelegate?.navigateTo(step: .termsAndConditions(type: .processPersonalData))
+    }
+
+    // MARK: Alerts
+
+    // TODO: Refactor to AlertController static factory methods
+
+    private func presentUpdatePersonalInformationAlertMessage() {
+        let alert = UIAlertController(title: nil,
+                                      message: "popup_update_personal_info_txt".localized(),
+                                      preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "yes_label".localized(), style: .default) { [weak self] _ in
+            self?.viewModel.sendPersonalInformation()
+        }
+        let cancel = UIAlertAction(title: "no_label".localized(), style: .cancel) { [weak self] _ in
+            self?.viewModel.resetIsAgreeWithPrivacyPolicy()
+        }
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func presentPendingChangeAgreementAlertMessage(forNewStatus status: PersonalInformationAgreementStatus) {
+        switch status {
+        case .accepted:
+            presentConfirmAcceptAgreementAlertMessage()
+        case .declined:
+            presentConfirmDeclineAgreementAlertMessage()
+            return
+        default:
+            fatalError("Bad status: \(status)")
+        }
+    }
+
+    private func presentConfirmDeclineAgreementAlertMessage() {
+        let alert = UIAlertController(title: nil,
+                                      message: "popup_deny_personal_data_access_msg".localized(),
+                                      preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "yes_label".localized(), style: .default) { [weak self] _ in
+            self?.viewModel.declinePrivacyPolicy()
+        }
+        let cancel = UIAlertAction(title: "no_label".localized(), style: .cancel)
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func presentConfirmAcceptAgreementAlertMessage() {
+        let alert = UIAlertController(title: nil,
+                                      message: "popup_permission_change_txt".localized(),
+                                      preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "yes_label".localized(), style: .default) { [weak self] _ in
+            self?.viewModel.acceptPrivacyPolicy()
+        }
+        let cancel = UIAlertAction(title: "no_label".localized(), style: .cancel) { [weak self] _ in
+            self?.viewModel.resetIsAgreeWithPrivacyPolicy()
+        }
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func presentPrivacyPolicyNotAcceptedErrorAlert() {
+        let alert = UIAlertController(title: "warning_label".localized(),
+                                      message: "error_accept_personal_data_access".localized(),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok_label".localized(), style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
 }
+//swiftlint:enable type_body_length
 
 // MARK: ToastViewPresentable
 
@@ -363,7 +488,7 @@ extension Date {
     }
 }
 
-// Build methods for all allerts on the current screen
+// Build methods for all alerts on the current screen
 
 extension UIAlertController {
     static func invalidIdentificationNumberAlert(_ actionHandler: (() -> Void)?) -> UIAlertController {

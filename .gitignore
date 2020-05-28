@@ -30,7 +30,6 @@ DTS*
 
 ## User settings
 xcuserdata
-xcshareddata
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
@@ -89,7 +88,8 @@ sonar-reports/
 .scannerwork
 
 # Gemfile
-Gemfile.lock
+#Gemfile.lock
+vendor/
 
 # fastlane specific
 fastlane/report.xml

@@ -1,0 +1,352 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# Required Env Vars
+
+# FASTLANE_APPCENTER_API_TOKEN - API Token for App Center
+# FASTLANE_APPCENTER_OWNER_NAME - Owner name as found in the App's URL in App Center
+
+# FASTLANE_APPLE_ID - Apple ID email address (with needed rights)
+# FASTLANE_PASSWORD - Apple ID password
+
+# FASTLANE_TEAM_ID - Apple Developer Portal Team ID
+# FASTLANE_ITC_TEAM_ID - Itunes Connect (Apple Store) Team ID
+# FASTLANE_APP_ID - Info.plist Bundle ID
+
+# FASTLANE_KEYCHAIN_NAME - Keychain name (CI only)
+# FASTLANE_KEYCHAIN_PASSWORD - Password for the keychain (CI only)
+
+default_platform(:ios)
+
+platform :ios do
+
+	desc "**`setup`** lane is used to configure fastlane from GitHub actions"
+	lane :setup do
+		if is_ci?	
+			keychain_name=ENV["FASTLANE_KEYCHAIN_NAME"]
+  			keychain_password=ENV["FASTLANE_KEYCHAIN_PASSWORD"]
+			setup_keychain(
+				keychain_name: keychain_name,
+				keychain_password: keychain_password
+			)
+
+			import_certificate(
+		      keychain_name: keychain_name,
+		      keychain_password: keychain_password,
+		      certificate_path: 'COUNCIL_OF_MINISTERS_Distribution_Certificate.p12'
+		    )
+
+		    import_certificate(
+		      keychain_name: keychain_name,
+		      keychain_password: keychain_password,
+		      certificate_path: 'Upnetix_Distribution_Certificate.p12'
+		    )
+		end
+	end
+
+	desc "**`compile_prod_bulgaria`** lane is used to build Bulgaria production target"
+	lane :compile_prod_bulgaria do
+		app_identifier=CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+		team_id=CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+		apple_id=CredentialsManager::AppfileConfig.try_fetch_value(:apple_id)
+		compile(
+			apple_id: apple_id,
+	    	team_id: team_id,
+	    	app_identifier: app_identifier,
+			scheme: 'Production', # Make sure scheme marked as Shared (consider using target instead)
+			provisioning_profile_name: "ViruSafeAppStoreProvisioningProfile.mobileprovision",
+			export_method: 'app-store'
+		)
+	end
+
+	desc "**`compile_prod_north_macedonia`** lane is used to build North Macedonia production target"
+	lane :compile_prod_north_macedonia do
+		# NOTE: Do nothing, we don't have production for North Macedonia yet
+	end
+
+	desc "**`compile_develop_bulgaria`** lane is used to build Bulgaria develop target"
+	lane :compile_develop_bulgaria do
+		app_identifier=CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+		team_id=CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+		apple_id=CredentialsManager::AppfileConfig.try_fetch_value(:apple_id)
+		compile(
+			apple_id: apple_id,
+	    	team_id: team_id,
+	    	app_identifier: app_identifier,
+			scheme: 'Development', # Make sure scheme marked as Shared (consider using target instead)
+			provisioning_profile_name: "ViruSafeDevInHouseProvisioningProfile.mobileprovision",
+			export_method: 'enterprise'
+		)
+	end 
+
+	desc "**`compile_develop_north_macedonia`** lane is used to build North Macedonia develop target"
+	lane :compile_develop_north_macedonia do
+		app_identifier=CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+		team_id=CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+		apple_id=CredentialsManager::AppfileConfig.try_fetch_value(:apple_id)
+		compile(
+			apple_id: apple_id,
+	    	team_id: team_id,
+	    	app_identifier: app_identifier,
+			scheme: 'NorthMacedonia', # Make sure scheme marked as Shared (consider using target instead)
+			provisioning_profile_name: "SeZaCovid19DevInHouseProvisioningProfile.mobileprovision",
+			export_method: 'enterprise'
+		)
+	end
+
+	desc "**`deploy_develop_north_macedonia`** lane is used to deploy North Macedonia develop build to App Center"
+	lane :deploy_develop_north_macedonia do
+		# App name as found in the App's URL in App Center. If there is no app with such name, you will be prompted to create one
+		app_name="SeZaCovid19"
+		# Comma separated list of distribution group names. Default is 'Collaborators', use '*' for all distribution groups
+		# NOTE: have the same for name for Bulgaria and North Macedonia distributions
+		destinations="SeZaCovid19-internal"
+		# ipa and dsym name
+		file_name="ViruSafeMK"
+		# Upload build and distribute it for internal tests
+		# NOTE: Public distribution is done manually after approve
+		deploy_app_center(
+			app_name: app_name,
+			destinations: destinations,
+			file_name: file_name
+		)
+	end
+
+	desc "**`deploy_develop_bulgaria`** lane is used to deploy Bulgaria develop build to App Center"
+	lane :deploy_develop_bulgaria do
+		# App name as found in the App's URL in App Center. If there is no app with such name, you will be prompted to create one
+		app_name="ViruSafeDev"
+		# Comma separated list of distribution group names. Default is 'Collaborators', use '*' for all distribution groups
+		# NOTE: have the same for name for Bulgaria and North Macedonia distributions
+		destinations="covid-19-internal"
+		# ipa and dsym name
+		file_name="ViruSafeDev"
+		# Upload build and distribute it for internal tests
+		# NOTE: Public distribution is done manually after approve
+		deploy_app_center(
+			app_name: app_name,
+			destinations: destinations,
+			file_name: file_name
+		)
+	end
+
+	desc "**`deploy_production_north_macedonia`** lane is used to deploy North Macedonia production build to App Store"
+	lane :deploy_production_north_macedonia do
+		# NOTE: Do nothing, we don't have production for North Macedonia yet
+		# NOTE: Public distribution is done manually after approve
+	end
+
+	desc "**`deploy_production_north_macedonia`** lane is used to deploy Bulgaria production build to App Store"
+	lane :deploy_production_bulgaria do
+		app_identifier=CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+		team_id=CredentialsManager::AppfileConfig.try_fetch_value(:itc_team_id)
+		# NOTE: Public distribution is done manually after approve
+		deploy_testflight(
+			app_identifier: app_identifier,
+			team_id: team_id
+		)
+	end
+
+	desc "**`compile`** lane is used to build the app from GitHub actions"
+	desc " **`:app_identifier`** App bundle id"
+	desc " **`:provisioning_profile_name`** Filename to use for the generated provisioning profile (must include .mobileprovision)"
+	desc " **`:export_method`** Method used to export the archive. Valid values are: app-store, ad-hoc, package, enterprise, development, developer-id"
+	desc " **`:scheme`** The project's scheme. (Make sure it's marked as Shared)"
+	desc " **`:team_id`** Developer Portal Team"
+	desc " **`:apple_id`** Apple ID email address"
+	private_lane :compile do |options|
+		# Deletes files created as result of running gym, cert, sigh or download_dsyms
+	    clean_build_artifacts(
+	    	exclude_pattern: '.*.mobileprovision'
+	    )
+
+		# Increment build number
+	    increment()
+
+	    # Sync certs
+	    certificates(
+	    	apple_id: options[:apple_id],
+	    	team_id: options[:team_id]
+	    )
+
+	    # Update provisioning profile
+  		provisioning(
+  			apple_id: options[:apple_id],
+  			team_id: options[:team_id],
+  			app_identifier: options[:app_identifier],
+  			provisioning_profile_name: options[:provisioning_profile_name],
+  			target: options[:scheme]
+  		)
+
+		# Build the app
+		build(
+			app_identifier: options[:app_identifier],
+			scheme: options[:scheme],
+			export_method: options[:export_method],
+			provisioning_profile_name: options[:provisioning_profile_name],
+			team_id: options[:team_id]
+		)
+	end
+
+	desc "**`build`** lane is used to make clean signed build of the app"
+	desc " **`:app_identifier`** App bundle id"
+	desc " **`:provisioning_profile_name`** Filename to use for the generated provisioning profile (must include .mobileprovision)"
+	desc " **`:export_method`** Method used to export the archive. Valid values are: app-store, ad-hoc, package, enterprise, development, developer-id"
+	desc " **`:scheme`** The project's scheme. (Make sure it's marked as Shared)"
+	desc " **`:team_id`** Developer Portal Team"
+	private_lane :build do |options|
+		# Deletes the Xcode Derived Data
+	    clear_derived_data
+
+	    # Build App Settings
+		workspace="COVID-19.xcworkspace"
+
+	    # Build and signs the app (only iOS options)
+	    gym(
+	    	scheme: options[:scheme],
+	    	clean: true,
+	      	workspace: workspace,
+	      	skip_profile_detection: true,
+	      	export_method: options[:export_method],
+	      	codesigning_identity:"Apple Distribution",
+	      	export_options: {
+	      		method: "manual",
+		    	provisioningProfiles: { 
+		    		options[:app_identifier] => options[:provisioning_profile_name]
+		    	},
+		    	teamID:options[:team_id]
+
+		    	# iPhone Distribution: UPNETIX AD
+		    	# Apple Distribution: COUNCIL OF MINISTERS (HRLWLL69NT)
+		  	}
+	    )
+  	end
+
+  	desc "**`increment`** lane is used to increment build number"
+  	private_lane :increment do |options|
+  		# Increment build number. 
+	    # NOTE; increment_build_number conflicts with update_app_identifier and currently won't work properly(11.07.2016). Thus using workaround with set_info_plist_value
+	    value=Time.new.strftime("%-y.%-m.%-d%H%M")
+	    path=File.expand_path "../COVID-19/Info.plist"
+		set_info_plist_value(
+			path: path,
+			key: "CFBundleVersion",
+			value: value
+		)
+  	end
+
+	desc "**`certificates`** lane is used to sync app certificates"
+	desc " **`:team_id`** Developer Portal Team"
+	desc " **`:apple_id`** Apple ID email address"
+  	private_lane :certificates do |options|
+  		# Download or create certificates
+  		if is_ci?
+  			keychain_name=ENV["FASTLANE_KEYCHAIN_NAME"]
+  			keychain_password=ENV["FASTLANE_KEYCHAIN_PASSWORD"]
+	  		cert(
+	  			username: options[:apple_id],
+	  			team_id: options[:team_id],
+	  			keychain_path: "~/Library/Keychains/#{keychain_name}-db",
+		    	keychain_password: keychain_password
+	  		)
+  		else
+  			cert(
+	  			username: options[:apple_id],
+	  			team_id: options[:team_id]
+	  		)
+  		end
+  	end
+
+	desc "**`setup_keychain`** is a private lane used to enable keychain access for GitHub actions"
+	desc " **`:keychain_name`** - Keychain name"
+	desc " **`:keychain_password`** - Password for the keychain"
+	private_lane :setup_keychain do |options|
+	  create_keychain(
+		    name: options[:keychain_name],
+		    password: options[:keychain_password],
+		    default_keychain: true,
+		    unlock: true,
+		    timeout: 3600,
+		    lock_when_sleeps: false
+	  )
+	end
+
+	desc "**`deploy_app_center`** lane is used to deply develop build to App Center"
+	desc " **`:app_name`** - name of the app (can be found in the url for the project in appcenter.ms)"
+	desc " **`:destinations`** - distribution groups (default is Collaborators, can have wild cards)"
+	desc " **`:file_name`** - name of the ipa and dsym files"
+	private_lane :deploy_app_center do |options|
+		# TODO: Automate release notes using CHANGELOG
+		appcenter_upload(
+	        api_token: ENV["FASTLANE_APPCENTER_API_TOKEN"],
+	        owner_name: ENV["FASTLANE_APPCENTER_OWNER_NAME"],
+	        owner_type: "organization",
+	        app_name: options[:app_name],
+	        notify_testers: true,
+	        destinations: options[:destinations],
+	        destination_type: "group",
+	        file: "./#{options[:file_name]}.ipa",
+	        dsym: "./#{options[:file_name]}.app.dSYM.zip"
+	        # release_notes: "" # use default
+	        # strict: 'true',
+	        # app_os: "iOS"
+      )
+	end
+
+	desc "**`deploy_testflight`** lane is used to deply production build to Test Flight"
+	desc " **`:app_identifier`** App bundle id"
+	desc " **`:team_id`** Developer Portal Team"
+	private_lane :deploy_testflight do |options|
+		# TODO: Automate release notes using CHANGELOG
+		# NOTE: **`testflight`** and **`pilot`** are aliases for the **`upload_to_testflight`** action
+		upload_to_testflight(
+			app_identifier: options[:app_identifier],
+			team_id: options[:team_id],
+			skip_submission: true, # only upload the build
+			skip_waiting_for_build_processing: true
+		)
+  	end
+
+	desc "**`provisioning`** lane is used to sign the build"
+	desc " **`:app_identifier`** App bundle id"
+	desc " **`:team_id`** Developer Portal Team"
+	desc " **`:apple_id`** Apple ID email address"
+	desc " **`:provisioning_profile_name`** Filename to use for the generated provisioning profile (must include .mobileprovision)"
+	desc " **`:target`** A filter for the target name. Use a standard regex"
+  	private_lane :provisioning do |options|
+  		# Sync provisioning profiles
+  		sigh(
+      		app_identifier: options[:app_identifier],
+      		username: options[:apple_id],
+      		team_id: options[:team_id],
+      		filename: options[:provisioning_profile_name],
+      		provisioning_name: options[:provisioning_profile_name].to_str.gsub(".mobileprovision", ""),
+      		ignore_profiles_with_different_name: true,
+      		readonly: true
+  		)
+
+  		# Since we're not using automatic code signing, we must run the update_project_provisioning fastlane action with 
+	    # our profile, target, config, and signing identity. 
+	    xcodeproj="COVID-19.xcodeproj"
+	    update_project_provisioning(
+			xcodeproj: xcodeproj,
+			profile: options[:provisioning_profile_name],
+			target_filter: options[:target],
+			build_configuration: "Release",
+			code_signing_identity: "Apple Distribution"
+		)
+	end
+
+end

@@ -30,12 +30,19 @@ final class LanguageHelper {
 
     var savedLocale: String {
         get {
+
             return defaults.string(forKey: .savedLocaleUserDefaultsKey) ?? defaultLocale
         }
         set {
             // ??? Normalize/verify new value
             UserDefaults.standard.setValue(newValue, forKeyPath: .savedLocaleUserDefaultsKey)
         }
+    }
+
+    var languageCode: String {
+        let locale = Locale(identifier: savedLocale)
+        let languageCode = locale.languageCode ?? defaultLocale
+        return languageCode
     }
 
 }

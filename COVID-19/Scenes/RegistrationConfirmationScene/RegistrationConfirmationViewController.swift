@@ -145,7 +145,7 @@ class RegistrationConfirmationViewController: UIViewController, Navigateble {
 
     private func navigateToNextViewController() {
         // !!! Do it as it is done on Android - always do full initial flow
-        navigationDelegate?.navigateTo(step: .personalInformation)
+        navigationDelegate?.navigateTo(step: .personalInformation(shouldNavigateToHealthStatus: true))
     }
 
     // MARK: Actions

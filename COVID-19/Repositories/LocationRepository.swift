@@ -82,7 +82,7 @@ class LocationRepository: LocationRepositoryProtocol {
 //    }
 }
 
-//// !!! We will set this token in advertising data
+// !!! We will set this token in advertising data
 //final class BLEBeaconIdentifierHelper {
 //    static func readIdentifierFromJWTToken() -> String? {
 //        let decoder = JWTDecoder()

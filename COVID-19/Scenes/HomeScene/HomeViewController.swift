@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+// TODO: Refactor to MVVM
 class HomeViewController: UIViewController, Navigateble {
 
     // MARK: Navigateble
@@ -76,10 +77,14 @@ class HomeViewController: UIViewController, Navigateble {
     }
 
     @IBAction private func didTapMyPersonalInfoButton(_ sender: Any) {
-        navigationDelegate?.navigateTo(step: .personalInformation)
+        navigationDelegate?.navigateTo(step: .personalInformation(shouldNavigateToHealthStatus: false))
     }
 
     @IBAction private func didTapSurveyButton(_ sender: Any) {
+        guard TermsAndConditionsRepository().isAgreeDataProtection else {
+            presentPrivacyPolicyNotAcceptedAlertMessage()
+            return
+        }
         navigationDelegate?.navigateTo(step: .healthStatus)
     }
 
@@ -176,6 +181,21 @@ class HomeViewController: UIViewController, Navigateble {
                 break
             }
         }
+    }
+
+    // MARK: Alert
+
+    private func presentPrivacyPolicyNotAcceptedAlertMessage() {
+        let alert = UIAlertController(title: nil,
+                                      message: "popup_accept_personal_data_usage".localized(),
+                                      preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "popup_proceed_btn".localized(), style: .default) { [weak self] _ in
+            self?.navigationDelegate?.navigateTo(step: .personalInformation(shouldNavigateToHealthStatus: true))
+        }
+        let cancel = UIAlertAction(title: "back_text".localized(), style: .cancel)
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
 
 }

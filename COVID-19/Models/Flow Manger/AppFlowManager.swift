@@ -21,7 +21,7 @@ enum NavigationStep {
     case web(source: Source)
     case completed
     case about(isInitial: Bool)
-    case personalInformation
+    case personalInformation(shouldNavigateToHealthStatus: Bool)
     case languages(isInitial: Bool)
 }
 
@@ -40,7 +40,7 @@ final class AppFlowManager: StateMachineDelegateProtocol {
         case registerConfirm
         case home
         case healthStatus
-        case personalInformation
+        case personalInformation(shouldNavigateToHealthStatus: Bool)
         case success // confirm
         case initialAbout
         case initialLanguages
@@ -132,12 +132,13 @@ final class AppFlowManager: StateMachineDelegateProtocol {
         case (.initialLanguages, .initialAbout):
             previousStatesStack = [newState]
             navigateToWebViewController(source: .about, isRoot: true)
-        case (.home, .personalInformation):
+        case (.home, .personalInformation(let shouldNavigateToHealthStatus)):
             previousStatesStack.append(newState)
-            navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: false)
+            let nextNavigationStep: NavigationStep = shouldNavigateToHealthStatus ? .healthStatus : .home
+            navigateToPersonalInformationViewController(nextNavigationStep: nextNavigationStep, isRegistration: false)
         case (.registerConfirm, .personalInformation):
             previousStatesStack.append(newState)
-            navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: true)
+            navigateToPersonalInformationViewController(nextNavigationStep: .healthStatus, isRegistration: true)
         case (.home, .languages):
             previousStatesStack.append(newState)
             navigateToLanguagesViewController()
@@ -188,8 +189,8 @@ extension AppFlowManager: NavigationDelegate {
                 // !!! This doesn't affect machine's state
                 navigateToWebViewController(source: .about, isRoot: false)
             }
-        case .personalInformation:
-            stateMachine.state = .personalInformation
+        case .personalInformation(let shouldNavigateToHealthStatus):
+            stateMachine.state = .personalInformation(shouldNavigateToHealthStatus: shouldNavigateToHealthStatus)
         case .languages(let isInitial):
             if isInitial {
                 stateMachine.state = .initialLanguages
@@ -316,7 +317,7 @@ extension AppFlowManager: NavigationDelegate {
         setupBackButton(viewController: registrationConfirmationVC)
     }
 
-    private func navigateToPersonalInformationViewController(shouldNavigateNextToHealthStatus: Bool) {
+    private func navigateToPersonalInformationViewController(nextNavigationStep: NavigationStep, isRegistration: Bool) {
         guard let personalInformationViewController =
             UIStoryboard(name: "PersonalInformation", bundle: nil)
                 .instantiateViewController(withIdentifier: "\(PersonalInformationViewController.self)")
@@ -325,7 +326,9 @@ extension AppFlowManager: NavigationDelegate {
         }
         let viewModel = PersonalInformationViewModel(firstLaunchCheckRepository: firstLaunchCheckRepository,
                                                      personalInformationRepository: personalInformationRepository,
-                                                     shouldNavigateNextToHealthStatus: shouldNavigateNextToHealthStatus)
+                                                     termsAndConditionsRepository: termsAndConditionsRepository,
+                                                     nextNavigationStep: nextNavigationStep,
+                                                     isRegistration: isRegistration)
         personalInformationViewController.navigationDelegate = self
         personalInformationViewController.viewModel = viewModel
         navigationController.push(viewController: personalInformationViewController)

@@ -8,8 +8,6 @@
 
 import UIKit
 
-//swiftlint:disable valid_ibinspectable
-//swiftlint:disable implicit_getter
 extension UIView {
     @IBInspectable var cornerRadius: CGFloat {
         get {
@@ -56,7 +54,6 @@ extension UIViewController {
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
-
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if touch.view is UIButton {
             return false
@@ -64,5 +61,3 @@ extension UIViewController: UIGestureRecognizerDelegate {
         return true
     }
 }
-//swiftlint:enable valid_ibinspectable
-//swiftlint:enable implicit_getter

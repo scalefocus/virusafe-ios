@@ -19,6 +19,7 @@ final class RegistrationViewModel {
 
     init(registrationRepository: RegistrationRepository,
          termsAndConditionsRepository: TermsAndConditionsRepository) {
+        // dependencies
         self.registrationRepository = registrationRepository
         self.termsAndConditionsRepository = termsAndConditionsRepository
     }

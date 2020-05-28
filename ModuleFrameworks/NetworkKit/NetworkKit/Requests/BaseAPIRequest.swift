@@ -26,7 +26,11 @@ public class BaseAPIRequest: APIRequest {
     }
 
     public var headers: [String: String] {
-        var dict: [String: String] = ["Content-Type": "application/json"]
+        var dict: [String: String] = [:]
+
+        if bodyJSONObject != nil {
+            dict = ["Content-Type": "application/json"]
+        }
 
         // NOTE: Should be in all API Calls
         if let clientId = APIManager.shared.clientId {
