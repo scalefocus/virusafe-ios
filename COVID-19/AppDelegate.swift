@@ -73,6 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         APIManager.shared.refreshToken = TokenStore.shared.refreshToken
         // Network client id
         APIManager.shared.clientId = AppSecrets.apiSecret
+        // Certificate pinning - prod only
+        APIManager.shared.serverTrustPolicies = [
+            "virusafe.io": .pinCertificates
+        ]
+        APIManager.shared.configure(withCacher: nil, reachabilityDelegate: nil, authenticator: nil)
 
         // Autostart if possible
         tryStartListenForLocationChanges()

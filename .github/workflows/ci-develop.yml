@@ -62,6 +62,7 @@ jobs:
         FIREBASE_REMOTE_CONFIG_DEFAULTS_PRODUCTION_BG: ${{ secrets.FIREBASE_REMOTE_CONFIG_DEFAULTS_PRODUCTION_BG }}
         PROD_BG_CERT: ${{ secrets.PROD_BG_CERT }}
         UPNETIX_CERT: ${{ secrets.UPNETIX_CERT }}
+        PINNED_CERT: ${{ secrets.PINNED_CERT }}
 
       # CI Keychain
     - name: Run fastlane setup

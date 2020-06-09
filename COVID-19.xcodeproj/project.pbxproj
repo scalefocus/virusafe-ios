@@ -48,6 +48,12 @@
 		41482B1F242B78B00062D6E1 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1E242B78B00062D6E1 /* LocationRepository.swift */; };
 		41482B26242B88380062D6E1 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41482B25242B88380062D6E1 /* WebView.storyboard */; };
 		41482B28242B891A0062D6E1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B27242B891A0062D6E1 /* WebViewController.swift */; };
+		415BF6B3247E535500D24E2F /* virusafe.io.der in Resources */ = {isa = PBXBuildFile; fileRef = 415BF6B2247E535500D24E2F /* virusafe.io.der */; };
+		415BF6B4247E535500D24E2F /* virusafe.io.der in Resources */ = {isa = PBXBuildFile; fileRef = 415BF6B2247E535500D24E2F /* virusafe.io.der */; };
+		415BF6B5247E535500D24E2F /* virusafe.io.der in Resources */ = {isa = PBXBuildFile; fileRef = 415BF6B2247E535500D24E2F /* virusafe.io.der */; };
+		415BF6B6247E59A700D24E2F /* Font Awesome 5 Pro-Light-300.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41915FB724484986007F67AD /* Font Awesome 5 Pro-Light-300.otf */; };
+		415BF6B7247E59A700D24E2F /* Font Awesome 5 Pro-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41915FB824484986007F67AD /* Font Awesome 5 Pro-Regular-400.otf */; };
+		415BF6B8247E59A700D24E2F /* Font Awesome 5 Pro-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41915FB924484986007F67AD /* Font Awesome 5 Pro-Solid-900.otf */; };
 		4166B3812438A68300CC8614 /* RegistrationConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82F02424A35B00696868 /* RegistrationConfirmationViewController.swift */; };
 		4166B3832438A68300CC8614 /* JWTDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41482B1C242B60480062D6E1 /* JWTDecoder.swift */; };
 		4166B3842438A68300CC8614 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024D82FA2424EA2E00696868 /* RegistrationViewModel.swift */; };
@@ -308,6 +314,7 @@
 		41482B1E242B78B00062D6E1 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		41482B25242B88380062D6E1 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
 		41482B27242B891A0062D6E1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		415BF6B2247E535500D24E2F /* virusafe.io.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = virusafe.io.der; sourceTree = "<group>"; };
 		4166B3E92438A68300CC8614 /* ViruSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViruSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4170C2292428B4C0003EA70A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		4170C22B2428B764003EA70A /* ConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewModel.swift; sourceTree = "<group>"; };
@@ -702,6 +709,14 @@
 			path = CovidInfoScene;
 			sourceTree = "<group>";
 		};
+		415BF6AD247E52F600D24E2F /* Certs */ = {
+			isa = PBXGroup;
+			children = (
+				415BF6B2247E535500D24E2F /* virusafe.io.der */,
+			);
+			path = Certs;
+			sourceTree = "<group>";
+		};
 		4166B37924388E2E00CC8614 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +802,7 @@
 		5C34F69B24446BBD00DD9902 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				415BF6AD247E52F600D24E2F /* Certs */,
 				419A670B244733CE00000BE7 /* Development */,
 				419A670F244733CE00000BE7 /* NorthMacedonia */,
 				419A6715244733CE00000BE7 /* Production */,
@@ -930,6 +946,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41760DD7244592D30037F97E /* Settings.bundle in Resources */,
+				415BF6B3247E535500D24E2F /* virusafe.io.der in Resources */,
 				02B9A6B5242371F500B1A4C0 /* Assets.xcassets in Resources */,
 				41F2AB1B2473E8BB0015C5F7 /* Font Awesome 5 Pro-Solid-900.otf in Resources */,
 				02B9A6B8242371F500B1A4C0 /* LaunchScreen.storyboard in Resources */,
@@ -956,7 +973,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				415BF6B6247E59A700D24E2F /* Font Awesome 5 Pro-Light-300.otf in Resources */,
+				415BF6B7247E59A700D24E2F /* Font Awesome 5 Pro-Regular-400.otf in Resources */,
+				415BF6B8247E59A700D24E2F /* Font Awesome 5 Pro-Solid-900.otf in Resources */,
 				41760DD8244592D30037F97E /* Settings.bundle in Resources */,
+				415BF6B4247E535500D24E2F /* virusafe.io.der in Resources */,
 				4166B3D32438A68300CC8614 /* Assets.xcassets in Resources */,
 				41F2AB1E2473E8BB0015C5F7 /* Font Awesome 5 Pro-Solid-900.otf in Resources */,
 				4166B3D42438A68300CC8614 /* LaunchScreen.storyboard in Resources */,
@@ -984,6 +1005,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41760DD9244592D30037F97E /* Settings.bundle in Resources */,
+				415BF6B5247E535500D24E2F /* virusafe.io.der in Resources */,
 				5C3C5575243EF509008B6B14 /* LaunchScreen.storyboard in Resources */,
 				41F2AB212473E8BC0015C5F7 /* Font Awesome 5 Pro-Solid-900.otf in Resources */,
 				5C3C5576243EF509008B6B14 /* Main.storyboard in Resources */,
